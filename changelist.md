@@ -2,6 +2,20 @@
 
 -------
 
+**Updated:** 07 Nov 2023
+
+-------
+
+## QoL Changes
+
+- User request notes now visible on account requests in create user wizard
+
+## fixes
+
+- Fix for internal ticket 1491
+
+-------
+
 **Version:** 2.3.18 \
 **Released:** 29 Nov 2023
 

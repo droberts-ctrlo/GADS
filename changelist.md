@@ -13,6 +13,7 @@
 ## fixes
 
 - Fix for internal ticket 1491
+- No click event on page or page-length change for user accounts, this has now been fixed
 
 -------
 

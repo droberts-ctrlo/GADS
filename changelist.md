@@ -2,7 +2,7 @@
 
 -------
 
-**Updated:** 07 Dec 2023
+**Updated:** 11 Dec 2023
 
 -------
 
@@ -14,6 +14,7 @@
 
 - Fix for internal ticket 1491
 - No click event on page or page-length change for user accounts, this has now been fixed
+- Fix for notes field error on editing users
 
 -------
 

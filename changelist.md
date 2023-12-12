@@ -2,19 +2,25 @@
 
 -------
 
-**Updated:** 11 Dec 2023
+**Updated:** 12 Dec 2023 from Git tree
 
 -------
 
 ## QoL Changes
 
 - User request notes now visible on account requests in create user wizard
+- Users able to have view limits set
 
 ## fixes
 
 - Fix for internal ticket 1491
-- No click event on page or page-length change for user accounts, this has now been fixed
+- Fix for no click event on page or page-length change for user accounts
 - Fix for notes field error on editing users
+- Fix for inability to remove dept, title, org, or team
+- Fix to stop editing fields that should be read-only on user's editing their details
+- Fix for users not being sent an email upon approving account requests
+- Fix for cloning instances dependent fields
+- Fix to stop read-only values being cloned with an instance
 
 -------
 

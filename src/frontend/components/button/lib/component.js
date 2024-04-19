@@ -11,8 +11,17 @@ class ButtonComponent extends Component {
     this.initButton()
   }
 
+  // my concern here is that the async import doesn't appear to be returning as quickly as I would expect,
+  // I wonder if making this async (well, promise-driven) and changing the functionality slightly may be a better approach.
+  // At this point, however, this is beyond the scope of the current task
   initButton() {
     switch (true) {
+      case this.el.hasClass('btn-js-rename-file'):
+        import(/* webpackChunkName: "rename-file-button" */ './rename-file-button-component.js')
+            .then(({ default: RenameFileButtonComponent }) => {
+              new RenameFileButtonComponent(this.element);
+            });
+        break;
       case this.el.hasClass('btn-js-report'):
         import(/* webpackChunkName: "create-report-button" */ './create-report-button.js')
           .then(({ default: CreateReportButtonComponent }) => {

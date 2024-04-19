@@ -865,11 +865,21 @@
           
               '</span>';
               '<span class="list__value">';
-                'Current file name: ';
-                '<a class="link link--plain" href="' _ url.page _ '/file/' _ file.id _'">';
+                'File name:';
+                '<a class="link link--plain" id="currentName" href="' _ url.page _ '/file/' _ file.id _'">';
                   file.name | html;
-                '</a>.';
-              '</span>';
+                '</a>';
+              '</span>
+              <button
+                type="button"
+                class="btn btn-small btn-default btn-js-rename-file"
+                data-toggle="modal"
+                data-target="#renameModal"
+                data-id = "';
+                file.id | html;
+                '" data-filename="';
+              file.name | html;
+              '">Rename</button>';
             '</li>';
             END;
           '</ul>';
@@ -1170,5 +1180,33 @@
 
     INCLUDE tables/basic_table.tt;
 %]
-
 [% END %]
+
+<div class="modal fade" id="renameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Rename file</h4>
+      </div>
+      <div class="modal-body">
+        [%
+          INCLUDE fields/input.tt
+            name        = "new_name"
+            id          = "new_name"
+            label       = "New name"
+            value       = ""
+            placeholder = "Enter new name"
+            is_required = 1;
+          INCLUDE fields/hidden.tt
+            name  = "file_id"
+            id    = "file_id"
+            value = "";
+        %]
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="rename_button" type="button" name="rename" value="rename" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

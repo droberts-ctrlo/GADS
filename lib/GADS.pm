@@ -4143,6 +4143,11 @@ prefix '/:layout_name' => sub {
 
         my $layout = var('layout') or pass;
         my ($return, $options, $is_raw) = _process_edit();
+        if(param('submit')) {
+            if(my $name = param('new_name')) {
+                print STDERR $name;
+            }
+        }
         return $return if $is_raw;
 
         template 'edit' => $return, $options;
@@ -4634,6 +4639,17 @@ sub _process_edit
             else {
                 next unless defined body_parameters->get($col->field);
                 $newv = [body_parameters->get_all($col->field)];
+            }
+            if(defined $newv) {
+                print STDERR $col->name;
+                print STDERR " ";
+                if(ref($newv) eq 'ARRAY') {
+                    print STDERR "$_\n" foreach @$newv;
+                } elsif(ref($newv) eq 'HASH') {
+                    print STDERR "$_ => " . $newv->{$_} . "\n" foreach keys %$newv;
+                } else {
+                    print STDERR "$newv\n";
+                }
             }
             if ($col->userinput && defined $newv) # Not calculated fields
             {

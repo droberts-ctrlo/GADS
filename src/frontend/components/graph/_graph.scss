@@ -4,4 +4,18 @@
 
 .graph__container {
   height: 32rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.dashboard__container {
+  height: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+
+  .dashboard__graph {
+    height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
 }

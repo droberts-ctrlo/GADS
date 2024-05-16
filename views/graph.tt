@@ -1,4 +1,4 @@
-<div class="content-block__main">
+<div class="content-block__main graph-with-preview">
   <form role="form" method="post" class="">
     [%
       INCLUDE fields/hidden.tt name="csrf_token" value=csrf_token;
@@ -147,7 +147,8 @@
                               placeholder = "Select x-axis"
                               value       = graph.id AND NOT graph.x_axis ? "" : graph.x_axis_full
                               filter      = "html"
-                              items       = set_x_axis_items;
+                              items       = set_x_axis_items
+                              popover_body = "Defines the set of values to use for the x-axis. For a donut or pie graph, this defines each segment within a ring. If plotting historical trends, this is the field to plot the trend of (the graph's actual x-axis will be the date period). In the case of a date field on the x-axis, they can be grouped together.";
                           %]
                         </div>
                       </div>
@@ -166,7 +167,8 @@
                               items       = [
                                 {id="", name="Plot live values only"},
                                 {id="aggregate", name="Plot overall aggregate historical trend"}
-                              ];
+                              ]
+                              popover_body = "Use this option to choose between plotting live values as the data currently is, or to plot graphs of historical changes over time. When plotting historical values, the aggregate of data will be used, which will combine all records to show the values over time. The end of the time period will be used for values, so for example a value of June will show the values as at the end of June, regardless of other edits in June.";
                           %]
                         </div>
                       </div>
@@ -198,7 +200,8 @@
                                       {id="24", name="Next 2 years (grouped by month)"},
                                       {id="120", name="Next 10 years (grouped by year)"},
                                       {id="custom", name="Custom range"}
-                                    ];
+                                    ]
+                                    popover_body = "If the x-axis will be based on a date (either because of the type of field or if plotting historical trends) then it is possible to define the range and grouping of the axis. The range specifies the period which will be plotted and the grouping shows the granuality of the plotting.";
                                 %]
                             </div>
                           </div>
@@ -286,7 +289,8 @@
                               items        = [
                                 {id="count", name="Count total number items"},
                                 {id="sum", name="Calculate total sum of field values"}
-                              ];
+                              ]
+                              popover_body = "This option configures whether to use the total sum of a particular field (numeric values only), or whether to count the number of items.";
                           %]
                         </div>
                       </div>
@@ -316,7 +320,8 @@
                                   select_class = "select--select"
                                   filter       = "html"
                                   hide_group   = 0
-                                  items        = y_axis_items;
+                                  items        = y_axis_items
+                                  popover_body = "The Y-axis is the field to use for the y-values of a graph. This is ignored for a donut or pie graph when counting number of items (but not when calculating the sum).";
                               %]
                             </div>
                           </div>
@@ -334,7 +339,8 @@
                               value = graph.y_axis_label
                               placeholder = ""
                               filter = "html"
-                              type = "text";
+                              type = "text"
+                              popover_body = "The label to be placed next to the Y-axis (where applicable). The x-axis label will be the name of its defined field.";
                           %]
                         </div>
                       </div>
@@ -364,7 +370,8 @@
                                   select_class = "select--select"
                                   filter       = "html"
                                   hide_group   = 0
-                                  items        = y_axis_items;
+                                  items        = y_axis_items
+                                  popover_body = "This is a general grouping of related data items. In the case of a donut graph, this defines the rings. Otherwise, the data being displayed is normally a smaller subset of this grouping option. For example, if countries were being displayed on the graph, this option could be used to group (and colour code) by continent.";
                               %]
                             </div>
                           </div>
@@ -401,8 +408,9 @@
                               name = "stackseries"
                               label = "Stack data within same series"
                               value = "1"
-                              checked = graph.stackseries ? 1 : 0;
-                          
+                              checked = graph.stackseries ? 1 : 0
+                              popover_body = "This option will cause different data items for the same x value to be stacked on top of each other, rather than displayed side-by-side.";
+
                             INCLUDE fields/sub/checkbox.tt
                               id = "as_percent"
                               name = "as_percent"
@@ -422,32 +430,15 @@
           </div>
           
           <div class='col-md-6 col-lg-4'>
-            <div class="card card--secundary card--help">
+            <div class="card card--secundary card--help card--graph-preview">
               <h4 class="card__title">
-                <span> Graph help </span>
+                <span>Preview</span>
               </h4>
-              
               <div class="card__body row">
                 <div class="card__content">
-                  <dl>
-                    <dt>X-axis</dt>
-                    <dd>Defines the set of values to use for the x-axis. For a donut or pie graph, this defines each segment within a ring. If plotting historical trends, this is the field to plot the trend of (the graph's actual x-axis will be the date period). In the case of a date field on the x-axis, they can be grouped together.</dd>
-                    <dt>Historic trend</dt>
-                    <dd>Use this option to choose between plotting live values as the data currently is, or to plot graphs of historical changes over time. When plotting historical values, the aggregate of data will be used, which will combine all records to show the values over time. The end of the time period will be used for values, so for example a value of June will show the values as at the end of June, regardless of other edits in June.</dd>
-                    <dt>X-axis range</dt>
-                    <dd>If the x-axis will be based on a date (either because of the type of field or if plotting historical trends) then it is possible to define the range and grouping of the axis. The range specifies the period which will be plotted and the grouping shows the granuality of the plotting.</dd>
-                    <dt>Y-axis field</dt>
-                    <dd>The Y-axis is the field to use for the y-values of a graph. This is ignored for a donut or pie graph when counting number of items (but not when calculating the sum).</dd>
-                    <dt>Y-axis value</dt>
-                    <dd>This option configures whether to use the total sum of a particular field (numeric values only), or whether to count the number of items.</dd>
-                    <dt>Y-axis label</dt>
-                    <dd>The label to be placed next to the Y-axis (where applicable). The x-axis label will be the name of its defined field.</dd>
-                    <dt>Group by</dt>
-                    <dd>This is a general grouping of related data items. In the case of a donut graph, this defines the rings. Otherwise, the data being displayed is normally a smaller subset of this grouping option. For example, if countries were being displayed on the graph, this option could be used to group (and colour code) by continent.</dd>
-                    <dt>Stack data</dt>
-                    <dd>This option will cause different data items for the same x value to be stacked on top of each other, rather than displayed side-by-side.</dd>
-                  </dl>
+                  <canvas id="graph-preview"></canvas>
                 </div>
+                <div class="chart__actions"></div>
               </div>
             </div>
           </div>

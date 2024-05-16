@@ -1,5 +1,18 @@
 .graph {
-  margin-bottom: $padding-large-vertical;
+  max-width: 80rem;
+  margin: 0 auto $padding-large-vertical;
+
+  .row {
+    padding: 4px;
+
+    h2 {
+      margin-top: 4px;
+    }
+  }
+
+  .card__header {
+    border-bottom: double 1px $gray;
+  }
 }
 
 .graph__container {
@@ -17,5 +30,12 @@
     height: 100%;
     max-width: 100%;
     margin: 0 auto;
+  }
+}
+
+.card--graph-preview {
+  min-height: auto;
+  canvas {
+    min-width: 100%;
   }
 }

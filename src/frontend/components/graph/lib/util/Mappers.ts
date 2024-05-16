@@ -1,4 +1,4 @@
-import {PlotData} from "../types/Interfaces";
+import { PlotData } from "../types/Interfaces";
 
 /**
  * @interface Dataset

@@ -1,15 +1,4 @@
-import {Chart, ChartOptions} from "chart.js";
-
-/**
- * @interface ChartAction
- * @description Interface for the actions that can be added to the chart
- * @property {string} label - The label of the action
- * @property {(chart: Chart) => void} action - The action to be performed
- */
-export interface ChartAction {
-    label: string;
-    action: (chart: Chart) => void;
-}
+import { ChartOptions } from "chart.js";
 
 /**
  * @interface PlotData
@@ -24,28 +13,6 @@ export interface PlotData {
     points: any[][][];
     xlabels: string[];
     labels?: (string | {label: string, color: string})[]
-}
-
-/**
- * @interface Data
- * @description Interface for the data object that is passed to the graph component
- * @property {string[]} labels - The labels for the data
- * @property {Dataset[]} datasets - The datasets to be plotted
- */
-export interface Data {
-    labels: string[];
-    datasets: Dataset[];
-}
-
-/**
- * @interface Dataset
- * @description Interface for the dataset object that is passed to the graph component
- * @property {string} label - The label for the dataset
- * @property {number[]} data - The data to be plotted
- */
-export interface Dataset {
-    label?: string;
-    data: number[];
 }
 
 /**

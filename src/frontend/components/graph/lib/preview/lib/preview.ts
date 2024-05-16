@@ -1,8 +1,7 @@
+import { Chart } from "chart.js";
 import { Component } from "component";
+import { OptionsIn, PlotData } from "../../types/Interfaces";
 import do_plot from "../../chart";
-import { ChartAction, OptionsIn, PlotData } from "../../types/Interfaces";
-import { Chart } from "chart.js"; // This will be replaced with the correct registry setup.
-import { registerActions } from "../../util/Actions";
 
 export default class ChartPreview extends Component {
     chart: Chart;
@@ -47,16 +46,16 @@ export default class ChartPreview extends Component {
             labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
             options: {}
         };
-        this.chart = await do_plot(this.plotData, this.options, container);
-        const action:ChartAction = {
+        const actionTarget = $(container).closest(".card__body").find(".chart__actions");
+        const refreshAction = {
             label: 'Refresh',
             action: async () => {
                 this.chart.destroy();
                 //TODO: need to load the live data here - currently working with random data
-                this.chart = await do_plot(this.plotData, this.options, container);
+                this.chart = await do_plot(this.plotData, this.options, container, actionTarget, refreshAction);
             }
-        }
-        registerActions(this.chart, action);
+        };
+        this.chart = await do_plot(this.plotData, this.options, container,actionTarget, refreshAction);
     }
 
     createPointsMap(type: string): any {

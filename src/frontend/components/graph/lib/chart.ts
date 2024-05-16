@@ -1,8 +1,7 @@
-import { ChartConfiguration, ChartTypeRegistry} from "chart.js";
-import ChartRegistry from "./util/ChartRegistry";
+import { ChartAction } from "util/charts/Actions/Actions";
 import mapToDataset from "./util/Mappers";
-import {ChartAction, OptionsIn, PlotData} from "./types/Interfaces";
-import {registerActions} from "./util/Actions";
+import { ChartConfigurationBuilder, render_chart } from "util/charts";
+import { OptionsIn, PlotData } from "./types/Interfaces";
 
 /**
  * Create the chart using the specified options and data
@@ -11,27 +10,14 @@ import {registerActions} from "./util/Actions";
  * @param container The canvas element to render the plot to
  * @param actions Any actions to be added to the plot
  */
-export default async function do_plot(plotData: PlotData, options_in: OptionsIn, container: HTMLCanvasElement, ...actions:ChartAction[]) {
+export default async function do_plot(plotData: PlotData, options_in: OptionsIn, container: HTMLCanvasElement, actionTarget?: JQuery<HTMLElement>, ...actions:ChartAction[]) {
     options_in.type === "donut" && (options_in.type = "doughnut");
-    const Chart = await ChartRegistry.register(options_in.type)
     const datasets = mapToDataset(plotData, options_in.type);
-    const config: ChartConfiguration = {
-        type: options_in.type as keyof ChartTypeRegistry,
-        data: {
-            labels: plotData.xlabels,
-            datasets
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: options_in.showlegend
-                }
-            }
-        }
-    }
-    console.log("config", config);
-    const chart = new Chart(container, config);
-    registerActions(chart, ...actions);
-    return chart;
+    const configBuilder = new ChartConfigurationBuilder();
+    configBuilder.setChartType(options_in.type);
+    configBuilder.setLabels(...plotData.xlabels);
+    configBuilder.setXLabels(...plotData.xlabels);
+    configBuilder.setYLabels(options_in.y_axis_label);
+    configBuilder.addDataSet(datasets);
+    return await render_chart(configBuilder, container, actionTarget, ...actions);
 }

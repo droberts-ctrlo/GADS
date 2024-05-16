@@ -13,5 +13,5 @@ export default async function do_plot_json (plotData: string, options_in: string
     const d = JSON.parse(atob(plotData))
     d.type === "donut" && (d.type = "doughnut");
     const o = JSON.parse(atob(options_in))
-    return await do_plot(d, o, canvas || document.createElement('canvas'));
+    return await do_plot(d, o, canvas);
 }

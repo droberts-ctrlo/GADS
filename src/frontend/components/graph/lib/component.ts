@@ -1,7 +1,8 @@
 import {Component} from 'component'
 import do_plot from './chart'
 import chartToPdf from "./util/PDFRenderer";
-import {ChartAction, OptionsIn} from './types/Interfaces';
+import { ChartAction } from 'util/charts/Actions/Actions';
+import { OptionsIn } from './types/Interfaces';
 
 /**
  * @class GraphComponent
@@ -52,13 +53,14 @@ export default class GraphComponent extends Component {
             showlegend: data.graphtype !== "line",
             id: data.graphId
         }
+        const actionTarget = $(graphContainer).closest('.graph').find('.chart__actions')
 
 
         $.ajax({
             url: jsonUrl,
             dataType: 'json',
             success: async (data) => {
-                await do_plot(data, options_in, graphContainer[0], ...this.actions)
+                await do_plot(data, options_in, graphContainer[0], actionTarget, ...this.actions)
             }
         });
     }

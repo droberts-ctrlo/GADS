@@ -39,15 +39,17 @@
         hasGraphs = 1;
     %]
       <div class="graph">
-        <div class="row">
-          <div class="col">
-            <h2>[% graph.title | html_entity %]</h2>
-            [% IF graph.description %]<p>[% graph.description | html_entity %]</p>[% END %]
+        <div class="card">
+          <div class="card__header row">
+            <div class="col-lg-6">
+              <h2>[% graph.title | html_entity %]</h2>
+              [% IF graph.description %]<p>[% graph.description | html_entity %]</p>[% END %]
+            </div>
+            <div class="col-lg-6 text-right chart__actions">
+            </div>
           </div>
-        </div>
     
-        <div class="row">
-          <div class="col">
+        <div class="card-body">
             <canvas
               class="graph__container"
               data-chart-id="[% graph.id %]"
@@ -59,9 +61,9 @@
               data-graph-id="[% graph.id %]"
               data-layout-id="[% layout.identifier %]"
             ></canvas>
-          </div>
         </div>
       </div>
+    </div>
     [%
       END;
       UNLESS hasGraphs;

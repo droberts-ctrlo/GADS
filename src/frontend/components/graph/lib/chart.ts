@@ -1,41 +1,22 @@
-import {Chart} from "chart.js";
-import {ChartRegistry} from "./ChartRegistry";
+import { ChartConfiguration, ChartTypeRegistry} from "chart.js";
+import ChartRegistry from "./util/ChartRegistry";
+import mapToDataset from "./util/Mappers";
+import {ChartAction, OptionsIn, PlotData} from "./types/Interfaces";
+import {registerActions} from "./util/Actions";
 
-interface Dataset {
-    label: string;
-    color?: string;
-    data: number[];
-}
-
-function mapToDataset(plotData, chartType): Dataset[] {
-    if (chartType !== 'pie' && chartType !== 'doughnut') {
-        const dataset = plotData.labels.map((labelData) => ({
-            label: labelData.label,
-            color: labelData.color,
-            data: []
-        }));
-        for (let i = 0; i < plotData.points.length; i++) {
-            dataset[i].data = plotData.points[i];
-        }
-        return dataset;
-    } else {
-        const labels = plotData.labels || [];
-        return plotData.points.map((points, i) => {
-            return {
-                label: labels[i] || '',
-                data: points.map(point => point[1])
-            };
-        });
-    }
-}
-
-// DRY: This function was duplicated in src/frontend/components/graph/lib/component.ts
-export const do_plot = async (plotData, options_in, container) => {
-    options_in.type==="donut" && (options_in.type="doughnut");
-    await ChartRegistry.register(options_in.type)
+/**
+ * Create the chart using the specified options and data
+ * @param plotData The data to be plotted
+ * @param options_in The options for the plot
+ * @param container The canvas element to render the plot to
+ * @param actions Any actions to be added to the plot
+ */
+export default async function do_plot(plotData: PlotData, options_in: OptionsIn, container: HTMLCanvasElement, ...actions:ChartAction[]) {
+    options_in.type === "donut" && (options_in.type = "doughnut");
+    const Chart = await ChartRegistry.register(options_in.type)
     const datasets = mapToDataset(plotData, options_in.type);
-    const config = {
-        type: options_in.type,
+    const config: ChartConfiguration = {
+        type: options_in.type as keyof ChartTypeRegistry,
         data: {
             labels: plotData.xlabels,
             datasets
@@ -49,16 +30,8 @@ export const do_plot = async (plotData, options_in, container) => {
             }
         }
     }
-    return new Chart(container, config);
-}
-
-// At the moment, do_plot_json needs to be exported globally, as it is used by
-// Phantomjs to produce PNG versions of the graphs. Once jqplot has been
-// replaced by a more modern graphing library, the PNG/Phantomjs functionality
-// will probably unneccessary if that functionality is built into the library.
-export const do_plot_json = async (plotData: string, options_in: string, canvas: HTMLCanvasElement) => {
-    const d = JSON.parse(atob(plotData))
-    d.type==="donut" && (d.type="doughnut");
-    const o = JSON.parse(atob(options_in))
-    return await do_plot(d, o, canvas || document.createElement('canvas'));
+    console.log("config", config);
+    const chart = new Chart(container, config);
+    registerActions(chart, ...actions);
+    return chart;
 }

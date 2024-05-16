@@ -1,52 +1,88 @@
-import { Component } from 'component'
-import { do_plot } from './chart'
+import {Component} from 'component'
+import do_plot from './chart'
+import chartToPdf from "./util/PDFRenderer";
+import {ChartAction, OptionsIn} from './types/Interfaces';
 
+/**
+ * @class GraphComponent
+ * @description Default graph component
+ */
 export default class GraphComponent extends Component {
-  constructor(element:HTMLElement) {
-    super(element)
-    const graphContainer = $(this.element).find('.graph__container') as JQuery<HTMLCanvasElement>
+    /**
+     * @property actions
+     * @description Actions to be added to the chart
+     */
+    private actions: ChartAction[] = [{
+        label: 'Download PNG',
+        action(chart) {
+            const a = document.createElement('a');
+            a.href = chart.toBase64Image();
+            a.download = 'chart.png';
+            a.click();
+        }
+    },
+    {
+        label: 'Download PDF',
+        action: (chart) => chartToPdf(chart)
+    }];
 
-    if (graphContainer.length) {
-      this.initGraph(graphContainer)
-    }
-  }
+    /**
+     * Create a new GraphComponent
+     * @param element The element to attach the component to
+     */
+    constructor(element: HTMLElement) {
+        super(element)
+        const graphContainer = $(this.element).find('.graph__container') as JQuery<HTMLCanvasElement>
 
-  initGraph(graphContainer:JQuery<HTMLCanvasElement>) {
-    const data = graphContainer.data()
-    const jsonurl = this.getURL(data)
-    const options_in = {
-      type: data.graphType,
-      x_axis_name: data.xAxisName,
-      y_axis_label: data.yAxisLabel,
-      stackseries: data.stackseries,
-      showlegend: data.showlegend,
-      id: data.graphId
-    }
-
-    //This is just as efficient, and is Async, so can be used instead!
-    $.ajax({
-      url: jsonurl,
-      dataType: 'json',
-      success: (data) => {
-        do_plot(data, options_in, graphContainer[0]);
-      }
-    });
-  }
-
-  getURL(data) {
-    let devEndpoint
-
-    if (['bar', 'line', 'scatter'].indexOf(data.graphType) > -1) {
-      devEndpoint = window.siteConfig && window.siteConfig.urls.barApi
-    } else if (['doughnut', 'pie'].indexOf(data.graphType) > -1) {
-      devEndpoint = window.siteConfig && window.siteConfig.urls.pieApi
+        if (graphContainer && graphContainer.length) this.initGraph(graphContainer)
     }
 
-    if (devEndpoint) {
-      return devEndpoint
-    } else {
-      const time = new Date().getTime()
-      return `/${data.layoutId}/data_graph/${data.graphId}/${time}`
+    /**
+     * Initialise and render the graph
+     * @param graphContainer THe canvas to render the graph to
+     */
+    initGraph(graphContainer: JQuery<HTMLCanvasElement>) {
+        const data = graphContainer.data()
+        const jsonUrl = this.getURL(data as { graphType: string, layoutId: number, graphId: number })
+        const options_in: OptionsIn = {
+            type: data.graphType,
+            x_axis_name: data.xAxisName,
+            y_axis_label: data.yAxisLabel,
+            stackseries: data.stackseries,
+            showlegend: data.graphtype !== "line",
+            id: data.graphId
+        }
+
+
+        $.ajax({
+            url: jsonUrl,
+            dataType: 'json',
+            success: async (data) => {
+                await do_plot(data, options_in, graphContainer[0], ...this.actions)
+            }
+        });
     }
-  }
+
+    /**
+     * Get the URL for the graph data
+     * @param data The data for the graph
+     * @returns The URL for the graph data unless the environment is a test or dev environment
+     */
+    getURL(data: { graphType: string, layoutId: number, graphId: number }) {
+        let devEndpoint: any
+        const {graphType, layoutId, graphId} = data
+
+        if (['bar', 'line', 'scatter'].indexOf(graphType) > -1) {
+            devEndpoint = window.siteConfig && window.siteConfig.urls.barApi
+        } else if (['doughnut', 'pie'].indexOf(graphType) > -1) {
+            devEndpoint = window.siteConfig && window.siteConfig.urls.pieApi
+        }
+
+        if (devEndpoint) {
+            return devEndpoint
+        } else {
+            const time = new Date().getTime()
+            return `/${layoutId}/data_graph/${graphId}/${time}`
+        }
+    }
 }

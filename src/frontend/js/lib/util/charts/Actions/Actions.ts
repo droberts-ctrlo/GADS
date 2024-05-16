@@ -1,5 +1,11 @@
 import { Chart } from "chart.js";
 
+/**
+ * @interface ChartAction
+ * @description An action that can be performed on a chart
+ * @property label The label to be displayed on the button
+ * @property action The action to be performed when the button is clicked
+ */
 interface ChartAction {
     label: string;
     action: (chart: Chart) => void;

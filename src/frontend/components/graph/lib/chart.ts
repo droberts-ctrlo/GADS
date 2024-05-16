@@ -19,5 +19,5 @@ export default async function do_plot(plotData: PlotData, options_in: OptionsIn,
     configBuilder.setXLabels(...plotData.xlabels);
     configBuilder.setYLabels(options_in.y_axis_label);
     configBuilder.addDataSet(datasets);
-    return await render_chart(configBuilder, container, actionTarget, ...actions);
+    return await render_chart(configBuilder, container, actionTarget[0], ...actions);
 }

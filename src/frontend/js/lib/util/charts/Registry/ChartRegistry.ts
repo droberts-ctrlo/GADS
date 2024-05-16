@@ -1,8 +1,18 @@
 import {Chart, ChartTypeRegistry} from "chart.js";
 
+/**
+ * @class ChartRegistry
+ * @description A class to load chart types
+ * @static
+ */
 export default class ChartRegistry {
   private static RegisteredTypes = new Map<keyof ChartTypeRegistry, typeof Chart>();
 
+  /**
+   * Register a chart type with ChartJS and return a promise that resolves to the registered chart type
+   * @param type The type of chart to register
+   * @returns A promise that resolves to the registered chart type
+   */
   static async register(type: keyof ChartTypeRegistry): Promise<typeof Chart> {
     if(this.RegisteredTypes.has(type)) return this.RegisteredTypes.get(type)!;
     switch (type) {

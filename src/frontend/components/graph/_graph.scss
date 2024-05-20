@@ -13,6 +13,11 @@
   .card__header {
     border-bottom: double 1px $gray;
   }
+
+  canvas {
+    max-width: 100%;
+    margin: 0 auto;
+  }
 }
 
 .graph__container {

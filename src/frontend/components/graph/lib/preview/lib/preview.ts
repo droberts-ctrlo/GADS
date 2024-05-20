@@ -1,10 +1,12 @@
-import { Chart } from "chart.js";
 import { Component } from "component";
 import { OptionsIn, PlotData } from "../../types/Interfaces";
 import do_plot from "../../chart";
+import { ChartRenderer } from "util/charts";
 
 export default class ChartPreview extends Component {
-    chart: Chart;
+    private readonly count = 30;
+
+    chart: ChartRenderer;
     options: OptionsIn;
     plotData: PlotData;
 
@@ -14,13 +16,13 @@ export default class ChartPreview extends Component {
         this.initGraph($canvas);
     }
 
-    initGraph(target:JQuery<HTMLCanvasElement>) {
+    private initGraph(target: JQuery<HTMLCanvasElement>) {
         this.createGraph(target[0]);
     }
 
-    generateOptions(type = "bar"): OptionsIn {
+    private generateOptions(type = "bar"): OptionsIn {
         const id = 0;
-        const showlegend = <any>type !=="line";
+        const showlegend = <any>type !== "line";
         const stackseries = false;
         const x_axis_name = "X Axis";
         const y_axis_label = "Y Axis";
@@ -34,42 +36,63 @@ export default class ChartPreview extends Component {
         }
     }
 
-    generateRandomData(size: number) {
-        return Array.from({length: size}, () => Math.floor(Math.random() * 100));
+    private generateRandomData(size: number) {
+        return Array.from({ length: size }, () => Math.floor(Math.random() * 100));
     }
 
-    async createGraph (container: HTMLCanvasElement) {
+    private async createGraph(container: HTMLCanvasElement) {
         this.options = this.generateOptions();
-        this.plotData = {
-            points: this.createPointsMap(this.options.type),
-            xlabels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-            labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-            options: {}
-        };
-        const actionTarget = $(container).closest(".card__body").find(".chart__actions");
         const refreshAction = {
-            label: 'Refresh',
-            action: async () => {
-                this.chart.destroy();
-                //TODO: need to load the live data here - currently working with random data
-                this.chart = await do_plot(this.plotData, this.options, container, actionTarget, refreshAction);
-            }
+            label: 'Preview',
+            action: async (ev) => {
+                ev && ev.preventDefault && ev.preventDefault();
+                ev && ev.stopPropagation && ev.stopPropagation();
+                await this.chart.reload();
+            },
+            classes: ['btn', 'btn-primary', 'btn-sm']
         };
-        this.chart = await do_plot(this.plotData, this.options, container,actionTarget, refreshAction);
+
+        const url = this.getUrl();
+        const result = await fetch(url);
+        const data = await result.json();
+        console.log("FETCH REQUEST: ", data);
+
+        this.plotData = data;
+        this.chart = await do_plot(this.plotData, this.options, container, undefined, refreshAction);
+
+        const $title = $("#title");
+        if (!$title || !$title.length) throw new Error("Title element not found");
+        $title.on("keyup", (ev) => {
+            const value = $(ev.target).val() as string;
+            this.chart.updateTitle(value);
+        });
+
+        const $type = $("#type");
+        if (!$type || !$type.length) throw new Error("Type element not found");
+        $type.on("change", (ev) => {
+            const value = $(ev.target).val() as string;
+            this.chart.updateType(value);
+        });
     }
 
-    createPointsMap(type: string): any {
+    private createPointsMap(type: string): any {
         //pie or doughnut = pairs
-        if(type.toLocaleLowerCase() === "pie" || type.toLocaleLowerCase() === "doughnut") {
-            const randomX = this.generateRandomData(10);
-            const randomY = this.generateRandomData(10);
+        if (type.toLocaleLowerCase() === "pie" || type.toLocaleLowerCase() === "doughnut") {
+            const randomX = this.generateRandomData(this.count);
+            const randomY = this.generateRandomData(this.count);
             return randomX.map((x, i) => [String(x), randomY[i]]);
         }
-        if(type.toLocaleLowerCase() === "bar" || type.toLocaleLowerCase() === "scatter") {
-            const randomData = this.generateRandomData(10);
+        if (type.toLocaleLowerCase() === "bar" || type.toLocaleLowerCase() === "scatter") {
+            const randomData = this.generateRandomData(this.count);
             return [[...randomData]];
         }
-        if(type.toLocaleLowerCase() === "line") return this.generateRandomData(10);
+        if (type.toLocaleLowerCase() === "line") return this.generateRandomData(30);
         return [];
+    }
+
+    getUrl() {
+        const time = new Date().getTime()
+        const layoutId = 'table5';
+        return `/${layoutId}/data_graph/0/${time}`
     }
 }

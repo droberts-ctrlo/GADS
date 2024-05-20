@@ -2,6 +2,30 @@
 
 -------
 
+**Version**: 2.3.2
+**Released**: 30th April 2024
+
+-------
+
+## Hotfix
+
+- Fix for edit views of another user not filtering correctly
+
+-------
+
+**Version**: 2.3.1
+**Released**: 10th April 2024
+
+-------
+
+## Hotfix
+
+- Fix for fullscreen bugs
+  - Fullscreen now renders with correct width
+  - Label now causes fullscreen to be triggered correctly
+
+-------
+
 **Version**: 2.3.0
 **Released**: 26th March 2024
 

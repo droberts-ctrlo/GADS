@@ -132,6 +132,7 @@ sub _write_unique
         if ($@ =~ /(duplicate|unique constraint failed)/i) # Pg: duplicate key, Mysql: Dupiicate entry, Sqlite: UNIQUE constraint failed
         {
                 $schema->storage->svp_rollback;
+                $schema->storage->svp_release;
         }
         elsif ($@) {
             $@->reportAll;
@@ -188,6 +189,8 @@ sub write_cache
         layout  => $layout,
         schema  => $self->schema,
     );
+    my $find_unique = $records->find_unique($self->column, undef, ignore_current_id => $self->record->current_id);
+
     # As part of the update, write any new unique values and delete any old
     # ones, as long as they are not relevant for any other records
     if (@values != $rs->count)
@@ -204,7 +207,7 @@ sub write_cache
                 # written. Ignore blank values which may return true even if
                 # not used.
                 $self->_delete_unique($vfield => $oldval)
-                    unless $sv && $records->find_unique($self->column, $sv, ignore_current_id => $self->record->current_id)->count;
+                    unless $sv && $find_unique->exists($sv);
             }
         }
     }
@@ -247,7 +250,7 @@ sub write_cache
                     ? $formatter->format_date($old_value)
                     : $old_value;
                 $self->_delete_unique(%old)
-                    unless $sv && $records->find_unique($self->column, $sv, ignore_current_id => $self->record->current_id)->count;
+                    unless $sv && $find_unique->exists($sv);
                 $self->_write_unique(%to_write);
             }
         }

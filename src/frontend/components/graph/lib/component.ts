@@ -18,17 +18,22 @@ export default class GraphComponent extends Component {
         action(chart) {
             const a = document.createElement('a');
             a.href = chart.toBase64Image();
-            a.download = 'chart.png';
+            a.download = (chart.options.plugins.title.text || 'chart') + '.png';
             a.click();
-        }
+        },
+        classes: ['btn', 'btn-primary', 'btn-sm']
     },
     {
         label: 'Download PDF',
-        action: (chart) => chartToPdf(chart)
+        action: (chart) => {
+            chartToPdf(chart);
+        },
+        classes: ['btn', 'btn-primary', 'btn-sm']
     }];
 
     /**
-     * Create a new GraphComponent
+     * @constructor
+     * @description Create a new GraphComponent
      * @param element The element to attach the component to
      */
     constructor(element: HTMLElement) {
@@ -39,7 +44,8 @@ export default class GraphComponent extends Component {
     }
 
     /**
-     * Initialise and render the graph
+     * @method initGraph
+     * @description Initialize the graph
      * @param graphContainer THe canvas to render the graph to
      */
     initGraph(graphContainer: JQuery<HTMLCanvasElement>) {
@@ -55,7 +61,6 @@ export default class GraphComponent extends Component {
         }
         const actionTarget = $(graphContainer).closest('.graph').find('.chart__actions')
 
-
         $.ajax({
             url: jsonUrl,
             dataType: 'json',
@@ -66,7 +71,8 @@ export default class GraphComponent extends Component {
     }
 
     /**
-     * Get the URL for the graph data
+     * @method getURL
+     * @description Get the URL for the graph data
      * @param data The data for the graph
      * @returns The URL for the graph data unless the environment is a test or dev environment
      */

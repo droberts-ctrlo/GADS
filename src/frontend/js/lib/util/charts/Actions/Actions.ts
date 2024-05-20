@@ -18,12 +18,12 @@ interface ChartAction {
  * @param actionTarget Target element in the DOM to hold the actions
  * @param actions The actions to be added to the chart
  */
-function registerActions(chart: Chart, actionTarget: JQuery<HTMLElement>, ...actions: ChartAction[]) {
+function registerActions(chart: Chart, ...actions: ChartAction[]) {
     if (!actions) return;
-    actions.forEach((action) => {
-        const button = createActionHtml(chart, action);
-        actionTarget[0].appendChild(button);
-    });
+    const row = document.createElement("div");
+    row.classList.add("row");
+    actions.forEach((action) => row.appendChild(createActionHtml(chart, action)));
+    return row;
 }
 
 /**
@@ -33,11 +33,18 @@ function registerActions(chart: Chart, actionTarget: JQuery<HTMLElement>, ...act
  * @returns A button to add to the DOM with all the appropriate event listeners
  */
 function createActionHtml(chart: Chart, { label, action, classes }: ChartAction) {
-    const button = document.createElement('button');
-    button.textContent = label;
-    classes && classes.length && button.classList.add(...classes);
-    button.addEventListener('click', () => action(chart));
-    return button;
+    const col = document.createElement("div");
+    col.classList.add("col");
+    const button = document.createElement("button");
+    classes && classes.forEach((value) => button.classList.add(value));
+    button.innerText = label;
+    button.addEventListener("click", (ev) => {
+        ev.stopPropagation();
+        ev.preventDefault();
+        action(chart);
+    });
+    col.appendChild(button);
+    return col;
 }
 
 export { ChartAction, registerActions };

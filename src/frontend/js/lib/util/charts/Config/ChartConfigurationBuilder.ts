@@ -1,4 +1,4 @@
-import {ChartConfiguration, ChartTypeRegistry} from "chart.js";
+import { ChartConfiguration, ChartTypeRegistry } from "chart.js";
 
 /**
  * @class ChartConfigurationBuilder
@@ -10,7 +10,7 @@ class ChartConfigurationBuilder {
   private yLabels?: string[];
   private labels?: string[];
   private title?: string;
-  private dataSets?: {label: string, data: any[]}[]; // I would love to strongly type this, but because ChartJS is such a mess, I can't
+  private dataSets?: { label: string, data: any[] }[]; // I would love to strongly type this, but because ChartJS is such a mess, I can't
 
   /**
    * Set the type of chart to render
@@ -81,30 +81,29 @@ class ChartConfigurationBuilder {
    * Build the configuration object
    * @returns The ChartConfiguration object
    */
-  async build():Promise<ChartConfiguration> {
+  build(): ChartConfiguration {
     if (!this.chartType) throw new Error("Chart type is required");
-    if (!this.xLabels || !this.labels || this.xLabels.length==0 || this.labels.length==0) throw new Error("Either XLabels or Labels are required");
-    if(!this.dataSets || this.dataSets.length==0) throw new Error("At least one dataset is required");
-    return {
-      data: {
-        xLabels: this.xLabels,
-        yLabels: this.yLabels,
-        labels: this.labels || this.xLabels,
-        datasets: this.dataSets,
-      },
-      type: this.chartType,
-      options: {
-        plugins: {
-          legend: {
-            display: this.chartType !== "line",
-          },
-          title: {
-            display: !!this.title,
-            text: this.title,
-          },
-        },
-      },
-    };
+    if (!this.xLabels || !this.labels || this.xLabels.length == 0 || this.labels.length == 0) throw new Error("Either XLabels or Labels are required");
+    if (!this.dataSets || this.dataSets.length == 0) throw new Error("At least one dataset is required");
+    const result: any = {}
+    result.data = {};
+    result.data.labels = this.labels || this.xLabels;
+    result.data.datasets = this.dataSets;
+    result.type = this.chartType;
+    result.options = {};
+    result.options.plugins = {};
+    result.options.plugins.legend = {};
+    result.options.plugins.legend.display = this.chartType !== "line" && this.chartType !== "bar";
+
+    if (this.title) {
+      result.options.plugins.title = {};
+      result.options.plugins.title.text = this.title;
+      result.options.plugins.title.display = !!this.title;
+    }
+    if (this.xLabels) result.data.xLabels = this.xLabels;
+    if (this.yLabels && this.yLabels[0] && this.yLabels[0]!="") result.data.yLabels = this.yLabels;
+
+    return result as ChartConfiguration;
   }
 }
 

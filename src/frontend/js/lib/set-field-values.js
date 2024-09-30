@@ -1,4 +1,3 @@
-import CurvalModalComponent from 'components/modal/modals/curval'
 import { logging } from './logging'
 
 /*
@@ -12,7 +11,7 @@ import { logging } from './logging'
   "id" key or a "text" key, with the required value
 */
 
-function setFieldValues($field, values) {
+async function setFieldValues($field, values) {
 
   const type = $field.data("column-type")
   const name = $field.data("name")
@@ -25,42 +24,42 @@ function setFieldValues($field, values) {
   if (type === "enum") {
 
     if ($field.data("is-multivalue")) {
-      set_enum_multi($field, values)
+      await set_enum_multi($field, values)
     } else {
-      set_enum_single($field, values)
+      await set_enum_single($field, values)
     }
 
   } else if (type === "person") {
 
     if ($field.data("is-multivalue")) {
-      set_enum_multi($field, values)
+      await set_enum_multi($field, values)
     } else {
-      set_enum_single($field, values)
+      await set_enum_single($field, values)
     }
 
   } else if (type === "tree") {
 
-    set_tree($field, values)
+    await set_tree($field, values)
 
   } else if (type === "daterange") {
 
-    values.forEach((value, index) => {
-      let $single = prepare_multi($field, index)
-      set_daterange($single, value)
+    values.forEach(async (value, index) => {
+      let $single = await prepare_multi($field, index)
+      await set_daterange($single, value)
     })
 
   } else if (type === "date") {
 
-    values.forEach((value, index) => {
-      let $single = prepare_multi($field, index)
-      set_date($single, value)
+    values.forEach(async (value, index) => {
+      let $single = await prepare_multi($field, index)
+      await set_date($single, value)
     })
 
   } else if (type === "string" || type === "intgr") {
 
-    values.forEach((value, index) => {
-      let $single = prepare_multi($field, index)
-      set_string($single, value)
+    values.forEach(async (value, index) => {
+      let $single = await prepare_multi($field, index)
+      await set_string($single, value)
     })
 
   } else if (type === "file") {
@@ -69,8 +68,8 @@ function setFieldValues($field, values) {
     // Component needs to be set up above .input--document div but below the
     // fieldset div. The latter also has a .input class but it should be the
     // former that becomes the component
-    import("../../components/form-group/input/lib/documentComponent")
-      .then(({default: DocumentComponent}) => {
+    await import("../../components/form-group/input/lib/documentComponent")
+      .then(({ default: DocumentComponent }) => {
         let filecomp = new DocumentComponent($field.find('.file-upload')[0])
         values.forEach((value) => {
           filecomp.addFileToField({ id: value.id, name: value.filename })
@@ -84,14 +83,16 @@ function setFieldValues($field, values) {
     let ids = values.filter((item) => Number.isInteger(item))
     // For IDs, set them as normal enums
     if ($field.data("is-multivalue")) {
-      set_enum_multi($field, ids)
+      await set_enum_multi($field, ids)
     } else {
-      set_enum_single($field, ids)
+      await set_enum_single($field, ids)
     }
     // For draft records, resubmit them through the modal
     let records = values.filter((item) => !Number.isInteger(item))
-    let curval = (new CurvalModalComponent($field.closest('.content-block')))[0]
-    curval.setValue($field, records)
+    await import('components/modal/modals/curval').then(({ default: CurvalModalComponent }) => {
+      let curval = (new CurvalModalComponent($field.closest('.content-block')))[0]
+      curval.setValue($field, records)
+    });
   } else {
     logging.error(`Unable to set value for field ${name}: ${type}`)
     throw new Error(`Unknown field type ${type}`)
@@ -101,144 +102,166 @@ function setFieldValues($field, values) {
 // Deal with either single value field or field with multiple inputs. Create as
 // many inputs as required
 function prepare_multi($field, index) {
-  if ($field.data("is-multivalue")) {
-    let $multi_container = $field.find(".multiple-select__list")
-    let existing_count = $multi_container.children().length
-    if (index >= existing_count) {
-      $field.find(".btn-add-link").trigger("click")
+  return new Promise((resolve) => {
+    if ($field.data("is-multivalue")) {
+      let $multi_container = $field.find(".multiple-select__list")
+      let existing_count = $multi_container.children().length
+      if (index >= existing_count) {
+        $field.find(".btn-add-link").trigger("click")
+      }
+      resolve($multi_container.children().eq(index))
+    } else {
+      resolve($field)
     }
-    return $multi_container.children().eq(index)
-  } else {
-    return $field
-  }
+  });
 }
 
 function set_enum_single($element, values) {
+  return new Promise((resolve, reject) => {
 
-  // Accept ID or text value, specified depending on the key of the value
-  // object
-  values.forEach((value) => {
-    let $option
-    let val
-    if (/^\d+$/.test(value)) { // Value could be a stringified integer
-      $option = $element.find(`input[value='${value}']`)
-    } else if (Object.prototype.hasOwnProperty.call(value, 'id')) {
-      val = value['id']
-      $option = $element.find(`input[value='${val}']`)
-    } else if (Object.prototype.hasOwnProperty.call(value, 'text')) {
-      val = value['text']
-      $option = $element.find(`input[data-value='${val}']`)
-    } else {
-      logging.error("Unknown value or key for single enum")
-    }
-    if ($option.length) {
-      $option.trigger("click")
-    } else {
-      let name = $element.data("name")
-      logging.info(`Unknown value ${val} for ${name}`)
-    }
+    // Accept ID or text value, specified depending on the key of the value
+    // object
+    values.forEach((value) => {
+      let $option
+      let val
+      if (/^\d+$/.test(value)) { // Value could be a stringified integer
+        $option = $element.find(`input[value='${value}']`)
+      } else if (Object.prototype.hasOwnProperty.call(value, 'id')) {
+        val = value['id']
+        $option = $element.find(`input[value='${val}']`)
+      } else if (Object.prototype.hasOwnProperty.call(value, 'text')) {
+        val = value['text']
+        $option = $element.find(`input[data-value='${val}']`)
+      } else {
+        logging.error("Unknown value or key for single enum")
+        reject("Unknown value or key for single enum")
+      }
+      if ($option.length) {
+        $option.trigger("click")
+      } else {
+        let name = $element.data("name")
+        logging.info(`Unknown value ${val} for ${name}`)
+      }
+    })
+    resolve()
   })
-
 }
 
 function set_enum_multi($element, values) {
 
-  const id_hash = {}
-  const text_hash = {}
+  return new Promise((resolve, reject) => {
+    const id_hash = {}
+    const text_hash = {}
 
-  values.forEach((elem) => {
-    if (/^\d+$/.test(elem)) { // Value could be a stringified integer
-      id_hash[elem] = false
-    } else if (Object.prototype.hasOwnProperty.call(elem, 'id')) {
-      id_hash[elem.id] = false
-    } else if (Object.prototype.hasOwnProperty.call(elem, 'text')) {
-      text_hash[elem.text] = false
-    } else {
-      logging.error("Unknown value or key for multi enum")
-    }
-  })
+    values.forEach((elem) => {
+      if (/^\d+$/.test(elem)) { // Value could be a stringified integer
+        id_hash[elem] = false
+      } else if (Object.prototype.hasOwnProperty.call(elem, 'id')) {
+        id_hash[elem.id] = false
+      } else if (Object.prototype.hasOwnProperty.call(elem, 'text')) {
+        text_hash[elem.text] = false
+      } else {
+        logging.error("Unknown value or key for multi enum")
+        reject("Unknown value or key for multi enum")
+      }
+    });
 
-  // Iterate each available checkbox, and select or deselect as required to
-  // match values
-  $element.find('.checkbox').each((_,element)=>{
-    let $check = $(element).find('input')
-    // Mark an option checked if either the id or text value match the
-    // submitted values
-    if (Object.prototype.hasOwnProperty.call(id_hash, $check.val()) || Object.prototype.hasOwnProperty.call(text_hash, $check.data("value"))) {
-      if (!$check.is(":checked")) {
-        $check.trigger("click")
+    // Iterate each available checkbox, and select or deselect as required to
+    // match values
+    $element.find('.checkbox').each((_, element) => {
+      let $check = $(element).find('input')
+      // Mark an option checked if either the id or text value match the
+      // submitted values
+      if (Object.prototype.hasOwnProperty.call(id_hash, $check.val()) || Object.prototype.hasOwnProperty.call(text_hash, $check.data("value"))) {
+        if (!$check.is(":checked")) {
+          $check.trigger("click")
+        }
+        if (Object.prototype.hasOwnProperty.call(id_hash, $check.val())) id_hash[$check.val()] = true
+        if (Object.prototype.hasOwnProperty.call(text_hash, $check.data("value"))) text_hash[$check.data("value")] = true
+      } else {
+        if ($check.is(":checked")) {
+          $check.trigger("click")
+        }
       }
-      if (Object.prototype.hasOwnProperty.call(id_hash, $check.val())) id_hash[$check.val()] = true
-      if (Object.prototype.hasOwnProperty.call(text_hash, $check.data("value"))) text_hash[$check.data("value")] = true
-    } else {
-      if ($check.is(":checked")) {
-        $check.trigger("click")
+    });
+
+    // Report any values that weren't used
+    let name = $element.data("name")
+    for (const [value, used] of Object.entries(id_hash)) {
+      if (!used) {
+        logging.info(`Unmatched value ${value} for ${name}`)
       }
     }
+    for (const [value, used] of Object.entries(text_hash)) {
+      if (!used) {
+        logging.info(`Unmatched value ${value} for ${name}`)
+      }
+    }
+    resolve()
   });
-
-  // Report any values that weren't used
-  let name = $element.data("name")
-  for (const [value, used] of Object.entries(id_hash)) {
-    if (!used) {
-      logging.info(`Unmatched value ${value} for ${name}`)
-    }
-  }
-  for (const [value, used] of Object.entries(text_hash)) {
-    if (!used) {
-      logging.info(`Unmatched value ${value} for ${name}`)
-    }
-  }
 }
 
 function set_date($element, value) {
-  const $input = $element.find('input')
-  if (/^\d+$/.test(value)) {
-    // Assume epoch
-    $input.datepicker('update', new Date(value * 1000));
-  } else {
-    // Otherwise assume string
-    $input.datepicker('update', value);
-  }
+  return new Promise((resolve) => {
+    const $input = $element.find('input')
+    if (/^\d+$/.test(value)) {
+      // Assume epoch
+      $input.datepicker('update', new Date(value * 1000));
+    } else {
+      // Otherwise assume string
+      $input.datepicker('update', value);
+    }
+    resolve()
+  });
 }
 
 function set_daterange($element, value) {
-  set_date($element.find('.input--from'), value.from)
-  set_date($element.find('.input--to'), value.to)
+  return new Promise((resolve) => {
+    set_date($element.find('.input--from'), value.from)
+    set_date($element.find('.input--to'), value.to)
+    resolve()
+  });
 }
 
-function set_string ($element, value) {
-  $element.find('input').val(value).trigger("change")
+function set_string($element, value) {
+  return new Promise((resolve) => {
+    $element.find('input').val(value).trigger("change")
+    resolve()
+  });
 }
 
 function set_tree($field, values) {
+  return new Promise((resolve, reject) => {
 
-  let $jstree = $field.find('.jstree').jstree(true);
-  let nodes = $jstree.get_json('#', { flat: true })
+    let $jstree = $field.find('.jstree').jstree(true);
+    let nodes = $jstree.get_json('#', { flat: true })
 
-  // Create a hash to map all the text values to ids, in case value is supplied
-  // by text
-  const nodes_hash = {}
-  nodes.forEach((node) => {
-    nodes_hash[node.text] = node.id
-  })
-  $jstree.deselect_all()
-  values.forEach((value) => {
-    let id;
-    if (/^\d+$/.test(value)) { // Value could be a stringified integer
-      id = value
-    } else if (Object.prototype.hasOwnProperty.call(value, 'id')) {
-      id = value['id']
-    } else if (Object.prototype.hasOwnProperty.call(value, 'text')) {
-      if (Object.prototype.hasOwnProperty.call(nodes_hash, value['text'])) {
-        id = nodes_hash[value['text']]
+    // Create a hash to map all the text values to ids, in case value is supplied
+    // by text
+    const nodes_hash = {}
+    nodes.forEach((node) => {
+      nodes_hash[node.text] = node.id
+    })
+    $jstree.deselect_all()
+    values.forEach((value) => {
+      let id;
+      if (/^\d+$/.test(value)) { // Value could be a stringified integer
+        id = value
+      } else if (Object.prototype.hasOwnProperty.call(value, 'id')) {
+        id = value['id']
+      } else if (Object.prototype.hasOwnProperty.call(value, 'text')) {
+        if (Object.prototype.hasOwnProperty.call(nodes_hash, value['text'])) {
+          id = nodes_hash[value['text']]
+        } else {
+          logging.info("Unknown text value for tree: " + value['text'])
+        }
       } else {
-        logging.info("Unknown text value for tree: " + value['text'])
-      }
-    } else {
+        reject("Unknown value key for tree")
         logging.error("Unknown value key for tree")
-    }
-    $jstree.select_node(id)
+      }
+      $jstree.select_node(id)
+    })
+    resolve()
   })
 }
 

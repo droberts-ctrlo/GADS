@@ -1,5 +1,5 @@
 import CurvalModalComponent from 'components/modal/modals/curval'
-import InputComponent from 'components/form-group/input'
+import documentComponent from 'components/form-group/input/lib/documentComponent';
 
 /*
   Set the value of a field, depending on its type.
@@ -69,8 +69,8 @@ const setFieldValues = function($field, values) {
     // Component needs to be set up above .input--document div but below the
     // fieldset div. The latter also has a .input class but it should be the
     // former that becomes the component
-    let filecomp = (new InputComponent($field.find('.file-upload')))[0]
-    values.forEach(function(value, index){
+    let filecomp = (documentComponent($field.find('.file-upload')))[0]
+    values.forEach(function(value){
       filecomp.addFileToField({ id: value.id, name: value.filename })
     })
 
@@ -88,7 +88,7 @@ const setFieldValues = function($field, values) {
     // For draft records, resubmit them through the modal
     let records = values.filter((item) => !Number.isInteger(item))
     let curval = (new CurvalModalComponent($field.closest('.content-block')))[0]
-    const row_cells = curval.setValue($field, records)
+    curval.setValue($field, records)
   } else {
 
     console.error(`Unable to set value for field ${name}: ${type}`)
@@ -120,10 +120,10 @@ const set_enum_single = function($element, values) {
     let val
     if (/^\d+$/.test(value)) { // Value could be a stringified integer
       $option = $element.find(`input[value='${value}']`)
-    } else if (value.hasOwnProperty('id')) {
+    } else if (Object.prototype.hasOwnProperty.call(value, 'id')) {
       val = value['id']
       $option = $element.find(`input[value='${val}']`)
-    } else if (value.hasOwnProperty('text')) {
+    } else if (Object.prototype.hasOwnProperty.call(value, 'text')) {
       val = value['text']
       $option = $element.find(`input[data-value='${val}']`)
     } else {
@@ -147,9 +147,9 @@ const set_enum_multi = function($element, values) {
   values.forEach((elem) => {
     if (/^\d+$/.test(elem)) { // Value could be a stringified integer
       id_hash[elem] = false
-    } else if (elem.hasOwnProperty('id')) {
+    } else if (Object.prototype.hasOwnProperty.call(elem, 'id')) {
       id_hash[elem.id] = false
-    } else if (elem.hasOwnProperty('text')) {
+    } else if (Object.prototype.hasOwnProperty.call(elem, 'text')) {
       text_hash[elem.text] = false
     } else {
       console.error("Unknown value or key for multi enum")
@@ -162,12 +162,12 @@ const set_enum_multi = function($element, values) {
     let $check = $(this).find('input')
     // Mark an option checked if either the id or text value match the
     // submitted values
-    if (id_hash.hasOwnProperty($check.val()) || text_hash.hasOwnProperty($check.data("value"))) {
+    if (Object.prototype.hasOwnProperty.call(id_hash, $check.val()) || Object.prototype.hasOwnProperty.call(text_hash, $check.data("value"))) {
       if (!$check.is(":checked")) {
         $check.trigger("click")
       }
-      if (id_hash.hasOwnProperty($check.val())) id_hash[$check.val()] = true
-      if (text_hash.hasOwnProperty($check.data("value"))) text_hash[$check.data("value")] = true
+      if (Object.prototype.hasOwnProperty.call(id_hash, $check.val())) id_hash[$check.val()] = true
+      if (Object.prototype.hasOwnProperty.call(text_hash, $check.data("value"))) text_hash[$check.data("value")] = true
     } else {
       if ($check.is(":checked")) {
         $check.trigger("click")
@@ -225,10 +225,10 @@ const set_tree = function($field, values) {
     let id;
     if (/^\d+$/.test(value)) { // Value could be a stringified integer
       id = value
-    } else if (value.hasOwnProperty('id')) {
+    } else if (Object.prototype.hasOwnProperty.call(value, 'id')) {
       id = value['id']
-    } else if (value.hasOwnProperty('text')) {
-      if (nodes_hash.hasOwnProperty(value['text'])) {
+    } else if (Object.prototype.hasOwnProperty.call(value, 'text')) {
+      if (Object.prototype.hasOwnProperty.call(nodes_hash, value['text'])) {
         id = nodes_hash[value['text']]
       } else {
         console.debug("Unknown text value for tree: " + value['text'])

@@ -2,7 +2,7 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
-
+import stylistic from "@stylistic/eslint-plugin";
 
 export default [
   {
@@ -26,7 +26,8 @@ export default [
       "src/frontend/components/timeline",
       "fengari-web.js",
       "cypress.config.ts",
-      "src/frontend/testing/**/*"
+      "src/frontend/testing/**/*",
+      "eslint.config.mjs"
     ]
   },
   { files: ["./src/frontend/**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
@@ -34,6 +35,7 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  stylistic.configs["recommended-flat"],
   {
     rules: {
       "@typescript-eslint/no-unused-expressions": 0,

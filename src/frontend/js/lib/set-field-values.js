@@ -1,5 +1,4 @@
 import CurvalModalComponent from 'components/modal/modals/curval'
-import documentComponent from 'components/form-group/input/lib/documentComponent';
 
 /*
   Set the value of a field, depending on its type.
@@ -69,10 +68,13 @@ const setFieldValues = function($field, values) {
     // Component needs to be set up above .input--document div but below the
     // fieldset div. The latter also has a .input class but it should be the
     // former that becomes the component
-    let filecomp = (documentComponent($field.find('.file-upload')))[0]
-    values.forEach(function(value){
-      filecomp.addFileToField({ id: value.id, name: value.filename })
-    })
+    import("../../components/form-group/input/lib/documentComponent")
+      .then(({default: DocumentComponent}) => {
+        let filecomp = new DocumentComponent($field.find('.file-upload')[0])
+        values.forEach(function(value){
+          filecomp.addFileToField({ id: value.id, name: value.filename })
+        })
+      });
 
   } else if (type === "curval") {
 

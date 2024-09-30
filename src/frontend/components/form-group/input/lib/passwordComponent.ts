@@ -1,6 +1,8 @@
-class PasswordComponent {
+import { InputComponentLike } from "./helpers";
+
+export default class PasswordComponent implements InputComponentLike {
     // For testing purposes
-    protected readonly type = 'password';
+    readonly type = 'password';
 
     el: JQuery<HTMLElement>;
     btnReveal: JQuery<HTMLElement>;
@@ -23,8 +25,4 @@ class PasswordComponent {
         this.input.attr('type', inputType === 'password' ? 'text' : 'password');
         this.btnReveal.toggleClass('show');
     };
-}
-
-export default function passwordComponent(el: JQuery<HTMLElement> | HTMLElement) {
-    new PasswordComponent(el).init();
 }

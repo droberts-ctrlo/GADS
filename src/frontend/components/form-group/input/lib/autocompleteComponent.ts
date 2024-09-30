@@ -1,4 +1,6 @@
-class AutocompleteComponent {
+import { InputComponentLike } from './helpers';
+
+export default class AutocompleteComponent implements InputComponentLike {
     readonly type = 'autocomplete';
     input: JQuery<HTMLInputElement>;
     el: JQuery<HTMLElement>;
@@ -32,8 +34,4 @@ class AutocompleteComponent {
 
         return devEndpoint ?? `/${layoutIdentifier ? layoutIdentifier + '/' : ''}match/user/?q=`;
     }
-}
-
-export default function autocompleteComponent(el: HTMLElement | JQuery<HTMLElement>) {
-    new AutocompleteComponent(el).init();
 }

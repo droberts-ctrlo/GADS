@@ -1,14 +1,15 @@
 import { formdataMapper } from 'util/mapper/formdataMapper';
 import { upload } from 'util/upload/UploadControl';
+import { InputComponentLike } from './helpers';
 
-class FileComponent {
+export default class FileComponent  implements InputComponentLike{
     el: JQuery<HTMLElement>;
     fileInput: JQuery<HTMLInputElement>;
     fileName: JQuery<HTMLElement>;
     fileDelete: JQuery<HTMLElement>;
     inputFileLabel: JQuery<HTMLElement>;
 
-    protected readonly type = 'file';
+    readonly type = 'file';
 
     constructor(el: HTMLElement | JQuery<HTMLElement>) {
         this.el = el instanceof HTMLElement ? $(el) : el;
@@ -75,9 +76,4 @@ class FileComponent {
         this.fileDelete.addClass('hidden');
         // TO DO: set focus back to input__file-label without triggering keyup event on it
     };
-}
-
-export default function fileComponent(el: HTMLElement | JQuery<HTMLElement>) {
-    const component = new FileComponent(el);
-    component.init();
 }

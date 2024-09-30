@@ -1,14 +1,15 @@
 import { formdataMapper } from 'util/mapper/formdataMapper';
 import { upload } from 'util/upload/UploadControl';
+import { InputComponentLike } from './helpers';
 
-class LogoComponent {
+export default class LogoComponent implements InputComponentLike {
     el: JQuery<HTMLElement>;
     logoDisplay: JQuery<HTMLImageElement>;
     fileInput: JQuery<HTMLInputElement>;
-    protected readonly type = 'logo';
+    readonly type = 'logo';
 
-    constructor(el: JQuery<HTMLElement> | HTMLElement) {
-        this.el = $(el);
+    constructor(element: HTMLElement | JQuery<HTMLElement>) {
+        this.el = $(element);
         this.logoDisplay = this.el.parent().find('img');
         this.fileInput = this.el.find('.form-control-file') as JQuery<HTMLInputElement>;
     }
@@ -39,9 +40,4 @@ class LogoComponent {
             });
         }
     };
-}
-
-export default function logoComponent(el: JQuery<HTMLElement> | HTMLElement) {
-    const component = new LogoComponent(el);
-    component.init();
 }

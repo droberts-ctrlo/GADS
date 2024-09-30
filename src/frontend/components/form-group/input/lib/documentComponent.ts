@@ -2,13 +2,14 @@ import { upload } from 'util/upload/UploadControl';
 import { validateCheckboxGroup } from 'validation';
 import { hideElement, showElement } from 'util/common';
 import { formdataMapper } from 'util/mapper/formdataMapper';
+import { InputComponentLike } from './helpers';
 
 interface FileData {
     id: number | string;
     filename: string;
 }
 
-class DocumentComponent {
+export default class DocumentComponent implements InputComponentLike {
     readonly type = 'document';
     el: JQuery<HTMLElement>;
     fileInput: JQuery<HTMLInputElement>;
@@ -109,8 +110,4 @@ class DocumentComponent {
             this.el.find('.progress-bar__progress').css('width', uploadProgression);
         }
     }
-}
-
-export default function documentComponent(el: JQuery<HTMLElement> | HTMLElement) {
-    new DocumentComponent(el).init();
 }

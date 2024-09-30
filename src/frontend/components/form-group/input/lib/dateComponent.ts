@@ -1,6 +1,7 @@
 import initDateField from "../../../datepicker/lib/helper";
+import { InputComponentLike } from "./helpers";
 
-class DateComponent {
+export default class DateComponent implements InputComponentLike {
     readonly type = 'date';
     el: JQuery<HTMLElement>;
     input: JQuery<HTMLInputElement>;
@@ -13,8 +14,4 @@ class DateComponent {
     init() {
         initDateField(this.input);
     }
-}
-
-export default function dateComponent(el: JQuery<HTMLElement> | HTMLElement) {
-    (new DateComponent(el)).init();
 }

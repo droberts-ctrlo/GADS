@@ -1,22 +1,21 @@
 import { Component } from "component";
-import passwordComponent from "./passwordComponent";
-import logoComponent from "./logoComponent";
-import documentComponent from "./documentComponent";
-import fileComponent from "./fileComponent";
-import dateComponent from "./dateComponent";
-import autocompleteComponent from "./autocompleteComponent";
 import { initValidationOnField } from "validation";
-
-type ComponentInitializer = (element: JQuery<HTMLElement> | HTMLElement) => void;
+import PasswordComponent from "./passwordComponent";
+import LogoComponent from "./logoComponent";
+import DocumentComponent from "./documentComponent";
+import FileComponent from "./fileComponent";
+import DateComponent from "./dateComponent";
+import AutocompleteComponent from "./autocompleteComponent";
+import { initComponent } from "./helpers";
 
 class InputComponent extends Component {
-    private static componentMap: { [key: string]: ComponentInitializer } = {
-        'input--password': passwordComponent,
-        'input--logo': logoComponent,
-        'input--document': documentComponent,
-        'input--file': fileComponent,
-        'input--datepicker': dateComponent,
-        'input--autocomplete': autocompleteComponent
+    private static componentMap = {
+        'input--password': PasswordComponent,
+        'input--logo': LogoComponent,
+        'input--document': DocumentComponent,
+        'input--file': FileComponent,
+        'input--datepicker': DateComponent,
+        'input--autocomplete': AutocompleteComponent
     };
 
     constructor(element: HTMLElement | JQuery<HTMLElement>) {
@@ -28,9 +27,9 @@ class InputComponent extends Component {
     private initializeComponent() {
         const $el = $(this.element);
 
-        for (const [className, initializer] of Object.entries(InputComponent.componentMap)) {
+        for (const [className, ComponentClass] of Object.entries(InputComponent.componentMap)) {
             if ($el.hasClass(className)) {
-                initializer(this.element);
+                if (!this.wasInitialized) initComponent(ComponentClass, this.element);
                 break; // Assuming only one component type per element
             }
         }

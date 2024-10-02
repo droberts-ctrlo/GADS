@@ -36,9 +36,14 @@ export default [
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   stylistic.configs["recommended-flat"],
+  {plugins:
+    {"@stylistic": stylistic},
+  },
   {
     rules: {
       "@typescript-eslint/no-unused-expressions": 0,
+      "@stylistic/brace-style": 0,
+      "@stylistic/semi": [2, "always"]
     }
   }
 ];

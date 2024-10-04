@@ -1,0 +1,27 @@
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+li.loading {
+    list-style: none;
+    &::before {
+        animation: loading 0.5s infinite linear;
+        @extend %icon-font;
+        content: "\e807";
+        color: $danger;
+    }
+}
+
+li.complete {
+    list-style: none;
+    &::before {
+        @extend %icon-font;
+        content: "\e804";
+        color: $success;
+    }
+}

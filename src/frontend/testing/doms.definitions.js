@@ -298,6 +298,39 @@ const dateDom = `
 </div>
   `;
 
+const multiValTextDom = `
+<div class="form-group linkspace-field" data-column-id="46" data-column-type="string" data-value-selector=""
+  data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Multi String" data-name-short=""
+  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0px"
+  data-component-initialized-autosavecomponent="true">
+  <div class="">
+    <fieldset class="fieldset fieldset--required">
+      <div class="fieldset__legend">
+        <legend id="46-label">Multi String</legend>
+      </div>
+      <div class="multiple-select" data-component-initialized-multipleselectcomponent="true">
+        <div class="multiple-select__list">
+          <div class="multiple-select__row">
+            <div class="input  input--required" data-component-initialized-inputcomponent="true">
+              <div class="input__field">
+                <input type="text" class="form-control " id="46" name="field46" placeholder="" value=""
+                  data-restore-value="" required="" aria-required="true">
+              </div>
+            </div>
+            <button type="button" class="btn btn-delete btn-delete--hidden">
+              <span class="btn__title">Delete</span>
+            </button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-add-link">
+          <span class="btn__title">Add extra value</span>
+        </button>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`
+
 const createInput = (dom) => {
   document.body.appendChild($(dom)[0]);
   initializeComponent(document, '.input', InputComponent);

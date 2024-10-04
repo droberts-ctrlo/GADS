@@ -132,4 +132,10 @@ describe('setFieldValues', () => {
       expect(input.val()).toEqual('2021-01-01');
     });
   });
+
+  describe('String', () => {
+    it('Should set value on a string field with multiple values', async () => {
+      
+    });
+  });
 });

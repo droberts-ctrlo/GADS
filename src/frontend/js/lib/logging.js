@@ -15,7 +15,7 @@ class Logging {
 
   info(...message) {
       if(this.allowLogging) {
-          console.info(message)
+          console.info(...message)
       }
   }
 

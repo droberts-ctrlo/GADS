@@ -82,7 +82,7 @@ async function setFieldValues($field, values) {
   else if (type === 'curval') {
     // Curval values can be either integers (existing record IDs) or completely
     // new draft records
-    let ids = values.filter(item => Number.isInteger(item));
+    const ids = values.filter(item => Number.isInteger(item));
     // For IDs, set them as normal enums
     if ($field.data('is-multivalue')) {
       await set_enum_multi($field, ids);
@@ -91,9 +91,9 @@ async function setFieldValues($field, values) {
       await set_enum_single($field, ids);
     }
     // For draft records, resubmit them through the modal
-    let records = values.filter(item => !Number.isInteger(item));
+    const records = values.filter(item => !Number.isInteger(item));
     await import('components/modal/modals/curval').then(({ default: CurvalModalComponent }) => {
-      let curval = (new CurvalModalComponent($field.closest('.content-block')))[0];
+      const curval = (new CurvalModalComponent($field.closest('.content-block')[0]));
       curval.setValue($field, records);
     });
   }

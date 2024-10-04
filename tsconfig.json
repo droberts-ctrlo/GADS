@@ -29,6 +29,9 @@
       "logging": [
         "src/frontend/js/lib/logging"
       ],
+      "logging": [
+        "js/lib/logging"
+      ],
     }
   },
   "include": [

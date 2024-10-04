@@ -1,0 +1,1 @@
+{"version":5,"vars":[{"line":8,"kind":2,"name":"base","containerName":""},{"line":10,"name":"table_class","containerName":"main::","kind":12},{"kind":12,"name":"table","containerName":"main::","line":12},{"line":14,"kind":12,"containerName":"main::","name":"result_source_instance"},{"kind":12,"containerName":"main::","name":"is_virtual","line":14}]}

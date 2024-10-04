@@ -72,6 +72,7 @@ class CurvalModalComponent extends ModalComponent {
     const form_data = form.serialize()
     const modal_field_ids = form.data("modal-field-ids")
     const col_id = form.data("curval-id")
+    const current_id = form.data("current-id")
     const instance_name = form.data("instance-name")
     let guid = form.data("guid")
     const $formGroup = $("div[data-column-id=" + col_id + "]")
@@ -106,7 +107,8 @@ class CurvalModalComponent extends ModalComponent {
       const instance_name = $field.data("curval-instance-name")
       const editButton = $(
         `<td>
-          <button type="button" class="btn btn-small btn-link btn-js-curval-modal" data-toggle="modal" data-target="#curvalModal" data-layout-id="${col_id}" data-instance-name="${instance_name}" data-current-id="${current_id}">
+          <button type="button" class="btn btn-small btn-link btn-js-curval-modal" data-toggle="modal" data-target="#curvalModal" data-layout-id="${col_id}"
+                data-instance-name="${instance_name}" data-current-id="${current_id}">
             <span class="btn__title">Edit</span>
           </button>
           </td>`,

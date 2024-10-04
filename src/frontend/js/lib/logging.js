@@ -7,19 +7,19 @@ class Logging {
           location.hostname.endsWith('.peek.digitpaint.nl')
   }
 
-  log(message) {
+  log(...message) {
       if(this.allowLogging) {
           console.log(message)
       }
   }
 
-  info(message) {
+  info(...message) {
       if(this.allowLogging) {
           console.info(message)
       }
   }
 
-  warn(message) {
+  warn(...message) {
       if(this.allowLogging) {
           console.warn(message)
       }

@@ -42,8 +42,10 @@ export default [
   {
     rules: {
       "@typescript-eslint/no-unused-expressions": 0,
+      "@typescript-eslint/no-explicit-any": 0,
       "@stylistic/brace-style": 0,
-      "@stylistic/semi": [2, "always"]
+      "@stylistic/semi": [2, "always"],
+      "react/prop-types": 0,
     }
   }
 ];

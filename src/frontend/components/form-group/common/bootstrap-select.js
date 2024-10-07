@@ -1,4 +1,7 @@
 export const refreshSelects = (el)=>{
+    
+    $.fn.selectpicker.Constructor.BootstrapVersion = '5';
+    
     const ruleFilterSelects=[];
     const operatorSelects=[];
 

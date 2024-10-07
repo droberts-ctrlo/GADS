@@ -74,7 +74,7 @@
             class="dropdown-toggle dropdown__toggle"
             type="button"
             id="[% id %]"
-            data-toggle="dropdown"
+            data-bs-toggle="dropdown"
             aria-haspopup="listbox"
             aria-expanded="false"
             aria-labelledby="=[% id %]">

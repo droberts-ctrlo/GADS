@@ -41,7 +41,7 @@
       class="select__toggle dropdown-toggle form-control"
       [% IF is_disabled %]disabled[% END %]
       [% IF is_readonly %]readonly[% END %]
-      data-toggle="dropdown"
+      data-bs-toggle="dropdown"
       aria-haspopup="listbox"
       aria-expanded="false"
       [% IF is_disabled %]aria-disabled="true"[% END %]

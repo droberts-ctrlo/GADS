@@ -10,7 +10,7 @@ const Footer = ({ addWidget, widgetTypes, currentDashboard, readOnly, noDownload
               <button
                 type="button"
                 className="btn btn-default dropdown-toggle"
-                data-toggle="dropdown"
+                data-bs-toggle="dropdown"
                 aria-expanded="false"
                 aria-controls="menu_view"
               >
@@ -35,7 +35,7 @@ const Footer = ({ addWidget, widgetTypes, currentDashboard, readOnly, noDownload
               <button
                 type="button"
                 className="btn btn-default dropdown-toggle"
-                data-toggle="dropdown"
+                data-bs-toggle="dropdown"
                 aria-expanded="false"
                 aria-controls="menu_view"
               >

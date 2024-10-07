@@ -261,7 +261,7 @@ class DataTableComponent extends Component {
           class='btn btn-search dropdown-toggle'
           id='search-toggle-${index}'
           type='button'
-          data-toggle='dropdown'
+          data-bs-toggle='dropdown'
           aria-expanded='false'
           data-boundary='viewport'
           data-reference='parent'

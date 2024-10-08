@@ -23,7 +23,7 @@ import { logging } from 'logging';
 
 /**
  * Subscriber to the modal
- * @typedef {{handleActivate?: (frameNr: number, clearFields: boolean, id: string) => void; handleAdd?: (frame: Frame) => void; handleBack?: (frame: Frame) => void; handleNext?: (frame: Frame) => void; handleShow?: (modal: JQuery<HTMLElement>) => void; handleSave?: () => void; handleUpload?: (data: any) => void; handleClear?: (arr: string[]) => void; handleClose?: () => void; handleSkip?: (frameNr: number) => void; handleValidate?: () => void; handleUpdate?: (frame: Frame) => void; }} Subscriber
+ * @typedef {{handleActivate?: (frameNr: number, clearFields: boolean, id: string) => void; handleAdd?: (frame: JQueryOrElement) => void; handleBack?: (frame: JQueryOrElement) => void; handleNext?: (frame: JQueryOrElement) => void; handleShow?: (modal: JQuery<HTMLElement>) => void; handleSave?: () => void; handleUpload?: (data: any) => void; handleClear?: (arr: number[]) => void; handleClose?: () => void; handleSkip?: (frameNr: number) => void; handleValidate?: () => void; handleUpdate?: (frame: JQueryOrElement) => void; }} Subscriber
  */
 
 /**

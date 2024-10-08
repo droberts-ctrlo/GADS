@@ -265,7 +265,7 @@ class DataTableComponent extends Component {
           aria-expanded='false'
           data-boundary='viewport'
           data-reference='parent'
-          data-target="[data-ddl='ddl_${index}']"
+          data-bs-target="[data-ddl='ddl_${index}']"
           data-focus="[data-ddl='ddl_${index}']"
         >
           <span>Search in ${title}</span>

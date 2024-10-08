@@ -148,13 +148,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#textFieldSettings" aria-expanded="false" aria-controls="textFieldSettings">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#textFieldSettings" aria-expanded="false" aria-controls="textFieldSettings">
                       <span class="card__title">
                         Field settings for text
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#textFieldSettings" aria-expanded="false" aria-controls="textFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#textFieldSettings" aria-expanded="false" aria-controls="textFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -206,13 +206,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#integerFieldSettings" aria-expanded="false" aria-controls="integerFieldSettings">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#integerFieldSettings" aria-expanded="false" aria-controls="integerFieldSettings">
                       <span class="card__title">
                         Field settings for integer
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#integerFieldSettings" aria-expanded="false" aria-controls="integerFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#integerFieldSettings" aria-expanded="false" aria-controls="integerFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -261,13 +261,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#dateFieldSettings" aria-expanded="false" aria-controls="dateFieldSettings">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#dateFieldSettings" aria-expanded="false" aria-controls="dateFieldSettings">
                       <span class="card__title">
                         Field settings for date
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#dateFieldSettings" aria-expanded="false" aria-controls="dateFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#dateFieldSettings" aria-expanded="false" aria-controls="dateFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -338,13 +338,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#dateRangeFieldSettings" aria-expanded="false" aria-controls="dateRangeFieldSettings">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#dateRangeFieldSettings" aria-expanded="false" aria-controls="dateRangeFieldSettings">
                       <span class="card__title">
                         Field settings for date range
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#dateRangeFieldSettings" aria-expanded="false" aria-controls="dateRangeFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#dateRangeFieldSettings" aria-expanded="false" aria-controls="dateRangeFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -392,13 +392,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#dropdownListFieldSettings" aria-expanded="false" aria-controls="dropdownListFieldSettings">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#dropdownListFieldSettings" aria-expanded="false" aria-controls="dropdownListFieldSettings">
                       <span class="card__title">
                         Field settings for dropdown list
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#dropdownListFieldSettings" aria-expanded="false" aria-controls="dropdownListFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#dropdownListFieldSettings" aria-expanded="false" aria-controls="dropdownListFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -505,13 +505,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#treeFieldSettings" aria-expanded="false" aria-controls="treeFieldSettings">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#treeFieldSettings" aria-expanded="false" aria-controls="treeFieldSettings">
                       <span class="card__title">
                         Field settings for tree
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#treeFieldSettings" aria-expanded="false" aria-controls="treeFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#treeFieldSettings" aria-expanded="false" aria-controls="treeFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -568,13 +568,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#documentFieldSettings" aria-expanded="false" aria-controls="documentFieldSettings">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#documentFieldSettings" aria-expanded="false" aria-controls="documentFieldSettings">
                       <span class="card__title">
                         Field settings for document
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#documentFieldSettings" aria-expanded="false" aria-controls="documentFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#documentFieldSettings" aria-expanded="false" aria-controls="documentFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -613,13 +613,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#personFieldSettings" aria-expanded="false" aria-controls="personFieldSettings">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#personFieldSettings" aria-expanded="false" aria-controls="personFieldSettings">
                       <span class="card__title">
                         Field settings for person
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#personFieldSettings" aria-expanded="false" aria-controls="personFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#personFieldSettings" aria-expanded="false" aria-controls="personFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -711,13 +711,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#ragFieldSettings" aria-expanded="false" aria-controls="ragFieldSettings">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#ragFieldSettings" aria-expanded="false" aria-controls="ragFieldSettings">
                       <span class="card__title">
                         Field settings for RAG
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#ragFieldSettings" aria-expanded="false" aria-controls="ragFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#ragFieldSettings" aria-expanded="false" aria-controls="ragFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -798,13 +798,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button id="calcfield_card_header" class="card__header-left" type="button" data-toggle="collapse" data-target="#calcValueFieldSettings" aria-expanded="false" aria-controls="calcValueFieldSettings">
+                    <button id="calcfield_card_header" class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#calcValueFieldSettings" aria-expanded="false" aria-controls="calcValueFieldSettings">
                       <span class="card__title">
                         Field settings for calculated value
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#calcValueFieldSettings" aria-expanded="false" aria-controls="calcValueFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#calcValueFieldSettings" aria-expanded="false" aria-controls="calcValueFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -923,13 +923,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#fieldsFromAnotherTableFieldSettings" aria-expanded="false" aria-controls="fieldsFromAnotherTableFieldSettings">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#fieldsFromAnotherTableFieldSettings" aria-expanded="false" aria-controls="fieldsFromAnotherTableFieldSettings">
                       <span class="card__title">
                         Field settings for fields from another table
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#fieldsFromAnotherTableFieldSettings" aria-expanded="false" aria-controls="fieldsFromAnotherTableFieldSettings">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fieldsFromAnotherTableFieldSettings" aria-expanded="false" aria-controls="fieldsFromAnotherTableFieldSettings">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -1143,13 +1143,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#otherSheetsReferences" aria-expanded="false" aria-controls="otherSheetsReferences">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#otherSheetsReferences" aria-expanded="false" aria-controls="otherSheetsReferences">
                       <span class="card__title">
                         Field settings for automatic value of other sheet's references to this one
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#otherSheetsReferences" aria-expanded="false" aria-controls="otherSheetsReferences">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#otherSheetsReferences" aria-expanded="false" aria-controls="otherSheetsReferences">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -1269,13 +1269,13 @@
               <div class="col">
                 <div class="card card--expandable">
                   <div class="card__header">
-                    <button class="card__header-left" type="button" data-toggle="collapse" data-target="#automaticFilteredValues" aria-expanded="false" aria-controls="automaticFilteredValues">
+                    <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#automaticFilteredValues" aria-expanded="false" aria-controls="automaticFilteredValues">
                       <span class="card__title">
                         Field settings for automatic filtered values of other field
                       </span>
                     </button>
                     <div class="card__header-right">
-                      <button class="card__toggle" type="button" data-toggle="collapse" data-target="#automaticFilteredValues" aria-expanded="false" aria-controls="automaticFilteredValues">
+                      <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#automaticFilteredValues" aria-expanded="false" aria-controls="automaticFilteredValues">
                         <span>Toggle collapsible</span>
                       </button>
                     </div>
@@ -1355,13 +1355,13 @@
           <div class="col">
             <div class="card card--expandable">
               <div class="card__header">
-                <button class="card__header-left" type="button" data-toggle="collapse" data-target="#notes" aria-expanded="false" aria-controls="notes">
+                <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#notes" aria-expanded="false" aria-controls="notes">
                   <span class="card__title">
                     Notes
                   </span>
                 </button>
                 <div class="card__header-right">
-                  <button class="card__toggle" type="button" data-toggle="collapse" data-target="#notes" aria-expanded="false" aria-controls="notes">
+                  <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#notes" aria-expanded="false" aria-controls="notes">
                     <span>Toggle collapsible</span>
                   </button>
                 </div>
@@ -1389,13 +1389,13 @@
           <div class="col">
             <div class="card card--expandable">
               <div class="card__header">
-                <button class="card__header-left" type="button" data-toggle="collapse" data-target="#permissions" aria-expanded="false" aria-controls="permissions">
+                <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#permissions" aria-expanded="false" aria-controls="permissions">
                   <span class="card__title">
                     Permissions
                   </span>
                 </button>
                 <div class="card__header-right">
-                  <button class="card__toggle" type="button" data-toggle="collapse" data-target="#permissions" aria-expanded="false" aria-controls="permissions">
+                  <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#permissions" aria-expanded="false" aria-controls="permissions">
                     <span>Toggle collapsible</span>
                   </button>
                 </div>
@@ -1607,13 +1607,13 @@
           <div class="col">
             <div class="card card--expandable">
               <div class="card__header">
-                <button class="card__header-left" type="button" data-toggle="collapse" data-target="#advancedSettings" aria-expanded="false" aria-controls="advancedSettings">
+                <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#advancedSettings" aria-expanded="false" aria-controls="advancedSettings">
                   <span class="card__title">
                     Advanced settings
                   </span>
                 </button>
                 <div class="card__header-right">
-                  <button class="card__toggle" type="button" data-toggle="collapse" data-target="#advancedSettings" aria-expanded="false" aria-controls="advancedSettings">
+                  <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#advancedSettings" aria-expanded="false" aria-controls="advancedSettings">
                     <span>Toggle collapsible</span>
                   </button>
                 </div>
@@ -1770,13 +1770,13 @@
           <div class="col">
             <div class="card card--expandable">
               <div class="card__header">
-                <button class="card__header-left" type="button" data-toggle="collapse" data-target="#displayConditionsCollapse" aria-expanded="false" aria-controls="displayConditionsCollapse">
+                <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#displayConditionsCollapse" aria-expanded="false" aria-controls="displayConditionsCollapse">
                   <span class="card__title">
                     Display conditions
                   </span>
                 </button>
                 <div class="card__header-right">
-                  <button class="card__toggle" type="button" data-toggle="collapse" data-target="#displayConditionsCollapse" aria-expanded="false" aria-controls="displayConditionsCollapse">
+                  <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#displayConditionsCollapse" aria-expanded="false" aria-controls="displayConditionsCollapse">
                     <span>Toggle collapsible</span>
                   </button>
                 </div>

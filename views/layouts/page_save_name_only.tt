@@ -36,8 +36,8 @@
           <button
             type="button"
             class="btn btn-delete btn-js-delete"
-            data-toggle="modal"
-            data-target=#deleteModal
+            data-bs-toggle="modal"
+            data-bs-target=#deleteModal
             data-title="[% item.name%]"
             data-id="[% item.id %]"
           >

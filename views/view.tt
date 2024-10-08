@@ -111,13 +111,13 @@
                     <div class="col">
                       <div class="card card--expandable">
                         <div class="card__header">
-                          <button class="card__header-left" type="button" data-toggle="collapse" data-target="#filter_1" aria-expanded="false" aria-controls="filter_1">
+                          <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#filter_1" aria-expanded="false" aria-controls="filter_1">
                             <span class="card__title">
                               Filter
                             </span>
                           </button>
                           <div class="card__header-right">
-                            <button class="card__toggle" type="button" data-toggle="collapse" data-target="#filter_1" aria-expanded="false" aria-controls="filter_1">
+                            <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#filter_1" aria-expanded="false" aria-controls="filter_1">
                               <span>Toggle collapsible</span>
                             </button>
                           </div>
@@ -174,13 +174,13 @@
                     <div class="col">
                       <div class="card card--expandable">
                         <div class="card__header">
-                          <button class="card__header-left" type="button" data-toggle="collapse" data-target="#sort_group_1" aria-expanded="false" aria-controls="sort_group_1">
+                          <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#sort_group_1" aria-expanded="false" aria-controls="sort_group_1">
                             <span class="card__title">
                               Sort/Group
                             </span>
                           </button>
                           <div class="card__header-right">
-                            <button class="card__toggle" type="button" data-toggle="collapse" data-target="#sort_group_1" aria-expanded="false" aria-controls="sort_group_1">
+                            <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#sort_group_1" aria-expanded="false" aria-controls="sort_group_1">
                               <span>Toggle collapsible</span>
                             </button>
                           </div>
@@ -391,13 +391,13 @@
                     <div class="col">
                       <div class="card card--expandable">
                         <div class="card__header">
-                          <button class="card__header-left" type="button" data-toggle="collapse" data-target="#fields_1" aria-expanded="false" aria-controls="fields_1">
+                          <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#fields_1" aria-expanded="false" aria-controls="fields_1">
                             <span class="card__title">
                               Fields
                             </span>
                           </button>
                           <div class="card__header-right">
-                            <button class="card__toggle" type="button" data-toggle="collapse" data-target="#fields_1" aria-expanded="false" aria-controls="fields_1">
+                            <button class="card__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fields_1" aria-expanded="false" aria-controls="fields_1">
                               <span>Toggle collapsible</span>
                             </button>
                           </div>
@@ -525,8 +525,8 @@
 
                                 <button
                                   class="btn btn-default btn-small btn-remove btn-js-toggle-all-fields"
-                                  data-toggle-source="#table-view-fields-selected"
-                                  data-toggle-destination="#table-view-fields-available">
+                                  data-bs-toggle-source="#table-view-fields-selected"
+                                  data-bs-toggle-destination="#table-view-fields-available">
                                     Remove all fields
                                 </button>
                               </div>
@@ -566,8 +566,8 @@
                                 %]
                                 <button
                                   class="btn btn-default btn-small btn-add btn-js-toggle-all-fields"
-                                  data-toggle-source="#table-view-fields-available"
-                                  data-toggle-destination="#table-view-fields-selected">
+                                  data-bs-toggle-source="#table-view-fields-available"
+                                  data-bs-toggle-destination="#table-view-fields-selected">
                                     Select all fields
                                 </button>
                               </div>

@@ -155,7 +155,7 @@
                             END;
                           END;
                         %]
-                        <button class="collapsible__toggle" type="button" data-toggle="collapse" data-target="#dropdown" aria-expanded="false" aria-controls="collapseExample">
+                        <button class="collapsible__toggle" type="button" data-bs-toggle="collapse" data-bs-target="#dropdown" aria-expanded="false" aria-controls="collapseExample">
                           <span> [% dropdown_title %] </span>
                         </button>
                         <div class="collapse" id="dropdown">
@@ -349,7 +349,7 @@
   <div class="[% panel_class %]">
     <div class="card card--expandable card--topic">
       <div class="card__header">
-        <button class="card__header-left" type="button" data-toggle="collapse" data-target="#topic[% block_topic.id; widget_id_modifier; %]" aria-expanded="false" aria-controls="topic[% block_topic.id; widget_id_modifier; %]">
+        <button class="card__header-left" type="button" data-bs-toggle="collapse" data-bs-target="#topic[% block_topic.id; widget_id_modifier; %]" aria-expanded="false" aria-controls="topic[% block_topic.id; widget_id_modifier; %]">
           <span class="card__title">
             [% block_topic.name OR 'Other' | html %]
           </span>
@@ -374,8 +374,8 @@
           <button
             class="card__toggle"
             type="button"
-            data-toggle="collapse"
-            data-target="#topic[% block_topic.id; widget_id_modifier; %]"
+            data-bs-toggle="collapse"
+            data-bs-target="#topic[% block_topic.id; widget_id_modifier; %]"
             aria-expanded="[% open %]"
             aria-controls="topic[% block_topic.id; widget_id_modifier; %]"
           >
@@ -1083,8 +1083,8 @@
   <button
     type="button"
     class="btn btn-js-curval-modal btn-add-link"
-    data-toggle="modal"
-    data-target=#curvalModal
+    data-bs-toggle="modal"
+    data-bs-target=#curvalModal
     data-layout-id="[% col.id %]"
     data-instance-name="[% col.layout_parent.identifier %]"
   >

@@ -98,8 +98,8 @@
               <button
                 type="button"
                 class="btn btn-small btn-default btn-js-more-info"
-                data-toggle="modal"
-                data-target=#detailsModal
+                data-bs-toggle="modal"
+                data-bs-target=#detailsModal
                 data-record-id="[% item.value %]"
                 aria-described-by="lbl-single-details-0"
                 disabled=is_disabled

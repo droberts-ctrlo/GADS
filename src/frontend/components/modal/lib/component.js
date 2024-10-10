@@ -23,7 +23,7 @@ import { logging } from 'logging';
 
 /**
  * Subscriber to the modal
- * @typedef {{handleActivate?: (frameNr: number, clearFields: boolean, id?: string|number) => void; handleAdd?: (frame: JQueryOrElement) => void; handleBack?: (frame: JQueryOrElement) => void; handleNext?: (frame: JQueryOrElement) => void; handleShow?: (modal: JQuery<HTMLElement>) => void; handleSave?: () => void; handleUpload?: (data: any) => void; handleClear?: (arr: number[]) => void; handleClose?: () => void; handleSkip?: (frameNr: number) => void; handleValidate?: () => void; handleUpdate?: (frame: JQueryOrElement) => void; }} Subscriber
+ * @typedef {{handleActivate?: (frameNr: number, clearFields: boolean, id?: string|number) => void; handleAdd?: (frame: JQueryOrElement) => void; handleBack?: (frame: JQueryOrElement) => void; handleNext?: (frame: JQueryOrElement) => void; handleShow?: (modal: JQuery<HTMLElement>) => void; handleSave?: () => void; handleUpload?: (data: *) => void; handleClear?: (arr: number[]) => void; handleClose?: () => void; handleSkip?: (frameNr: number) => void; handleValidate?: () => void; handleUpdate?: (frame: JQueryOrElement) => void; }} Subscriber
  */
 
 /**
@@ -54,7 +54,7 @@ import { logging } from 'logging';
  * @property {JQuery<HTMLElement>} el The modal element as a jQuery object
  * @property {JQuery<HTMLElement>} frames The frames of the modal
  * @property {Frame} frame The current frame
- * @property {any} typingTimer Timer for typing
+ * @property {*} typingTimer Timer for typing
  * @property {boolean} wasInitialized True if the modal was initialized
  */
 class ModalComponent extends Component {
@@ -79,7 +79,7 @@ class ModalComponent extends Component {
   /**
    * Helper function for on '*.bs.modal' events
    * @param { 'show.bs.modal' | 'hide.bs.modal' | 'hidden.bs.modal' } name event descriptor
-   * @param { (e?:any)=>void } handler event handler
+   * @param { (e?:*)=>void } handler event handler
    */
   on(name, handler) {
     if (!name) throw new Error('Event name is required');
@@ -94,7 +94,7 @@ class ModalComponent extends Component {
   /**
    * Helper function for off '*.bs.modal' events
    * @param { 'show.bs.modal' | 'hide.bs.modal' | 'hidden.bs.modal' } name event descriptor
-   * @param { (e?:any)=>void } handler event handler
+   * @param { (e?:*)=>void } handler event handler
    */
   off(name, handler) {
     if (!name) throw new Error('Event name is required');

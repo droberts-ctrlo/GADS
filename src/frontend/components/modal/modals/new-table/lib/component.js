@@ -23,12 +23,12 @@ import SelectComponent from 'components/form-group/select/lib/component';
 
 /**
  * Table Permissions
- * @typedef {{group_id: number, group_name: string, records: any, views: any, fields: any}} TablePermissions
+ * @typedef {{group_id: number, group_name: string, records: *, views: *, fields: *}} TablePermissions
  */
 
 /**
  * Current Field Object
- * @typedef {{field_type_settings?: any, custom_field_permissions?: any[], tempId?:number}} CurrentFieldObject
+ * @typedef {{field_type_settings?: *, custom_field_permissions?: *[], tempId?:number}} CurrentFieldObject
  */
 
 /**
@@ -109,8 +109,8 @@ class AddTableModalComponent extends ModalComponent {
   /**
    * Add fields to an object
    * @param {JQueryOrElement} $fields The field(s) to add
-   * @param {any} obj the object to add the fields to
-   * @returns {any} The updated object
+   * @param {*} obj the object to add the fields to
+   * @returns {*} The updated object
    */
   addFieldsToObject($fields, obj) {
     $fields.each((_, field) => {
@@ -195,7 +195,7 @@ class AddTableModalComponent extends ModalComponent {
   /**
    * Fill in the fields as required
    * @param {JQueryOrElement} $container The container to fill the fields in
-   * @param {any} data The data to fill the fields with
+   * @param {*} data The data to fill the fields with
    */
   fillFields($container, data) {
     for (const [key, value] of Object.entries(data)) {
@@ -217,7 +217,7 @@ class AddTableModalComponent extends ModalComponent {
 
   /**
    * Edit a topic
-   * @param {any} topic The topic to edit
+   * @param {*} topic The topic to edit
    * @param {JQueryOrElement} frame The frame to edit the topic in
    */
   editTopic(topic, frame) {
@@ -229,7 +229,7 @@ class AddTableModalComponent extends ModalComponent {
 
   /**
    * Edit a field
-   * @param {{field_type: string, field_type_settings: any, custom_field_permissions:{custom_field_permissions:any}[]}} field The field to edit
+   * @param {{field_type: string, field_type_settings: *, custom_field_permissions:{custom_field_permissions:*}[]}} field The field to edit
    * @param {JQueryOrElement} frame The frame to edit the field in
    */
   editField(field, frame) {
@@ -263,8 +263,8 @@ class AddTableModalComponent extends ModalComponent {
   /**
    * Remove a node from the data
    * @param {number} id The id of the node to remove
-   * @param {any} data The data to remove the node from
-   * @returns {any} The updated data
+   * @param {*} data The data to remove the node from
+   * @returns {*} The updated data
    */
   // TODO: Can this be removed?
   removeNode(id, data) {

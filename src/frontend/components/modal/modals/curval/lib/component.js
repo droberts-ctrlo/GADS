@@ -62,7 +62,7 @@ class CurvalModalComponent extends ModalComponent {
   /**
    * Triggered when the Curval Modal validation has succeeded
    * @param {JQueryOrT<HTMLFormElement>} form The form element
-   * @param {any[]} values The values from the form
+   * @param {*[]} values The values from the form
    */
   curvalModalValidationSucceeded(form, values) {
     const form_data = form.serialize();
@@ -240,6 +240,10 @@ class CurvalModalComponent extends ModalComponent {
     this.on('show.bs.modal', this.showModal);
   }
 
+  /**
+   * Show the Curval Modal
+   * @param {TriggeredEvent & {relatedTarget:HTMLElement}} ev The event that triggered the function
+   */
   showModal(ev) {
     const button = ev.relatedTarget;
     const layout_id = $(button).data('layout-id');
@@ -296,10 +300,22 @@ class CurvalModalComponent extends ModalComponent {
     this.on('hide.bs.modal', this.hideModal);
   }
 
+  /**
+   * Hide the Curval Modal
+   * @returns {boolean} True if the modal can be hidden
+   */
   hideModal() {
     return confirm('Closing this dialogue will cancel any work. Are you sure you want to do so?');
   }
 
+  /**
+   * Get the URL for the Curval Modal
+   * @param {string} url The URL to use
+   * @param {number} layout_id The layout ID
+   * @param {*} form_data The form data
+   * @param {JQuery} $formGroup The form group
+   * @returns {string} The URL to use
+   */
   getURL(url, layout_id, form_data, $formGroup) {
     const devURLs = window.siteConfig && window.siteConfig.urls.curvalTableForm && window.siteConfig.urls.curvalSelectWidgetForm;
 
@@ -314,6 +330,9 @@ class CurvalModalComponent extends ModalComponent {
     }
   }
 
+  /**
+   * Setup the Curval Modal submit
+   */
   setupSubmit() {
     $(this.element).on('submit', '.curval-edit-form', (e) => {
       // Don't show close warning when user clicks submit button

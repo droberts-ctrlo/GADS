@@ -49,7 +49,7 @@ class Modal {
    * Trigger the activate event
    * @param {number} frameNr The frame number
    * @param {boolean} clearFields Set to true to clear the fields
-   * @param {string | number} id The id of the modal
+   * @param {string | number?} id The id of the modal
    */
   activate(frameNr, clearFields, id) {
     this.observers.forEach(item => item.handleActivate?.(frameNr, clearFields, id));

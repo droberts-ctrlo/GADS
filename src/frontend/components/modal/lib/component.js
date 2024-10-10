@@ -23,7 +23,7 @@ import { logging } from 'logging';
 
 /**
  * Subscriber to the modal
- * @typedef {{handleActivate?: (frameNr: number, clearFields: boolean, id: string) => void; handleAdd?: (frame: JQueryOrElement) => void; handleBack?: (frame: JQueryOrElement) => void; handleNext?: (frame: JQueryOrElement) => void; handleShow?: (modal: JQuery<HTMLElement>) => void; handleSave?: () => void; handleUpload?: (data: any) => void; handleClear?: (arr: number[]) => void; handleClose?: () => void; handleSkip?: (frameNr: number) => void; handleValidate?: () => void; handleUpdate?: (frame: JQueryOrElement) => void; }} Subscriber
+ * @typedef {{handleActivate?: (frameNr: number, clearFields: boolean, id?: string|number) => void; handleAdd?: (frame: JQueryOrElement) => void; handleBack?: (frame: JQueryOrElement) => void; handleNext?: (frame: JQueryOrElement) => void; handleShow?: (modal: JQuery<HTMLElement>) => void; handleSave?: () => void; handleUpload?: (data: any) => void; handleClear?: (arr: number[]) => void; handleClose?: () => void; handleSkip?: (frameNr: number) => void; handleValidate?: () => void; handleUpdate?: (frame: JQueryOrElement) => void; }} Subscriber
  */
 
 /**
@@ -603,8 +603,9 @@ class ModalComponent extends Component {
 
   /**
    * Handle next button click
+   * @param {JQueryOrElement?} _frame The frame to go to
    */
-  handleNext() {
+  handleNext(_frame) { // eslint-disable-line @typescript-eslint/no-unused-vars
     const nextFrameNumber = this.frame.number + 1;
     if (this.frames.length >= (nextFrameNumber)) {
       this.activateFrame(nextFrameNumber, this.frame.number);
@@ -645,8 +646,9 @@ class ModalComponent extends Component {
    * Handle frame activation
    * @param {number} frameNumber The frame number to activate
    * @param {boolean} clearFields True to clear the fields of the frame
+   * @param {(string|number)?} _id The id of the frame
    */
-  handleActivate(frameNumber, clearFields) {
+  handleActivate(frameNumber, clearFields, _id) { // eslint-disable-line @typescript-eslint/no-unused-vars
     this.activateFrame(frameNumber, this.frame.number, clearFields);
   }
 

@@ -29,3 +29,7 @@ export const fromJson = (json: String | object) => {
         return {};
     }
 }
+
+export const collapseElement = <T extends HTMLElement = HTMLElement>(element?: JQuery<T>, param?: 'hide' | 'show') => {
+    element && element.collapse && param ? element.collapse(param) : element.collapse();
+}

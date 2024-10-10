@@ -1,6 +1,6 @@
 import "../../../testing/globals.definitions";
 import { DefaultElementLike, ElementLike } from "../../../testing/globals.definitions";
-import { fromJson, hideElement, showElement } from "./common";
+import {collapseElement, fromJson, hideElement, showElement} from "./common";
 
 describe('common functions', () => {
     describe('CSS and ARIA',()=>{
@@ -77,4 +77,17 @@ describe('common functions', () => {
             expect(parsed).toEqual({});
         });
     });
+
+    describe('Function checks', ()=>{
+        it('collapses an element', () => {
+            const element = document.createElement('div');
+            const $element = $(element);
+            const collapse = jest.fn();
+            $element.collapse = collapse;
+            collapse.mockClear();
+            collapse.mockReturnValue(true);
+            collapseElement($element);
+            expect(collapse).toHaveBeenCalled();
+        });
+    })
 });

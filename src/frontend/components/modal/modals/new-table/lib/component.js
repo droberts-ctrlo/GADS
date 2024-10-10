@@ -20,6 +20,7 @@ import ModalComponent from 'components/modal/lib/component';
 import * as DataTableHelper from 'components/data-table/lib/helper';
 import { modal } from 'components/modal/lib/modal';
 import SelectComponent from 'components/form-group/select/lib/component';
+import { collapseElement } from 'util/common';
 
 /**
  * Table Permissions
@@ -638,7 +639,7 @@ class AddTableModalComponent extends ModalComponent {
    */
   handleClose() {
     // Collapse all collapsibles
-    this.el.find('.collapse').collapse('hide');
+    collapseElement(this.el.find('.collapse'), 'hide');
 
     // Clear all datatables
     this.topicsTable && DataTableHelper.clearTable(this.topicsTable);

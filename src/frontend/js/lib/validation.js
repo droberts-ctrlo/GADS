@@ -1,4 +1,6 @@
 // Bind events to a field to trigger validation
+import {collapseElement} from "util/common";
+
 const initValidationOnField = (field) => {
   // Input
   if (field.hasClass('input--required')) {
@@ -137,8 +139,11 @@ const validateRequiredFields = (form) => {
   })
 
   form.find(".tree--required").each((i, field) => {
-    if (!validateTree($(field))) {
-      $(field).closest('.card--expandable').find('.collapse').collapse('show')
+    const $field = $(field);
+    if (!validateTree($field)) {
+      const $expandable = $field.closest('.card--expandable')
+      const $collapse = $expandable.find('.collapse')
+      collapseElement($collapse, 'show')
       isValidForm = false
     }
   })
@@ -302,7 +307,6 @@ const validateTree = (field) => {
 // Expand the card with a certain field and scroll it into view
 const expandCardValidate = (field) => {
   const $collapse = $(field).closest('.card--expandable').find('.collapse')
-  if(!$collapse || !$collapse.collapse) return;
   const $label = $(field).closest('.form-group').find('legend, label')
   // Turn into edit mode if the topic is now in view mode
   $collapse.prev().find('.btn-edit:visible').trigger('click')
@@ -317,7 +321,7 @@ const expandCardValidate = (field) => {
       $label[0].scrollIntoView()
       $(this).off('shown.bs.collapse.foobar');
     })
-    $collapse.collapse('show')
+    collapseElement($collapse, 'show')
   }
 }
 

@@ -299,25 +299,24 @@ const dateDom = `
   `;
 
 const multiValTextDom = `
-<div class="form-group linkspace-field" data-column-id="46" data-column-type="string" data-value-selector=""
-  data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Multi String" data-name-short=""
-  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0px"
-  data-component-initialized-autosavecomponent="true">
+<div class="form-group linkspace-field" data-column-id="8" data-column-type="string" data-value-selector=""
+  data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Test" data-name-short=""
+  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0px" id="textField">
   <div class="">
     <fieldset class="fieldset fieldset--required">
       <div class="fieldset__legend">
-        <legend id="46-label">Multi String</legend>
+        <legend id="8-label">Test</legend>
       </div>
-      <div class="multiple-select" data-component-initialized-multipleselectcomponent="true">
+      <div class="multiple-select">
         <div class="multiple-select__list">
           <div class="multiple-select__row">
-            <div class="input  input--required" data-component-initialized-inputcomponent="true">
+            <div class="input  input--required">
               <div class="input__field">
-                <input type="text" class="form-control " id="46" name="field46" placeholder="" value=""
+                <input type="text" class="form-control " id="8" name="field8" placeholder="" value=""
                   data-restore-value="" required="" aria-required="true">
               </div>
             </div>
-            <button type="button" class="btn btn-delete btn-delete--hidden">
+            <button type="button" class="btn btn-delete">
               <span class="btn__title">Delete</span>
             </button>
           </div>
@@ -328,6 +327,111 @@ const multiValTextDom = `
       </div>
     </fieldset>
   </div>
+</div>
+`
+
+const singleValueTextDom = `
+<div class="form-group linkspace-field" data-column-id="8" data-column-type="string" data-value-selector=""
+  data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Test" data-name-short=""
+  data-dependent-not-shown="0" style="margin-left:0px" id="textField">
+  <div class="input  input--required">
+    <div class="input__label">
+      <label for="8">Test</label>
+    </div>
+    <div class="input__field">
+      <input type="text" class="form-control " id="8" name="field8" placeholder="" value="" data-restore-value=""
+        required="" aria-required="true">
+    </div>
+  </div>
+</div>
+`
+
+const multiValueNumberDom = `
+<div class="form-group linkspace-field" data-column-id="10" data-column-type="intgr" data-value-selector=""
+  data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="test" data-name-short=""
+  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0px" id="numberField">
+  <div class="">
+    <fieldset class="fieldset fieldset--required">
+      <div class="fieldset__legend">
+        <legend id="10-label">test</legend>
+      </div>
+      <div class="multiple-select">
+        <div class="multiple-select__list">
+          <div class="multiple-select__row">
+            <div class="input  input--required">
+              <div class="input__field">
+                <input type="number" class="form-control " id="10" name="field10" placeholder="" value=""
+                  data-restore-value="" required="" aria-required="true">
+              </div>
+            </div>
+            <button type="button" class="btn btn-delete">
+              <span class="btn__title">Delete</span>
+            </button>
+          </div>
+        </div>
+        <button type="button" class="btn btn-add-link">
+          <span class="btn__title">Add extra value</span>
+        </button>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`
+
+const singleValueNumberDom = `
+<div class="form-group linkspace-field" data-column-id="10" data-column-type="intgr" data-value-selector=""
+  data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="test" data-name-short=""
+  data-dependent-not-shown="0" style="margin-left:0px" id="numberField">
+  <div class="input  input--required">
+    <div class="input__label">
+      <label for="10">test</label>
+    </div>
+    <div class="input__field">
+      <input type="number" class="form-control " id="10" name="field10" placeholder="" value="" data-restore-value=""
+        required="" aria-required="true">
+    </div>
+  </div>
+</div>
+`
+
+const fileDom = `
+<div class="form-group linkspace-field" data-column-id="11" data-column-type="file" data-value-selector=""
+  data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Test" data-name-short=""
+  data-dependent-not-shown="0" style="margin-left:0px" id="fileField">
+  <fieldset class="fieldset input fieldset--required">
+    <div class="fieldset__legend">
+      <legend id="11-label">Test</legend>
+    </div>
+    <input type="hidden" name="field11" value="">
+    <div class="list list--vertical list--key-value list--no-borders">
+      <ul class="list__items fileupload__files">
+      </ul>
+    </div>
+    <div class="file-upload">
+      <div class="input input--file input--document input--required" data-field="field11"
+        data-fileupload-url="/api/file/" data-multivalue="0">
+        <div class="progress-bar__container">
+          <div class="progress-bar__progress">
+            <p class="progress-bar__percentage">0%</p>
+          </div>
+        </div>
+        <div class="input__label">
+          <label for="11">
+            <span class="input__file-label" role="button" aria-controls="11" tabindex="0">Choose file</span>
+          </label>
+          <div class="file">
+            <label class="file__name" for="11">No file chosen</label>
+            <button type="button" class="file__delete close" aria-label="Delete">
+              <span aria-hidden="true" class="hidden">Delete file</span>
+            </button>
+          </div>
+        </div>
+        <div class="input__field">
+          <input type="file" id="11" name="file" class="form-control-file " required="" aria-required="true">
+        </div>
+      </div>
+    </div>
+  </fieldset>
 </div>
 `
 
@@ -374,4 +478,29 @@ export const createMultiValueDateRangeInputs = () => {
 export const createDateInput = () => {
   $('body').children().remove();
   createInput(dateDom);
+};
+
+export const createMultiValueText = () => {
+  $('body').children().remove();
+  createInput(multiValTextDom);
+}
+
+export const createSingleValueText = () => {
+  $('body').children().remove();
+  createInput(singleValueTextDom);
+}
+
+export const createMultiValueNumber = () => {
+  $('body').children().remove();
+  createInput(multiValueNumberDom);
+};
+
+export const createSingleValueNumber = () => {
+  $('body').children().remove();
+  createInput(singleValueNumberDom);
+};
+
+export const createFile = () =>{
+  $('body').children().remove();
+  createInput(fileDom);
 };

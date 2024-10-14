@@ -1,5 +1,4 @@
-// This is clearly becoming an integration test - shouldn't components and the setting of their values be idempotent?
-import '../../testing/globals.definitions';
+import 'testing/global';
 
 import { describe, it, expect } from '@jest/globals';
 import { setFieldValues } from './set-field-values';
@@ -8,9 +7,15 @@ import {
   createMultiValueDateRangeInputs,
   createMultiValueEnum,
   createMultiValuePerson,
-  createSingleValueEnum, createSingleValuePerson,
+  createSingleValueEnum,
+  createSingleValuePerson,
   createTree,
-} from '../../testing/doms.definitions';
+  createMultiValueText,
+  createSingleValueText,
+  createMultiValueNumber,
+  createSingleValueNumber,
+  createFile,
+} from 'testing/dom';
 
 describe('setFieldValues', () => {
   it('should not perform any action if a single value is passed in', async () => {
@@ -135,7 +140,56 @@ describe('setFieldValues', () => {
 
   describe('String', () => {
     it('Should set value on a string field with multiple values', async () => {
-      
+      createMultiValueText();
+      const field = $('#textField');
+      const values = ['value1', 'value2'];
+      await expect(setFieldValues(field, values)).resolves.toBeUndefined();
+      const input = field.find('input');
+      input.each((i, el) => {
+        expect($(el).val()).toEqual(`value${i + 1}`);
+      });
+    });
+
+    it('Should set value on a string field with single value', async () => {
+      createSingleValueText();
+      const field = $('#textField');
+      const values = ['value1'];
+      await expect(setFieldValues(field, values)).resolves.toBeUndefined();
+      const input = field.find('input');
+      expect(input.val()).toEqual('value1');
+    });
+  });
+
+  describe('Intgr', () => {
+    it('Should set value on an integer field with multiple values', async () => {
+      createMultiValueNumber();
+      const field = $('#numberField');
+      const values = [1, 2];
+      await expect(setFieldValues(field, values)).resolves.toBeUndefined();
+      const input = field.find('input');
+      input.each((i, el) => {
+        expect($(el).val()).toEqual(`${i + 1}`);
+      });
+    });
+
+    it('Should set value on an integer field with single value', async () => {
+      createSingleValueNumber();
+      const field = $('#numberField');
+      const values = [1];
+      await expect(setFieldValues(field, values)).resolves.toBeUndefined();
+      const input = field.find('input');
+      expect(input.val()).toEqual('1');
+    });
+  });
+
+  describe('File', () => {
+    it('Should set a value on a file field', async () => {
+      createFile();
+      const field = $('#fileField');
+      const values = [{ id: 1, filename: 'file.txt' }];
+      await expect(setFieldValues(field, values)).resolves.toBeUndefined();
+      const input = field.find('input[type=checkbox]');
+      expect(input.data('filename')).toEqual('file.txt');
     });
   });
 });

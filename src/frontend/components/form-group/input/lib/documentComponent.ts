@@ -1,4 +1,5 @@
 import 'components/button/lib/rename-button';
+import 'util/filedrag';
 import { upload } from 'util/upload/UploadControl';
 import { validateCheckboxGroup } from 'validation';
 import { formdataMapper } from 'util/mapper/formdataMapper';

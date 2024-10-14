@@ -5,12 +5,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const sass = require('sass');
 const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const fullpath = path.resolve(__dirname, 'src', 'frontend', 'components');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
-const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 const excludes = [/node_modules/, /test/, /definitions/];
 
 const plugins = [
@@ -20,6 +20,7 @@ const plugins = [
     }),
     new MiniCssExtractPlugin({
         filename: '[name].css',
+        chunkFilename: '[name].[id].css',
     }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
@@ -31,13 +32,13 @@ const plugins = [
             from: '*.json',
             context: path.resolve(__dirname, "src", "frontend", "js", "lib", "plotly"),
         }]
-    })
+    }),
 ]
 
 module.exports = (env) => {
     return {
         mode: env.development ? 'development' : 'production',
-        devtool: env.development ? 'source-map' : false,
+        devtool: 'source-map',
         entry: {
             site: path.resolve(__dirname, 'src', 'frontend', 'js', 'site.js'),
             '../css/general': path.resolve(__dirname, 'src', 'frontend', 'css', 'stylesheets', 'general.scss'),
@@ -64,16 +65,16 @@ module.exports = (env) => {
                     type: 'asset'
                 },
                 {
-                    test: /\.(s?css)$/,
+                    test: /\.(s?(a|c)ss)$/,
                     use: [
                         {
-                            loader: stylesHandler,
+                            loader: MiniCssExtractPlugin.loader,
                         },
                         {
                             loader: 'css-loader',
                             options: {
                                 importLoaders: 2,
-                                sourceMap: env.development,
+                                sourceMap: isProduction ? false : true,
                                 modules: false,
                             },
                         },
@@ -91,11 +92,11 @@ module.exports = (env) => {
                             loader: 'sass-loader',
                             options: {
                                 implementation: sass,
-                                sourceMap: env.development,
                                 sassOptions: {
                                     includePaths: [
                                         fullpath,
                                     ],
+                                    sourceMap: isProduction,
                                 },
                             },
                         }
@@ -109,7 +110,7 @@ module.exports = (env) => {
                 new TerserPlugin({
                     terserOptions: {
                         format: {
-                            comments: false,
+                            comments: isProduction ? false : true,
                         },
                     },
                     extractComments: false,

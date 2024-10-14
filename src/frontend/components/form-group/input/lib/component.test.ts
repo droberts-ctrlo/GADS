@@ -1,6 +1,6 @@
 import {describe, it, expect} from '@jest/globals';
 import {InputComponentLike, initComponent} from './helpers';
-import "../../../../testing/globals.definitions";
+import "testing/global";
 
 class TestComponent implements InputComponentLike {
     readonly type: string;

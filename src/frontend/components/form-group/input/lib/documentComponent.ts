@@ -18,7 +18,6 @@ interface RenameResponse {
     is_ok: boolean;
 }
 
-class DocumentComponent {
 export default class DocumentComponent implements InputComponentLike {
     readonly type = 'document';
     readonly el: JQuery<HTMLElement>;
@@ -176,12 +175,4 @@ export default class DocumentComponent implements InputComponentLike {
             .removeClass('progress-bar__container--fail')
             .hide();
     }
-}
-
-/**
- * Create a new document component
- * @param {JQuery<HTMLElement> | HTMLElement} el The element to attach the document component to
- */
-export default function documentComponent(el: JQuery<HTMLElement> | HTMLElement) {
-    Promise.all([(new DocumentComponent(el)).init()]);
 }

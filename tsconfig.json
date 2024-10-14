@@ -12,22 +12,19 @@
     "esModuleInterop": true,
     "paths": {
       "js/*": [
-        "./src/frontend/js/*"
+        "js/*"
       ],
       "components/*": [
-        "./src/frontend/components/*"
+        "components/*"
       ],
       "util/*" : [
-        "./src/frontend/js/lib/util/*"
+        "js/lib/util/*"
       ],
       "component": [
-        "./src/frontend/js/lib/component"
+        "js/lib/component"
       ],
       "validation": [
-        "./src/frontend/js/lib/validation"
-      ],
-      "logging": [
-        "./src/frontend/js/lib/logging"
+        "js/lib/validation"
       ],
       "logging": [
         "js/lib/logging"

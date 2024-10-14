@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 import ModalComponent from '../../../lib/component'
-import { getFieldValues } from "get-field-values"
 import { setFieldValues } from "set-field-values"
 import { guid as Guid } from "guid"
 import { initializeRegisteredComponents } from 'component'
@@ -72,7 +71,6 @@ class CurvalModalComponent extends ModalComponent {
     const form_data = form.serialize()
     const modal_field_ids = form.data("modal-field-ids")
     const col_id = form.data("curval-id")
-    const current_id = form.data("current-id")
     const instance_name = form.data("instance-name")
     let guid = form.data("guid")
     const $formGroup = $("div[data-column-id=" + col_id + "]")

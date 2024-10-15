@@ -97,6 +97,9 @@ const config = {
     "^components/(.*)$": "<rootDir>/src/frontend/components/$1",
     "^testing/global$": "<rootDir>/src/frontend/testing/globals.definitions",
     "^testing/dom$": "<rootDir>/src/frontend/testing/doms.definitions",
+    "^js/(.*)$": "<rootDir>/src/frontend/js/$1",
+    "get-field-values": "<rootDir>/src/frontend/js/lib/get-field-values",
+    "set-field-values": "<rootDir>/src/frontend/js/lib/set-field-values",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader

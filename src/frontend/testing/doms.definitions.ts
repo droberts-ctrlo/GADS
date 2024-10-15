@@ -1,14 +1,32 @@
-import { initializeComponent } from '../js/lib/component';
+import {initializeComponent} from 'component';
 import SelectWidgetComponent from '../components/form-group/select-widget/lib/component';
 import InputComponent from '../components/form-group/input/lib/component';
 import TreeComponent from '../components/form-group/tree/lib/component';
 
-window.jQuery = require('jquery');
+declare global {
+  interface JQuery<TElement extends HTMLElement = HTMLElement> {
+    createTree(): JQuery<TElement>;
+    createMultiValueEnum(): JQuery<TElement>;
+    createSingleValueEnum(): JQuery<TElement>;
+    createMultiValuePerson(): JQuery<TElement>;
+    createSingleValuePerson(): JQuery<TElement>;
+    createMultiValueDateRangeInputs(): JQuery<TElement>;
+    createDateInput(): JQuery<TElement>;
+    createMultiValueText(): JQuery<TElement>;
+    createSingleValueText(): JQuery<TElement>;
+    createMultiValueNumber(): JQuery<TElement>;
+    createSingleValueNumber(): JQuery<TElement>;
+    createFile(): JQuery<TElement>;
+    createCurval(): Promise<JQuery<TElement>>;
+  }
+}
+
+export {}
 
 const multiValueEnumDom = `
 <div class="form-group linkspace-field" data-column-id="29" data-column-type="enum" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Multi Enum" data-name-short=""
-  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0px" id="multiEnum">
+  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0" id="multiEnum">
   <fieldset class="fieldset input fieldset--required">
     <div class="fieldset__legend">
       <legend id="29-label">Multi Enum</legend>
@@ -49,7 +67,7 @@ const multiValueEnumDom = `
 const singleValueEnumDom = `
 <div class="form-group linkspace-field" data-column-id="34" data-column-type="enum" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Single Value Enum" data-name-short=""
-  data-dependent-not-shown="0" style="margin-left:0px" id="singleEnum">
+  data-dependent-not-shown="0" style="margin-left:0" id="singleEnum">
   <input type="hidden" name="field34" value="">
   <fieldset class="fieldset input fieldset--required" data-component-initialized-t="true">
     <div class="fieldset__legend">
@@ -91,7 +109,7 @@ const singleValueEnumDom = `
 const multiValuePersonDom = `
 <div class="form-group linkspace-field" data-column-id="31" data-column-type="person" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="People Test" data-name-short=""
-  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0px" id="multiPerson">
+  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0" id="multiPerson">
   <fieldset class="fieldset input fieldset--required">
     <div class="fieldset__legend">
       <legend id="31-label">People Test</legend>
@@ -132,7 +150,7 @@ const multiValuePersonDom = `
 const singleValuePersonDom = `
 <div class="form-group linkspace-field" data-column-id="35" data-column-type="person" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Single Person" data-name-short=""
-  data-dependent-not-shown="0" style="margin-left:0px" id="singlePerson">
+  data-dependent-not-shown="0" style="margin-left:0" id="singlePerson">
   <input type="hidden" name="field35" value="">
   <fieldset class="fieldset input fieldset--required" data-component-initialized-t="true">
     <div class="fieldset__legend">
@@ -174,7 +192,7 @@ const singleValuePersonDom = `
 const treeDom = `
 <div class="form-group linkspace-field" data-column-id="37" data-column-type="tree" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Tree" data-name-short=""
-  data-dependent-not-shown="0" style="margin-left:0px" id="treeDom">
+  data-dependent-not-shown="0" style="margin-left:0" id="treeDom">
   <fieldset class="fieldset input fieldset--required">
     <div class="fieldset__legend">
       <legend id="37-label">Tree</legend>
@@ -200,7 +218,7 @@ const treeDom = `
         </ul>
       </div>
       <div class="tree-widget-container" id="jstree37" data-field="field37" data-layout-identifier="table1"
-        data-column-id="37" data-csrf-token="SOcgx812EM5R7OyYWKPpcPMMsdIZ3ByY">
+        data-column-id="37">
       </div>
       <input type="hidden" name="field37" value="" class="selected-tree-value">
     </div>
@@ -211,7 +229,7 @@ const treeDom = `
 const multiValueDateRangeDom = `
 <div class="form-group linkspace-field" data-column-id="32" data-column-type="daterange" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Date Range" data-name-short=""
-  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0px" id="daterangeDom">
+  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0" id="daterangeDom">
   <div class="">
     <fieldset class="fieldset fieldset--required">
       <div class="fieldset__legend">
@@ -269,7 +287,7 @@ const multiValueDateRangeDom = `
 const dateDom = `
 <div class="form-group linkspace-field" data-column-id="33" data-column-type="date" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Date" data-name-short=""
-  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0px" id="dateField">
+  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0" id="dateField">
   <div class="">
     <fieldset class="fieldset fieldset--required">
       <div class="fieldset__legend">
@@ -301,7 +319,7 @@ const dateDom = `
 const multiValTextDom = `
 <div class="form-group linkspace-field" data-column-id="8" data-column-type="string" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Test" data-name-short=""
-  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0px" id="textField">
+  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0" id="textField">
   <div class="">
     <fieldset class="fieldset fieldset--required">
       <div class="fieldset__legend">
@@ -333,7 +351,7 @@ const multiValTextDom = `
 const singleValueTextDom = `
 <div class="form-group linkspace-field" data-column-id="8" data-column-type="string" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Test" data-name-short=""
-  data-dependent-not-shown="0" style="margin-left:0px" id="textField">
+  data-dependent-not-shown="0" style="margin-left:0" id="textField">
   <div class="input  input--required">
     <div class="input__label">
       <label for="8">Test</label>
@@ -349,7 +367,7 @@ const singleValueTextDom = `
 const multiValueNumberDom = `
 <div class="form-group linkspace-field" data-column-id="10" data-column-type="intgr" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="test" data-name-short=""
-  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0px" id="numberField">
+  data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0" id="numberField">
   <div class="">
     <fieldset class="fieldset fieldset--required">
       <div class="fieldset__legend">
@@ -381,7 +399,7 @@ const multiValueNumberDom = `
 const singleValueNumberDom = `
 <div class="form-group linkspace-field" data-column-id="10" data-column-type="intgr" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="test" data-name-short=""
-  data-dependent-not-shown="0" style="margin-left:0px" id="numberField">
+  data-dependent-not-shown="0" style="margin-left:0" id="numberField">
   <div class="input  input--required">
     <div class="input__label">
       <label for="10">test</label>
@@ -397,7 +415,7 @@ const singleValueNumberDom = `
 const fileDom = `
 <div class="form-group linkspace-field" data-column-id="11" data-column-type="file" data-value-selector=""
   data-show-add="" data-modal-field-ids="" data-curval-instance-name="" data-name="Test" data-name-short=""
-  data-dependent-not-shown="0" style="margin-left:0px" id="fileField">
+  data-dependent-not-shown="0" style="margin-left:0" id="fileField">
   <fieldset class="fieldset input fieldset--required">
     <div class="fieldset__legend">
       <legend id="11-label">Test</legend>
@@ -435,72 +453,205 @@ const fileDom = `
 </div>
 `
 
-const createInput = (dom) => {
-  document.body.appendChild($(dom)[0]);
-  initializeComponent(document, '.input', InputComponent);
-};
+const curvalDom = `
+<div class="content-block content-block--footer" id="content-block">
+  <div class="modal modal--curval" id="curvalModal" tabindex="-1" role="dialog" aria-labelledby="curvalModal]Label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-header__content">
+            <h3 class="modal-title" id="curvalModalLabel">
+            </h3>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="hidden">Close</span>
+          </button>
+        </div>
+        <div class="modal-frame">
+          <div class="modal-body">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group linkspace-field" data-column-id="23" data-column-type="curval" data-value-selector="dropdown"
+    data-show-add="1" data-modal-field-ids="[19,20,21]" data-curval-instance-name="table2" data-name="Bob"
+    data-name-short="" data-is-multivalue="true" data-dependent-not-shown="0" style="margin-left:0" id="curvalField">
+    <fieldset class="fieldset input fieldset--required">
+      <div class="fieldset__legend">
+        <legend id="23-label">Bob</legend>
+      </div>
+      <div class="select-widget select-widget--required multi" data-value-selector="dropdown" data-layout-id="table1"
+        data-typeahead-id="23" data-field="field23" data-details-modal="#detailsModal">
+        <div class="select-widget-dropdown">
+          <div class="form-control">
+            <ul class="current">
+              <li class="none-selected">Select option(s)</li>
+              <li class="search">
+                <input type="search" class="form-control-search" style="width:100px" placeholder="Search..."
+                  aria-controls="23-values-multi" aria-expanded="false" aria-describedby="23-label">
+              </li>
+            </ul>
+          </div>
+          <ul hidden="" class="available select__menu dropdown-menu show with-details" id="23-values-multi"
+            aria-labelledby="23-label" role="listbox">
+            <li class="spinner">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </li>
+            <li class="has-noresults" hidden="">No results</li>
+          </ul>
+        </div>
+      </div>
+    </fieldset>
+    <button type="button" class="btn btn-js-curval-modal btn-add-link" data-toggle="modal" data-target="#curvalModal">
+      <span class="btn__title">Add</span>
+    </button>
+  </div>
+</div>
+`;
 
-const createSelect = (dom) => {
-  document.body.appendChild($(dom)[0]);
-  initializeComponent(document, '.select-widget', SelectWidgetComponent);
-};
-
-export const createTree = () => {
-  document.body.appendChild($(treeDom)[0]);
-  initializeComponent(document, '.tree', TreeComponent);
-};
-
-export const createMultiValueEnum = () => {
-  $('body').children().remove();
-  createSelect(multiValueEnumDom);
-};
-
-export const createSingleValueEnum = () => {
-  $('body').children().remove();
-  createSelect(singleValueEnumDom);
-};
-
-export const createMultiValuePerson = () => {
-  $('body').children().remove();
-  createSelect(multiValuePersonDom);
-};
-
-export const createSingleValuePerson = () => {
-  $('body').children().remove();
-  createSelect(singleValuePersonDom);
-};
-
-export const createMultiValueDateRangeInputs = () => {
-  $('body').children().remove();
-  createInput(multiValueDateRangeDom);
-};
-
-export const createDateInput = () => {
-  $('body').children().remove();
-  createInput(dateDom);
-};
-
-export const createMultiValueText = () => {
-  $('body').children().remove();
-  createInput(multiValTextDom);
+async function createCurvalDom (target:JQuery, dom:any) {
+  await import("../js/site").then(()=>{
+    import("component").then(({initializeRegisteredComponents})=>{
+      $(target).append($(dom)[0]);
+      initializeRegisteredComponents(document.body);
+    });
+  });
 }
 
-export const createSingleValueText = () => {
-  $('body').children().remove();
-  createInput(singleValueTextDom);
+const createInput = (target:JQuery,dom: any) => {
+  $(target).append($(dom)[0]);
+  // @ts-expect-error "InputComponent" is not properly safe - this is going to be a common problem!
+  initializeComponent(document.body, '.input', InputComponent);
+};
+
+const createSelect = (target:JQuery, dom: any) => {
+  $(target).append($(dom)[0]);
+  // @ts-expect-error "SelectWidgetComponent" is not properly safe - this is going to be a common problem
+  initializeComponent(document.body, '.select-widget', SelectWidgetComponent);
+};
+
+const createTree = function(target:JQuery) {
+  $(target).children().remove();
+  $(target).append($(treeDom)[0]);
+  // @ts-expect-error "TreeComponent" is not properly safe - this is going to be a common problem
+  initializeComponent(document.body, '.tree', TreeComponent);
+};
+
+const createMultiValueEnum = function(target:JQuery) {
+  $(target).children().remove();
+  createSelect(target, multiValueEnumDom);
+};
+
+const createSingleValueEnum = function(target:JQuery) {
+  $(target).children().remove();
+  createSelect(target,singleValueEnumDom);
+};
+
+const createMultiValuePerson = function(target:JQuery) {
+  $(target).children().remove();
+  createSelect(target,multiValuePersonDom);
+};
+
+const createSingleValuePerson = function(target:JQuery) {
+  $(target).children().remove();
+  createSelect(target,singleValuePersonDom);
+};
+
+const createMultiValueDateRangeInputs = function(target:JQuery) {
+  $(target).children().remove();
+  createInput(target,multiValueDateRangeDom);
+};
+
+const createDateInput = function(target:JQuery) {
+  $(target).children().remove();
+  createInput(target,dateDom);
+};
+
+const createMultiValueText = function(target:JQuery) {
+  $(target).children().remove();
+  createInput(target,multiValTextDom);
 }
 
-export const createMultiValueNumber = () => {
-  $('body').children().remove();
-  createInput(multiValueNumberDom);
+const createSingleValueText = function(target:JQuery) {
+  $(target).children().remove();
+  createInput(target,singleValueTextDom);
+}
+
+const createMultiValueNumber = function(target:JQuery) {
+  $(target).children().remove();
+  createInput(target,multiValueNumberDom);
 };
 
-export const createSingleValueNumber = () => {
-  $('body').children().remove();
-  createInput(singleValueNumberDom);
+const createSingleValueNumber = function(target:JQuery) {
+  $(target).children().remove();
+  createInput(target,singleValueNumberDom);
 };
 
-export const createFile = () =>{
-  $('body').children().remove();
-  createInput(fileDom);
+const createFile = function(target:JQuery) {
+  $(target).children().remove();
+  createInput(target,fileDom);
 };
+
+async function createCurval (target:JQuery) {
+  $(target).children().remove();
+  await createCurvalDom(target,curvalDom);
+}
+
+(async ($) => {
+  $.fn.createTree = function() {
+    createTree(this);
+    return this;
+  };
+  $.fn.createMultiValueEnum = function() {
+    createMultiValueEnum(this);
+    return this;
+  };
+  $.fn.createSingleValueEnum = function() {
+    createSingleValueEnum(this);
+    return this;
+  };
+  $.fn.createMultiValuePerson = function() {
+    createMultiValuePerson(this);
+    return this;
+  };
+  $.fn.createSingleValuePerson = function() {
+    createSingleValuePerson(this);
+    return this;
+  };
+  $.fn.createMultiValueDateRangeInputs = function() {
+    createMultiValueDateRangeInputs(this);
+    return this;
+  };
+  $.fn.createDateInput = function() {
+    createDateInput(this);
+    return this;
+  };
+  $.fn.createMultiValueText = function() {
+    createMultiValueText(this);
+    return this;
+  };
+  $.fn.createSingleValueText = function() {
+    createSingleValueText(this);
+    return this;
+  };
+  $.fn.createMultiValueNumber = function() {
+    createMultiValueNumber(this);
+    return this;
+  };
+  $.fn.createSingleValueNumber = function() {
+    createSingleValueNumber(this);
+    return this;
+  };
+  $.fn.createFile = function() {
+    createFile(this);
+    return this;
+  };
+  $.fn.createCurval = async function() {
+    await createCurval(this);
+    return this;
+  };
+})(jQuery);

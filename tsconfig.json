@@ -29,6 +29,18 @@
       "logging": [
         "js/lib/logging"
       ],
+      "set-field-values": [
+        "js/lib/set-field-values"
+      ],
+      "get-field-values": [
+        "js/lib/get-field-values"
+      ],
+      "testing/dom": [
+        "testing/doms.definitions"
+      ],
+      "testing/global": [
+        "testing/globals.definitions"
+      ]
     }
   },
   "include": [

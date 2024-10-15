@@ -1,4 +1,4 @@
-import { logging } from './logging';
+import { logging } from 'logging';
 
 /*
   Set the value of a field, depending on its type.
@@ -71,7 +71,7 @@ async function setFieldValues($field, values) {
     // Component needs to be set up above .input--document div but below the
     // fieldset div. The latter also has a .input class, but it should be the
     // former that becomes the component
-    await import('../../components/form-group/input/lib/documentComponent')
+    await import('components/form-group/input/lib/documentComponent')
       .then(({ default: DocumentComponent }) => {
         let filecomp = new DocumentComponent($field.find('.file-upload')[0]);
         values.forEach((value) => {
@@ -92,8 +92,9 @@ async function setFieldValues($field, values) {
     }
     // For draft records, resubmit them through the modal
     const records = values.filter(item => !Number.isInteger(item));
-    await import('components/modal/modals/curval').then(({ default: CurvalModalComponent }) => {
-      const curval = (new CurvalModalComponent($field.closest('.content-block')[0]));
+    await import('components/modal/modals/curval/lib/component').then(({ default: CurvalModalComponent }) => {
+      const element = $field.closest('.content-block')[0];
+      const curval = (new CurvalModalComponent(element));
       curval.setValue($field, records);
     });
   }

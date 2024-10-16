@@ -1,5 +1,5 @@
-import { modal } from '../../../lib/modal'
-import ModalComponent from '../../../lib/component'
+import { modal } from 'components/modal/lib/modal'
+import ModalComponent from 'components/modal/lib/component'
 
 class UserModalComponent extends ModalComponent {
   constructor(element)  {
@@ -52,7 +52,7 @@ class UserModalComponent extends ModalComponent {
       groups: []
     }
 
-    this.el.find('input, textarea').each((i, field) => {
+    this.el.find('input, textarea').each((_, field) => {
       if (($(field).prop('type') === 'radio' || $(field).prop('type') === 'checkbox')) {
         if ($(field).prop('checked')) {
           const fieldValue = isNaN($(field).val()) ? $(field).val() : parseInt($(field).val())

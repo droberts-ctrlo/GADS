@@ -1,5 +1,5 @@
 import ModalComponent from 'components/modal/lib/component'
-import * as DataTableHelper from 'components/data-table/lib/helper'
+import { addRow, clearTable, updateRow } from 'components/data-table/lib/helper'
 import { modal } from 'components/modal/lib/modal'
 import SelectComponent from 'components/form-group/select/lib/component'
 
@@ -88,7 +88,7 @@ class AddTableModalComponent extends ModalComponent {
         ""
       ]
 
-      DataTableHelper.addRow(row, this.topicsTable)
+      addRow(row, this.topicsTable)
 
       this.addHandlerToEditItemButton('topic')
     } else {
@@ -109,7 +109,7 @@ class AddTableModalComponent extends ModalComponent {
         ""
       ]
 
-      DataTableHelper.updateRow(rowData, this.topicsTable, this.currentTopicObject['tempId'])
+      updateRow(rowData, this.topicsTable, this.currentTopicObject['tempId'])
 
       // Update topic dropdown
       this.selectTopicComponent.updateOption(this.currentTopicObject['name'], this.currentTopicObject['tempId'])
@@ -222,7 +222,7 @@ class AddTableModalComponent extends ModalComponent {
         ""
       ]
 
-      DataTableHelper.addRow(row, this.fieldsTable)
+      addRow(row, this.fieldsTable)
 
       this.addHandlerToEditItemButton('field')
 
@@ -245,7 +245,7 @@ class AddTableModalComponent extends ModalComponent {
         ""
       ]
 
-      DataTableHelper.updateRow(rowData, this.fieldsTable, this.currentFieldObject['tempId'])
+      updateRow(rowData, this.fieldsTable, this.currentFieldObject['tempId'])
 
       this.addHandlerToEditItemButton('field')
     }
@@ -501,8 +501,8 @@ class AddTableModalComponent extends ModalComponent {
     this.el.find('.collapse').collapse('hide')
 
     // Clear all datatables
-    this.topicsTable && DataTableHelper.clearTable(this.topicsTable)
-    this.fieldsTable && DataTableHelper.clearTable(this.fieldsTable)
+    this.topicsTable && clearTable(this.topicsTable)
+    this.fieldsTable && clearTable(this.fieldsTable)
 
     // Remove the topics from the topic dropdown
     this.selectTopicComponent.options.each((i, option) => {

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
-import ModalComponent from '../../../lib/component'
+import ModalComponent from 'components/modal/lib/component'
 import { setFieldValues } from "set-field-values"
-import { guid as Guid } from "guid"
 import { initializeRegisteredComponents } from 'component'
 import { validateRadioGroup, validateCheckboxGroup } from 'validation'
 
@@ -71,7 +70,7 @@ class CurvalModalComponent extends ModalComponent {
     const form_data = form.serialize()
     const modal_field_ids = form.data("modal-field-ids")
     const col_id = form.data("curval-id")
-    const instance_name = form.data("instance-name")
+    // const instance_name = form.data("instance-name") - unused
     let guid = form.data("guid")
     const $formGroup = $("div[data-column-id=" + col_id + "]")
     const valueSelector = $formGroup.data("value-selector")
@@ -127,7 +126,7 @@ class CurvalModalComponent extends ModalComponent {
       // guids in the autosave
       let is_new_row
       if (!guid && !current_id) {
-          guid = Guid()
+          guid = crypto.randomUUID()
           is_new_row = true
       }
       const hidden_input = $("<input>").attr({
@@ -168,7 +167,7 @@ class CurvalModalComponent extends ModalComponent {
         $answersList.find("li input").prop("checked", false)
       }
 
-      guid ||= Guid()
+      guid ||= crypto.randomUUID()
       const id = `field${col_id}_${guid}`
       const deleteButton = multi
         ? '<button class="close select-widget-value__delete" aria-hidden="true" aria-label="delete" title="delete" tabindex="-1">&times;</button>'
@@ -289,7 +288,7 @@ class CurvalModalComponent extends ModalComponent {
       if (mode === "edit") {
         guid = hidden.data("guid")
         if (!guid) {
-          guid = Guid()
+          guid = crypto.randomUUID()
           hidden.attr("data-guid", guid)
         }
       }

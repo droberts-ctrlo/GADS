@@ -1,6 +1,11 @@
 <nav class="[% user_menu_class %]" aria-label="Top">
   <ul class="user">
     <li class="user__item">
+      <button class="toggle-js-dyslexic">
+        <span class="sr-only">Toggle Dyslexic Mode</span>
+      </button>
+    </li>
+    <li class="user__item">
       <a class="user__link user__link--details" href="[% url.page %]/myaccount" title="View user profile">
         <span>My details</span>
       </a>

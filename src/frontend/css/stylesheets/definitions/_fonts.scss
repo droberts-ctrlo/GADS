@@ -45,6 +45,46 @@ $fonts-path: "../../fonts" !default;
     url('#{$fonts-path}/linkspace-font/linkspace-font.svg?9780675#linkspace-font') format('svg');
 }
 
+@font-face {
+  font-family: 'Open Dyslexic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Regular.eot');
+  src:
+    url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Regular.woff2') format('woff2'),
+    url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Dyslexic';
+  font-style: italic;
+  font-weight: 400;
+  src: url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Italic.eot');
+  src:
+    url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Italic.woff2') format('woff2'),
+    url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Dyslexic';
+  font-style: normal;
+  font-weight: 600;
+  src: url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Bold.eot');
+  src:
+    url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Bold.woff2') format('woff2'),
+    url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Open Dyslexic';
+  font-style: italic;
+  font-weight: 600;
+  src: url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Bold-Italic.eot');
+  src:
+    url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Bold-Italic.woff2') format('woff2'),
+    url('#{$fonts-path}/open-dyslexic/OpenDyslexic-Bold-Italic.woff') format('woff');
+}
+
 %icon-font {
   // From https://github.com/FortAwesome/Font-Awesome/blob/master/scss/_core.scss
   display: inline-block;

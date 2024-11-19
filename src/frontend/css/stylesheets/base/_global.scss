@@ -102,3 +102,11 @@ table.table-bordered {
     margin: 0 auto;
   }
 }
+
+.toggle-js-dyslexic::before {
+  content: 'D';
+}
+
+body.dyslexic {
+  font-family: $font-family-dyslexic;
+}

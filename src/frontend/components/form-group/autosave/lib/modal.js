@@ -1,4 +1,4 @@
-import { setFieldValues, CurvalError } from "set-field-values";
+import { setFieldValues } from "set-field-values";
 import AutosaveBase from './autosaveBase';
 
 class AutosaveModal extends AutosaveBase {
@@ -25,7 +25,7 @@ class AutosaveModal extends AutosaveBase {
           if (Array.isArray(values)) {
             const name = $field.data("name");
             const type = $field.data("column-type");
-            if(type==="curval") {
+            if (type === "curval") {
               $field.off("validationFailed");
               $field.off("validationPassed");
               $field.on("validationFailed", (e) => {
@@ -38,8 +38,8 @@ class AutosaveModal extends AutosaveBase {
               });
             }
             setFieldValues($field, values);
-            if(type!=="curval") {
-              let $li = $(`<li class="li-success">Restored ${name}</li>`);
+            if(type !== "curval") {
+              const $li = $(`<li class="li-success">Restored ${name}</li>`);
               $list.append($li);
             }
             $field.addClass("field--changed");

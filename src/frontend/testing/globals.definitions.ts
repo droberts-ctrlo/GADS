@@ -76,7 +76,6 @@ export class DefaultElementLike implements ElementLike {
     removeAttr: (attr: string) => void = jest.fn();
 }
 
-
 export function setupCrypto() {
     const crypto = {
         subtle: {

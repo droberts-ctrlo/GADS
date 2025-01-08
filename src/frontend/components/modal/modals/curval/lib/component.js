@@ -364,12 +364,22 @@ class CurvalModalComponent extends ModalComponent {
           url,
           form_data,
           function(data) {
+            const fieldId=$form.data("curval-id")
+            const $field = $('[data-column-type="curval"][data-column-id="'+fieldId+'"]');
             if (data.error === 0) {
+              const e = $.Event('validationPassed');
+              $field.trigger(e);
               self.curvalModalValidationSucceeded($form, data.values)
             } else {
-              const errorMessage =
-                data.error === 1 ? data.message : "Oops! Something went wrong."
-              self.curvalModalValidationFailed($form, errorMessage)
+              if(autosaveLoadValue) {
+                const e = $.Event('validationFailed', {message: data.message || "Something went wrong"});
+                $field.trigger(e);
+                self.curvalModalValidationSucceeded($form, data.values);
+              } else {
+                const errorMessage =
+                  data.error === 1 ? data.message : "Oops! Something went wrong."
+                self.curvalModalValidationFailed($form, errorMessage)
+              }
             }
           },
           "json"

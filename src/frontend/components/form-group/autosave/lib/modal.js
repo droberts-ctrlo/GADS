@@ -23,11 +23,26 @@ class AutosaveModal extends AutosaveBase {
           const $editButton = $field.closest('.card--topic').find('.btn-js-edit');
           if ($editButton && $editButton.length) $editButton.trigger('click');
           if (Array.isArray(values)) {
-            setFieldValues($field, values);
-            $field.addClass("field--changed");
             const name = $field.data("name");
-            let $li = $(`<li class="li-success">Restored ${name}</li>`);
-            $list.append($li);
+            const type = $field.data("column-type");
+            if(type==="curval") {
+              $field.off("validationFailed");
+              $field.off("validationPassed");
+              $field.on("validationFailed", (e) => {
+                const $li = $(`<li class="li-error">Error restoring ${name}, please check these values before submission<ul><li class="warning">${e.message}</li></ul></li>`);
+                $list.append($li);
+              });
+              $field.on("validationPassed", () => {
+                const $li = $(`<li class="li-success">Restored ${name}, please check these values before submission</li>`);
+                $list.append($li);
+              });
+            }
+            setFieldValues($field, values);
+            if(type!=="curval") {
+              let $li = $(`<li class="li-success">Restored ${name}</li>`);
+              $list.append($li);
+            }
+            $field.addClass("field--changed");
           }
         }).catch(e => {
           const name = $field.data("name");

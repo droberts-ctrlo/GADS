@@ -24,4 +24,4 @@ apt-get install -y cpanminus liblua5.3-dev libdancer2-perl libdatetime-format-sq
   libwww-form-urlencoded-xs-perl libwww-mechanize-chrome-perl libyaml-perl libnamespace-clean-perl libmoo-perl libdatetime-format-sqlite-perl \
   libtest-most-perl libdatetime-set-perl libdbix-class-schema-loader-perl libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 \
   libxtst6 xauth xvfb libalgorithm-dependency-perl libdbix-class-helpers-perl libdbix-class-perl liblog-report-perl libdatetime-set-perl \
-  libmail-transport-perl libnet-oauth2-authorizationserver-perl libtest-simple-perl  
+  libmail-transport-perl libnet-oauth2-authorizationserver-perl libtest-simple-perl sudo

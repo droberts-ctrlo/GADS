@@ -15,8 +15,8 @@ class DashboardGraphComponent extends GraphComponent {
     }
 
     /**
-   * Initialize the dashboard graph
-   */
+     * Initialize the dashboard graph
+     */
     initDashboardGraph() {
         const $graph = $(this.element);
         const graph_data = $graph.data('plot-data');

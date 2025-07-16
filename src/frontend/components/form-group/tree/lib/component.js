@@ -60,8 +60,7 @@ class TreeComponent extends Component {
         // The below fix is to prevent the tree from erroring when it is a multivalue and a value is deselected
         if (!this.multiValue) {
             //Deselect Fix - 26.04.24 - DR
-            //Unless you have a click event, the select_node event doesn't trigger when you click on the same node - I don't know why this is,
-            //all I know is, it gave me a headache! Either way, it appears to work now, so I'm happy!!
+            //Unless you have a click event, the select_node event doesn't trigger when you click on the same node - I don't know why this is.
             let node;
 
             this.$treeContainer.on('click', '.jstree-clicked', () => {

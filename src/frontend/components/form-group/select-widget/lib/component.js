@@ -511,7 +511,6 @@ class SelectWidgetComponent extends Component {
         return $li;
     }
 
-    //Some odd scoping issues here - but it works
     /**
      * Updates the JSON data for the select widget.
      * @param {string} url - The URL to fetch the JSON data from.

@@ -636,7 +636,6 @@ class SelectWidgetComponent extends Component {
     /**
      * Fetch options for the select widget based on linked fields.
      * @throws {string} Will throw an error if the filter fields are not a valid array.
-     * Fetches options for the select widget based on linked fields.
      */
     fetchOptions() {
         const filterEndpoint = this.$selectWidget.data('filter-endpoint');

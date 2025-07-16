@@ -6,9 +6,9 @@ import GraphComponent from '../../../graph/lib/component';
  */
 class DashboardGraphComponent extends GraphComponent {
     /**
-   * Create a new dashboard graph component
-   * @param {HTMLElement} element The element to attach the component to
-   */
+     * Create a new dashboard graph component
+     * @param {HTMLElement} element The element to attach the component to
+     */
     constructor(element) {
         super(element);
         this.initDashboardGraph();

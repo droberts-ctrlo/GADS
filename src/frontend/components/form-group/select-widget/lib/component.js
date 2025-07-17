@@ -11,6 +11,7 @@ import { initValidationOnField } from 'validation';
  * SelectWidgets can depend on each other;
  * for instance if Value "1" is selected in Widget "A",
  * Widget "B" might not be displayed.
+ * @todo This uses deprecated code - update to newer "$.on" and "$.off" functionality
  */
 class SelectWidgetComponent extends Component {
     /**

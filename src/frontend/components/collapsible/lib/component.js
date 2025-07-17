@@ -1,7 +1,7 @@
 import { Component } from 'component';
 
 /**
- *
+ * A component for collapsible displays
  */
 class CollapsibleComponent extends Component {
     /**

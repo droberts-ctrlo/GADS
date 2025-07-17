@@ -36,7 +36,7 @@ export default class Widget extends React.Component<any, any> {
      * Render the Widget component.
      * @returns {JSX.Element} The rendered widget component.
      */
-    render() {
+    render(): JSX.Element {
         return (
             <React.Fragment>
                 <div className="ld-widget">

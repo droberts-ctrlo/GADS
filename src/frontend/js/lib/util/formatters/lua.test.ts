@@ -1,7 +1,8 @@
-/// <reference types="jest" />
 import { LUA } from './lua';
+import { describe, it, expect } from '@jest/globals';
 
 describe('LUA tests', () => {
+    // Mock object to test string conversion
     class TestObject {
         toString() {
             return 'test';

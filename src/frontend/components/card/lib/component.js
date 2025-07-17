@@ -1,5 +1,5 @@
-import { Component } from 'component';
 import 'bootstrap';
+import { Component } from 'component';
 
 class ExpandableCardComponent extends Component {
     constructor(element) {

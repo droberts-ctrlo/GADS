@@ -1,8 +1,8 @@
 // We import Bootstrap because there is an error that throws if we don't (this.collapse is not a function).
 /* eslint-disable @typescript-eslint/no-this-alias */
 import { Component } from 'component';
+import { fromJson } from 'js/lib/util/common';
 import { logging } from 'logging';
-import { fromJson } from 'util/common';
 import { initValidationOnField } from 'validation';
 
 /*
@@ -532,7 +532,8 @@ class SelectWidgetComponent extends Component {
                 });
 
             } else {
-                const errorMessage = data.message;
+                const errorMessage =
+                    data.error === 1 ? data.message : 'Oops! Something went wrong.';
                 const errorLi = $(
                     '<li class="answer answer--blank alert alert-danger d-flex flex-row justify-content-start"><span class="control"><label>' +
                     errorMessage +

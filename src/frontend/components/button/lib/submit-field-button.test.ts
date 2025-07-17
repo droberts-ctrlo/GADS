@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* @ts-ignore */
 import { initGlobals } from 'testing/globals.definitions';
 import SubmitFieldButtonComponent from './submit-field-button';
 

@@ -143,7 +143,6 @@ class App extends React.Component<any, any> {
     };
 
     deleteActiveWidget = () => {
-
         if (!window.confirm('Deleting a widget is permanent! Are you sure?'))
             return;
 
@@ -158,7 +157,6 @@ class App extends React.Component<any, any> {
         event.preventDefault();
         const formEl = this.formRef.current.querySelector('form');
         if (!formEl) {
-
             console.error('No form element was found!');
             return;
         }
@@ -201,7 +199,6 @@ class App extends React.Component<any, any> {
         }
         return { x, y };
     };
-
 
     addWidget = async (type) => {
         this.setState({ loading: true });

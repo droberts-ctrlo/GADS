@@ -609,29 +609,27 @@ class SelectWidgetComponent extends Component {
                 );
                 this.$available.append(errorLi);
             }
-        })
-            .fail(function (jqXHR, textStatus, textError) {
-                const errorMessage = jqXHR.responseJSON.message;
-                logging.error(
-                    'Failed to make request to ' +
-                    url +
-                    ': ' +
-                    textStatus +
-                    ': ' +
-                    textError
-                );
-                const errorLi = $(
-                    '<li class="answer answer--blank alert alert-danger"><span class="control"><label>' +
-                    errorMessage +
-                    '</label></span></li>'
-                );
-                self.$available.append(errorLi);
-            })
-            .always(function () {
-                if (hideSpinner) {
-                    self.$available.find('.spinner').attr('hidden', '');
-                }
-            });
+        }).fail(function (jqXHR, textStatus, textError) {
+            const errorMessage = jqXHR.responseJSON?.message ?? 'Oops! Something went wrong';
+            logging.error(
+                'Failed to make request to ' +
+                url +
+                ': ' +
+                textStatus +
+                ': ' +
+                textError
+            );
+            const errorLi = $(
+                '<li class="answer answer--blank alert alert-danger"><span class="control"><label>' +
+                errorMessage +
+                '</label></span></li>'
+            );
+            self.$available.append(errorLi);
+        }).always(function () {
+            if (hideSpinner) {
+                self.$available.find('.spinner').attr('hidden', '');
+            }
+        });
     }
 
     /**

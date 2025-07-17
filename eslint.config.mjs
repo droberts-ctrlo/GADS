@@ -20,6 +20,7 @@ export default defineConfig([
         rules: {
             "@typescript-eslint/no-explicit-any": "off",
             'react/prop-types': 'off',
+            'react/no-deprecated': 'off', // We are currently using deprecated React features, so we disable this rule - this will change in the future
             '@stylistic/quotes': ['error', 'single'],
             '@stylistic/no-extra-semi': 'error',
             '@stylistic/semi': ['error', 'always'],
@@ -38,6 +39,8 @@ export default defineConfig([
                     }
                 }
             ],
+            '@stylistic/indent': ['error', 4],
+            '@stylistic/comma-dangle': ['error', 'never']
         }
     }
 ]);

@@ -269,29 +269,11 @@ class DocumentComponent {
     }
 
     /**
-     * Show the container for the progress bar.
+     * Show an exception in the error handler control
+     * @param e The exception to show
      */
-    showContainer() {
-        const container = $(this.el.find('.progress-bar__container'));
-        container.show();
-    }
-
-    /**
-     * Show an exception message in the progress bar.
-     * @param {string | Error} e The error to be displayed.
-     */
-    showException(e: string | Error) {
-        this.handler.addError(e);
-    }
-
-    /**
-     * Hide the exception message in the progress bar.
-     */
-    hideException() {
-        this.el.find('.progress-bar__container')
-            .css('width', undefined)
-            .removeClass('progress-bar__container--fail')
-            .hide();
+    showException(e: any) {
+        this.handler.addError(e instanceof Error ? e.message : typeof e == 'object' && 'message' in e ? e.message : e.toString());
     }
 }
 

@@ -378,10 +378,6 @@ class DataTableComponent extends Component {
             $('input', $searchElement).addClass('search');
         }
 
-        $header.find('.data-table__header-wrapper').prepend($searchElement);
-
-        this.toggleFilter(column);
-
         if (col && col.typeahead) {
             import(/*webpackChunkName: "typeahead" */ 'util/typeahead')
                 .then(({default: TypeaheadBuilder})=>{
@@ -408,6 +404,10 @@ class DataTableComponent extends Component {
                         .build();
                 });
         }
+
+        $header.find('.data-table__header-wrapper').prepend($searchElement);
+
+        this.toggleFilter(column);
 
         // Apply the search
         $('input.search', $header).on('change', function (ev) {

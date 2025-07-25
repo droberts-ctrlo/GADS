@@ -118,7 +118,8 @@ class SelectWidgetComponent extends Component {
     }
 
     /**
-     * Handles clicks outside the widget to collapse it.
+     * Handles the click event on the document.
+     * @param {JQuery.ClickEvent} e The click event triggered on the document.
      */
     handleDocumentClick(e) {
         const clickedOutside = !this.el.is(e.target) && this.el.has(e.target).length === 0;
@@ -128,7 +129,8 @@ class SelectWidgetComponent extends Component {
     }
 
     /**
-     * Handles keyup events on the search input.
+     * Handle the keyup event on the search input.
+     * @param {JQuery.KeyUpEvent} e The keyup event triggered on the search input.
      */
     handleKeyUp(e) {
         const searchValue = $(e.target)
@@ -186,7 +188,9 @@ class SelectWidgetComponent extends Component {
     }
 
     /**
-     * Handles keydown events on the search input.
+     * Handle the keydown event on the search input.
+     * @param {JQuery.KeyDownEvent} e The keydown event triggered on the search input.
+     * @todo Handle deprecated key codes and ensure compatibility with modern browsers.
      */
     handleKeyDown(e) {
         const key = e.which || e.keyCode;
@@ -234,7 +238,8 @@ class SelectWidgetComponent extends Component {
     }
 
     /**
-     * Handles the focus event on the search input to expand the widget.
+     * Handle the event triggered when the widget is expanded.
+     * @param {JQuery.TriggeredEvent} e The event triggered when the widget is expanded.
      */
     expandWidgetHandler(e) {
         e.stopPropagation();
@@ -272,7 +277,8 @@ class SelectWidgetComponent extends Component {
     }
 
     /**
-     * Checks if the widget should be closed based on focus changes.
+     * Possible close the widget based on focus change.
+     * @param {JQuery.TriggeredEvent} e The event triggered when the widget might need to be closed.
      */
     possibleCloseWidget(e) {
         const newlyFocussedElement = e.relatedTarget || document.activeElement;
@@ -349,6 +355,7 @@ class SelectWidgetComponent extends Component {
 
     /**
      * Connects the single-select items to their associated checkboxes.
+     * @todo Remove deprecated key codes and ensure compatibility with modern browsers.
      */
     connectSingle() {
         const self = this;
@@ -409,14 +416,14 @@ class SelectWidgetComponent extends Component {
     }
 
     /**
-     * Creates a list item for the currently selected value.
-     * @param {boolean} multi - Whether the widget is multi-select.
-     * @param {string} field - The field name for the select widget.
-     * @param {string|null} value_id - The ID of the selected value.
-     * @param {string} value_text - The text of the selected value.
-     * @param {string} value_html - The HTML representation of the selected value.
-     * @param {boolean} checked - Whether the item is checked.
-     * @returns {jQuery} - The jQuery object representing the list item.
+     * Get the current list item for the select widget.
+     * @param {boolean} multi Is the select widget multi-select?
+     * @param {JQuery<HTMLElement>} field The field name for the select widget.
+     * @param {number} value_id The ID of the value.
+     * @param {string} value_text The text of the value.
+     * @param {string} value_html The HTML representation of the value.
+     * @param {boolean} checked Is the value checked?
+     * @returns {JQuery<HTMLElement>} The current list item as a jQuery object.
      */
     currentLi(multi, field, value_id, value_text, value_html, checked) {
         if (multi && !value_id) {
@@ -445,14 +452,14 @@ class SelectWidgetComponent extends Component {
     }
 
     /**
-     * Creates a list item for the available options.
-     * @param {boolean} multi - Whether the widget is multi-select.
-     * @param {string} field - The field name for the select widget.
-     * @param {string|null} value_id - The ID of the available value.
-     * @param {string} value_text - The text of the available value.
-     * @param {string} label - The label for the available value.
-     * @param {boolean} checked - Whether the item is checked.
-     * @returns {jQuery|null} - The jQuery object representing the list item, or null if no value_id is provided in multi-select mode.
+     * Get the available list item for the select widget.
+     * @param {boolean} multi Is the select widget multi-select?
+     * @param {JQuery<HTMLElement>} field The field name for the select widget.
+     * @param {number} value_id The ID of the value.
+     * @param {string} value_text The text of the value.
+     * @param {string} label The label for the value.
+     * @param {boolean} checked Is the value checked?
+     * @returns {JQuery<HTMLElement>} The available list item as a jQuery object.
      */
     availableLi(multi, field, value_id, value_text, label, checked) {
         if (this.multi && !value_id) {
@@ -693,10 +700,11 @@ class SelectWidgetComponent extends Component {
     }
 
     /**
-     * Expands the select widget to show available options.
-     * @param {jQuery} $widget - The jQuery object representing the widget.
-     * @param {jQuery} $trigger - The jQuery object representing the trigger element.
-     * @param {jQuery} $target - The jQuery object representing the target element
+     * Expand the select widget to show available options.
+     * @param {JQuery<HTMLElement>} $widget The widget element.
+     * @param {JQuery<HTMLElement>} $trigger The trigger element that expands the widget.
+     * @param {JQuery<HTMLElement>} $target The target element that contains the available options.
+     * @todo Remove deprecated key codes and ensure compatibility with modern browsers.
      */
     expand($widget, $trigger, $target) {
         if ($trigger.attr('aria-expanded') === 'true') {

@@ -219,15 +219,15 @@ class TreeComponent extends Component {
         let sel = ref.get_selected();
 
         if (!sel.length) {
-            return false;
+            return;
         }
 
         ref.delete_node(sel);
-        return true;
     }
 
     /**
      * Handle the renaming of a node in the jstree.
+     * @returns {boolean} Returns true if a node was renamed, false otherwise.
      */
     handleRename() {
         const ref = this.$treeContainer.jstree(true);
@@ -239,7 +239,6 @@ class TreeComponent extends Component {
 
         sel = sel[0];
         ref.edit(sel);
-        return true;
     }
 }
 

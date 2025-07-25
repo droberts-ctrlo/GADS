@@ -223,6 +223,7 @@ class TreeComponent extends Component {
         }
 
         ref.delete_node(sel);
+        return true;
     }
 
     /**
@@ -238,6 +239,7 @@ class TreeComponent extends Component {
 
         sel = sel[0];
         ref.edit(sel);
+        return true;
     }
 }
 

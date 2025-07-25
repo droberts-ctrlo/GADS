@@ -265,10 +265,10 @@ class CurvalModalComponent extends ModalComponent {
     }
 
     /**
-     * Update the widget state based on the current values.
-     * @param {JQuery} $widget The widget to update.
-     * @param {boolean} multi Whether the widget is multi-select.
-     * @param {boolean} required Whether the widget is required.
+     * Update the state of the widget based on the current selection.
+     * @param {JQuery<HTMLElement>} $widget - The jQuery object representing the widget.
+     * @param {boolean} multi - Whether the widget allows multiple selections.
+     * @param {boolean} required - Whether the widget is required.
      */
     updateWidgetState($widget, multi, required) {
         const $current = $widget.find('.current');
@@ -286,9 +286,9 @@ class CurvalModalComponent extends ModalComponent {
     }
 
     /**
-     * Triggered when the modal validation fails.
-     * @param {JQuery} form The form that was submitted.
-     * @param {string} errorMessage The error message to display.
+     * Handle validation failure in the curval modal.
+     * @param {JQuery<HTMLElement>} form - The form element being validated.
+     * @param {string} errorMessage - The error message to display.
      */
     curvalModalValidationFailed(form, errorMessage) {
         form

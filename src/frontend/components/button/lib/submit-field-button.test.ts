@@ -9,6 +9,7 @@ describe('Submit field button tests', () => {
         initGlobals();
     });
 
+     
     async function loadSubmitFieldButtonComponent(element: HTMLElement) {
         const { default: SubmitFieldButtonComponent } = await import('./submit-field-button');
         return new SubmitFieldButtonComponent($(element));

@@ -217,9 +217,7 @@ class TreeComponent extends Component {
         const ref = this.$treeContainer.jstree(true);
         let sel = ref.get_selected();
 
-        if (!sel.length) {
-            return;
-        }
+        if (!sel.length)  return;
 
         ref.delete_node(sel);
     }
@@ -232,9 +230,7 @@ class TreeComponent extends Component {
         const ref = this.$treeContainer.jstree(true);
         let sel = ref.get_selected();
 
-        if (!sel.length) {
-            return;
-        }
+        if (!sel.length) return;
 
         sel = sel[0];
         ref.edit(sel);

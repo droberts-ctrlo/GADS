@@ -13,7 +13,8 @@ import StorageProvider from 'util/storageProvider';
 class CurvalModalComponent extends ModalComponent {
 
     /**
-     * Whether the component can be reinitialized.
+     * Whether this component allows reinitialization.
+     * @returns {boolean} True if reinitialization is allowed, false otherwise.
      */
     static get allowReinitialization() { return true; }
 
@@ -37,9 +38,10 @@ class CurvalModalComponent extends ModalComponent {
 
     /**
      * Set the value of a curval.
-     * @description In order to ensure consistent data, this function opens a modal edit for each curval, makes the changes, and then submits. It does this synchronously so that the modal is only processing  one curval value at a time
-     * @param {JQuery} $target The target element that triggered the modal.
-     * @param {Array} rows The rows of curval data to set.
+     * @description In order to ensure consistent data, this function opens a modal edit for each curval, makes the changes, and then submits.
+     *              It does this synchronously so that the modal is only processing one curval value at a time
+     * @param {JQuery<HTMLElement>} $target - The jQuery object representing the target element.
+     * @param {Array} rows - An array of objects representing the curval rows to be processed.
      */
     setValue($target, rows) {
         const layout_id = $target.data('column-id');
@@ -88,9 +90,9 @@ class CurvalModalComponent extends ModalComponent {
     }
 
     /**
-     * Triggered when the modal validation succeeds.
-     * @param {JQuery} form The form that was submitted.
-     * @param {Object} values The values from the form.
+     * Handle successful validation of the curval modal.
+     * @param {JQuery<HTMLElement>} form The form element being validated.
+     * @param {object} values The form values to be processed.
      */
     async curvalModalValidationSucceeded(form, values) {
         const form_data = form.serialize();
@@ -265,10 +267,10 @@ class CurvalModalComponent extends ModalComponent {
     }
 
     /**
-     * Update the widget state based on the current values.
-     * @param {JQuery} $widget The widget to update.
-     * @param {boolean} multi Whether the widget is multi-select.
-     * @param {boolean} required Whether the widget is required.
+     * Update the state of the widget based on the current selection.
+     * @param {JQuery<HTMLElement>} $widget - The jQuery object representing the widget.
+     * @param {boolean} multi - Whether the widget allows multiple selections.
+     * @param {boolean} required - Whether the widget is required.
      */
     updateWidgetState($widget, multi, required) {
         const $current = $widget.find('.current');
@@ -286,9 +288,9 @@ class CurvalModalComponent extends ModalComponent {
     }
 
     /**
-     * Triggered when the modal validation fails.
-     * @param {JQuery} form The form that was submitted.
-     * @param {string} errorMessage The error message to display.
+     * Handle validation failure in the curval modal.
+     * @param {JQuery<HTMLElement>} form - The form element being validated.
+     * @param {string} errorMessage - The error message to display.
      */
     curvalModalValidationFailed(form, errorMessage) {
         form

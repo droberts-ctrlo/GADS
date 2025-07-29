@@ -50,9 +50,12 @@ class FileComponent {
     /**
      * Handle the file upload process.
      * @param {File} file The file to be uploaded.
+     * @param {number} index The index of the file to upload
+     * @param {number} length The number of files being uploaded
      */
-    handleFormUpload = (file: File) => {
-        // As some of these, if not all, are event handlers, scoping can get a bit wiggy; using arrow functions to keep the scope of `this` to the class
+    handleFormUpload = (file: File, index: number, length: number) => {
+        // As some of these, if not all, are event handlers, scoping can get a bit strange
+        // using arrow functions to keep the scope of `this` to the class
         if (!file) throw new Error('No file provided');
 
         const form = this.el.closest('form');

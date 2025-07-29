@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/require-jsdoc */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* @ts-ignore */
 import { setupCrypto } from 'testing/globals.definitions';

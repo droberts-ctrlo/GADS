@@ -273,6 +273,10 @@ class FilterComponent extends Component {
         return operators;
     }
 
+    /**
+     * Get the properties for the typeahead used on this component
+     * @returns {object} Returns an object that renders the typeahead as expected
+     */
     get typeaheadProperties() {
         return {
             input: (container, input_name) => {

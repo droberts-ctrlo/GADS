@@ -404,6 +404,37 @@ class DataTableComponent extends Component {
                 });
         }
 
+        $header.find('.data-table__header-wrapper').prepend($searchElement);
+
+        this.toggleFilter(column);
+
+        if (col && col.typeahead) {
+            import(/*webpackChunkName: "typeahead" */ 'util/typeahead')
+                .then(({default: TypeaheadBuilder})=>{
+                    const builder = new TypeaheadBuilder();
+                    builder
+                        .withAjaxSource(this.getApiEndpoint(columnId))
+                        .withMethod('POST')
+                        .withData({csrf_token: $('body').data('csrf')})
+                        .withInput($('input', $header))
+                        .withAppendQuery()
+                        .withDefaultMapper()
+                        .withName(columnId.replace(/\s+/g, '') + 'Search')
+                        .withCallback((data) => {
+                            if(col.typeahead_use_id) {
+                                $searchInput.val(data.name);
+                                $('input.search',$searchElement).val(data.id)
+                                    .trigger('change');
+                            }else{
+                                $('input', $searchElement).addClass('search')
+                                    .val(data.name)
+                                    .trigger('change');
+                            }
+                        })
+                        .build();
+                });
+        }
+
         // Apply the search
         $('input.search', $header).on('change', function (ev) {
             let value = this.value || ev.target.value;
@@ -739,6 +770,7 @@ class DataTableComponent extends Component {
 
     /**
      * Get the configuration object for the DataTable
+     * @import { Config } from 'datatables.net-bs4';
      * @param {Parital<Config>} overrides Any values to override in the configuration
      * @returns {Config} The configuration object for the DataTable
      */
@@ -923,6 +955,7 @@ class DataTableComponent extends Component {
 
     /**
      * Bind click handlers after the DataTable has been drawn
+     * @import { Config } from 'datatables.net-bs4';
      * @param {Config} conf The configuration object for the DataTable
      */
     bindClickHandlersAfterDraw(conf) {

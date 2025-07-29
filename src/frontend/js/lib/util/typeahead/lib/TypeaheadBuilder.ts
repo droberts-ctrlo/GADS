@@ -14,7 +14,7 @@ export class TypeaheadBuilder {
     private ajaxSource: string;
     private appendQuery: boolean;
     private data: any;
-    private mapper: MapperFunction = (data: any) => {return data.map(d=> {return {name: d.name, id: d.id};});};
+    private mapper: MapperFunction = (data: any) => { return data.map(d => { return { name: d.name, id: d.id }; }); };
     private dataBuilder: (...args: any[]) => any;
     private method: 'GET' | 'POST' = 'GET';
 
@@ -31,8 +31,8 @@ export class TypeaheadBuilder {
      * @param method - The HTTP method to use for the ajax request, defaults to 'GET'
      * @returns The builder being used
      */
-    withMethod(method: 'GET'|'POST'='GET') {
-        if(method !== 'GET' && method !== 'POST') {
+    withMethod(method: 'GET' | 'POST' = 'GET') {
+        if (method !== 'GET' && method !== 'POST') {
             throw new Error('Method must be either \'GET\' or \'POST\'');
         }
         this.method = method;

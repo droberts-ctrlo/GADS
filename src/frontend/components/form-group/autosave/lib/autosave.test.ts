@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/require-jsdoc */
 import AutosaveBase from './autosaveBase';
 import { describe, it, expect, beforeAll, afterAll } from '@jest/globals';
 

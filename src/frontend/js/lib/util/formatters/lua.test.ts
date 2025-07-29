@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/require-jsdoc */
 import { LUA } from './lua';
 import { describe, it, expect } from '@jest/globals';
 

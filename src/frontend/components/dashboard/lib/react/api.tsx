@@ -92,7 +92,7 @@ export default class ApiClient {
     /**
      * Save the layout of a dashboard.
      * @param {string} id The ID of the dashboard to save the layout for.
-     * @param {object} layout The layout to save, typically an array of widget configurations.
+     * @param {Array<any>} layout The layout to save, typically an array of widget configurations.
      * @returns {Promise<Response>} The response from the save operation.
      */
     saveLayout = (id: string, layout: Array<any>): Promise<Response> => {

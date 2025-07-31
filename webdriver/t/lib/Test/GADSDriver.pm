@@ -545,7 +545,7 @@ sub assert_on_manage_users_page {
     $self->_assert_on_page(
         $name,
         { selector => 'h1', text => 'Users' },
-        { selector => '.sr-only', match => '\b(?i)users?\b' },
+        { selector => '.visually-hidden', match => '\b(?i)users?\b' },
     );
 
     $test->release;

@@ -1,43 +1,41 @@
 .data-table {
     border-spacing: 0;
     font-size: $font-size-sm;
+    border-spacing: 0;
+    font-size: $font-size-sm;
 
+    &.table-thead-hidden thead {
+        @include visually-hidden;
+    }
     &.table-thead-hidden thead {
         @include visually-hidden;
     }
 
     thead {
-        background-color: #fff;
+        background-color: $white;
         z-index: 1;
+    }
 
-        th {
-            padding: 1rem;
+    thead th {
+        border-bottom: 1px solid $gray;
+        text-transform: uppercase;
+        vertical-align: top;
 
-            background-color: #fff;
-            border-bottom: 1px solid $gray;
-            text-transform: uppercase;
-            vertical-align: top;
-            box-shadow: none;
+        &[class*="sorting_asc"],
+        &[class*="sorting_desc"] {
+            color: $brand-secundary;
+        }
 
-            &[class*="sorting_asc"],
-            &[class*="sorting_desc"] {
-                color: $brand-secundary;
-            }
-
-            &.data-table__header--invisible span,
-            &.dt__header--inivisible span {
-                @include visually-hidden;
-            }
+        &.data-table__header--invisible span,
+        &.dt__header--inivisible span {
+            @include visually-hidden;
         }
     }
 
-    tbody {
-        td {
-            padding: 1rem;
-            color: $gray-extra-dark;
-        }
+    tfoot {
+        background-color: $table-hover-bg;
+        font-weight: bold;
     }
-
     tfoot {
         background-color: $table-hover-bg;
         font-weight: bold;
@@ -48,37 +46,14 @@
         border-top: 0;
         border-bottom: 1px solid $gray;
     }
+    &.table-lines th,
+    &.table-lines td {
+        border-top: 0;
+        border-bottom: 1px solid $gray;
+    }
 
     .autosize {
         max-height: 30px;
-    }
-
-    &.table-striped {
-        --bs-table-border-color: $transparent;
-
-        &>tbody {
-            &>tr:nth-of-type(2n) {
-                &>* {
-                    box-shadow: none !important;
-                }
-            }
-        }
-    }
-
-    &.table-hover {
-        --bs-table-hover-bg: $table-hover-bg;
-
-        &>tbody {
-            &>tr:hover {
-                background-color: $table-hover-bg;
-            }
-
-            &>tr:hover {
-                &>* {
-                    box-shadow: none !important;
-                }
-            }
-        }
     }
 }
 
@@ -86,6 +61,7 @@
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_disabled {
 
+    /* stylelint-disable declaration-no-important */
     // Remove the sorting arrows from the sorting element, important needed to overrule default styling
     &::before,
     &::after {
@@ -97,11 +73,19 @@ table.dataTable thead .sorting_disabled {
 .dataTables_wrapper {
     margin-bottom: $padding-small-vertical;
     font-size: $font-size-sm;
+    margin-bottom: $padding-small-vertical;
+    font-size: $font-size-sm;
 
     &:last-child {
         margin-bottom: 0;
     }
+    &:last-child {
+        margin-bottom: 0;
+    }
 
+    .row {
+        width: 100%;
+    }
     .row {
         width: 100%;
     }
@@ -110,9 +94,14 @@ table.dataTable thead .sorting_disabled {
     .row--main {
         margin-bottom: $padding-base-vertical;
     }
+    .row--header,
+    .row--main {
+        margin-bottom: $padding-base-vertical;
+    }
 }
 
 .row--fiv-header {
+    margin-top: 1.9rem;
     margin-top: 1.9rem;
 }
 
@@ -122,11 +111,20 @@ table.dataTable thead .sorting_disabled {
     .btn-toggle-off {
         padding-top: 7px;
     }
+    .btn-toggle,
+    .btn-toggle-off {
+        padding-top: 7px;
+    }
 }
 
 .data-table__container--scrollable {
     overflow: auto;
+    overflow: auto;
 
+    thead {
+        position: sticky;
+        top: 0;
+    }
     thead {
         position: sticky;
         top: 0;
@@ -135,13 +133,18 @@ table.dataTable thead .sorting_disabled {
 
 .dataTables_info_wrapper {
     display: none;
+    display: none;
 }
 
 .dataTables_length_wrapper {
     margin-top: $padding-large-vertical;
+    margin-top: $padding-large-vertical;
 }
 
 .dataTables_length {
+    .form-control {
+        @include form-control;
+    }
     .form-control {
         @include form-control;
     }
@@ -150,11 +153,19 @@ table.dataTable thead .sorting_disabled {
 .dataTables_filter {
     label {
         @include input-search;
+    label {
+        @include input-search;
 
         display: flex;
         justify-content: flex-start;
     }
+        display: flex;
+        justify-content: flex-start;
+    }
 
+    .form-control {
+        @include form-control;
+    }
     .form-control {
         @include form-control;
     }
@@ -174,6 +185,22 @@ table.dataTable thead .sorting_disabled {
     text-align: left;
     text-transform: uppercase;
 
+    .btn-sort {
+        margin-top: 0.1rem;
+        margin-left: 0.25rem;
+        opacity: 0;
+
+        &:hover {
+            border-bottom: none;
+        }
+    }
+
+    &:hover,
+    &:active,
+    &:focus,
+    .dt-ordering-asc &,
+    .dt-ordering-desc & {
+        color: $brand-secundary;
     &:hover,
     &:active,
     &:focus,
@@ -183,14 +210,12 @@ table.dataTable thead .sorting_disabled {
 
         .btn-sort {
             opacity: 1;
-            color: var(--bs-secondary, $brand-secundary);
-
-            &::before {
-                color: var(--bs-secondary, $brand-secundary);
-            }
         }
     }
 
+    .data-table__header--invisible & {
+        display: none;
+    }
     .data-table__header--invisible & {
         display: none;
     }
@@ -198,12 +223,18 @@ table.dataTable thead .sorting_disabled {
 
 .data-table__search {
     margin: 0 0.1rem 0 -1rem;
+    margin: 0 0.1rem 0 -1rem;
 
     .dropdown-toggle {
         margin-top: 0.1rem;
         transition: 0.2s opacity ease-in;
-        opacity: 0.8;
+        opacity: 0;
 
+        &:hover,
+        &:active,
+        &:focus {
+            opacity: 1;
+        }
         &:hover,
         &:active,
         &:focus {
@@ -214,7 +245,14 @@ table.dataTable thead .sorting_disabled {
             content: normal;
         }
     }
+        &::after {
+            content: normal;
+        }
+    }
 
+    &.show .dropdown-toggle {
+        opacity: 1;
+    }
     &.show .dropdown-toggle {
         opacity: 1;
     }
@@ -222,13 +260,28 @@ table.dataTable thead .sorting_disabled {
     label {
         @include input-search;
     }
+    label {
+        @include input-search;
+    }
 
+    .input .form-control {
+        width: auto;
+    }
     .input .form-control {
         width: auto;
     }
 
     .data-table__header--invisible & {
         display: none;
+    }
+}
+
+.col {
+    .dt-search {
+        input[type="search"] {
+            // The styling has to be _very_ specific, if I leave out the `.col` field, it won't work.
+            width: 98%; // I'm not sure where the bug this solves came from - I think it may be because of the DT upgrade (and just wasn't spotted) - if I use 100% it causes the other elements to be pushed down (I'm not keen on using percentiles, either).
+        }
     }
 }
 
@@ -239,11 +292,21 @@ table.dataTable thead .sorting_disabled {
     border-bottom: 0;
     border-top-left-radius: $table-border-radius;
     border-top-right-radius: $table-border-radius;
+    box-sizing: border-box;
+    border: 1px solid $gray;
+    border-bottom: 0;
+    border-top-left-radius: $table-border-radius;
+    border-top-right-radius: $table-border-radius;
 
     thead {
         // Why is this not in the variables file?? Or even more important, why is this a variable?
         $table-bordered-head-color: #585858;
+    thead {
+        // Why is this not in the variables file?? Or even more important, why is this a variable?
+        $table-bordered-head-color: #585858;
 
+        color: $table-bordered-head-color;
+    }
         color: $table-bordered-head-color;
     }
 }
@@ -254,7 +317,14 @@ table.dataTable thead .sorting_disabled {
     border-top: 0;
     border-bottom-left-radius: $table-border-radius;
     border-bottom-right-radius: $table-border-radius;
+    border: 1px solid $gray;
+    border-top: 0;
+    border-bottom-left-radius: $table-border-radius;
+    border-bottom-right-radius: $table-border-radius;
 
+    .table-striped {
+        border-bottom: 0;
+    }
     .table-striped {
         border-bottom: 0;
     }
@@ -263,16 +333,30 @@ table.dataTable thead .sorting_disabled {
 .dataTables_scrollFoot .table-striped.table--bordered,
 .dt-scroll-foot .table-striped.table--bordered {
     border: 0;
+    border: 0;
 }
 
 .data-table__header-wrapper {
     display: flex;
     position: relative;
     align-items: flex-start;
+
+    &.filter .data-table__search .dropdown-toggle.btn-search {
+        opacity: 1;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        .data-table__search .dropdown-toggle {
+            opacity: 1;
+        }
+    }
 }
 
 // Pagination
 .dataTables_paginate .pagination {
+    justify-content: center;
     justify-content: center;
 }
 
@@ -280,7 +364,16 @@ table.dataTable thead .sorting_disabled {
     .page-link {
         transition: 0.2s all ease;
     }
+    .page-link {
+        transition: 0.2s all ease;
+    }
 
+    &.active .page-link,
+    .page-link:hover {
+        border-color: $brand-secundary;
+        background-color: $brand-secundary;
+        color: $white;
+    }
     &.active .page-link,
     .page-link:hover {
         border-color: $brand-secundary;
@@ -311,10 +404,17 @@ table.dataTable thead .sorting_disabled {
 /* Necessary to overrule default styling */
 div.dataTables_wrapper div.dataTables_length {
     text-align: left;
+    text-align: left;
 
     label {
         justify-content: flex-start;
+    label {
+        justify-content: flex-start;
 
+        .form-control {
+            margin-left: $padding-small-horizontal;
+        }
+    }
         .form-control {
             margin-left: $padding-small-horizontal;
         }
@@ -325,6 +425,8 @@ div.dataTables_wrapper div.dataTables_length {
 div.dataTables_wrapper div.dataTables_filter input.form-control {
     width: 100%;
     margin-left: 0;
+    width: 100%;
+    margin-left: 0;
 }
 
 // Table fullscreen mode
@@ -333,7 +435,14 @@ div.dataTables_wrapper div.dataTables_filter input.form-control {
         padding: 0;
         background-color: $white;
     }
+    body {
+        padding: 0;
+        background-color: $white;
+    }
 
+    .main {
+        max-width: none;
+    }
     .main {
         max-width: none;
     }
@@ -344,7 +453,16 @@ div.dataTables_wrapper div.dataTables_filter input.form-control {
     .content-block__head {
         display: none;
     }
+    .sidebar,
+    .table-header,
+    .content-block__navigation,
+    .content-block__head {
+        display: none;
+    }
 
+    .content-block__main {
+        padding-top: 0;
+    }
     .content-block__main {
         padding-top: 0;
     }
@@ -352,9 +470,12 @@ div.dataTables_wrapper div.dataTables_filter input.form-control {
     .dataTables_wrapper {
         padding-top: $padding-large-vertical;
     }
+    .dataTables_wrapper {
+        padding-top: $padding-large-vertical;
+    }
 
     .data-table {
-        margin-top: 0 !important; // Necessary to overrule external styling
+        margin-top: 0 !important; //Necessary to overrule external styling
     }
 }
 
@@ -362,11 +483,20 @@ div.dataTables_wrapper div.dataTables_filter input.form-control {
     .dataTables_wrapper .row--main {
         margin-bottom: $padding-large-vertical;
     }
+    .dataTables_wrapper .row--main {
+        margin-bottom: $padding-large-vertical;
+    }
 
     .dataTables_length_wrapper {
         margin-top: 0;
     }
+    .dataTables_length_wrapper {
+        margin-top: 0;
+    }
 
+    .dataTables_length label {
+        justify-content: flex-end;
+    }
     .dataTables_length label {
         justify-content: flex-end;
     }
@@ -375,7 +505,14 @@ div.dataTables_wrapper div.dataTables_filter input.form-control {
         display: block;
         text-align: right;
     }
+    .dataTables_info_wrapper {
+        display: block;
+        text-align: right;
+    }
 
+    .dataTables_paginate .pagination {
+        justify-content: flex-start;
+    }
     .dataTables_paginate .pagination {
         justify-content: flex-start;
     }
@@ -383,6 +520,7 @@ div.dataTables_wrapper div.dataTables_filter input.form-control {
 
 div.dataTables_wrapper div.dataTables_processing,
 div.td-container div.dt-processing {
+    top: 10rem;
     top: 10rem;
 }
 
@@ -402,219 +540,85 @@ table.table-purge {
         background-color: $brand-secundary;
         color: $white;
     }
+    thead tr th,
+    tbody tr td {
+        text-align: center !important; // For some reason, this doesn't override unless I do !important
+    }
+
+    tbody tr td {
+        border: 1px solid $gray;
+        border-top: 0;
+    }
+
+    thead tr th {
+        background-color: $brand-secundary;
+        color: $white;
+    }
 }
 
 button.btn-remove,
 button.btn-add {
+    margin: $padding-base-vertical 0;
     margin: $padding-base-vertical 0;
 }
 
 .dt-column-order {
     display: none;
     visibility: collapse;
+    display: none;
+    visibility: collapse;
 }
 
 .dt-start,
 .dt-end {
-    @extend .py-2;
+    @extend .py-4;
     @extend .align-content-center;
     @extend .d-flex;
     @extend .flex-row;
     @extend .justify-content-between;
     @extend .align-items-center;
-    @extend .m-0;
 }
 
-.dt-layout-row {
+.dt-start {
+    flex-grow: 1;
+
+    label {
+        @extend .visually-hidden;
+    }
+
+    .dt-search {
+        width: 100%;
+        input {
+            width: 96% !important; // Necessary to override the default styling
+        }
+    }
+}
+
+.dt-length {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: $padding-base-vertical;
+    align-content: center;
+    justify-content: flex-end;
 
-    &.dt-layout-row--no-padding {
+    .custom-select {
+        margin: 0;
+        margin-left: 1rem;
+        max-width: 5rem;
+    }
+
+    label {
+        white-space: nowrap;
+        margin: 0;
         padding: 0;
     }
+}
 
-    .dt-start {
-        flex-grow: 1;
-
-        label {
-            display: none;
-        }
-
-        .dt-search {
-            @extend .pe-2;
-            width: 100%;
-
-            input[type="search"] {
-                width: 100%;
-                @extend .m-0;
-            }
-        }
-    }
-
-    &:has(.dt-start:empty + .dt-end:empty) {
-        display: none;
-    }
+.dt-layout-row {
+    @extend .row;
+    @extend .justify-content-between;
 }
 
 .dt-layout-cell:has(table.data-table) {
     width: 100%;
-}
-
-.dt-orderable-asc,
-.dt-orderable-desc {
-    .data-table__header-wrapper {
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-
-        .dt-column-title {
-            white-space: nowrap;
-        }
-
-        .btn-search {
-            @extend .mx-2;
-            opacity: 0;
-            transition: 0.2s opacity ease-in;
-
-            &::before {
-                @extend %icon-font;
-                content: "\e813"; // Sort icon
-                transform: none;
-                color: var(--bs-secondary, $brand-secundary);
-            }
-        }
-
-        &.filter {
-            .btn-search {
-                opacity: 1;
-                color: var(--bs-secondary, $brand-secundary);
-
-                &::before {
-                    color: var(--bs-secondary, $brand-secundary);
-                }
-            }
-        }
-
-        .btn-sort {
-            margin-top: 0.1rem;
-            margin-left: 0.25rem;
-            opacity: 0;
-            transition: 0.2s opacity ease-in;
-
-            span {
-                @extend .visually-hidden;
-            }
-
-            &::before {
-                color: var(--bs-secondary, $brand-secundary);
-                @extend %bootstrap-icons;
-                content: "\F283"; // Sort icon
-                transform: none;
-            }
-        }
-    }
-
-    &:hover,
-    &:active,
-    &:focus {
-        .btn-search {
-            opacity: 1;
-        }
-
-        .btn-sort {
-            opacity: 1;
-            color: var(--bs-secondary, $brand-secundary);
-
-            &::before {
-                color: var(--bs-secondary, $brand-secundary);
-            }
-        }
-    }
-}
-
-.dt-ordering-asc,
-.dt-ordering-desc {
-    .data-table__header-wrapper {
-        .btn-sort {
-            opacity: 1;
-
-            &::before {
-                opacity: 1;
-                color: var(--bs-primary, $brand-primary);
-            }
-        }
-    }
-}
-
-.dt-ordering-desc {
-    .data-table__header-wrapper {
-        .btn-sort {
-            &::before {
-                content: "\F282"; // Sort descending icon
-            }
-        }
-    }
-}
-
-.dt-ordering-asc {
-    .data-table__header-wrapper {
-        .btn-sort {
-            &::before {
-                content: "\F286"; // Sort ascending icon
-            }
-        }
-    }
-}
-
-thead,
-tbody,
-tfoot,
-tr,
-td,
-th {
-    border: none;
-}
-
-.dt-layout-row {
-    margin-bottom: $padding-base-vertical;
-
-    .dt-layout-cell.dt-full {
-        width: 100%;
-
-        .dt-search {
-            width: 100%;
-
-            input[type="search"] {
-                width: 100%;
-                @extend .m-0;
-            }
-        }
-    }
-}
-
-.align-tables {
-    padding-top: 2.8rem;
-}
-
-/* This is because bootstrap _loves_ to add a box-shadow to the table rows */
-.data-table>tbody>tr {
-    background-color: $white;
-    box-shadow: none;
-
-    &>td {
-        box-shadow: none;
-    }
-}
-
-.table-hover>tbody>tr>* {
-    transition: all 0.2s ease-in;
-}
-
-.table-hover>tbody>tr:hover>* {
-    background-color: rgba(var(--dt-row-hover), 0.075);
-    box-shadow: none;
 }

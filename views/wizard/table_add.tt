@@ -1215,6 +1215,12 @@
                 # prepare table config
                 table_id           = 'custom_field_permissions_table';
                 table_class        = 'table-lines table-no-margin';
+                table_layout = {
+                    topStart => "search",
+                    topEnd   => "pageLength",
+                    bottomStart => "paging",
+                    bottomEnd   => "info"
+                }
                 table_language     = {
                   emptyTable => "There are no groups available",
                   lengthMenu => "Rows per page _MENU_",
@@ -1440,6 +1446,12 @@
                 [%
                   table_id           = 'fields';
                   table_class        = 'table-lines';
+                  table_layout = {
+                    topStart => "search",
+                    topEnd   => "pageLength",
+                    bottomStart => "paging",
+                    bottomEnd => "info"
+                  }
                   table_language     = {
                     lengthMenu => "Rows per page _MENU_",
                     paginate   => {

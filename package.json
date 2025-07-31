@@ -13,7 +13,6 @@
   "dependencies": {
     "@egjs/hammerjs": "^2.0.0",
     "@lol768/jquery-querybuilder-no-eval": "^2.6.0",
-    "@testing-library/dom": "^10.4.1",
     "bootstrap": "^4.6.0",
     "bootstrap-datepicker": "^1.9.0",
     "bootstrap-select": "^1.13.18",
@@ -57,6 +56,7 @@
     "@eslint/js": "^9.31.0",
     "@jest/globals": "^30.0.5",
     "@stylistic/eslint-plugin": "^5.2.0",
+    "@testing-library/dom": "^10.4.1",
     "@testing-library/react": "^16.3.0",
     "@types/jest": "^30.0.0",
     "@types/jquery": "^3.5.32",

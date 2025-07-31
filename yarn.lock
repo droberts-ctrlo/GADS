@@ -1196,15 +1196,7 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@babel/types@^7.22.5":
-  version "7.28.6"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.28.6.tgz#c3e9377f1b155005bcc4c46020e7e394e13089df"
-  integrity sha512-0ZrskXVEHSWIqZM/sQZ4EV3jZJXRkio/WCxaqKZP1g//CEWEPSfeZFcms4XeKBCHU0ZKnIkdJeU/kF+eRp5lBg==
-  dependencies:
-    "@babel/helper-string-parser" "^7.27.1"
-    "@babel/helper-validator-identifier" "^7.28.5"
-
-"@babel/types@^7.24.7":
+"@babel/types@^7.22.5", "@babel/types@^7.24.7":
   version "7.28.5"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.28.5.tgz#10fc405f60897c35f07e85493c932c7b5ca0592b"
   integrity sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==
@@ -3058,15 +3050,15 @@ bootstrap-select@^1.13.18:
   resolved "https://registry.yarnpkg.com/bootstrap-select/-/bootstrap-select-1.13.18.tgz#4557119d58dc1159189977161c803962220e4dda"
   integrity sha512-V1IzK4rxBq5FrJtkzSH6RmFLFBsjx50byFbfAf8jYyXROWs7ZpprGjdHeoyq2HSsHyjJhMMwjsQhRoYAfxCGow==
 
-bootstrap@4.6:
-  version "4.6.2"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.2.tgz#8e0cd61611728a5bf65a3a2b8d6ff6c77d5d7479"
-  integrity sha512-51Bbp/Uxr9aTuy6ca/8FbFloBUJZLHwnhTcnjIeRn2suQWsWzcuJhGjKDB5eppVte/8oCdOL3VuwxvZDUggwGQ==
-
 bootstrap@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.4.1.tgz#c3a347d419e289ad11f4033e3c4132b87c081d72"
   integrity sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA==
+
+bootstrap@^4.6.0:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.2.tgz#8e0cd61611728a5bf65a3a2b8d6ff6c77d5d7479"
+  integrity sha512-51Bbp/Uxr9aTuy6ca/8FbFloBUJZLHwnhTcnjIeRn2suQWsWzcuJhGjKDB5eppVte/8oCdOL3VuwxvZDUggwGQ==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -6289,7 +6281,7 @@ makeerror@1.0.12:
   dependencies:
     tmpl "1.0.5"
 
-marked@^15.0.0:
+marked@^15.0.12:
   version "15.0.12"
   resolved "https://registry.yarnpkg.com/marked/-/marked-15.0.12.tgz#30722c7346e12d0a2d0207ab9b0c4f0102d86c4e"
   integrity sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA==

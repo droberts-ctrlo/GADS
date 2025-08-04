@@ -657,9 +657,9 @@ class SelectWidgetComponent extends Component {
 
         // Collect values of linked fields
         const values = ['submission-token=' + submissionToken];
-        $.each(filterFields, function (_, field) {
+        $.each(filterFields, function(_, field) {
 
-            $('input[name=' + field + ']').each(function (_, input) {
+            $('input[name=' + field + ']').each(function(_, input) {
                 const $input = $(input);
 
                 switch ($input.attr('type')) {

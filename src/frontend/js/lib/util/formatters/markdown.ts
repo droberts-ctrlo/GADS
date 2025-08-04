@@ -1,4 +1,4 @@
-import { marked } from 'marked';
+import { marked } from 'marked'; // Do not go above v15.x.x for now
 
 type MarkdownCode = string;
 
@@ -20,7 +20,7 @@ function MarkDown(strings: TemplateStringsArray, ...values: (stringLike | string
         }
     }
     str = str.replace(/\\n/g, '\n\n');
-    return marked(str).trim();
+    return marked(str, { async: false }).trim();
 }
 
 export { MarkDown };

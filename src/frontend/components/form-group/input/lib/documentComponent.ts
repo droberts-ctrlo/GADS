@@ -270,10 +270,10 @@ class DocumentComponent {
 
     /**
      * Show an exception in the error handler control
-     * @param e The exception to show
+     * @param {string | Error} e The error to be displayed.
      */
-    showException(e: any) {
-        this.handler.addError(e instanceof Error ? e.message : typeof e == 'object' && 'message' in e ? e.message : e.toString());
+    showException(e: string | Error) {
+        this.handler.addError(e);
     }
 }
 

@@ -282,7 +282,7 @@ class DocumentComponent {
  * @param {JQuery<HTMLElement> | HTMLElement} el The element to attach the document component to
  * @returns {DocumentComponent} The initialized document component
  */
-export default function documentComponent(el: JQuery<HTMLElement> | HTMLElement) {
+export default function documentComponent(el: JQuery<HTMLElement> | HTMLElement): DocumentComponent {
     const component = new DocumentComponent(el);
     component.init();
     return component;

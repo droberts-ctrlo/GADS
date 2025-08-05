@@ -2621,11 +2621,6 @@ arraybuffer.prototype.slice@^1.0.4:
     get-intrinsic "^1.2.6"
     is-array-buffer "^3.0.4"
 
-asap@~2.0.6:
-  version "2.0.6"
-  resolved "https://registry.npmjs.org/asap/-/asap-2.0.6.tgz"
-  integrity sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==
-
 asn1@~0.2.3:
   version "0.2.6"
   resolved "https://registry.npmjs.org/asn1/-/asn1-0.2.6.tgz"
@@ -2824,10 +2819,10 @@ bootstrap@^3.4.1:
   resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-3.4.1.tgz"
   integrity sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA==
 
-bootstrap@^4.6.0:
-  version "4.6.2"
-  resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-4.6.2.tgz"
-  integrity sha512-51Bbp/Uxr9aTuy6ca/8FbFloBUJZLHwnhTcnjIeRn2suQWsWzcuJhGjKDB5eppVte/8oCdOL3VuwxvZDUggwGQ==
+bootstrap@^5.3.7:
+  version "5.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.7.tgz#8640065036124d961d885d80b5945745e1154d90"
+  integrity sha512-7KgiD8UHjfcPBHEpDNg+zGz8L3LqR3GVwqZiBRFX04a1BCArZOz1r2kjly2HQ0WokqTO0v1nF+QAt8dsW4lKlw==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -3154,16 +3149,6 @@ core-js-compat@^3.43.0:
   dependencies:
     browserslist "^4.25.1"
 
-core-js@^3.19.2:
-  version "3.45.0"
-  resolved "https://registry.npmjs.org/core-js/-/core-js-3.45.0.tgz"
-  integrity sha512-c2KZL9lP4DjkN3hk/an4pWn5b5ZefhRJnAc42n6LJ19kSnbeRbdQZE5dSeE2LBol1OwJD3X1BQvFTAsa8ReeDA==
-
-core-js@^3.44.0:
-  version "3.44.0"
-  resolved "https://registry.npmjs.org/core-js/-/core-js-3.44.0.tgz"
-  integrity sha512-aFCtd4l6GvAXwVEh3XbbVqJGHDJt0OZRa+5ePGx3LLwi12WfexqQxcsohb2wgsa/92xtl19Hd66G/L+TaAxDMw==
-
 core-util-is@1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz"
@@ -3326,76 +3311,69 @@ data-view-byte-offset@^1.0.1:
     es-errors "^1.3.0"
     is-data-view "^1.0.1"
 
-datatables.net-bs4@>=1.11.0, datatables.net-bs4@^2, datatables.net-bs4@^2.3.2:
+datatables.net-bs5@>=1.11.0, datatables.net-bs5@^2, datatables.net-bs5@^2.3.2:
   version "2.3.2"
-  resolved "https://registry.npmjs.org/datatables.net-bs4/-/datatables.net-bs4-2.3.2.tgz"
-  integrity sha512-I2a2AeRO+iiMLUI/yCYo8UevscpYxray7AJGUnMep4HmqrQ+NQgseYr38N/kNdY7vxU5XKqq1c+uSGAPkk9Q9A==
+  resolved "https://registry.yarnpkg.com/datatables.net-bs5/-/datatables.net-bs5-2.3.2.tgz#cffb8007a9f752a997bc70c0dbe9f545edfd18eb"
+  integrity sha512-1rh0ZTLoiziIQ4oAtgr+IOYVgJfAIceDnbDe535u8kv191pBAdTrKF6ovQO98Xy9mDXLdLNB7QCrLiV/sgPoQw==
   dependencies:
     datatables.net "2.3.2"
     jquery ">=1.7"
 
-datatables.net-buttons-bs4@^3.2.4:
+datatables.net-buttons-bs5@^3.2.4:
   version "3.2.4"
-  resolved "https://registry.npmjs.org/datatables.net-buttons-bs4/-/datatables.net-buttons-bs4-3.2.4.tgz"
-  integrity sha512-pWg5YIdE/aAIUop82eQWkzDQQOWZfRUtZBK3weiZVMcdMuq8x1bVlXNsxU5QvlqArZPjPHrsPggj53g3Jo7QGw==
+  resolved "https://registry.yarnpkg.com/datatables.net-buttons-bs5/-/datatables.net-buttons-bs5-3.2.4.tgz#3d47fe68631efd7731a5b40a9980ea8d89d8b610"
+  integrity sha512-yX8Ia32P1D9L02XWjisA6a9fFp0LgmzpIcvf/4ty+QG5/qj1tOOqWgsXsxxIY2Uj918WmLJS6VaJabRAMoAqHA==
   dependencies:
-    datatables.net-bs4 "^2"
+    datatables.net-bs5 "^2"
     datatables.net-buttons "3.2.4"
     jquery ">=1.7"
 
 datatables.net-buttons@3.2.4:
   version "3.2.4"
-  resolved "https://registry.npmjs.org/datatables.net-buttons/-/datatables.net-buttons-3.2.4.tgz"
+  resolved "https://registry.yarnpkg.com/datatables.net-buttons/-/datatables.net-buttons-3.2.4.tgz#c58cc0bb518da8738bec6e64a54c1135dc257141"
   integrity sha512-anA39/R0kpHA2DOwqEHy/ZMXD5vf4tWmyNO0BnO0kJG7AFNvGTUCWBnBifXYg3G64U6JYpYY+MuTFKIB1/ZMTQ==
   dependencies:
     datatables.net "^2"
     jquery ">=1.7"
 
-datatables.net-responsive-bs4@^3.0.5:
+datatables.net-responsive-bs5@^3.0.5:
   version "3.0.5"
-  resolved "https://registry.npmjs.org/datatables.net-responsive-bs4/-/datatables.net-responsive-bs4-3.0.5.tgz"
-  integrity sha512-RP80U3pkzzmQZ2T5zijy/9tSFa0GfLgkG4ks8XLUwrAwPlL4MewgpdLD3oYLHvkNQoEcGydyIyWE71lizXnmNQ==
+  resolved "https://registry.yarnpkg.com/datatables.net-responsive-bs5/-/datatables.net-responsive-bs5-3.0.5.tgz#28e00ea853ef91abd70b4168ef90140d5e908f35"
+  integrity sha512-dp/4gBowyJIEjeD1bDKyjCGCiYvusxG/Rxrnfp2QBpKTZaEBP+17uo9mooCm5a7HMS3j5IDFSy1dUoAJrzk6sg==
   dependencies:
-    datatables.net-bs4 "^2"
+    datatables.net-bs5 "^2"
     datatables.net-responsive "3.0.5"
     jquery ">=1.7"
 
 datatables.net-responsive@3.0.5:
   version "3.0.5"
-  resolved "https://registry.npmjs.org/datatables.net-responsive/-/datatables.net-responsive-3.0.5.tgz"
+  resolved "https://registry.yarnpkg.com/datatables.net-responsive/-/datatables.net-responsive-3.0.5.tgz#fdebdd8518de11a085a774b9a8a2f6d2b37d1fd5"
   integrity sha512-EnDY2OQN+f4XE72J+dajNuJwT78/GnCuuw8ACusrXaF/VpGyFEpBNr1JDzUTBj+cv7KGpDObks8AaL2p/Z2OVg==
   dependencies:
     datatables.net "^2"
     jquery ">=1.7"
 
-datatables.net-rowreorder-bs4@^1.5.0:
+datatables.net-rowreorder-bs5@^1.5.0:
   version "1.5.0"
-  resolved "https://registry.npmjs.org/datatables.net-rowreorder-bs4/-/datatables.net-rowreorder-bs4-1.5.0.tgz"
-  integrity sha512-4C9tzLRaisO+IOdJ1n6NRQ8ak0zC0IbX50Ed5hg+5PT7VJLI9klH+GBwE6hpF28UTWk7E6somzOwnRHLexqXdA==
+  resolved "https://registry.yarnpkg.com/datatables.net-rowreorder-bs5/-/datatables.net-rowreorder-bs5-1.5.0.tgz#e625561dec922ed54f5e9ec4a1ee0bfdd37788dc"
+  integrity sha512-Z57SfxBmlhQ03CEsjl4Txa22/hdBuB2b9cwnEAo8u4/L4YAfTGq+9PixsWN5M/sV9uHVOCjzLQYJmBjSYwc6oQ==
   dependencies:
-    datatables.net-bs4 ">=1.11.0"
+    datatables.net-bs5 ">=1.11.0"
     datatables.net-rowreorder "1.5.0"
     jquery ">=1.7"
 
 datatables.net-rowreorder@1.5.0:
   version "1.5.0"
-  resolved "https://registry.npmjs.org/datatables.net-rowreorder/-/datatables.net-rowreorder-1.5.0.tgz"
+  resolved "https://registry.yarnpkg.com/datatables.net-rowreorder/-/datatables.net-rowreorder-1.5.0.tgz#f8b5242bd97df6b9522573378e98e8c7d64002dd"
   integrity sha512-Kkq57tdJHrUCYkS8vywhL5tqKtl2q3K3p8A6wkIdwMX2b8YVjtywhQbXvvVLZnlMQsdX194FXVK1AgAwcm4hFg==
   dependencies:
     datatables.net ">=1.11.0"
     jquery ">=1.7"
 
-datatables.net@2.3.2:
+datatables.net@2.3.2, datatables.net@>=1.11.0, datatables.net@^2:
   version "2.3.2"
-  resolved "https://registry.npmjs.org/datatables.net/-/datatables.net-2.3.2.tgz"
+  resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-2.3.2.tgz#6821f6288e6ad3cb6879c33e0e7e11d4091d330b"
   integrity sha512-31TzwIQM0+pr2ZOEOEH6dsHd/WSAl5GDDGPezOHPI3mM2NK4lcDyOoG8xXeWmSbVfbi852LNK5C84fpp4Q+qxg==
-  dependencies:
-    jquery ">=1.7"
-
-datatables.net@>=1.11.0, datatables.net@^2:
-  version "2.0.8"
-  resolved "https://registry.npmjs.org/datatables.net/-/datatables.net-2.0.8.tgz"
-  integrity sha512-4/2dYx4vl975zQqZbyoVEm0huPe61qffjBRby7K7V+y9E+ORq4R8KavkgrNMmIgO6cl85Pg4AvCbVjvPCIT1Yg==
   dependencies:
     jquery ">=1.7"
 
@@ -6159,11 +6137,6 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-popper.js@^1.16.1:
-  version "1.16.1"
-  resolved "https://registry.npmjs.org/popper.js/-/popper.js-1.16.1.tgz"
-  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
-
 possible-typed-array-names@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/possible-typed-array-names/-/possible-typed-array-names-1.0.0.tgz"
@@ -6261,13 +6234,6 @@ process@^0.11.10:
   resolved "https://registry.npmjs.org/process/-/process-0.11.10.tgz"
   integrity sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==
 
-promise@^8.1.0:
-  version "8.3.0"
-  resolved "https://registry.npmjs.org/promise/-/promise-8.3.0.tgz"
-  integrity sha512-rZPNPKTOYVNEEKFaq1HqTgOwZD+4/YHS5ukLzQCypkj+OkYx7iv0mA91lJlpPPZ8vMau3IIGj5Qlwrx+8iiSmg==
-  dependencies:
-    asap "~2.0.6"
-
 prop-types-extra@^1.1.0:
   version "1.1.1"
   resolved "https://registry.npmjs.org/prop-types-extra/-/prop-types-extra-1.1.1.tgz"
@@ -6325,31 +6291,12 @@ queue-microtask@^1.2.2:
   resolved "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-raf@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.npmjs.org/raf/-/raf-3.4.1.tgz"
-  integrity sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==
-  dependencies:
-    performance-now "^2.1.0"
-
 randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/randombytes/-/randombytes-2.1.0.tgz"
   integrity sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==
   dependencies:
     safe-buffer "^5.1.0"
-
-react-app-polyfill@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/react-app-polyfill/-/react-app-polyfill-3.0.0.tgz"
-  integrity sha512-sZ41cxiU5llIB003yxxQBYrARBqe0repqPTTYBTmMqTz9szeBbE37BehCE891NZsmdZqqP+xWKdT3eo3vOzN8w==
-  dependencies:
-    core-js "^3.19.2"
-    object-assign "^4.1.1"
-    promise "^8.1.0"
-    raf "^3.4.1"
-    regenerator-runtime "^0.13.9"
-    whatwg-fetch "^3.6.2"
 
 react-bootstrap@^2.10.10:
   version "2.10.10"
@@ -6487,11 +6434,6 @@ regenerate@^1.4.2:
   version "1.4.2"
   resolved "https://registry.npmjs.org/regenerate/-/regenerate-1.4.2.tgz"
   integrity sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==
-
-regenerator-runtime@^0.13.9:
-  version "0.13.11"
-  resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz"
-  integrity sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==
 
 regenerator-runtime@^0.14.1:
   version "0.14.1"
@@ -7626,11 +7568,6 @@ whatwg-encoding@^3.1.1:
   integrity sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==
   dependencies:
     iconv-lite "0.6.3"
-
-whatwg-fetch@^3.6.2:
-  version "3.6.20"
-  resolved "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.20.tgz"
-  integrity sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg==
 
 whatwg-mimetype@^4.0.0:
   version "4.0.0"

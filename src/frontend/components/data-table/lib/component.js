@@ -379,7 +379,7 @@ class DataTableComponent extends Component {
 
         if (col && col.typeahead) {
             import(/*webpackChunkName: "typeahead" */ 'util/typeahead')
-                .then(({ default: TypeaheadBuilder }) => {
+                .then(({default: TypeaheadBuilder})=>{
                     const builder = new TypeaheadBuilder();
                     builder
                         .withAjaxSource(this.getApiEndpoint(columnId))

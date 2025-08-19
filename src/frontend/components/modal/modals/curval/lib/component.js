@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 import ModalComponent from '../../../lib/component';
 import { setFieldValues } from 'set-field-values';
+import { guid as Guid } from 'guid';
 import { initializeRegisteredComponents } from 'component';
 import { validateRadioGroup, validateCheckboxGroup } from 'validation';
 import { fromJson } from 'util/common';
@@ -151,7 +152,7 @@ class CurvalModalComponent extends ModalComponent {
             // guids in the autosave
             let is_new_row;
             if (!guid && !current_id) {
-                guid = crypto.randomUUID();
+                guid = Guid();
                 is_new_row = true;
             }
             const hidden_input = $('<input>').attr({
@@ -192,7 +193,7 @@ class CurvalModalComponent extends ModalComponent {
                 $answersList.find('li input').prop('checked', false);
             }
 
-            guid ||= crypto.randomUUID();
+            guid ||= Guid();
             const id = `field${col_id}_${guid}`;
             const deleteButton = multi
                 ? '<button class="close select-widget-value__delete" aria-hidden="true" aria-label="delete" title="delete" tabindex="-1">&times</button>'
@@ -264,10 +265,10 @@ class CurvalModalComponent extends ModalComponent {
     }
 
     /**
-     * Update the state of the widget based on the current selection.
-     * @param {JQuery<HTMLElement>} $widget - The jQuery object representing the widget.
-     * @param {boolean} multi - Whether the widget allows multiple selections.
-     * @param {boolean} required - Whether the widget is required.
+     * Update the widget state based on the current values.
+     * @param {JQuery} $widget The widget to update.
+     * @param {boolean} multi Whether the widget is multi-select.
+     * @param {boolean} required Whether the widget is required.
      */
     updateWidgetState($widget, multi, required) {
         const $current = $widget.find('.current');
@@ -285,9 +286,9 @@ class CurvalModalComponent extends ModalComponent {
     }
 
     /**
-     * Handle validation failure in the curval modal.
-     * @param {JQuery<HTMLElement>} form - The form element being validated.
-     * @param {string} errorMessage - The error message to display.
+     * Triggered when the modal validation fails.
+     * @param {JQuery} form The form that was submitted.
+     * @param {string} errorMessage The error message to display.
      */
     curvalModalValidationFailed(form, errorMessage) {
         form
@@ -350,7 +351,7 @@ class CurvalModalComponent extends ModalComponent {
             if (mode === 'edit') {
                 guid = hidden.data('guid');
                 if (!guid) {
-                    guid = crypto.randomUUID();
+                    guid = Guid();
                     hidden.attr('data-guid', guid);
                 }
             }

@@ -274,7 +274,7 @@
               IF record.new_entry AND page != "bulk";
                 right_buttons.push({
                   type  = "button",
-                  class = "btn btn-inverted btn-js-remove-unload btn-js-submit-draft-record",
+                  class = "btn btn-primary btn-inverted btn-js-remove-unload btn-js-submit-draft-record",
                   id    = "save-draft",
                   name  = "draft",
                   value = "save-draft",
@@ -284,7 +284,7 @@
 
               right_buttons.push({
                 type  = "button",
-                class = "btn btn-inverted btn-js-remove-unload btn-js-submit-record",
+                class = "btn btn-primary btn-inverted btn-js-remove-unload btn-js-submit-record",
                 id    = "submit-and-remain",
                 name  = "submit",
                 value = "submit-and-remain",

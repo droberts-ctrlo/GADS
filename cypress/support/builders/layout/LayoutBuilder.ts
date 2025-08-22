@@ -211,7 +211,7 @@ class CurvalLayoutBuilder extends LayoutBuilderBase implements ICurvalLayoutBuil
 
     buildSpecific() {
         // Expand Field settings
-        cy.get("button")
+        cy.get("span")
             .contains("Field settings for fields from another table")
             .click();
         // Enter the options
@@ -226,6 +226,5 @@ class CurvalLayoutBuilder extends LayoutBuilderBase implements ICurvalLayoutBuil
         cy.get("button.btn-xs[data-delete='rule']")
             .eq(1)
             .click();
-        //Someone owes me a drink!
     }
 }

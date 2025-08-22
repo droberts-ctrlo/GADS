@@ -15,7 +15,7 @@ describe('Data table', () => {
       tb.should('exist');
       const tabs = tb.find('ul').find('li');
       tabs.should('exist').should('have.length', 4);
-      const tabContent = ['Records', 'Dashboard', 'Edit table', 'Reports'];
+      const tabContent = ['Records', 'Dashboard', 'Edit Table', 'Reports'];
       tabs.each((tab, idx) => {
         cy.wrap(tab).should('exist').contains(tabContent[idx]);
       });

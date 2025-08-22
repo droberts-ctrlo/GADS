@@ -37,14 +37,13 @@ describe('Another Test Suite', () => {
     });
 
     it('table can be deleted', () => {
-        // TODO: We need to fix the delete button so we don't need to force click
         cy.visit('http://localhost:3000/1-test_table/edit');
         cy.location("pathname").should("include", "1-test_table/edit");
-        cy.contains('button', 'Delete table').click({force: true});
+        cy.contains('button', 'Delete table').click();
         cy.get('.modal-dialog').within(() => {
             cy.contains('h3.modal-title', 'Delete - 1-test-table').should('exist');
         });
-        cy.get('.modal-footer__right').contains('button', 'Delete').click({force: true});
+        cy.get('.modal-footer__right').contains('button', 'Delete').click();
         cy.location("pathname").should("include", "/table");
         cy.contains('.alert.alert-success', 'The table has been deleted successfully').should('exist');
         cy.contains('1-test-table').should('not.exist');

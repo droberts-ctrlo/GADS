@@ -284,7 +284,7 @@ Cypress.Commands.add("deleteInstanceByShortName", (shortName: string) => {
 
 Cypress.Commands.add("setAllTablePermissions", () => {
     cy.location('pathname').should('include', '/table');
-    cy.get('.table-header-bottom').find('ul').find('li').contains('Edit table').click();
+    cy.get('.table-header-bottom').find('ul').find('li').contains('Edit Table').click();
     cy.get('.content-block__navigation-left').find('ul').find('li').contains('Permissions').click();
     cy.get('.card__title').contains('Group').click();
     cy.get('.card__content').find<HTMLInputElement>('input[type="checkbox"]').each((el: HTMLInputElement) => {

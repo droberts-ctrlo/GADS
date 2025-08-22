@@ -1,12 +1,6 @@
 [%
   # prepare table config
-  table_class    = 'table-striped table-hover';
-  table_layout = {
-    topStart => "search",
-    topEnd   => "pageLength",
-    main     => "paging",
-    bottomStart => "info",
-  }
+  table_class    = 'table-striped table-hover datatables-no-header-search';
   table_language = {
     emptyTable => "There is no data available in this table",
     lengthMenu => "Rows per page _MENU_",
@@ -14,7 +8,7 @@
       next     => "Next page",
       previous => "Previous page"
     },
-    search            => "<span class=\"sr-only\">Search in users:</span>",
+    search            => "<span class=\"visually-hidden\">Search in users:</span>",
     searchPlaceholder => "Search through your users"
   }
   table_ajax         = url.page _ "/api/users?csrf-token=" _ csrf_token;
@@ -22,6 +16,12 @@
   table_save_state   = 1;
   table_unresponsive = 0;
   table_caption      = "Table to show list of users";
+  table_layout       = {
+    topStart    = "search",
+    topEnd      = "pageLength",
+    bottomStart = "paging",
+    bottomEnd   = "info"
+  };
 
   table_columns = [{
     name      = "ID"
@@ -108,7 +108,7 @@
     }, {
       type    = "modal_button"
       modalId = "userModal"
-      class   = "btn btn-add"
+      class   = "btn btn-add btn-primary"
       label   = "Add a user"
     }];
 %]

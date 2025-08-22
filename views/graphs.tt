@@ -7,7 +7,7 @@
       aside_buttons = [{
        type   = "link"
        target = url.page _ "/" _ layout.identifier _ "/graph/0"
-       class  = "btn btn-add"
+       class  = "btn btn-add btn-primary"
        label  = "Add a graph"
      }];
   %]
@@ -19,12 +19,6 @@
 
         # prepare table config
         table_class        = 'table-striped table-selectable';
-        table_layout       = {
-            topStart => "search",
-            topEnd => "pageLength",
-            bottomStart => "paging",
-            bottomEnd => "info",
-        }
         table_language     = {
           emptyTable => "No graphs have been created. Please use the `Add a graph` button above to add one.",
           lengthMenu => "Rows per page _MENU_",
@@ -136,10 +130,10 @@
             class   = "col-md-8 d-md-flex justify-content-md-end align-items-center",
             buttons = [{
               type  = "button",
-              class = "btn btn-default",
+              class = "btn btn-primary",
               name  = "graphsubmit",
               value = "submit",
-              class = "btn btn-default",
+              class = "btn btn-primary",
               label = "Save"
             }]
           }];

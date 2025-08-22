@@ -1,12 +1,6 @@
 [%
   # prepare table config
   table_class = 'table-striped table-hover table-account-requests';
-  table_layout = {
-    topStart = "search",
-    topEnd   = "pageLength",
-    main     = "paging",
-    bottomStart = "info",
-  }
   table_language = {
     emptyTable => "There are currently no account requests",
     lengthMenu => "Rows per page _MENU_",
@@ -14,10 +8,17 @@
       next     => "Next page",
       previous => "Previous page"
     },
-    search            => "<span class=\"sr-only\">Search account requests:</span>",
+    search            => "<span class=\"visually-hidden\">Search account requests:</span>",
     searchPlaceholder => "Search through your users"
   }
   table_caption = "Table to show account requests";
+  table_layout       = {
+    topStart    = undef,
+    topEnd      = undef,
+    top         = ["search", "pageLength"],
+    bottomStart = "paging",
+    bottomEnd   = "info"
+  };
 
   table_columns = [{
     name      = "ID"
@@ -215,7 +216,7 @@
     aside_buttons = ! user.permission.useradmin ? [] : [{
       type    = "modal_button"
       modalId = "userModal"
-      class   = "btn btn-add"
+      class   = "btn btn-add btn-primary"
       label   = "Add a user"
     }];
 %]

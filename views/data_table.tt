@@ -5,7 +5,7 @@
 
   <div class="content-block__aside col-lg-6">
     [% IF layout.show_add_record AND layout.user_can('write_new') %]
-      <a href="[% url.page %]/[% layout.identifier %]/record/" class="btn btn-add">
+      <a href="[% url.page %]/[% layout.identifier %]/record/" class="btn btn-add btn-primary">
         [% IF user.has_draft(layout.instance_id) %]
           Continue draft record
         [% ELSE %]
@@ -27,11 +27,11 @@
 
       # prepare table config
       table_class        = (table_clear_state ? 'table-clear-state ' : '') _ 'table-striped table-hover table-search';
-      table_layout = {
-        topStart => session.rewind ? undef : "search",
-        topEnd => ["pageLength", "fs"],
-        bottomStart => "paging",
-        bottomEnd => "info",
+      table_layout       =  {
+        topStart = session.rewind ? undef : "search",
+        topEnd = ["pageLength"],
+        bottomStart = "paging",
+        bottomEnd = "info",
       };
       table_ajax         = url.page _ "/api/" _ layout.identifier _ "/records?csrf-token=" _ csrf_token _ "&group_filter=" _ group_filter _ "&curval_layout_id=" _ curval_layout_id _ "&curval_record_id=" _ curval_record_id;
       table_ajax_target  = url.page _ "/" _ layout.identifier _ "/record"; # will be appended with /{id} by JS
@@ -43,7 +43,7 @@
           next     => "Next page",
           previous => "Previous page"
         },
-        search            => "Search in table:",
+        search            => "<span class=\"visually-hidden\">Search in table:</span>",
         searchPlaceholder => "Search in this table",
       };
       table_page_length  = 50;

@@ -399,7 +399,7 @@ button.btn-add {
     flex-grow: 1;
 
     label {
-        @extend .sr-only;
+        @extend .visually-hidden;
     }
 
     .dt-search {

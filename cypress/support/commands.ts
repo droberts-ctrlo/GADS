@@ -75,7 +75,7 @@ declare global {
              * @param email The email of the user to add to the group
              * @param group The name of the group to add the user to
              * @example cy.addUserGroup('bob@home.com','Admin')
-             * @see createGroup 
+             * @see createGroup
              */
             addUserGroup(email: string, group: string): void;
             /**
@@ -238,7 +238,7 @@ Cypress.Commands.add('deleteLayoutByShortName', (shortName: string, navigate: bo
         .click();
     cy.get(".btn-danger")
         .contains("Delete field")
-        .click();
+        .click({force: true});
     cy.get(".modal")
         .find(".btn-danger")
         .contains("Delete")

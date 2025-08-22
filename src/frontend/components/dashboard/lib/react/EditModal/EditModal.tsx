@@ -61,7 +61,7 @@ export default function EditModal({ editModalOpen, closeModal, editError, loadin
                 <button className="btn btn-cancel" onClick={deleteActiveWidget}>Delete</button>
             </div>
             <div className='modal-footer__right'>
-                <button className="btn btn-default" onClick={saveActiveWidget}>Save</button>
+                <button className="btn btn-primary" onClick={saveActiveWidget}>Save</button>
             </div>
         </div>
     </Modal>)

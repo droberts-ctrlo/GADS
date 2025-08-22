@@ -44,13 +44,13 @@
                 type  = "string",
                 label  = item.value,
                 filter = "html"
-            });
+            }); 
         END;
         rows.push({fields=row});
     END;
 
     INCLUDE tables/basic_table.tt;
-
+    
     INCLUDE fields/sub/checkbox.tt
         id             = "confirm_purge"
         name           = id

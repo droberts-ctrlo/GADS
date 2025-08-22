@@ -41,19 +41,21 @@
 
 <div class="content-block__main">
   <div class="content-block__main-content">
-    <div class="card card--primary mb-3">
-      <h4 class="card__title">
-        <span> Edit your topics </span>
-      </h4>
+    <div class="card card-primary mb-3">
+      <div class="card-header">
+        <h4 class="card__title">
+          <span> Edit your topics </span>
+        </h4>
+      </div>
 
-      <div class="card__body row">
+      <div class="card-body">
         <div class="card__content">
           [% INCLUDE tables/basic_table.tt; %]
         </div>
       </div>
     </div>
   </div>
-
+  
   <footer class="content-block__footer">
     <div class="content-block__footer-container">
       [%

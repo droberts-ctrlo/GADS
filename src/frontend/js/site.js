@@ -8,6 +8,7 @@ import 'util/actionsHandler';
 // Components
 import AddTableModalComponent from 'components/modal/modals/new-table';
 import AutosaveComponent from 'components/form-group/autosave';
+import BootstrapPopoverComponent from 'components/bootstrap-popover';
 import CalcFieldsComponent from 'components/form-group/calc-fields';
 import CalculatorComponent from 'components/calculator';
 import CheckboxComponent from 'components/form-group/checkbox';
@@ -83,6 +84,7 @@ registerComponent(SelectAllComponent);
 registerComponent(HelpView);
 registerComponent(PeopleFilterComponent);
 registerComponent(AutosaveComponent);
+registerComponent(BootstrapPopoverComponent);
 
 // Initialize all components at some point
 initializeRegisteredComponents(document.body);

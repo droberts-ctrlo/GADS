@@ -38,19 +38,19 @@ $text-color: $gray-dark;
 $btn-default-hover-color: $brand-secundary-hover;
 $btn-cancel-hover-color: $gray-extra-extra-dark;
 
-$nav-link-hover-bg: rgba($gray-light, 0.4);
+$nav-link-hover-bg: rgba($gray-light, 40%);
 
 // Shadows
-$box-shadow-darker: 0 0 7px rgba(0,0,0,0.4);
-$box-shadow-dark: 0 0 7px rgba(0, 0, 0, 0.2);
-$box-shadow-light: 0 0 7px rgba(0, 0, 0, 0.1);
+$box-shadow-darker: 0 0 7px rgba($black,40%);
+$box-shadow-dark: 0 0 7px rgba($black, 20%);
+$box-shadow-light: 0 0 7px rgba($black, 10%);
 
 // Gradients
 $gradient-v: linear-gradient(0deg, $gray-light 0%, $gradient-secundary 0%, $brand-primary 100%);
 $gradient-h: linear-gradient(90deg, $gray-light 0%, $brand-primary 0%, $gradient-secundary 100%);
 
 // Fonts
-$font-family-base: "Open Sans", Helvetica, Arial, sans-serif !default;
+$font-family-base: "Open Sans", helvetica, arial, sans-serif !default;
 $font-size-base: 1rem;
 $font-size-sm: 0.875rem;
 $font-size-xsm: 0.75rem;

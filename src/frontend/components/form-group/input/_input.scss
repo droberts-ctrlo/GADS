@@ -206,7 +206,7 @@
     color: $brand-success;
     text-align: center;
     vertical-align: middle;
-    
+
     .progress-bar__progress {
       background-color: rgba($brand-success, 0.2);
       .progress-bar__percentage {
@@ -226,7 +226,7 @@
   }
 
   .fileupload__files {
-    margin: 0 0 $padding-small-vertical 0;
+    margin: 0 0 $padding-small-vertical;
     padding: 0;
     list-style-type: none;
   }

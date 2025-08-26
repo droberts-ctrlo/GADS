@@ -67,9 +67,7 @@
       }
 
       .list__item {
-        flex-basis: calc(33.33% - 1rem);
-        flex-grow: 0;
-        flex-shrink: 0;
+        flex: 0 0 calc(33.33% - 1rem);
         max-width: 13rem;
       }
     }

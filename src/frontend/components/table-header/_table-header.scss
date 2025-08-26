@@ -22,18 +22,14 @@
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    right: -1 * $grid-offset-mobile;
-    bottom: 0;
-    left: 0;
+    inset: 0 -1 * $grid-offset-mobile 0 0;
     background-color: $white;
   }
 }
 
 .table-header-top {
   position: relative;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   gap: $padding-base-horizontal;
   padding-bottom: 1.5rem;
 }

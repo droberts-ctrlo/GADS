@@ -1,5 +1,3 @@
-/* stylelint-disable selector-no-qualifying-type */
-
 .data-table {
     border-spacing: 0;
     font-size: $font-size-sm;
@@ -279,6 +277,25 @@ table.dataTable thead .sorting_disabled {
     }
 }
 
+.dt-length {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    place-content: center flex-end;
+
+    .custom-select {
+        margin: 0;
+        margin-left: 1rem;
+        max-width: 5rem;
+    }
+
+    label {
+        white-space: nowrap;
+        margin: 0;
+        padding: 0;
+    }
+}
+
 /* Necessary to overrule default styling */
 div.dataTables_wrapper div.dataTables_length {
     text-align: left;
@@ -325,7 +342,7 @@ div.dataTables_wrapper div.dataTables_filter input.form-control {
     }
 
     .data-table {
-        margin-top: 0 !important; //Necessary to overrule external styling
+        margin-top: 0 !important; // Necessary to overrule external styling
     }
 }
 
@@ -407,26 +424,6 @@ button.btn-add {
         input {
             width: 96% !important; // Necessary to override the default styling
         }
-    }
-}
-
-.dt-length {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: center;
-    justify-content: flex-end;
-
-    .custom-select {
-        margin: 0;
-        margin-left: 1rem;
-        max-width: 5rem;
-    }
-
-    label {
-        white-space: nowrap;
-        margin: 0;
-        padding: 0;
     }
 }
 

@@ -13,9 +13,7 @@
 }
 
 .rag-legend__meaning {
-  flex-basis: calc(100% - 2.6rem);
-  flex-grow: 0;
-  flex-shrink: 0;
+  flex: 0 0 calc(100% - 2.6rem);
   margin-bottom: 0;
 }
 

@@ -7,8 +7,7 @@
 
 .modal-autosave {
     max-height: 20rem;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden auto;
 }
 
 li.li-success {

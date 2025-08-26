@@ -8,7 +8,7 @@
     &::before {
         transition: font-size 0.2s ease-in-out;
         @extend %icon-font;
-        content: quote("\E810");
+        content: "\E810";
         @include font-size(0.9rem);
     }
 

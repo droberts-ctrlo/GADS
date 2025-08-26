@@ -173,6 +173,6 @@ table.dataTable {
 
   // First row of fixed height, scrollable tables should still have a top border to ensure the same height of each row
   .dataTables_scrollBody > table > tbody tr:first-child td {
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgb(0 0 0 / 5%);
   }
 }

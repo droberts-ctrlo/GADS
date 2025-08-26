@@ -36,7 +36,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 // Breadcrumbs
 $breadcrumb-font-size: $font-size-sm;
-$breadcrumb-divider: quote(">");
+$breadcrumb-divider: ">";
 $breadcrumb-bg: $transparent;
 
 // Buttons

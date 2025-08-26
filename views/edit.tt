@@ -55,7 +55,7 @@
           [% IF NOT record.new_entry AND NOT edit_modal AND NOT view_modal %]
           <div class="content-block__left col-lg-4 mb-3 mb-lg-0">
             [% IF record.child_record_ids.size %]
-            <div class="card card-info">
+            <div class="card card-secondary">
             <div class="card-header">
               <h3 class="card__header">
                 <span>Child records</span>
@@ -80,7 +80,7 @@
             </div>
             [% END %]
 
-            <div class="card card-info">
+            <div class="card card-secondary">
               <div class="card-header">
               <h3 class="card__header">
                 <span>Meta data</span>
@@ -136,7 +136,7 @@
               </div>
             </div>
 
-            <div class="card card-info">
+            <div class="card card-secondary">
             <div class="card-header">
               <h3 class="card__header">
                 <span>Version history</span>
@@ -205,7 +205,7 @@
             </div>
 
             [% IF record.has_rag_column %]
-            <div class="card card-info">
+            <div class="card card-secondary">
               <div class="card-header">
               <h3 class="card__header">
                 <span>Legend</span>
@@ -377,7 +377,7 @@
     widget_id_modifier = view_modal OR edit_modal ? '-modal' : '';
 %]
   <div class="[% panel_class %]">
-    <div class="card card--expandable card--topic">
+    <div class="card card--expandable card-primary card-inverse card--topic">
       <div class="card-header">
         <div class="card-header__toggle [% IF open == 'false' %]collapsed[% END %]" data-bs-toggle="collapse" data-bs-target="#topic[% block_topic.id; widget_id_modifier; %]" role="button" aria-expanded="[% open %]">
           <span class="card__title">

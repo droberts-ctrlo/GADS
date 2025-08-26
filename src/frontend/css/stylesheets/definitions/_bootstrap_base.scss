@@ -3,6 +3,7 @@
 @import "~bootstrap/scss/variables", "~bootstrap/scss/variables-dark";
 
 $font-size-base: 16px;
+$box-shadow: 0 0 7px rgba($black, 40%);
 
 // Links
 $link-decoration: none;
@@ -29,6 +30,13 @@ $secundary: $brand-secundary;
 
 $custom-colors: (
     "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark,
     "secundary": $secundary
 );
 
@@ -92,6 +100,12 @@ $popover-header-color: $white;
 // Switches
 $form-switch-checked-color: $brand-primary;
 $form-check-input-checked-bg-color: $primary;
+
+// Headers
+$h1-font-size: 1.125rem;
+$h2-font-size: 1rem;
+$h3-font-size: 1rem;
+$h4-font-size: 1rem;
 
 @import "~bootstrap/scss/maps";
 @import "~bootstrap/scss/mixins";

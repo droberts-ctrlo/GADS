@@ -3,11 +3,11 @@
 <header class="table-header row g-0">
   <div class="table-header-container">
     <div class="table-header-top row justify-content-between g-0">
-      <div class="table-header__meta">
+      <div class="table-header__meta w-auto">
         [% INCLUDE navigation/breadcrumbs.tt %]
         <h1 class="table-header__title">[% layout_obj.name | html %]</h1>
       </div>
-      [% INCLUDE navigation/user_menu.tt user_menu_class="table-header__navigation" %]
+      [% INCLUDE navigation/user_menu.tt user_menu_class="table-header__navigation w-auto" %]
     </div>
 
     <div class="table-header-bottom d-flex flex-row flex-nowrap justify-content-between">

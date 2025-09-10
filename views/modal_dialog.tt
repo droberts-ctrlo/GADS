@@ -21,7 +21,7 @@
                 <input type="hidden" name="csrf_token" value="[% csrf_token %]">
             [% END %]
         [% END %]
-            <div class="modal-header">
+            <div class="modal-header d-flex justify-content-between">
                 [% IF modal_heading %]
                     <div class="modal-header__content">
                         <h3 class="modal-title" id="[% modal_id %]_heading">

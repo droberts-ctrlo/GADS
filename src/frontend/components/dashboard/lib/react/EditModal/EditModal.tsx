@@ -44,11 +44,11 @@ export default function EditModal({ editModalOpen, closeModal, editError, loadin
         contentLabel="Edit Modal"
         ariaHideApp = {!test}
     >
-        <div className='modal-header'>
+        <div className='modal-header d-flex justify-content-between'>
             <div className='modal-header__content'>
                 <h3 className='modal-title'>Edit widget</h3>
             </div>
-            <button className='close' onClick={closeModal}><span aria-hidden='true' className='hidden'>Close</span></button>
+            <button className='btn close' onClick={closeModal}><span aria-hidden='true' className='hidden'>Close</span></button>
         </div>
         <div className="modal-body">
             {editError

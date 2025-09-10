@@ -53,7 +53,7 @@
         <div class="modal-content">
             <form role="form" method="post" enctype="multipart/form-data">
             <input type="hidden" name="csrf_token" value="[% csrf_token %]">
-            <div class="modal-header">
+            <div class="modal-header d-flex jusify-content-between">
                 <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
             </div>

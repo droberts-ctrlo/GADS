@@ -20,7 +20,7 @@
 >
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header d-flex justify-content-between">
         <div class="modal-header__content">
           <h3 class="modal-title" id="userModalLabel">
             <span class='js-add-user'>Add a user</span>
@@ -46,7 +46,7 @@
           </ol>
         </div>
 
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <button type="button" class="btn close visually-hidden" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" class="hidden">Close</span>
         </button>
       </div>

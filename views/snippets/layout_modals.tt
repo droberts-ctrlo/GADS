@@ -2,7 +2,7 @@
     <div class="modal fade" id="helprag" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header d-flex justify-content-between">
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">RAG values</h4>
                 </div>
@@ -20,7 +20,7 @@
     <div class="modal fade" id="helpcalc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header d-flex justify-content-between">
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">Calculated and RAG values</h4>
                 </div>
@@ -37,7 +37,7 @@
     <div class="modal fade" id="helpnotify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header d-flex justify-content-between">
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">Notify user alert email</h4>
                 </div>
@@ -54,7 +54,7 @@
     <div class="modal fade" id="modalhelp_match" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header d-flex justify-content-between">
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">Matching field values</h4>
                 </div>
@@ -72,7 +72,7 @@
     <div class="modal fade" id="modalhelp_name_short" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header d-flex justify-content-between">
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">Field short names</h4>
                 </div>
@@ -90,7 +90,7 @@
     <div class="modal fade" id="modalhelp_groups" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header d-flex justify-content-between">
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">Permissions</h4>
                 </div>
@@ -108,7 +108,7 @@
     <div class="modal fade" id="modalhelp_force_regex" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header d-flex jusify-content-between">
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">Force input format</h4>
                 </div>
@@ -127,7 +127,7 @@
             <div class="modal-content">
                 <form role="form" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="csrf_token" value="[% csrf_token %]">
-                <div class="modal-header">
+                <div class="modal-header d-flex justify-content-between">
                     <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
                 </div>

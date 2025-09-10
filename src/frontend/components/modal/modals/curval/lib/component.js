@@ -440,22 +440,20 @@ class CurvalModalComponent extends ModalComponent {
                                 // We still allow the form to submit as if it was correct
                                 self.curvalModalValidationSucceeded($form, data.values);
                             } else {
-                                const errorMessage =
-                data.error === 1 ? data.message : 'Oops! Something went wrong.';
+                                const errorMessage = data.error === 1 ? data.message : 'Oops! Something went wrong.';
                                 self.curvalModalValidationFailed($form, errorMessage);
                             }
                         }
                     },
                     'json'
-                )
-                    .fail(function(jqXHR, textstatus, errorthrown) {
-                        const errorMessage = `Oops! Something went wrong: ${textstatus}: ${errorthrown}`;
-                        self.curvalModalValidationFailed($form, errorMessage);
-                    })
-                    .always(function() {
-                        $form.removeClass('edit-form--validating');
-                        if (autosaveLoadValue) autosaveLoadValue();
-                    });
+                ).fail(function(jqXHR, textstatus, errorthrown) {
+                    const errorMessage = `Oops! Something went wrong: ${textstatus}: ${errorthrown}`;
+                    self.curvalModalValidationFailed($form, errorMessage);
+                // eslint-disable-next-line @stylistic/newline-per-chained-call
+                }).always(function() {
+                    $form.removeClass('edit-form--validating');
+                    if (autosaveLoadValue) autosaveLoadValue();
+                });
             }
         });
     }

@@ -14,18 +14,10 @@ const positionDisclosure = function (offsetTop, offsetLeft, triggerHeight) {
     });
 
     // If the popover is outside the body move it a bit to the left
-    if (
-        document.body &&
-    document.body.clientWidth &&
-    this.get(0).getBoundingClientRect
-    ) {
-        const windowOffset =
-      document.body.clientWidth -
-      this.get(0).getBoundingClientRect().right;
+    if (document.body && document.body.clientWidth && this.get(0).getBoundingClientRect) {
+        const windowOffset = document.body.clientWidth - this.get(0).getBoundingClientRect().right;
         if (windowOffset < 0) {
-            this.css({
-                left: offsetLeft + windowOffset + 'px'
-            });
+            this.css({left: offsetLeft + windowOffset + 'px'});
         }
     }
 };

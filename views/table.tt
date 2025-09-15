@@ -17,7 +17,7 @@
       </div>
 
       <div class="content-block__main-content">
-        <div class="card card-primary mb-3">
+        <div class="card card-plain mb-3">
           <div class="card-header">
             <span class="card__title"> Edit your table: [% layout_obj.name | html %] </span>
           </div>
@@ -107,8 +107,8 @@
 
         <div class="row mb-3">
           <div class="col">
-            <div class="card card--expandable">
-              <div class="card-header">
+            <div class="card card-plain card--expandable">
+              <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="card-header__toggle collapsed" data-bs-toggle="collapse" data-bs-target="#emailAlerts" aria-expanded="false" aria-controls="emailAlerts" role="button">
                   <span class="card__title">
                     Email alerts
@@ -149,8 +149,8 @@
 
         <div class="row mb-3">
           <div class="col">
-            <div class="card card--expandable">
-              <div class="card-header">
+            <div class="card card-plain card--expandable">
+              <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="card-header__toggle collapsed" data-bs-toggle="collapse" data-bs-target="#limitRecordAccess" aria-expanded="false" aria-controls="limitRecordAccess" role="button">
                   <span class="card__title">
                     Limit access to records
@@ -188,8 +188,8 @@
 
         <div class="row mb-3">
           <div class="col">
-            <div class="card card--expandable">
-              <div class="card-header">
+            <div class="card card-plain card--expandable">
+              <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="card-header__toggle collapsed" data-bs-toggle="collapse" data-bs-target="#ragFieldDefinitions" aria-expanded="false" aria-controls="ragFieldDefinitions" role="button">
                   <span class="card__title">
                     RAG field definitions and selections

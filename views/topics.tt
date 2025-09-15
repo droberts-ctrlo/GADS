@@ -41,7 +41,7 @@
 
 <div class="content-block__main">
   <div class="content-block__main-content">
-    <div class="card card-primary mb-3">
+    <div class="card card-plain mb-3">
       <div class="card-header">
         <h4 class="card__title">
           <span> Edit your topics </span>
@@ -55,7 +55,7 @@
       </div>
     </div>
   </div>
-  
+
   <footer class="content-block__footer">
     <div class="content-block__footer-container">
       [%

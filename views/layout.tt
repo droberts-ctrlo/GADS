@@ -17,7 +17,7 @@
 
       <div class="content-block__main-content">
 
-        <div class="card card-primary mb-3">
+        <div class="card card-plain mb-3">
           <div class="card-body">
             <div class="card__content">
               <div class="row">
@@ -146,8 +146,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <div class="card-header__toggle collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#textFieldSettings" aria-expanded="false" aria-controls="textFieldSettings">
                       <span class="card__title">
                         Field settings for text
@@ -204,8 +204,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#integerFieldSettings" aria-expanded="false" aria-controls="integerFieldSettings">
                       <span class="card__title">
                         Field settings for integer
@@ -259,8 +259,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#dateFieldSettings" aria-expanded="false" aria-controls="dateFieldSettings">
                       <span class="card__title">
                         Field settings for date
@@ -336,8 +336,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#dateRangeFieldSettings" aria-expanded="false" aria-controls="dateRangeFieldSettings">
                       <span class="card__title">
                         Field settings for date range
@@ -390,8 +390,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#dropdownListFieldSettings" aria-expanded="false" aria-controls="dropdownListFieldSettings">
                       <span class="card__title">
                         Field settings for dropdown list
@@ -503,8 +503,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#treeFieldSettings" aria-expanded="false" aria-controls="treeFieldSettings">
                       <span class="card__title">
                         Field settings for tree
@@ -566,8 +566,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#documentFieldSettings" aria-expanded="false" aria-controls="documentFieldSettings">
                       <span class="card__title">
                         Field settings for document
@@ -611,8 +611,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#personFieldSettings" aria-expanded="false" aria-controls="personFieldSettings">
                       <span class="card__title">
                         Field settings for person
@@ -709,8 +709,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#ragFieldSettings" aria-expanded="false" aria-controls="ragFieldSettings">
                       <span class="card__title">
                         Field settings for RAG
@@ -796,8 +796,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span id="calcfield_card_header" class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#calcValueFieldSettings" aria-expanded="false" aria-controls="calcValueFieldSettings">
                       <span class="card__title">
                         Field settings for calculated value
@@ -921,8 +921,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#fieldsFromAnotherTableFieldSettings" aria-expanded="false" aria-controls="fieldsFromAnotherTableFieldSettings">
                       <span class="card__title">
                         Field settings for fields from another table
@@ -1163,8 +1163,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#otherSheetsReferences" aria-expanded="false" aria-controls="otherSheetsReferences">
                       <span class="card__title">
                         Field settings for automatic value of other sheet's references to this one
@@ -1289,8 +1289,8 @@
             [% END %]
             <div class="row mt-3 mb-3">
               <div class="col">
-                <div class="card card--expandable">
-                  <div class="card-header">
+                <div class="card card-plain card--expandable">
+                  <div class="card-header d-flex align-items-center justify-content-between">
                     <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#automaticFilteredValues" aria-expanded="false" aria-controls="automaticFilteredValues">
                       <span class="card__title">
                         Field settings for automatic filtered values of other field
@@ -1375,8 +1375,8 @@
         [% IF user.permission.superadmin %]
         <div class="row mb-3">
           <div class="col">
-            <div class="card card--expandable">
-              <div class="card-header">
+            <div class="card card-plain card--expandable">
+              <div class="card-header d-flex align-items-center justify-content-between">
                 <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#notes" aria-expanded="false" aria-controls="notes">
                   <span class="card__title">
                     Notes
@@ -1409,8 +1409,8 @@
 
         <div class="row mb-3">
           <div class="col">
-            <div class="card card--expandable">
-              <div class="card-header">
+            <div class="card card-plain card--expandable">
+              <div class="card-header d-flex align-items-center justify-content-between">
                 <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#permissions" aria-expanded="false" aria-controls="permissions">
                   <span class="card__title">
                     Permissions
@@ -1633,8 +1633,8 @@
 
         <div class="row mb-3">
           <div class="col">
-            <div class="card card--expandable">
-              <div class="card-header">
+            <div class="card card-plain card--expandable">
+              <div class="card-header d-flex align-items-center justify-content-between">
                 <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#advancedSettings" aria-expanded="false" aria-controls="advancedSettings">
                   <span class="card__title">
                     Advanced settings
@@ -1796,8 +1796,8 @@
 
         <div class="row">
           <div class="col">
-            <div class="card card--expandable">
-              <div class="card-header">
+            <div class="card card-plain card--expandable">
+              <div class="card-header d-flex align-items-center justify-content-between">
                 <span class="card-header__toggle" role="button" data-bs-toggle="collapse" data-bs-target="#displayConditionsCollapse" aria-expanded="false" aria-controls="displayConditionsCollapse">
                   <span class="card__title">
                     Display conditions

@@ -1,44 +1,50 @@
-@each $color in (
-    primary,
+.card {
+    box-shadow: $box-shadow;
+
+    &:has(.card-header > .collapsed) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .card-header {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        border: 0;
+
+        h1, h2, h3, h4, h5, h6, p, span, div {
+            padding: 0;
+            margin: 0;
+        }
+
+        h4 {
+            font-size: $font-size-base;
+        }
+    }
+}
+
+@each $color in (primary,
     secondary,
     success,
     danger,
     warning,
     info,
     light,
-    dark
-) {
+    dark) {
     .card-#{$color} {
         border-color: var(--bs-#{$color});
 
-        &:has(.card-header > .collapsed) {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
         .card-header {
             background-color: var(--bs-#{$color});
-            display: flex;
-            flex-direction: row;
-            align-items: baseline;
-            justify-content: space-between;
-            border: 0;
 
             h1, h2, h3, h4, h5, h6, p, span, div {
-                padding: 0;
-                margin: 0;
 
                 @if $color == primary or $color == secondary or $color == danger or $color == dark {
                     color: var(--bs-white);
-                }
-
-                @else {
+                } @else {
                     color: var(--bs-black);
                 }
-            }
-
-            h4 {
-                font-size: $font-size-base;
             }
         }
 
@@ -55,6 +61,21 @@
     }
 }
 
+.card-plain {
+    border: none;
+
+    .card-header {
+        background-color: var(--bs-white);
+
+        h1, h2, h3, h4, h5, h6, p, span, div {
+            color: var(--bs-black);
+        }
+
+        h4 {
+            font-size: $font-size-base;
+        }
+    }
+}
 
 .card:not(:last-of-type) {
     margin-bottom: $padding-base-vertical;
@@ -100,8 +121,10 @@ a.card--settings {
         .card-header {
             span {
                 border-bottom: solid 1px $brand-secundary;
+
                 &.icon {
                     border-bottom: solid 1px $transparent;
+
                     &::before {
                         transform: scale(1.2);
                     }
@@ -109,9 +132,11 @@ a.card--settings {
             }
         }
     }
+
     .card-header {
         span {
             transition: all 0.5s ease-in-out;
+
             .icon::before {
                 transform: scale(1);
             }
@@ -121,6 +146,7 @@ a.card--settings {
 
 .card__title {
     color: $brand-secundary;
+    font-weight: 600;
 }
 
 .card__toggle {

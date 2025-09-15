@@ -7,7 +7,7 @@
     }
 
     thead {
-        background-color: $white;
+        background-color: var(--bs-primary, $brand-primary);
         z-index: 1;
     }
 
@@ -419,11 +419,6 @@ button.btn-add {
 
 .dt-layout-cell:has(table.data-table) {
     width: 100%;
-}
-
-.table> :not(caption)>*>*,
-table.table.dataTable.table-striped>tbody>tr:nth-of-type(2n+1)>* {
-    box-shadow: none;
 }
 
 .dt-orderable-asc,

@@ -102,7 +102,7 @@
             class           = "col-md-8 d-md-flex justify-content-md-end align-items-center",
             buttons         = [{
                 type        = "button",
-                class       = "btn btn-inverted btn-js-report",
+                class       = "btn btn-primary btn-inverted btn-js-report",
                 label       = "Save Report",
                 button_type = "submit"
           }]

@@ -96,7 +96,9 @@
       <div class="content-block__footer-container">
         <div class="row">
           <div class="col-md-4 mb-3 mb-md-0"></div>
-          <div class="col-md-8 d-md-flex justify-content-md-end align-items-center"><button type="submit" class="btn-primary btn" id="submit" name="submit" value="submit">Save</button></div>
+          <div class="col-md-8 d-md-flex justify-content-md-end align-items-center">
+            <button type="submit" class="btn-primary btn" id="submit" name="submit" value="submit">Save</button>
+          </div>
         </div>
       </div>
     </footer>

@@ -190,7 +190,6 @@
   }
 }
 
-/* stylelint-disable no-descending-specificity */
 .btn-round {
   width: auto;
   padding: 10px 12px;
@@ -406,15 +405,6 @@
   }
 }
 /* end */
-
-.dt-ordering-asc .btn-sort::before {
-  transform: rotate(-90deg);
-}
-
-.dt-ordering-desc .btn-sort::before {
-  transform: rotate(90deg);
-}
-
 .btn-add-link {
   padding: 0;
 
@@ -435,7 +425,6 @@
     word-break: break-all;
   }
 
-  /* stylelint-enable no-descending-specificity */
   &::after {
     @extend %icon-font;
 

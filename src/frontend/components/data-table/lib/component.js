@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/indent */
 /* eslint-disable @typescript-eslint/no-this-alias */
 
 import { Component, initializeRegisteredComponents } from 'component';
@@ -31,6 +30,11 @@ class DataTableComponent extends Component {
         this.base_url = this.el.data('href') ? this.el.data('href') : undefined;
         this.isFullScreen = false;
         this.initTable();
+        $(window).on('resize', () => {
+            if (this.el.DataTable().responsive) {
+                this.el.DataTable().responsive.recalc();
+            }
+        });
     }
 
     /**
@@ -347,7 +351,7 @@ class DataTableComponent extends Component {
           </button>
         </div>
       </div>`
-    );
+        );
 
         /* Construct search box for filtering. If the filter has a typeahead and if
          * it uses an ID rather than text, then add a second (hidden) input field

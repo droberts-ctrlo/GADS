@@ -7,23 +7,25 @@
     }
 
     thead {
-        background-color: var(--bs-primary, $brand-primary);
+        background-color: #fff;
         z-index: 1;
-    }
 
-    thead th {
-        border-bottom: 1px solid $gray;
-        text-transform: uppercase;
-        vertical-align: top;
+        th {
+            background-color: #fff;
+            border-bottom: 1px solid $gray;
+            text-transform: uppercase;
+            vertical-align: top;
+            box-shadow: none;
 
-        &[class*="sorting_asc"],
-        &[class*="sorting_desc"] {
-            color: $brand-secundary;
-        }
+            &[class*="sorting_asc"],
+            &[class*="sorting_desc"] {
+                color: $brand-secundary;
+            }
 
-        &.data-table__header--invisible span,
-        &.dt__header--inivisible span {
-            @include visually-hidden;
+            &.data-table__header--invisible span,
+            &.dt__header--inivisible span {
+                @include visually-hidden;
+            }
         }
     }
 
@@ -40,6 +42,18 @@
 
     .autosize {
         max-height: 30px;
+    }
+
+    &.table-striped {
+        --bs-table-border-color: $transparent;
+
+        & > tbody {
+            & > tr:nth-of-type(2n) {
+                & > * {
+                    box-shadow: none !important;
+                }
+            }
+        }
     }
 }
 
@@ -434,6 +448,8 @@ button.btn-add {
 
         .btn-search {
             @extend .mx-2;
+            opacity: 0;
+            transition: 0.2s opacity ease-in;
 
             &::before {
                 @extend %icon-font;
@@ -443,9 +459,21 @@ button.btn-add {
             }
         }
 
+        &.filter {
+            .btn-search {
+                opacity: 1;
+                color: var(--bs-secondary, $brand-secundary);
+                &::before {
+                    color: var(--bs-secondary, $brand-secundary);
+                }
+            }
+        }
+
         .btn-sort {
             margin-top: 0.1rem;
             margin-left: 0.25rem;
+            opacity: 0;
+            transition: 0.2s opacity ease-in;
 
             span {
                 @extend .visually-hidden;
@@ -459,6 +487,37 @@ button.btn-add {
             }
         }
     }
+
+    &:hover,
+    &:active,
+    &:focus {
+        .btn-search {
+            opacity: 1;
+        }
+
+        .btn-sort {
+            opacity: 1;
+            color: var(--bs-secondary, $brand-secundary);
+
+            &::before {
+                color: var(--bs-secondary, $brand-secundary);
+            }
+        }
+    }
+}
+
+.dt-ordering-asc,
+.dt-ordering-desc {
+    .data-table__header-wrapper {
+        .btn-sort {
+            opacity: 1;
+
+            &::before {
+                opacity: 1;
+                color: var(--bs-primary, $brand-primary);
+            }
+        }
+    }
 }
 
 .dt-ordering-desc {
@@ -466,7 +525,6 @@ button.btn-add {
         .btn-sort {
             &::before {
                 content: "\F282"; // Sort descending icon
-                color: var(--bs-primary, $brand-primary);
             }
         }
     }
@@ -477,8 +535,11 @@ button.btn-add {
         .btn-sort {
             &::before {
                 content: "\F286"; // Sort ascending icon
-                color: var(--bs-primary, $brand-primary);
             }
         }
     }
+}
+
+thead, tbody, tfoot, tr, td, th {
+    border: none;
 }

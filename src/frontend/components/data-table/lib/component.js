@@ -595,15 +595,14 @@ class DataTableComponent extends Component {
                 });
                 thisHTML += '</div>';
                 strHTML += (
-                    `<div class="position-relative">
-            <button class="btn btn-sm btn-inverted btn-info trigger" aria-expanded="false" type="button">
-              ${this.encodeHTMLEntities(value.text)}
-              <span class="invisible">contact details</span>
-            </button>
-            <div class="person contact-details expandable popover card card--secundary">
-              ${thisHTML}
-            </div>
-          </div>`
+                    `<div class="popover-container">
+                        <div class="popover-content" id="${data.id}-popover">
+                            ${thisHTML}
+                        </div>
+                        <button class="btn btn-primary btn-sm btn-inverted btn-info" type="button" aria-describedby="${data.id}-popover" data-bs-toggle="popover">
+                            ${this.encodeHTMLEntities(value.text)}
+                        </button>
+                    </div>`
                 );
             }
         });

@@ -30,5 +30,9 @@ export default class BootstrapPopoverComponent extends Component {
             content: content,
             container: 'body'
         });
+        $el.on('click', (ev)=>{
+            ev.preventDefault();
+            ev.stopPropagation();
+        });
     }
 }

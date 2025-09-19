@@ -1,6 +1,6 @@
 import 'jstree';
-import 'datatables.net-bs4';
-import '@lol768/jquery-querybuilder-no-eval';
+import 'datatables.net-bs5';
+import 'jQuery-QueryBuilder';
 
 declare global {
     interface Window {

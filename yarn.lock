@@ -1561,17 +1561,6 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@lol768/jquery-querybuilder-no-eval@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.npmjs.org/@lol768/jquery-querybuilder-no-eval/-/jquery-querybuilder-no-eval-2.6.0.tgz"
-  integrity sha512-LPCEbULI7uzHwRwvjzfl1GJ2lGXLjOSsv5b4ys1gExs8euwA4ZgXWUZ5txIaGwuXbn0+Q+wF13bNG2RUZa1NwA==
-  dependencies:
-    bootstrap "^3.4.1"
-    jquery "^3.5.1"
-    jquery-extendext "^1.0.0"
-    moment "^2.29.1"
-    sql-parser-mistic "^1.2.3"
-
 "@napi-rs/wasm-runtime@^0.2.11":
   version "0.2.12"
   resolved "https://registry.yarnpkg.com/@napi-rs/wasm-runtime/-/wasm-runtime-0.2.12.tgz#3e78a8b96e6c33a6c517e1894efbd5385a7cb6f2"
@@ -1940,6 +1929,13 @@
   resolved "https://registry.npmjs.org/@types/minimatch/-/minimatch-5.1.2.tgz"
   integrity sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==
 
+"@types/node-sass@*":
+  version "4.11.8"
+  resolved "https://registry.yarnpkg.com/@types/node-sass/-/node-sass-4.11.8.tgz#c45b136a53eccd8c623123a956dc4bc183af096f"
+  integrity sha512-dWWMGPX8uselSQ1MLzDvQnVz5Qy1pe7SJuUl1Yqi2NCNRkrk5DmHlP44VZmTWm+buR2T217+5zEAPbAmTwKIOQ==
+  dependencies:
+    "@types/node" "*"
+
 "@types/node@*", "@types/node@^24.2.0":
   version "24.2.0"
   resolved "https://registry.npmjs.org/@types/node/-/node-24.2.0.tgz"
@@ -1983,6 +1979,16 @@
   dependencies:
     csstype "^3.0.2"
 
+"@types/sass-loader@^8.0.9":
+  version "8.0.10"
+  resolved "https://registry.yarnpkg.com/@types/sass-loader/-/sass-loader-8.0.10.tgz#0da83a8d4fae1aef948d513e7c7b636501088385"
+  integrity sha512-MajDnLGRrM42uOoWGMSo4N5zIugGsihia0KDjh5ysyOAnnT843d85gEvthC4BbXfFwfJE5hQj6CBrvLKp3RpPA==
+  dependencies:
+    "@types/node" "*"
+    "@types/node-sass" "*"
+    "@types/webpack" "^4"
+    sass "^1.45.0"
+
 "@types/sinonjs__fake-timers@8.1.1":
   version "8.1.1"
   resolved "https://registry.npmjs.org/@types/sinonjs__fake-timers/-/sinonjs__fake-timers-8.1.1.tgz"
@@ -1993,10 +1999,20 @@
   resolved "https://registry.npmjs.org/@types/sizzle/-/sizzle-2.3.8.tgz"
   integrity sha512-0vWLNK2D5MT9dg0iOo8GlKguPAU02QjmZitPEsXRuJXU/OGIOt9vT9Fc26wtYuavLxtO45v9PGleoL9Z0k1LHg==
 
+"@types/source-list-map@*":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@types/source-list-map/-/source-list-map-0.1.6.tgz#164e169dd061795b50b83c19e4d3be09f8d3a454"
+  integrity sha512-5JcVt1u5HDmlXkwOD2nslZVllBBc7HDuOICfiZah2Z0is8M8g+ddAEawbmd3VjedfDHBzxCaXLs07QEmb7y54g==
+
 "@types/stack-utils@^2.0.3":
   version "2.0.3"
   resolved "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-2.0.3.tgz"
   integrity sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==
+
+"@types/tapable@^1":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.12.tgz#bc2cab12e87978eee89fb21576b670350d6d86ab"
+  integrity sha512-bTHG8fcxEqv1M9+TD14P8ok8hjxoOCkfKc8XXLaaD05kI7ohpeI956jtDOD3XHKBQrlyPughUtzm1jtVhHpA5Q==
 
 "@types/tough-cookie@*":
   version "4.0.5"
@@ -2010,10 +2026,38 @@
   dependencies:
     "@types/jquery" "*"
 
+"@types/uglify-js@*":
+  version "3.17.5"
+  resolved "https://registry.yarnpkg.com/@types/uglify-js/-/uglify-js-3.17.5.tgz#905ce03a3cbbf2e31cbefcbc68d15497ee2e17df"
+  integrity sha512-TU+fZFBTBcXj/GpDpDaBmgWk/gn96kMZ+uocaFUlV2f8a6WdMzzI44QBCmGcCiYR0Y6ZlNRiyUyKKt5nl/lbzQ==
+  dependencies:
+    source-map "^0.6.1"
+
 "@types/warning@^3.0.3":
   version "3.0.3"
   resolved "https://registry.npmjs.org/@types/warning/-/warning-3.0.3.tgz"
   integrity sha512-D1XC7WK8K+zZEveUPY+cf4+kgauk8N4eHr/XIHXGlGYkHLud6hK9lYfZk1ry1TNh798cZUCgb6MqGEG8DkJt6Q==
+
+"@types/webpack-sources@*":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@types/webpack-sources/-/webpack-sources-3.2.3.tgz#b667bd13e9fa15a9c26603dce502c7985418c3d8"
+  integrity sha512-4nZOdMwSPHZ4pTEZzSp0AsTM4K7Qmu40UKW4tJDiOVs20UzYF9l+qUe4s0ftfN0pin06n+5cWWDJXH+sbhAiDw==
+  dependencies:
+    "@types/node" "*"
+    "@types/source-list-map" "*"
+    source-map "^0.7.3"
+
+"@types/webpack@^4":
+  version "4.41.40"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.41.40.tgz#41ea11cfafe08de24c3ef410c58976350667e2d1"
+  integrity sha512-u6kMFSBM9HcoTpUXnL6mt2HSzftqb3JgYV6oxIgL2dl6sX6aCa5k6SOkzv5DuZjBTPUE/dJltKtwwuqrkZHpfw==
+  dependencies:
+    "@types/node" "*"
+    "@types/tapable" "^1"
+    "@types/uglify-js" "*"
+    "@types/webpack-sources" "*"
+    anymatch "^3.0.0"
+    source-map "^0.6.0"
 
 "@types/yargs-parser@*":
   version "21.0.3"
@@ -2481,7 +2525,7 @@ ansi-styles@^6.1.0:
   resolved "https://registry.npmjs.org/ansi-styles/-/ansi-styles-6.2.1.tgz"
   integrity sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==
 
-anymatch@^3.1.3:
+anymatch@^3.0.0, anymatch@^3.1.3:
   version "3.1.3"
   resolved "https://registry.npmjs.org/anymatch/-/anymatch-3.1.3.tgz"
   integrity sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==
@@ -2804,20 +2848,20 @@ bootstrap-datepicker@^1.9.0:
   dependencies:
     jquery ">=3.4.0 <4.0.0"
 
-bootstrap-select@^1.13.18:
-  version "1.13.18"
-  resolved "https://registry.npmjs.org/bootstrap-select/-/bootstrap-select-1.13.18.tgz"
-  integrity sha512-V1IzK4rxBq5FrJtkzSH6RmFLFBsjx50byFbfAf8jYyXROWs7ZpprGjdHeoyq2HSsHyjJhMMwjsQhRoYAfxCGow==
+bootstrap-icons@^1.11.3:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.13.1.tgz#0aad3f5b55b67402990e729ce3883416f9cef6c5"
+  integrity sha512-ijombt4v6bv5CLeXvRWKy7CuM3TRTuPEuGaGKvTV5cz65rQSY8RQ2JcHt6b90cBBAC7s8fsf2EkQDldzCoXUjw==
 
-bootstrap@^3.4.1:
-  version "3.4.1"
-  resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-3.4.1.tgz"
-  integrity sha512-yN5oZVmRCwe5aKwzRj6736nSmKDX7pLYwsXiCj/EYmo16hODaBiT4En5btW/jhBF/seV+XMx3aYwukYC3A49DA==
+bootstrap-select@^1.14.0-beta3:
+  version "1.14.0-beta3"
+  resolved "https://registry.yarnpkg.com/bootstrap-select/-/bootstrap-select-1.14.0-beta3.tgz#dc15083fe51d0ac7b38a3b99dfd492dcc0a783b0"
+  integrity sha512-wYUDY4NAYBcNydXybE7wh3+ucyf+AcUOhZ+e0TFIoZ38A+k/3BVT1RPl5f0CiPxAexP1IQuqALKMqI8wtZS71A==
 
-bootstrap@^4.6.0:
-  version "4.6.2"
-  resolved "https://registry.npmjs.org/bootstrap/-/bootstrap-4.6.2.tgz"
-  integrity sha512-51Bbp/Uxr9aTuy6ca/8FbFloBUJZLHwnhTcnjIeRn2suQWsWzcuJhGjKDB5eppVte/8oCdOL3VuwxvZDUggwGQ==
+bootstrap@^5.3.0, bootstrap@^5.3.8:
+  version "5.3.8"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.8.tgz#6401a10057a22752d21f4e19055508980656aeed"
+  integrity sha512-HP1SZDqaLDPwsNiqRqi5NcP0SSXciX2s9E+RyqJIIqGo+vJeN5AJVM98CXmW/Wux0nQ5L7jeWUdplCEf0Ee+tg==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -3306,76 +3350,69 @@ data-view-byte-offset@^1.0.1:
     es-errors "^1.3.0"
     is-data-view "^1.0.1"
 
-datatables.net-bs4@>=1.11.0, datatables.net-bs4@^2, datatables.net-bs4@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.npmjs.org/datatables.net-bs4/-/datatables.net-bs4-2.3.2.tgz"
-  integrity sha512-I2a2AeRO+iiMLUI/yCYo8UevscpYxray7AJGUnMep4HmqrQ+NQgseYr38N/kNdY7vxU5XKqq1c+uSGAPkk9Q9A==
+datatables.net-bs5@>=1.11.0, datatables.net-bs5@^2, datatables.net-bs5@^2.3.5:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/datatables.net-bs5/-/datatables.net-bs5-2.3.5.tgz#96f76dce12b1554664b06bd85f6b3be8d6da509f"
+  integrity sha512-2JA2WZz1tBxdVpYAspiqI8POdqEoAZZzqp7tISKaof2P5ufBJb+OLaahxwuB0sF9qcQh1azlU+JH1zsLBXVwXg==
   dependencies:
-    datatables.net "2.3.2"
+    datatables.net "2.3.5"
     jquery ">=1.7"
 
-datatables.net-buttons-bs4@^3.2.4:
-  version "3.2.4"
-  resolved "https://registry.npmjs.org/datatables.net-buttons-bs4/-/datatables.net-buttons-bs4-3.2.4.tgz"
-  integrity sha512-pWg5YIdE/aAIUop82eQWkzDQQOWZfRUtZBK3weiZVMcdMuq8x1bVlXNsxU5QvlqArZPjPHrsPggj53g3Jo7QGw==
+datatables.net-buttons-bs5@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/datatables.net-buttons-bs5/-/datatables.net-buttons-bs5-3.2.5.tgz#ab8b2d3cc674e7da3bbe44b600e04edd43c7e7f5"
+  integrity sha512-3eT/Sd90x7imq9MRcKP9X3j70qg/u+OvtZSNWJEihRf1Mb/Sr8NexQw/Bag/ui6GJHa5dhUeFrOgBSKtEW70iA==
   dependencies:
-    datatables.net-bs4 "^2"
-    datatables.net-buttons "3.2.4"
+    datatables.net-bs5 "^2"
+    datatables.net-buttons "3.2.5"
     jquery ">=1.7"
 
-datatables.net-buttons@3.2.4:
-  version "3.2.4"
-  resolved "https://registry.npmjs.org/datatables.net-buttons/-/datatables.net-buttons-3.2.4.tgz"
-  integrity sha512-anA39/R0kpHA2DOwqEHy/ZMXD5vf4tWmyNO0BnO0kJG7AFNvGTUCWBnBifXYg3G64U6JYpYY+MuTFKIB1/ZMTQ==
-  dependencies:
-    datatables.net "^2"
-    jquery ">=1.7"
-
-datatables.net-responsive-bs4@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.npmjs.org/datatables.net-responsive-bs4/-/datatables.net-responsive-bs4-3.0.5.tgz"
-  integrity sha512-RP80U3pkzzmQZ2T5zijy/9tSFa0GfLgkG4ks8XLUwrAwPlL4MewgpdLD3oYLHvkNQoEcGydyIyWE71lizXnmNQ==
-  dependencies:
-    datatables.net-bs4 "^2"
-    datatables.net-responsive "3.0.5"
-    jquery ">=1.7"
-
-datatables.net-responsive@3.0.5:
-  version "3.0.5"
-  resolved "https://registry.npmjs.org/datatables.net-responsive/-/datatables.net-responsive-3.0.5.tgz"
-  integrity sha512-EnDY2OQN+f4XE72J+dajNuJwT78/GnCuuw8ACusrXaF/VpGyFEpBNr1JDzUTBj+cv7KGpDObks8AaL2p/Z2OVg==
+datatables.net-buttons@3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/datatables.net-buttons/-/datatables.net-buttons-3.2.5.tgz#e37fc4f06743e057e8e3e4abfda60c988e7c16da"
+  integrity sha512-OSTl7evbfe0SMee11lyzu5iv/z8Yp05eh3s1QBte/FNqHcoXN8hlAVSSGpYgk5pj8zwHPYIu6fHeMEue4ARUNg==
   dependencies:
     datatables.net "^2"
     jquery ">=1.7"
 
-datatables.net-rowreorder-bs4@^1.5.0:
+datatables.net-responsive-bs5@^3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/datatables.net-responsive-bs5/-/datatables.net-responsive-bs5-3.0.7.tgz#aa9961d096a7443f59a871d55bf8a19e37a9e60e"
+  integrity sha512-M5VgAXMF7sa64GxFxVfyhiomYpvH/CRXhwoB+l13LaoDU6qtb6noOupFMtG7AVECrDar6UaKe38Frfqz3Pi0Kg==
+  dependencies:
+    datatables.net-bs5 "^2"
+    datatables.net-responsive "3.0.7"
+    jquery ">=1.7"
+
+datatables.net-responsive@3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/datatables.net-responsive/-/datatables.net-responsive-3.0.7.tgz#7b57574bcfba105dc0827b77ec75b72b63e461fb"
+  integrity sha512-MngWU41M1LDDMjKFJ3rAHc4Zb3QhOysDTh+TfKE1ycrh5dpnKa1vobw2MKMMbvbx4q05OXZY9jtLSPIkaJRsuw==
+  dependencies:
+    datatables.net "^2"
+    jquery ">=1.7"
+
+datatables.net-rowreorder-bs5@^1.5.0:
   version "1.5.0"
-  resolved "https://registry.npmjs.org/datatables.net-rowreorder-bs4/-/datatables.net-rowreorder-bs4-1.5.0.tgz"
-  integrity sha512-4C9tzLRaisO+IOdJ1n6NRQ8ak0zC0IbX50Ed5hg+5PT7VJLI9klH+GBwE6hpF28UTWk7E6somzOwnRHLexqXdA==
+  resolved "https://registry.yarnpkg.com/datatables.net-rowreorder-bs5/-/datatables.net-rowreorder-bs5-1.5.0.tgz#e625561dec922ed54f5e9ec4a1ee0bfdd37788dc"
+  integrity sha512-Z57SfxBmlhQ03CEsjl4Txa22/hdBuB2b9cwnEAo8u4/L4YAfTGq+9PixsWN5M/sV9uHVOCjzLQYJmBjSYwc6oQ==
   dependencies:
-    datatables.net-bs4 ">=1.11.0"
+    datatables.net-bs5 ">=1.11.0"
     datatables.net-rowreorder "1.5.0"
     jquery ">=1.7"
 
 datatables.net-rowreorder@1.5.0:
   version "1.5.0"
-  resolved "https://registry.npmjs.org/datatables.net-rowreorder/-/datatables.net-rowreorder-1.5.0.tgz"
+  resolved "https://registry.yarnpkg.com/datatables.net-rowreorder/-/datatables.net-rowreorder-1.5.0.tgz#f8b5242bd97df6b9522573378e98e8c7d64002dd"
   integrity sha512-Kkq57tdJHrUCYkS8vywhL5tqKtl2q3K3p8A6wkIdwMX2b8YVjtywhQbXvvVLZnlMQsdX194FXVK1AgAwcm4hFg==
   dependencies:
     datatables.net ">=1.11.0"
     jquery ">=1.7"
 
-datatables.net@2.3.2:
-  version "2.3.2"
-  resolved "https://registry.npmjs.org/datatables.net/-/datatables.net-2.3.2.tgz"
-  integrity sha512-31TzwIQM0+pr2ZOEOEH6dsHd/WSAl5GDDGPezOHPI3mM2NK4lcDyOoG8xXeWmSbVfbi852LNK5C84fpp4Q+qxg==
-  dependencies:
-    jquery ">=1.7"
-
-datatables.net@>=1.11.0, datatables.net@^2:
-  version "2.0.8"
-  resolved "https://registry.npmjs.org/datatables.net/-/datatables.net-2.0.8.tgz"
-  integrity sha512-4/2dYx4vl975zQqZbyoVEm0huPe61qffjBRby7K7V+y9E+ORq4R8KavkgrNMmIgO6cl85Pg4AvCbVjvPCIT1Yg==
+datatables.net@2.3.5, datatables.net@>=1.11.0, datatables.net@^2:
+  version "2.3.5"
+  resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-2.3.5.tgz#a35cc1209edb7525ea68ebc3e7d3af6e3f30a758"
+  integrity sha512-Qrwc+vuw8GHo42u1usWTuriNAMW0VvLPSW3j8g3GxvatiD8wS/ZGW32VAYLLfmF4Hz0C/fo2KB3xZBfcpqqVTQ==
   dependencies:
     jquery ">=1.7"
 
@@ -4995,6 +5032,19 @@ iterator.prototype@^1.1.4:
     has-symbols "^1.1.0"
     set-function-name "^2.0.2"
 
+jQuery-QueryBuilder@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/jQuery-QueryBuilder/-/jQuery-QueryBuilder-3.0.0.tgz#54e63a68de4c75df9e9e9d1d3886035f06647442"
+  integrity sha512-ZzDMZVdO8UzQBVWrr2gtIx+N6zLmjpvYCOTH3osKbhPLKNlZynDktxb3JNFJrb9Fdr5/EPmBo80XvNF3OBBx3Q==
+  dependencies:
+    "@popperjs/core" "^2.11.8"
+    bootstrap "^5.3.0"
+    bootstrap-icons "^1.11.3"
+    jquery "^3.5.1"
+    jquery-extendext "^1.0.0"
+    moment "^2.29.1"
+    sql-parser-mistic "^1.2.3"
+
 jackspeak@^3.1.2:
   version "3.4.3"
   resolved "https://registry.npmjs.org/jackspeak/-/jackspeak-3.4.3.tgz"
@@ -5387,7 +5437,7 @@ jiti@^1.20.0:
 
 jquery-extendext@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.npmjs.org/jquery-extendext/-/jquery-extendext-1.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/jquery-extendext/-/jquery-extendext-1.0.0.tgz#00d6615e2ef7da630fbced293910002a1b281ee1"
   integrity sha512-gDJjpQ8ISd4ZMwSn0yXSuyufsPMCeWtWJ8kmqE85VromJqyVT2sdkHzS5yL0w1GK81UpOzmr2f9JgFln2sbJSg==
   dependencies:
     jquery ">=1.9.1"
@@ -6146,11 +6196,6 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-popper.js@^1.16.1:
-  version "1.16.1"
-  resolved "https://registry.npmjs.org/popper.js/-/popper.js-1.16.1.tgz"
-  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
-
 possible-typed-array-names@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/possible-typed-array-names/-/possible-typed-array-names-1.0.0.tgz"
@@ -6645,6 +6690,17 @@ sass-loader@^16.0.5:
   dependencies:
     neo-async "^2.6.2"
 
+sass@^1.45.0:
+  version "1.96.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.96.0.tgz#dca45b6b08ae829500f448124afc7c15150bbb34"
+  integrity sha512-8u4xqqUeugGNCYwr9ARNtQKTOj4KmYiJAVKXf2CTIivTCR51j96htbMKWDru8H5SaQWpyVgTfOF8Ylyf5pun1Q==
+  dependencies:
+    chokidar "^4.0.0"
+    immutable "^5.0.2"
+    source-map-js ">=0.6.2 <2.0.0"
+  optionalDependencies:
+    "@parcel/watcher" "^2.4.1"
+
 sass@^1.89.2:
   version "1.89.2"
   resolved "https://registry.npmjs.org/sass/-/sass-1.89.2.tgz"
@@ -6856,9 +6912,9 @@ source-map@^0.6.0, source-map@^0.6.1:
   resolved "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-source-map@^0.7.4:
+source-map@^0.7.3, source-map@^0.7.4:
   version "0.7.6"
-  resolved "https://registry.npmjs.org/source-map/-/source-map-0.7.6.tgz"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.6.tgz#a3658ab87e5b6429c8a1f3ba0083d4c61ca3ef02"
   integrity sha512-i5uvt8C3ikiWeNZSVZNWcfZPItFQOsYTUAOkcUPGd8DqDy1uOUikjt5dG+uRlwyvR108Fb9DOd4GvXfT0N2/uQ==
 
 spdx-exceptions@^2.1.0:
@@ -6886,7 +6942,7 @@ sprintf-js@~1.0.2:
 
 sql-parser-mistic@^1.2.3:
   version "1.2.3"
-  resolved "https://registry.npmjs.org/sql-parser-mistic/-/sql-parser-mistic-1.2.3.tgz"
+  resolved "https://registry.yarnpkg.com/sql-parser-mistic/-/sql-parser-mistic-1.2.3.tgz#338b8685bd9fe7844df0dccc01afc2ebca0950ea"
   integrity sha512-2jyVSr7jIgbeFnPW8JO4hTMkDP5mTxbbWX+P7GcCbCwHp+ffiJeQGBK4dDLoPZvexK2Wgy0aUBfsWgc2DPhYRg==
 
 sshpk@^1.18.0:

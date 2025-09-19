@@ -6,6 +6,7 @@ export const refreshSelects = (el: JQuery<HTMLElement>) => {
 
     el.on('afterCreateRuleFilters.queryBuilder', (e: JQuery.TriggeredEvent, rule: any) => {
         const ruleFilterSelect = $(rule.$el.find(`select[name=${rule.id}_filter]`));
+        if(ruleFilterSelect.hasClass('form-select')) ruleFilterSelect.removeClass('form-select');
         if (!ruleFilterSelects.includes(ruleFilterSelect[0])) ruleFilterSelects.push(ruleFilterSelect[0]);
         if (!ruleFilterSelect || !ruleFilterSelect[0]) {
             console.error('No select found');

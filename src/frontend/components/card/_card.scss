@@ -34,7 +34,7 @@
     light,
     dark) {
     .card-#{$color} {
-        border: none;
+        border-color: var(--bs-#{$color});
 
         .card-header {
             background-color: var(--bs-#{$color});
@@ -69,7 +69,7 @@
         background-color: var(--bs-white);
 
         h1, h2, h3, h4, h5, h6, p, span, div {
-            color: var(--bs-secondary);
+            color: var(--bs-black);
         }
 
         h4 {
@@ -196,7 +196,7 @@ a.card--settings {
     margin-right: 0;
     margin-bottom: 0;
 
-    span:not(.btn__title) {
+    span {
         @extend .visually-hidden;
     }
 }

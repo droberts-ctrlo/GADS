@@ -524,7 +524,7 @@
                                 %]
 
                                 <button
-                                  class="btn btn-primary btn-remove btn-js-toggle-all-fields m-0"
+                                  class="btn btn-primary btn-sm btn-remove btn-js-toggle-all-fields m-0"
                                   data-toggle-source="#table-view-fields-selected"
                                   data-toggle-destination="#table-view-fields-available">
                                     Remove all fields
@@ -540,10 +540,11 @@
                                   table_id = "table-view-fields-available"
                                   table_class = 'table--bordered table-hover table-toggle table-toggle--add table-search'
                                   table_layout = {
-                                    topStart => session.rewind ? undef : "search",
-                                    topEnd   => ["pageLength", "fs"],
-                                    bottomStart => "paging",
-                                    bottomEnd => "info"
+                                    topStart = undef,
+                                    topEnd = undef,
+                                    bottomStart = undef,
+                                    bottomEnd = undef,
+                                    top = "search"
                                   }
                                   table_buttons = [{
                                     button_class = "btn"
@@ -570,7 +571,7 @@
                                   rows = fields_available
                                 %]
                                 <button
-                                  class="btn btn-primary btn-add btn-js-toggle-all-fields m-0"
+                                  class="btn btn-primary btn-sm btn-add btn-js-toggle-all-fields m-0"
                                   data-toggle-source="#table-view-fields-available"
                                   data-toggle-destination="#table-view-fields-selected">
                                     Select all fields

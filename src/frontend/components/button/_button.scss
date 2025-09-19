@@ -28,10 +28,6 @@
     color: $white;
   }
 
-  &:focus {
-    box-shadow: 0 0 0 0.2rem rgba($primary, 0.5);
-  }
-
   &.btn-inverted::after {
     color: $primary;
   }
@@ -138,7 +134,7 @@
 }
 
 .btn-disabled {
-  @include button-variant($gray, $gray, $white, $hover-color: $white);
+  @include button-variant($white, $gray, $gray, $hover-color: $white);
 
   &:hover {
     cursor: not-allowed;
@@ -533,13 +529,4 @@
 .rename::before {
   @extend %icon-font;
   content: "\E80b";
-}
-
-button.close {
-    background: $transparent;
-    border: none;
-
-    &:hover {
-        color: lighten($brand-primary, 0.1);
-    }
 }

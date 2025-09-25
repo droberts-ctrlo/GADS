@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
-
 import { Component, initializeRegisteredComponents } from 'component';
 import 'datatables.net-bs5';
 import 'datatables.net-buttons-bs5';
@@ -22,16 +21,18 @@ class DataTableComponent extends Component {
      */
     constructor(element) {
         super(element);
+        // For fullscreen we need a clone of the table element
+        this.table = element.cloneNode(true);
+        this.count = 0;
         this.el = $(this.element);
         this.hasCheckboxes = this.el.hasClass('table-selectable');
         this.hasClearState = this.el.hasClass('table-clear-state');
         this.forceButtons = this.el.hasClass('table-force-buttons');
         this.searchParams = new URLSearchParams(window.location.search);
         this.base_url = this.el.data('href') ? this.el.data('href') : undefined;
-        this.isFullScreen = false;
         this.initTable();
         $(window).on('resize', () => {
-            if(this.el.DataTable().responsive) {
+            if (this.el.DataTable().responsive) {
                 this.el.DataTable().responsive.recalc();
             }
         });
@@ -276,16 +277,15 @@ class DataTableComponent extends Component {
     addSortButton(dataTable, column, headerContent) {
         const $header = $(column.header());
         const $button = $(`
-      <button class="data-table__sort" type="button">
-        <span>${headerContent}</span>
-        <span class="btn btn-sort">
-          <span>Sort</span>
-        </span>
-      </button>`
-        );
+            <span class="data-table__sort">
+                <span>${headerContent}</span>
+                <span class="btn btn-sort">
+                    <span>Sort</span>
+                </span>
+            </span>
+        `);
 
         $header
-            .off()
             .find('.data-table__header-wrapper')
             .html($button);
 
@@ -362,11 +362,11 @@ class DataTableComponent extends Component {
         $searchInput.appendTo($('.input', $searchElement));
         if (col.typeahead_use_id) {
             $searchInput.after('<input type="hidden" class="search">');
-            if(searchValue) {
-                const response = await fetch(this.getApiEndpoint(columnId) + searchValue + '&use_id=1', {method: 'POST', data: {csrf_token: $('body').data('csrf')}});
+            if (searchValue) {
+                const response = await fetch(this.getApiEndpoint(columnId) + searchValue + '&use_id=1', { method: 'POST', data: { csrf_token: $('body').data('csrf') } });
                 const data = await response.json();
                 if (!data.error) {
-                    if(data.records.length != 0) {
+                    if (data.records.length != 0) {
                         $searchInput.val(data.records[0].label);
                         $('input.search', $searchElement).val(data.records[0].id)
                             .trigger('change');
@@ -384,17 +384,17 @@ class DataTableComponent extends Component {
                     builder
                         .withAjaxSource(this.getApiEndpoint(columnId))
                         .withMethod('POST')
-                        .withData({csrf_token: $('body').data('csrf')})
+                        .withData({ csrf_token: $('body').data('csrf') })
                         .withInput($('input', $header))
                         .withAppendQuery()
                         .withDefaultMapper()
                         .withName(columnId.replace(/\s+/g, '') + 'Search')
                         .withCallback((data) => {
-                            if(col.typeahead_use_id) {
+                            if (col.typeahead_use_id) {
                                 $searchInput.val(data.name);
-                                $('input.search',$searchElement).val(data.id)
+                                $('input.search', $searchElement).val(data.id)
                                     .trigger('change');
-                            }else{
+                            } else {
                                 $('input', $searchElement).addClass('search')
                                     .val(data.name)
                                     .trigger('change');
@@ -567,10 +567,10 @@ class DataTableComponent extends Component {
                 thisHTML += '</div>';
                 strHTML += (
                     `<div class="popover-container">
-                        <div class="popover-content" id="${data.id}-popover">
+                        <div class="popover-content" id="${data.id || data.column_id}-popover">
                             ${thisHTML}
                         </div>
-                        <button class="btn btn-primary btn-sm btn-inverted btn-info" type="button" aria-describedby="${data.id}-popover" data-bs-toggle="popover">
+                        <button class="btn btn-primary btn-sm btn-inverted btn-info" type="button" aria-describedby="${data.id || data.column_id}-popover" data-bs-toggle="popover">
                             ${this.encodeHTMLEntities(value.text)}
                         </button>
                     </div>`
@@ -745,29 +745,24 @@ class DataTableComponent extends Component {
      * @param {Config['layout']} layout The layout configuration for the DataTable
      */
     setupFullscreen(layout) {
-        if(!layout) return;
-        if(!layout.topEnd) return;
-        if(Array.isArray(layout.topEnd) && layout.topEnd.includes('fs')) {
-            console.log('Fullscreen mode enabled for DataTable');
+        if (!layout) return;
+        if (!layout.topEnd) return;
+        if (Array.isArray(layout.topEnd) && layout.topEnd.includes('fs')) {
             layout.topEnd = layout.topEnd.filter((item) => item !== 'fs');
-            layout.topEnd.push({fullscreen: {checked: this.fullScreen, onToggle: (ev) => this.toggleFullScreenMode(ev)}});
+            layout.topEnd.push({ fullscreen: { checked: this.fullscreen, onToggle: (ev) => this.toggleFullScreenMode(ev) } });
         } else if (layout.topEnd === 'fs') {
             layout.topEnd = undefined;
-            console.log('Fullscreen mode enabled for DataTable');
-            layout.topEnd = {fullscreen: {checked: this.fullScreen, onToggle: (ev) => this.toggleFullScreenMode(ev)}};
-        } else {
-            console.log('No fullscreen mode enabled for DataTable');
+            layout.topEnd = { fullscreen: { checked: this.fullscreen, onToggle: (ev) => this.toggleFullScreenMode(ev) } };
         }
     }
 
     /**
      * Get the configuration object for the DataTable
-     * @import { Config } from 'datatables.net-bs5';
-     * @param {Parital<Config>} overrides Any values to override in the configuration
-     * @returns {Config} The configuration object for the DataTable
+     * @param {Readonly<Parital<import('datatables.net-bs5').Config>>=} overrides Any values to override in the configuration
+     * @returns {import('datatables.net-bs5').Config} The configuration object for the DataTable
      */
     getConf(overrides = undefined) {
-        const confData = this.el.data('config');
+        const confData = (this.el).data('config');
         let conf = {};
 
         if (typeof confData === 'string') {
@@ -793,7 +788,7 @@ class DataTableComponent extends Component {
         const self = this;
 
         conf['initComplete'] = (settings, json) => {
-            const tableElement = this.el;
+            const tableElement = conf.el || this.el;
             const dataTable = tableElement.DataTable();
 
             this.json = json;
@@ -803,23 +798,34 @@ class DataTableComponent extends Component {
                     const column = this;
                     const $header = $(column.header());
 
+                    $header.on('click', (ev) => {
+                        if(ev.stopPropagation) {
+                            ev.stopPropagation();
+                            ev.preventDefault();
+                        } else {
+                            ev.cancelBubble = true;
+                        }
+                    });
+
                     const headerContent = $header.html();
-                    $header.html(`<div class='data-table__header-wrapper position-relative ${column.search() ? 'filter' : ''}' data-ddl='ddl_${index}'>${headerContent}</div>`);
+                    if(!headerContent.includes('data-table__header-wrapper')){
+                        $header.html(`<div class='data-table__header-wrapper position-relative ${column.search() ? 'filter' : ''}' data-ddl='ddl_${index}'>${headerContent}</div>`);
 
-                    // Add sort button to column header
-                    if ($header.hasClass('dt-orderable-asc') || $header.hasClass('dt-orderable-desc')) {
-                        self.addSortButton(dataTable, column, headerContent);
-                    }
-
-                    // Add button to column headers (only serverside tables)
-                    if ((conf.serverSide) && (tableElement.hasClass('table-search'))) {
-                        const id = settings.oAjaxData.columns[index].name;
-
-                        if (self.searchParams.has(id)) {
-                            column.search(self.searchParams.get(id)).draw();
+                        // Add sort button to column header
+                        if ($header.hasClass('dt-orderable-asc') || $header.hasClass('dt-orderable-desc')) {
+                            self.addSortButton(dataTable, column, headerContent);
                         }
 
-                        self.addSearchDropdown(column, id, index);
+                        // Add button to column headers (only serverside tables)
+                        if ((conf.serverSide) && (tableElement.hasClass('table-search'))) {
+                            const id = settings.oAjaxData.columns[index].name;
+
+                            if (self.searchParams.has(id)) {
+                                column.search(self.searchParams.get(id)).draw();
+                            }
+
+                            self.addSearchDropdown(column, id, index);
+                        }
                     }
                     return true;
                 });
@@ -832,6 +838,8 @@ class DataTableComponent extends Component {
                     }
                 }
 
+                initializeRegisteredComponents(tableElement[0]);
+
                 this.initializingTable = false;
             }
         };
@@ -839,7 +847,7 @@ class DataTableComponent extends Component {
         conf['footerCallback'] = function () {
             const api = this.api();
             // Add aggregate values to table if configured
-            const agg = api.ajax && api.ajax.json() && api.ajax.json().aggregate;
+            const agg = api.ajax?.json()?.aggregate;
             if (agg) {
                 const cols = api.settings()[0].oAjaxData.columns;
                 api.columns().every(function () {
@@ -873,60 +881,49 @@ class DataTableComponent extends Component {
 
     /**
      * Toggle full screen mode for the DataTable
-     * @param {HTMLButtonElement} buttonElement The button element that was clicked to toggle full screen mode
+     * @todo This is quite nasty, I didn't want to use the shadow DOM for this, but it may be better to in the future
      */
-    toggleFullScreenMode(buttonElement) {
-        /*
-            For some reason, the current code that is present doesn't enable/disable the button as expected; it will disable the button, but will not re-enable the button.
-            I have tried manually changing the DOM, as well as the methods already present in the code, and I currently believe there is a bug within the DataTables button
-            code that is meaning that this won't change (although I am open to the fact that I am being a little slow and missing something glaringly obvious).
-        */
-        const table = document.querySelector('table.data-table');
-        const currentTable = $(table);
-        if(currentTable && $.fn.dataTable.isDataTable(currentTable)) {
-            currentTable.DataTable().destroy();
+    toggleFullScreenMode(ev) {
+        let conf;
+
+        if($.fn.DataTable.isDataTable(this.el))
+            this.el.DataTable().destroy();
+
+        if (!this.fullscreen) {
+            this.fullscreen = true;
+
+            const frame = document.createElement('div');
+            frame.className = 'p-3';
+            frame.id = 'fullscreen-frame';
+            frame.style.position = 'fixed';
+            frame.style.top = '0';
+            frame.style.left = '0';
+            frame.style.width = '100%';
+            frame.style.height = '100%';
+            frame.style.overflow = 'auto';
+            frame.style.backgroundColor = 'white';
+            frame.style.zIndex = '1021';
+            frame.style.overflow = 'auto';
+
+            const newTable = this.table.cloneNode(true);
+            const $table = $(newTable);
+
+            $table.appendTo(frame);
+
+            document.body.appendChild(frame);
+
+            conf = this.getConf({ responsive: false, reinitialize: true, el: $table });
+            $table.DataTable(conf);
+
+            ev.stopPropagation();
+            ev.preventDefault();
+        } else if(this.fullscreen) {
+            this.fullscreen = false;
+
+            $('#fullscreen-frame').remove();
+
+            this.el.DataTable(this.getConf({reinitialize: true}));
         }
-        if (!this.isFullScreen) {
-            // Create new modal
-            const newModal = document.createElement('div');
-            newModal.id = 'table-modal';
-            newModal.classList.add('table-modal');
-            newModal.classList.add('data-table__container--scrollable');
-
-            // Move data table into new modal
-            newModal.append(table);
-            document.body.appendChild(newModal);
-            if (currentTable && !($.fn.dataTable.isDataTable(currentTable))) {
-                currentTable.DataTable(this.getConf({ responsive: false, reinitialize: true }));
-            }
-
-            $(document).on('keyup', (ev) => {
-                if (ev.key === 'Escape') {
-                    this.toggleFullScreenMode(buttonElement);
-                }
-            });
-        } else {
-            // Move data table back to original page
-            const mainContent = document.querySelector('.content-block__main-content');
-            if (!mainContent) {
-                console.warn('Failed to close full screen; missing main content');
-                return;
-            }
-
-            mainContent.appendChild(table);
-            if (currentTable && !($.fn.dataTable.isDataTable(currentTable))) {
-                currentTable.DataTable(this.getConf({ reinitialize: true }));
-            }
-            // Remove the modal
-            document.querySelector('#table-modal').remove();
-
-            $(document).off('keyup');
-        }
-
-        // Toggle the full screen button
-        this.isFullScreen = !this.isFullScreen;
-        $('#full-screen-btn').removeClass(this.isFullScreen ? 'btn-toggle-off': 'btn-toggle');
-        $('#full-screen-btn').addClass(this.isFullScreen ? 'btn-toggle': 'btn-toggle-off');
     }
 
     /**
@@ -945,10 +942,22 @@ class DataTableComponent extends Component {
                 .each((i, el) => {
                     const data = rows[i] ? rows[i] : undefined;
                     if (data) {
-                    // URL will be record link for standard view, or filtered URL for
-                    // grouped view (in which case _count parameter will be present not _id)
-                        const url = data['_id'] ? `${this.base_url}/${data['_id']}` : `?${data['_count']['url']}`;
-
+                        // URL will be record link for standard view, or filtered URL for
+                        // grouped view (in which case _count parameter will be present not _id)
+                        let url = undefined;
+                        try {
+                            url = data['_id'] ? `${this.base_url}/${data['_id']}` : `?${data['_count']['url']}`;
+                        } catch (e) {
+                            // Hacking more than a geriatric coal-miner with a 40 a day habit
+                            if (data[0] && data[0].match(/<a href="([^"]+)">/)) {
+                                // If the data is a string with an anchor tag, extract the URL
+                                url = data[0].match(/<a href="([^"]+)">/)[1];
+                            } else {
+                                console.error('Error constructing URL for row:', data, e);
+                                return;
+                            }
+                        }
+                        if (!url) return;
                         $(el).find('td:not(".dtr-control")')
                             .on('click', (ev) => {
                                 // Only for table cells that are not part of a record-popup table row

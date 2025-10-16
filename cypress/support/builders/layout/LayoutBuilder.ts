@@ -227,6 +227,5 @@ class CurvalLayoutBuilder extends LayoutBuilderBase implements ICurvalLayoutBuil
         cy.get("button.btn-sm[data-delete='rule']")
             .eq(1)
             .click();
-        //Someone owes me a drink!
     }
 }

@@ -38,6 +38,28 @@ describe("Creating Tables using the Wizard", () => {
       cy.location("pathname").should("include", "1-test-table/edit");
     });
 
+    //attempt save with incorrect (fails)
+    it.skip('should fail to save new table with  invalid shortname ', () => {
+        cy.get('[data-bs-target="#newTableModal"]').click();
+        cy.get('#shortName').type('This value wont $4v£');
+        cy.get("#name").type("table to fail");
+        cy.get('.btn-js-next').eq(0).click();
+        cy.get('.btn-js-save').eq(0).click();
+        cy.get('div.alert.alert-danger')
+            .should('be.visible')
+            .and('contain', 'Invalid short name for table');
+    });
+
+    it('should save a new table successfully', () => {
+        cy.get('[data-bs-target="#newTableModal"]').click();
+        cy.get('#shortName').type('1-test_table');
+        cy.get("#name").type("1-test-table");
+        cy.get('.btn-js-next').eq(0).click();
+        cy.get('.btn-js-save').eq(0).click();
+        cy.location("pathname").should("include", "/table");
+        cy.contains('1-test-table').should('exist');
+    });
+
     it("should delete the table successfully", () => {
       cy.deleteInstanceByShortName("1-test-table");
 

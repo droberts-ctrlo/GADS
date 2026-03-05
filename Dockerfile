@@ -39,9 +39,7 @@ RUN apt-get update && \
                        libcgi-deurl-xs-perl libfile-bom-perl libdatetime-format-iso8601-perl liblog-log4perl-perl \
                        libwww-mechanize-chrome-perl chromium libfile-libmagic-perl libnet-saml2-perl liburl-encode-perl \
                        libtext-markdown-perl libtest-tempdir-tiny-perl libtest-mocktime-perl && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-get clean && rm -rf /var/lib/apt/lists/* && \
+    chmod +x /app/bin/cleanup.sh && ./bin/cleanup.sh
 
-RUN chmod +x /app/bin/cleanup.sh && ./bin/cleanup.sh
-
-RUN chmod +x /app/bin/docker.sh
-ENTRYPOINT [ "./bin/docker.sh" ]
+ENTRYPOINT [ "./bin/app.pl" ]

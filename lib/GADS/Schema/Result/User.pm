@@ -107,6 +107,8 @@ __PACKAGE__->add_columns(
   },
   "debug_login",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
+  "signing_key",
+  { data_type => "varchar", is_nullable => 1, size => 131 },
 );
 
 __PACKAGE__->set_primary_key("id");
@@ -888,6 +890,12 @@ has encryption_key => (
     is      => 'lazy',
 );
 
+=head2 encryption_key
+Generate an encryption key for the user, based on their ID and username, and a signing key that is rotated monthly.
+The encryption key is generated using a JWT-like structure, with the header and payload containing the user's ID and username,
+and the signature created using HMAC-SHA256 with a secret derived from the signing key.
+The final encryption key is a SHA256 hash of the header, payload, and signature, encoded in base64url format.
+=cut
 sub _build_encryption_key {
     my $self = shift;
     
@@ -897,10 +905,42 @@ sub _build_encryption_key {
     my $header_b64   = encode_base64url($header_json);
     my $payload_b64  = encode_base64url($payload_json);
     my $input        = "$header_b64.$payload_b64";
-    my $secret       = sha256($self->password);
+    my $password     = $self->get_signing_key;
+    my $secret       = sha256($password);
     my $sig          = encode_base64url(hmac_sha256($input, $secret));
     
     return encode_base64url(sha256("$input.$sig"));
+}
+
+=head2 get_signing_key
+Get the key for signing the encryption key, generating a new one if it doesn't exist or is out of date.
+The signing key is generated with the month appended to allow for automatic rotation each month,
+and the method will return the existing key if it's still valid to avoid unnecessary regeneration.
+=cut
+sub get_signing_key
+{   my $self = shift;
+    return $self->password if $self->password;
+    info "Generating signing key for user " . $self->id . ", " . $self->username;
+    my $key = $self->signing_key if $self->signing_key;
+    my @time = localtime;
+    my $month = $time[4];
+    my $lastgen = $key =~ /.*\.(\d{2})$/ ? $1 : -1 if $key;
+    return $key if $key && $lastgen == $month;
+    return $self->generate_signing_key;
+}
+
+=head2 generate_signing_key
+Generate a new signing key, consisting of a random string with the current month appended,
+and save it to the database.
+The month is appended to allow for automatic rotation each month, and the method will return
+the existing key if it's still valid to avoid unnecessary regeneration.
+=cut
+sub generate_signing_key
+{   my $self = shift;
+    my @time = localtime;
+    my $key = encode_base64url(sha256(rand().time().{})) . "." . sprintf('%02d',$time[4]);
+    $self->update({ signing_key => $key });
+    return $key;
 }
 
 1;

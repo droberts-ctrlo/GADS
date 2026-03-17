@@ -28,6 +28,16 @@ my $u = $schema->resultset('User')->find($user_id);
 
 is($u->value, "Bloggs, Joe", "User created successfully");
 
+my $key1 = $u->get_signing_key(test=>1);
+ok($key1, "Key generated correctly");
+
+$u->update({ key_datetime => -1 });
+
+my $key2 = $u->get_signing_key(test=>1);
+ok($key2, "Key generated correctly after update");
+
+ok($key1 ne $key2, "Key updated correctly");
+
 # Check cannot rename to existing user
 my $existing = $schema->resultset('User')->next->username;
 ok($existing ne $u->username, "Testing username different to that of test");

@@ -4,7 +4,8 @@
 BEGIN;
 
 ;
-ALTER TABLE user ADD COLUMN signing_key varchar(131) NULL;
+ALTER TABLE user ADD COLUMN signing_key varchar(64) NULL,
+                 ADD COLUMN key_datetime smallint NULL;
 
 ;
 

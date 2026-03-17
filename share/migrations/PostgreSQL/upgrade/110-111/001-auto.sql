@@ -4,7 +4,10 @@
 BEGIN;
 
 ;
-ALTER TABLE "user" ADD COLUMN signing_key character varying(131);
+ALTER TABLE "user" ADD COLUMN signing_key character varying(64);
+
+;
+ALTER TABLE "user" ADD COLUMN key_datetime smallint;
 
 ;
 

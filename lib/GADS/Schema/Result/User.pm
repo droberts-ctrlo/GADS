@@ -108,7 +108,9 @@ __PACKAGE__->add_columns(
   "debug_login",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "signing_key",
-  { data_type => "varchar", is_nullable => 1, size => 131 },
+  { data_type => "varchar", is_nullable => 1, size => 64 },
+  "key_datetime",
+  { data_type => "smallint", is_nullable => 1 },
 );
 
 __PACKAGE__->set_primary_key("id");
@@ -918,13 +920,14 @@ The signing key is generated with the month appended to allow for automatic rota
 and the method will return the existing key if it's still valid to avoid unnecessary regeneration.
 =cut
 sub get_signing_key
-{   my $self = shift;
-    return $self->password if $self->password;
+{   my ($self, %options) = @_;
+    # When testing we need to check key generation works, so ignore existing key if test option set
+    return $self->password if $self->password && !$options{test};
     info "Generating signing key for user " . $self->id . ", " . $self->username;
     my $key = $self->signing_key if $self->signing_key;
     my @time = localtime;
     my $month = $time[4];
-    my $lastgen = $key =~ /.*\.(\d{2})$/ ? $1 : -1 if $key;
+    my $lastgen = $self->key_datetime;
     return $key if $key && $lastgen == $month;
     return $self->generate_signing_key;
 }
@@ -938,8 +941,9 @@ the existing key if it's still valid to avoid unnecessary regeneration.
 sub generate_signing_key
 {   my $self = shift;
     my @time = localtime;
-    my $key = encode_base64url(sha256(rand().time().{})) . "." . sprintf('%02d',$time[4]);
-    $self->update({ signing_key => $key });
+    my $key = encode_base64url(sha256(rand().time().{}));
+    my $month = $time[4];
+    $self->update({ signing_key => $key, key_datetime => $month });
     return $key;
 }
 

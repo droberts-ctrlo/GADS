@@ -1,6 +1,6 @@
 --
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Wed Mar 11 13:41:23 2026
+-- Created on Tue Mar 17 11:27:30 2026
 --
 ;
 SET foreign_key_checks=0;
@@ -1102,7 +1102,8 @@ CREATE TABLE `user` (
   `stylesheet` text NULL,
   `created` datetime NULL,
   `debug_login` smallint NULL DEFAULT 0,
-  `signing_key` varchar(131) NULL,
+  `signing_key` varchar(64) NULL,
+  `key_datetime` smallint NULL,
   INDEX `user_idx_department_id` (`department_id`),
   INDEX `user_idx_lastrecord` (`lastrecord`),
   INDEX `user_idx_lastview` (`lastview`),

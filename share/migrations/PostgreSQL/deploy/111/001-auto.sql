@@ -1,6 +1,6 @@
 --
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Wed Mar 11 13:41:24 2026
+-- Created on Tue Mar 17 11:27:30 2026
 --
 ;
 --
@@ -1084,7 +1084,8 @@ CREATE TABLE "user" (
   "stylesheet" text,
   "created" timestamp,
   "debug_login" smallint DEFAULT 0,
-  "signing_key" character varying(131),
+  "signing_key" character varying(64),
+  "key_datetime" smallint,
   PRIMARY KEY ("id")
 );
 CREATE INDEX "user_idx_department_id" on "user" ("department_id");

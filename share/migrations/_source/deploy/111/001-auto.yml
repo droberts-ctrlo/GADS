@@ -8321,6 +8321,16 @@ schema:
           order: 1
           size:
             - 0
+        key_datetime:
+          data_type: smallint
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: key_datetime
+          order: 32
+          size:
+            - 0
         lastfail:
           data_type: datetime
           default_value: ~
@@ -8430,7 +8440,7 @@ schema:
           name: signing_key
           order: 31
           size:
-            - 131
+            - 64
         site_id:
           data_type: integer
           default_value: ~

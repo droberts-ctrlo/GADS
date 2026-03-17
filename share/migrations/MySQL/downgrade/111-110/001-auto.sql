@@ -4,7 +4,8 @@
 BEGIN;
 
 ;
-ALTER TABLE user DROP COLUMN signing_key;
+ALTER TABLE user DROP COLUMN signing_key,
+                 DROP COLUMN key_datetime;
 
 ;
 

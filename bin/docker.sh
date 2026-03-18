@@ -1,22 +1,23 @@
 #!/bin/bash
 
-set -eu
+echo "Wait for database to start..."
+chmod +x /app/bin/wait-for-it.sh
+/app/bin/wait-for-it.sh "db:5432"  -t 3
 
-if [ ! -f "/app/.initialized" ]; then
-    echo "Initializing database..."
+echo "Create citext extension..."
+psql gads -U gads -h db -c "CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;"
 
-    echo "CREATE USER ${LS_DB_USER} WITH PASSWORD '${LS_DB_PASSWORD}';" | PGPASSWORD=${PSQL_PASSWORD} psql -U ${PSQL_USER} -h ${PSQL_HOSTNAME}
-    echo "CREATE DATABASE ${LS_DB} OWNER ${LS_DB_USER};" | PGPASSWORD=${PSQL_PASSWORD} psql -U ${PSQL_USER} -h ${PSQL_HOSTNAME}
-    echo "CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;" | PGPASSWORD=${PSQL_PASSWORD} psql -U ${PSQL_USER} -h ${PSQL_HOSTNAME} ${LS_DB}
+echo "Seed database..."
+perl /app/bin/seed-database.pl --initial_username=$1 --instance_name=datasheet --site=$3
 
-    perl ./bin/seed-database.pl \
-        --initial_username "${LS_USER}" \
-        --instance_name ${LS_INSTANCE} \
-        --site "${LS_HOSTNAME}"
+echo "Add user '$1'..."
+perl -Ilib -MDancer2 -MDancer2::Plugin::Auth::Extensible -wE "user_password username => '$1', new_password => '$2'"
 
-    echo "Database initialized."
-    
-    touch /app/.initialized
-fi
+echo "Set new user password changed to 'now'..."
+psql gads -U gads -h db -c "UPDATE public.user SET account_request = 0, pwchanged = NOW();"
 
-perl ./bin/app.pl
+echo "Set site host to '$3'..."
+psql gads -U gads -h db -c "UPDATE public.site SET host = '$3'"
+
+echo "Start the perl application.."
+/app/bin/app.pl

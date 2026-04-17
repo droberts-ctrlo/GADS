@@ -129,7 +129,7 @@ describe('EditModal', () => {
             editError:'',
             editHtml:'',
             editModalOpen:true,
-            formRef:React.createRef(),
+            formRef:React.createRef() as any,
             loadingEditHtml:true,
             saveActiveWidget:jest.fn()
         };

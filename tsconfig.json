@@ -1,57 +1,47 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./src/frontend",
-        "outDir": "./dist/",
-        "noImplicitAny": false,
-        "module": "ES2020",
-        "target": "ES2020",
-        "jsx": "react",
-        "allowJs": true,
-        "moduleResolution": "node",
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "paths": {
-            "js/*": [
-                "js/*"
-            ],
-            "components/*": [
-                "components/*"
-            ],
-            "util/*": [
-                "js/lib/util/*"
-            ],
-            "component": [
-                "js/lib/component"
-            ],
-            "validation": [
-                "js/lib/validation"
-            ],
-            "logging": [
-                "js/lib/logging"
-            ],
-            "get-field-values": [
-                "js/lib/get-field-values"
-            ],
-            "set-field-values": [
-                "js/lib/set-field-values"
-            ],
-            "plotly/*": [
-                "js/lib/plotly/*"
-            ],
-            "guid": [
-                "js/lib/guid"
-            ],
-        },
-        "types": ["node", "jest"]
+  "compilerOptions": {
+    "rootDir": "./src/frontend",
+    "outDir": "./dist",
+
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    "strict": true,
+    "noImplicitAny": false,
+
+    "jsx": "react-jsx",
+
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "paths": {
+      "js/*": ["./src/frontend/js/*"],
+      "components/*": ["./src/frontend/components/*"],
+      "util/*": ["./src/frontend/js/lib/util/*"],
+      "component": ["./src/frontend/js/lib/component"],
+      "validation": ["./src/frontend/js/lib/validation"],
+      "logging": ["./src/frontend/js/lib/logging"],
+      "get-field-values": ["./src/frontend/js/lib/get-field-values"],
+      "set-field-values": ["./src/frontend/js/lib/set-field-values"],
+      "plotly/*": ["./src/frontend/js/lib/plotly/*"],
+      "guid": ["./src/frontend/js/lib/guid"]
     },
-    "include": [
-        "src/frontend/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "dist",
-        "src/**/*.test.ts",
-        "src/**/*.definitions.ts",
-        "src/frontend/testing/**/*.ts"
-    ]
+
+    "types": ["node", "jest"],
+
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src/frontend/**/*"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx",
+    "src/**/*.definitions.ts",
+    "src/frontend/testing/**/*.ts"
+  ]
 }

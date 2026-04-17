@@ -8,14 +8,14 @@ type TypeaheadCallback = (suggestion: { name: string, id: number }) => void;
  * TypeaheadBuilder class for building Typeahead class
  */
 export class TypeaheadBuilder {
-    private $input: JQuery<HTMLInputElement>;
-    private callback: TypeaheadCallback;
-    private name: string;
-    private ajaxSource: string;
+    private $input!: JQuery<HTMLInputElement>;
+    private callback!: TypeaheadCallback;
+    private name!: string;
+    private ajaxSource!: string;
     private appendQuery: boolean;
     private data: any;
     private mapper: MapperFunction = (data: any) => { return data.map(d => { return { name: d.name, id: d.id }; }); };
-    private dataBuilder: (...args: any[]) => any;
+    private dataBuilder?: (...args: any[]) => any;
     private method: 'GET' | 'POST' = 'GET';
 
     /**
@@ -140,7 +140,7 @@ export class TypeaheadBuilder {
         if (!this.callback) throw new Error('Callback not set');
         if (!this.name) throw new Error('Name not set');
         if (!this.ajaxSource) throw new Error('Ajax source not set');
-        const options = new TypeaheadSourceOptions(this.name, this.ajaxSource, this.mapper, this.appendQuery, this.data, this.dataBuilder, this.method);
+        const options = new TypeaheadSourceOptions(this.name, this.ajaxSource, this.mapper, this.appendQuery, this.data, this.dataBuilder ?? (() => {}), this.method);
         return new Typeahead(this.$input, this.callback, options);
     }
 }

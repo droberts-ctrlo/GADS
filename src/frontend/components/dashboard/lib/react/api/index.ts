@@ -13,6 +13,8 @@ export default class ApiClient {
     private headers: Record<string, string> = {};
     private isDev: boolean;
 
+    private static defaultResponse = new Response();
+
     /**
      * Create an instance of ApiClient.
      * @param {string} [baseUrl = ''] Base URL for the API requests.
@@ -71,7 +73,7 @@ export default class ApiClient {
      * @param {T} body The body of the request
      * @returns {Promise<Response>} A promise that resolves to the response of the fetch request.
      */
-    POST<T extends object = object>(route: string, body: T): Promise<Response> { return this._fetch(route, 'POST', body); }
+    POST<T extends object = object>(route: string, body?: T): Promise<Response> { return this._fetch(route, 'POST', body); }
 
     /**
      * Perform a PUT request to the API.
@@ -100,6 +102,7 @@ export default class ApiClient {
             const strippedLayout = layout.map(widget => ({ ...widget, moved: undefined }));
             return this.PUT(`/dashboard/${id}`, strippedLayout);
         }
+        return Promise.resolve(ApiClient.defaultResponse);
     };
 
     /**
@@ -108,7 +111,7 @@ export default class ApiClient {
      * @returns {Promise<ApiResponse>} A promise that resolves to the response of the widget creation request.
      */
     createWidget = async (type: string): Promise<ApiResponse> => {
-        const response = this.isDev ? await this.GET(`/widget/create.json?type=${type}`) : await this.POST(`/widget?type=${type}`, null);
+        const response = this.isDev ? await this.GET(`/widget/create.json?type=${type}`) : await this.POST(`/widget?type=${type}`);
         return await response.json();
     };
 
@@ -127,7 +130,10 @@ export default class ApiClient {
      * @param {string} id The ID of the widget to delete.
      * @returns {Promise<Response>} A promise that resolves to the response of the delete request.
      */
-    deleteWidget = (id: string): Promise<Response> => !this.isDev && this.DELETE(`/widget/${id}`);
+    deleteWidget = (id: string): Promise<Response> => {
+        if (this.isDev) return Promise.resolve(ApiClient.defaultResponse);
+        return this.DELETE(`/widget/${id}`);
+    };
 
     /**
      * Get the edit form for a widget.

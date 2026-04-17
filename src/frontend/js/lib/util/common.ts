@@ -40,3 +40,14 @@ export const fromJson = (json: string | object): object => {
         return {};
     }
 };
+
+const isError = (error: unknown): error is Error => typeof error === 'object' && error !== null && 'message' in error && typeof (error as any).message === 'string';
+export const coerceError = (error: unknown): string => {
+    if (isError(error)) {
+        return error.message;
+    }
+    if (typeof error === 'string') {
+        return error;
+    }
+    return 'An unknown error occurred';
+};

@@ -25,10 +25,11 @@ export default function createDeleteButton(element: JQuery<HTMLElement>) {
             element.on('click', function (e: JQuery.ClickEvent) {
                 e.stopPropagation();
             });
+            /* @ts-expect-error - This is a global variable */
             if (window.test) throw e;
         }
 
         $deleteModal.find('.modal-title').text(modalTitle);
-        $deleteModal.find('button[type=submit]').val(id);
+        $deleteModal.find('button[type=submit]').val(id!);
     });
 }

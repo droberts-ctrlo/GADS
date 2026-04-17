@@ -1,7 +1,7 @@
 /**
  * Type to represent a string of LUA code.
  */
-type LUACode = string;
+export type LUACode = string;
 
 /**
  * Anything with a toString method.
@@ -14,7 +14,7 @@ type stringLike = { toString(): string };
  * @param {(stringLike | string | number | LUACode)[]} values The values to insert into the LUA code
  * @returns {LUACode} A string of LUA code
  */
-function LUA(strings: TemplateStringsArray, ...values: (stringLike | string | number | LUACode)[]): LUACode {
+export function LUA(strings: TemplateStringsArray, ...values: (stringLike | string | number | LUACode)[]): LUACode {
     let str = '';
     for (let i = 0; i < strings.length; i++) {
         str += strings[i];
@@ -24,5 +24,3 @@ function LUA(strings: TemplateStringsArray, ...values: (stringLike | string | nu
     }
     return str;
 }
-
-export { LUACode, LUA };

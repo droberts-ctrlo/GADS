@@ -15,7 +15,7 @@ type RequestMethod = 'PUT' | 'POST' | 'GET' | 'DELETE' | 'PATCH';
 /**
  * Type to represent an object similar to an XMLHttpRequest object
  */
-type XmlHttpRequestLike = {
+export type XmlHttpRequestLike = {
     open: (method: string, url: string) => void,
     onabort?: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null,
     onerror?: ((this: XMLHttpRequest, ev: ProgressEvent<EventTarget>) => any) | null,
@@ -40,7 +40,7 @@ type XmlHttpRequestLike = {
  * @param { ProgressFunction } onProgress A callback that is called when the upload progress changes
  * @returns { Promise<T> } The JSON response from the server
  */
-async function upload<T = unknown>(url: string | URL, data?: FormData | object, method: RequestMethod = 'POST', onProgress: ProgressFunction = () => { }): Promise<T> {
+export async function upload<T = unknown>(url: string | URL, data?: FormData | object, method: RequestMethod = 'POST', onProgress: ProgressFunction = () => { }): Promise<T> {
     const uploader = new Uploader(url, method);
     uploader.onProgress(onProgress);
     return uploader.upload(data);
@@ -50,7 +50,7 @@ async function upload<T = unknown>(url: string | URL, data?: FormData | object, 
  * Helper class to upload form data to a server endpoint
  * @todo The API class could be used within the Dashboard component rather than this class
  */
-class Uploader {
+export class Uploader {
     private onProgressCallback?: ProgressFunction;
     private url: string | URL;
     private method: RequestMethod;
@@ -108,5 +108,3 @@ class Uploader {
         });
     }
 }
-
-export { upload, Uploader, XmlHttpRequestLike };

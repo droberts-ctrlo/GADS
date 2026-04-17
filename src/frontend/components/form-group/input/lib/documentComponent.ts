@@ -7,6 +7,7 @@ import { logging } from 'logging';
 import { RenameEvent } from 'components/button/lib/rename-button';
 import { FileDropEvent } from 'util/filedrag';
 import ErrorHandler from 'util/errorHandler';
+import { coerceError } from 'util/common';
 
 /**
  * Interface for the file data returned from the server.
@@ -52,8 +53,8 @@ class DocumentComponent {
     readonly type = 'document';
     readonly el: JQuery<HTMLElement>;
     readonly fileInput: JQuery<HTMLInputElement>;
-    errors: (string|Error)[];
-    handler: ErrorHandler;
+    errors: (string|Error)[] = [];
+    handler!: ErrorHandler;
 
     /**
      * Create a new DocumentComponent.
@@ -132,6 +133,7 @@ class DocumentComponent {
             this.createProgressBar(this.el, file);
             barContainer = this.el.find('.progress-bar__container[data-file-name="' + file + '"]');
         }
+        /* @ts-expect-error - This is an intentional set to undefined */
         barContainer.css('width', undefined);
         barContainer.find('.progress-bar__percentage').html(uploadProgression === 100 ? 'complete' : `${uploadProgression}%`);
         barContainer.find('.progress-bar__progress').css('width', `${uploadProgression}%`);
@@ -185,7 +187,7 @@ class DocumentComponent {
                     .hide();
             });
         } catch (e) {
-            this.showException(e instanceof Error || 'message' in e ? e.message : e as string ?? e.toString());
+            this.showException(coerceError(e as unknown));
         }
     }
 
@@ -256,13 +258,8 @@ class DocumentComponent {
                 const { id, name } = data;
                 this.addFileToField({ id, name });
             }
-        } catch (error) {
-            let e=error;
-            if(JSON.parse(error as string)?.message)
-                e = JSON.parse(error as string).message;
-            else if (typeof error == 'object' && 'message' in error)
-                e = e.message;
-            this.showException(e);
+        } catch (error: any) {
+            this.showException(coerceError(error as unknown));
             const current = $(`#current-${fileId}`);
             current.text(oldName);
         }

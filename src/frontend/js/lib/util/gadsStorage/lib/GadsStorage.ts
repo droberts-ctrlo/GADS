@@ -11,7 +11,7 @@ export class GadsStorage implements AppStorage {
     enabled: boolean = true;
 
     private storage: EncryptedStorage | Storage;
-    private storageKey: string;
+    private storageKey!: string;
 
     /**
      * Creates a new GadsStorage instance.
@@ -26,9 +26,10 @@ export class GadsStorage implements AppStorage {
      * @returns {Promise<string>} The storage key used to encrypt data.
      */
     private async getStorageKey(): Promise<string> {
+        /* @ts-expect-error - global variable */
         if (window.test) {
             this.storageKey = 'test';
-            return;
+            return this.storageKey;
         }
         const fetchResult = await fetch('/api/get_key');
         const data = await fetchResult.json();
@@ -36,6 +37,7 @@ export class GadsStorage implements AppStorage {
             throw new Error('Failed to get storage key');
         }
         this.storageKey = data.key;
+        return this.storageKey;
     }
 
     /** @inheritdoc */

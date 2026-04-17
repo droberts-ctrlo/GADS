@@ -66,7 +66,7 @@ export default class SubmitFieldButton {
                 bUpdateTree = true;
             }
 
-            if ($instanceIDField.length && !$instanceIDField.prop('disabled') && $filterEl.length) {
+            if ($instanceIDField.length && !$instanceIDField.prop('disabled') && ($filterEl as JQuery<HTMLElement>)?.length) {
                 bUpdateFilter = true;
             }
 
@@ -126,6 +126,7 @@ export default class SubmitFieldButton {
      * @returns {string} The URL for the tree API
      */
     private getURL(data: JQuery.PlainObject): string {
+        /* @ts-expect-error - This is a global variable */
         if (window.test) return '';
 
         const devEndpoint = window.siteConfig && window.siteConfig.urls.treeApi;

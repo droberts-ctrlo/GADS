@@ -72,7 +72,7 @@ class EncryptedStorage {
      * @returns {string} The key at the given index
      */
     key(index: number): string {
-        return this.storage.key(index);
+        return this.storage.key(index) || '';
     }
 
     /**

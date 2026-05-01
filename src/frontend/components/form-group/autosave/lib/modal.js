@@ -1,6 +1,6 @@
 import { setFieldValues } from 'set-field-values';
 import AutosaveBase from './autosaveBase';
-import { fromJson } from 'util/common';
+import { fromJson } from '@ctrlo/common';
 
 /**
  * A modal that allows the user to restore autosaved values.

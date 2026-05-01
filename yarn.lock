@@ -1098,6 +1098,60 @@
   resolved "https://registry.yarnpkg.com/@csstools/css-tokenizer/-/css-tokenizer-3.0.4.tgz#333fedabc3fd1a8e5d0100013731cf19e6a8c5d3"
   integrity sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw==
 
+"@ctrlo/common@^1.0.1", "@ctrlo/common@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ctrlo/common/-/common-1.0.2.tgz#25f38059ba9aa8931e1f2a69fe2cb48751f02055"
+  integrity sha512-GJB5ZKy1g6l7s5O9HFTXPLegWKb5b7/TZOHPWJMVjpThJO/k1wMBX8THRnMhNO7yXPI+bw6VkJm6pBYuyPuhgw==
+  dependencies:
+    jquery "^3.6.0"
+
+"@ctrlo/encrypted-storage@^1.0.0":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ctrlo/encrypted-storage/-/encrypted-storage-1.0.2.tgz#af1443c04d73598e809a9720f117803ffd287e26"
+  integrity sha512-TcITaVBlR6PSXjaM2jDliod9rFsgLZK8JW//ov9LgDSg1eRrTqDIuKeX6ZYJG0E2dcw16D4AooIzZaDSCfyG+w==
+  dependencies:
+    "@ctrlo/encryption" "^1.0.2"
+
+"@ctrlo/encryption@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ctrlo/encryption/-/encryption-1.0.2.tgz#4078c034957d27cd688b8ea8377fdc55380aa836"
+  integrity sha512-onfl+DXLuwidP+yTalmZqCwvJY4pGiGa9DGSBu4VYEuyBUz4wZZ5MULNdO1L+cgaqJaE5XfRrYqU4iIbfwrTdg==
+
+"@ctrlo/error-handler@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@ctrlo/error-handler/-/error-handler-1.0.1.tgz#b134154e29122a5c8e8ff303de3807398074ea10"
+  integrity sha512-FbTBzRdszDKJs+y+yjd9bc8Z7kzn+F3ZYStxi28MHBuOzAkyOnoJPAI2t/JfDwzaWLVhd+p0Daob6KEJP7vsIw==
+  dependencies:
+    jquery "^3.6.0"
+
+"@ctrlo/filedrag@^1.0.0":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@ctrlo/filedrag/-/filedrag-1.0.3.tgz#5d5562d2ae437d81e78a5146b6c5f5d447d7c84b"
+  integrity sha512-YnVexawsC6IxnyLl9kDcw/XcvhKnAp1+ZwLCDp8h3sdOL0gdgKpdjlG2E+hi9hTeaFOVo+j9SKxSB59tYg/K+g==
+  dependencies:
+    "@ctrlo/common" "^1.0.2"
+    jquery "^3.6.0"
+
+"@ctrlo/mapper@^1.0.0":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ctrlo/mapper/-/mapper-1.0.2.tgz#f89a188445b34f0149c49864e0e6c288781460d6"
+  integrity sha512-E79AFmMeINIHGJ9G+LuOjPqCZx9vYHPfXw+dalozjso1Q7ZAjVPLREJgg18WKrc1y3xmn3tYjkOpQR4lR16Q3A==
+
+"@ctrlo/markdown@^1.0.0":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ctrlo/markdown/-/markdown-1.0.2.tgz#c582f703f2fd070592a80f2c743ffeb09ae3921c"
+  integrity sha512-MPG3VkMjZvjkrGnCVCYXqWRsaWUQkSkT4ntfx30Jc31DuAwAEquDJb4zy1hbzio0en7vHAtnwgx7+txwopsCAw==
+  dependencies:
+    marked "^15.0.0"
+
+"@ctrlo/upload-control@^1.0.0":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ctrlo/upload-control/-/upload-control-1.0.2.tgz#e71ef2a8a8a264fb55131df241f8821247367540"
+  integrity sha512-Cx7cCvqvfXFunljjuPmhnlByVTFN62cFccD14vpadM/6nNnP8gEnxCHXof6vfheGKdq869hKVMrRF8pTysCYHg==
+  dependencies:
+    "@ctrlo/common" "^1.0.2"
+    jquery "^3.6.0"
+
 "@cypress/request@^3.0.9":
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/@cypress/request/-/request-3.0.9.tgz#8ed6e08fea0c62998b5552301023af7268f11625"
@@ -2880,7 +2934,7 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.13.2.tgz#0aa167216965ac9474ccfa83892cfb6b3e1e52ef"
   integrity sha512-lHe62zvbTB5eEABUVi/AwVh0ZKY9rMMDhmm+eeyuuUQbQ3+J+fONVQOZyj+DdrvD4BY33uYniyRJ4UJIaSKAfw==
 
-babel-jest@30.3.0:
+babel-jest@30.3.0, babel-jest@^30.3.0:
   version "30.3.0"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-30.3.0.tgz#3ff5553fa3bcbb8738d2d7335a4dbdc3bd1a0eb5"
   integrity sha512-gRpauEU2KRrCox5Z296aeVHR4jQ98BCnu0IO332D/xpHNOsIH/bgSRk9k6GbKIbBw8vFeN6ctuu6tV8WOyVfYQ==
@@ -5993,9 +6047,9 @@ makeerror@1.0.12:
   dependencies:
     tmpl "1.0.5"
 
-marked@^15.0.12:
+marked@^15.0.0:
   version "15.0.12"
-  resolved "https://registry.npmjs.org/marked/-/marked-15.0.12.tgz"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-15.0.12.tgz#30722c7346e12d0a2d0207ab9b0c4f0102d86c4e"
   integrity sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA==
 
 math-intrinsics@^1.1.0:

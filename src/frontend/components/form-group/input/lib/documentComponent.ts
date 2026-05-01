@@ -1,13 +1,13 @@
 import 'components/button/lib/rename-button';
-import 'util/filedrag';
-import { upload } from 'util/upload/UploadControl';
+import '@ctrlo/filedrag';
+import { upload } from '@ctrlo/upload-control';
 import { validateCheckboxGroup } from 'validation';
-import { formdataMapper } from 'util/mapper/formdataMapper';
+import { formdataMapper } from '@ctrlo/mapper';
 import { logging } from 'logging';
 import { RenameEvent } from 'components/button/lib/rename-button';
-import { FileDropEvent } from 'util/filedrag';
-import ErrorHandler from 'util/errorHandler';
-import { coerceError } from 'util/common';
+import { FileDropEvent } from '@ctrlo/filedrag';
+import ErrorHandler from '@ctrlo/error-handler';
+import { coerceError } from '@ctrlo/common';
 
 /**
  * Interface for the file data returned from the server.

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 import { Component } from 'component';
-import { fromJson } from 'util/common';
+import { fromJson } from '@ctrlo/common';
 import { logging } from 'logging';
 import { initValidationOnField } from 'validation';
 

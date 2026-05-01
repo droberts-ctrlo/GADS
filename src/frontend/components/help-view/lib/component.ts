@@ -1,5 +1,5 @@
 import { Component } from 'component';
-import { MarkDown } from 'util/formatters/markdown';
+import { MarkDown } from '@ctrlo/markdown';
 
 /**
  * @class HelpView

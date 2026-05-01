@@ -3,7 +3,7 @@ import ModalComponent from '../../../lib/component';
 import { setFieldValues } from 'set-field-values';
 import { initializeRegisteredComponents } from 'component';
 import { validateRadioGroup, validateCheckboxGroup } from 'validation';
-import { fromJson } from 'util/common';
+import { fromJson } from '@ctrlo/common';
 import StorageProvider from 'util/storageProvider';
 
 /**

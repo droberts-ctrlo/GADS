@@ -1,7 +1,8 @@
+import '@ctrlo/filedrag';
 import { logging } from 'logging';
-import { FileDropEvent } from 'util/filedrag';
-import { formdataMapper } from 'util/mapper/formdataMapper';
-import { upload } from 'util/upload/UploadControl';
+import { FileDropEvent } from '@ctrlo/filedrag';
+import { formdataMapper } from '@ctrlo/mapper';
+import { upload } from '@ctrlo/upload-control';
 
 /**
  * FileComponent class for handling file upload functionality.

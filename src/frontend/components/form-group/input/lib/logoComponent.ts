@@ -1,5 +1,5 @@
-import { formdataMapper } from 'util/mapper/formdataMapper';
-import { upload } from 'util/upload/UploadControl';
+import { formdataMapper } from '@ctrlo/mapper';
+import { upload } from '@ctrlo/upload-control';
 
 /**
  * LogoComponent class for handling logo upload functionality.

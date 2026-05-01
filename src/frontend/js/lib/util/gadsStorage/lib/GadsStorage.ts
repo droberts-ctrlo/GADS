@@ -1,4 +1,4 @@
-import { EncryptedStorage } from 'util/encryptedStorage';
+import { EncryptedStorage } from '@ctrlo/encrypted-storage';
 import { AppStorage } from './AppStorage';
 import { logging } from 'logging';
 

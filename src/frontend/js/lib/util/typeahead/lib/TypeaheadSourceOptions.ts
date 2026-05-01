@@ -1,4 +1,4 @@
-import { MapperFunction } from 'util/mapper/mapper';
+import { MapperFunction } from '@ctrlo/mapper';
 
 /**
  * TypeaheadSourceOptions class for configuring typeahead data sources

@@ -33,6 +33,7 @@ export default function EditModal({ editModalOpen, closeModal, editError, loadin
         Modal.setAppElement('#ld-app');
     }, []);
 
+    // @ts-expect-error global variable for testing purposes
     const test = window.test;
 
     return (<Modal
@@ -53,7 +54,7 @@ export default function EditModal({ editModalOpen, closeModal, editError, loadin
             {editError
                 && <p className="alert alert-danger">{editError}</p>}
             {loadingEditHtml
-                ? <span className='ld-modal__loading'>Loading...</span> : <div ref={formRef} dangerouslySetInnerHTML={{ __html: editHtml }} />}
+                ? <span className='ld-modal__loading'>Loading...</span> : <div ref={formRef} dangerouslySetInnerHTML={{ __html: editHtml! }} />}
         </div>
         <div className='modal-footer'>
             <div className='modal-footer__left'>

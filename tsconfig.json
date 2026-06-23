@@ -1,49 +1,50 @@
 {
     "compilerOptions": {
-        "baseUrl": "./src/frontend",
-        "outDir": "./dist/",
+        "rootDir": "./src/frontend",
         "noImplicitAny": false,
-        "module": "ES2020",
+        "module": "node16",
         "target": "ES2020",
         "jsx": "react",
         "allowJs": true,
-        "moduleResolution": "node",
+        "moduleResolution": "node16",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "types": ["node"],
+        "lib": [
+            "ES2020",
+            "DOM"
+        ],
         "paths": {
             "js/*": [
-                "js/*"
+                "./js/*"
             ],
             "components/*": [
-                "components/*"
+                "./components/*"
             ],
             "util/*": [
-                "js/lib/util/*"
+                "./js/lib/util/*"
             ],
             "component": [
-                "js/lib/component"
+                "./js/lib/component"
             ],
             "validation": [
-                "js/lib/validation"
+                "./js/lib/validation"
             ],
             "logging": [
-                "js/lib/logging"
+                "./js/lib/logging"
             ],
             "get-field-values": [
-                "js/lib/get-field-values"
+                "./js/lib/get-field-values"
             ],
             "set-field-values": [
-                "js/lib/set-field-values"
+                "./js/lib/set-field-values"
             ],
             "plotly/*": [
-                "js/lib/plotly/*"
+                "./js/lib/plotly/*"
             ],
             "guid": [
-                "js/lib/guid"
-            ],
-        },
-        "types": ["node", "jest"]
+                "./js/lib/guid"
+            ]
+        }
     },
     "include": [
         "src/frontend/**/*"
@@ -52,6 +53,7 @@
         "node_modules",
         "dist",
         "src/**/*.test.ts",
+        "src/**/*.test.tsx",
         "src/**/*.definitions.ts",
         "src/frontend/testing/**/*.ts"
     ]

@@ -26,6 +26,7 @@ export class GadsStorage implements AppStorage {
      * @returns {Promise<void>} The storage key used to encrypt data.
      */
     private async getStorageKey(): Promise<void> {
+        // @ts-expect-error: window.test is a global variable set in the test environment
         if (window.test) {
             this.storageKey = 'test';
             return;

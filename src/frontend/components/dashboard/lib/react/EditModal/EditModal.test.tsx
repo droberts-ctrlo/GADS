@@ -129,7 +129,8 @@ describe('EditModal', () => {
             editError:'',
             editHtml:'',
             editModalOpen:true,
-            formRef:React.createRef(),
+            // @ts-expect-error This is a test
+            formRef:React.createRef<HTMLFormElement>(),
             loadingEditHtml:true,
             saveActiveWidget:jest.fn()
         };

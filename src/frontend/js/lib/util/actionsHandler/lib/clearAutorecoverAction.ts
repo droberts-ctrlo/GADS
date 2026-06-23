@@ -33,4 +33,5 @@ export const clearAutorecoverAction = async () => {
 /**
  * Action handler for when a record is created or updated - only runs outside of a test environment
  */
+// @ts-expect-error This is a global variable that is set in the test environment
 if (!window.test) addAction(clearAutorecoverAction);

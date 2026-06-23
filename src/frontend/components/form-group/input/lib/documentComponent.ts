@@ -130,7 +130,7 @@ class DocumentComponent {
             this.createProgressBar(this.el, file);
             barContainer = this.el.find('.progress-bar__container[data-file-name="' + file + '"]');
         }
-        barContainer.css('width', undefined);
+        barContainer.removeAttr('style');
         barContainer.find('.progress-bar__percentage').html(uploadProgression === 100 ? 'complete' : `${uploadProgression}%`);
         barContainer.find('.progress-bar__progress').css('width', `${uploadProgression}%`);
     }
@@ -182,7 +182,7 @@ class DocumentComponent {
                 $(this.el.find('.progress-bar__container[data-file-name="' + file.name + '"]'))
                     .hide();
             });
-        } catch (e) {
+        } catch (e: any) {
             this.showException(e instanceof Error || 'message' in e ? e.message : e as string ?? e.toString());
         }
     }
@@ -255,12 +255,15 @@ class DocumentComponent {
                 this.addFileToField({ id, name });
             }
         } catch (error) {
+            /** @todo Shouldn't this parsing be in the showException method? */
+            if(error == null || typeof(error) == 'undefined') return;
             let e=error;
             if(JSON.parse(error as string)?.message)
                 e = JSON.parse(error as string).message;
             else if (typeof error == 'object' && 'message' in error)
-                e = e.message;
-            this.showException(e);
+                e = (error as { message: string })?.message;
+            if(e==null || typeof(e) == 'undefined') return;
+            this.showException(e as string ?? e.toString());
             const current = $(`#current-${fileId}`);
             current.text(oldName);
         }

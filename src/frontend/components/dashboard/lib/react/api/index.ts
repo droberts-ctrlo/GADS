@@ -99,6 +99,8 @@ export default class ApiClient {
         if (!this.isDev) {
             const strippedLayout = layout.map(widget => ({ ...widget, moved: undefined }));
             return this.PUT(`/dashboard/${id}`, strippedLayout);
+        } else {
+            return Promise.resolve(new Response(JSON.stringify({ success: true }), { status: 200, statusText: 'OK' }));
         }
     };
 
@@ -108,7 +110,7 @@ export default class ApiClient {
      * @returns {Promise<ApiResponse>} A promise that resolves to the response of the widget creation request.
      */
     createWidget = async (type: string): Promise<ApiResponse> => {
-        const response = this.isDev ? await this.GET(`/widget/create.json?type=${type}`) : await this.POST(`/widget?type=${type}`, null);
+        const response = this.isDev ? await this.GET(`/widget/create.json?type=${type}`) : await this.POST(`/widget?type=${type}`, Promise.resolve({}));
         return await response.json();
     };
 
@@ -127,7 +129,7 @@ export default class ApiClient {
      * @param {string} id The ID of the widget to delete.
      * @returns {Promise<Response>} A promise that resolves to the response of the delete request.
      */
-    deleteWidget = (id: string): Promise<Response> => !this.isDev && this.DELETE(`/widget/${id}`);
+    deleteWidget = (id: string): Promise<Response> => !this.isDev ? this.DELETE(`/widget/${id}`) : Promise.resolve(new Response(JSON.stringify({ success: true }), { status: 200, statusText: 'OK' }));
 
     /**
      * Get the edit form for a widget.

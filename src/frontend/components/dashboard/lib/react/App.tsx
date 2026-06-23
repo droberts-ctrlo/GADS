@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, RefObject } from 'react';
 
 import Header from './Header';
 import Footer from './Footer';
@@ -9,6 +9,7 @@ import EditModal from './EditModal/EditModal';
 import { AppProps } from './types';
 import serialize from 'form-serialize';
 import { initializeRegisteredComponents } from 'component';
+import { Layout } from 'react-grid-layout';
 
 /**
  * Create the application component
@@ -16,7 +17,7 @@ import { initializeRegisteredComponents } from 'component';
  * @returns {React.JSX.Element} The rendered application component
  */
 export default function App(props: AppProps): React.JSX.Element {
-    const formRef = useRef<HTMLDivElement>(null);
+    const formRef: RefObject<HTMLDivElement> = useRef(null as any);
 
     const [editModalOpen, setEditModalOpen] = React.useState(false);
     const [editHtml, setEditHtml] = React.useState('');
@@ -81,12 +82,12 @@ export default function App(props: AppProps): React.JSX.Element {
         const editFormHtml = await props.api.getEditForm(id);
         if (editFormHtml.is_error) {
             setLoadingEditHtml(false);
-            setEditError(editFormHtml.message);
+            setEditError(editFormHtml.message!);
             return;
         }
         setLoadingEditHtml(false);
         setEditError('');
-        setEditHtml(editFormHtml.content);
+        setEditHtml(editFormHtml.content!);
     };
 
     /**
@@ -133,16 +134,16 @@ export default function App(props: AppProps): React.JSX.Element {
      */
     const saveActiveWidget = async (event: any) => {
         event.preventDefault();
-        const formEl = formRef.current.querySelector('form');
+        const formEl = formRef.current!.querySelector('form');
         if (!formEl) {
             console.error('No form element was found!');
             return;
         }
 
         const form = serialize(formEl, { hash: true });
-        const result = await props.api.saveWidget(formEl.getAttribute('action'), form);
+        const result = await props.api.saveWidget(formEl.getAttribute('action')!, form);
         if (result.is_error) {
-            setEditError(result.message);
+            setEditError(result.message!);
             return;
         }
         updateWidgetHtml(activeItem);
@@ -181,7 +182,7 @@ export default function App(props: AppProps): React.JSX.Element {
         let x = 0;
         let y = 0;
         while (isGridConflict(x, y, w, h)) {
-            if ((x + w) < props.gridConfig.cols) {
+            if ((x + w) < props.gridConfig!.cols!) {
                 x += 1;
             } else {
                 y += 1;
@@ -203,9 +204,9 @@ export default function App(props: AppProps): React.JSX.Element {
             alert(result.message);
             return;
         }
-        const id = result.message;
+        const id = result.message as string;
         const { x, y } = firstAvailableSpot(1, 1);
-        const widgetLayout = {
+        const widgetLayout: Layout & { i: string | undefined } = {
             i: id,
             x,
             y,
@@ -311,7 +312,7 @@ export default function App(props: AppProps): React.JSX.Element {
     return (
         <div className="content-block">
             {props.hideMenu || <Header
-                hMargin={props.gridConfig.containerPadding[0]}
+                hMargin={props.gridConfig!.containerPadding![0]}
                 dashboards={props.dashboards}
                 currentDashboard={props.currentDashboard}
                 includeH1={props.includeH1}

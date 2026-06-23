@@ -24,7 +24,7 @@ export interface FileDragOptions {
  */
 class FileDrag<T extends HTMLElement = HTMLElement> {
     private el: JQuery<T>;
-    private dropZone: JQuery<HTMLElement>;
+    private dropZone!: JQuery<HTMLElement>;
     // for testing
     protected dragging: boolean = false;
 
@@ -64,16 +64,17 @@ class FileDrag<T extends HTMLElement = HTMLElement> {
             if(this.el.hasClass('dragging')) this.el.removeClass('dragging');
             hideElement($('.drop-zone'));
             showElement($('[data-draggable="true"]'));
-            if (this.options.debug) console.log(e.originalEvent.dataTransfer.files);
+            if (this.options.debug) console.log(e.originalEvent?.dataTransfer?.files);
             showElement(this.el);
-            console.log(e.originalEvent.dataTransfer.files);
+            console.log(e.originalEvent?.dataTransfer?.files);
             if (this.options.allowMultiple) {
                 // For some reason the function will not accept a FileList, so we convert it to an array
-                const files = Array.from(e.originalEvent.dataTransfer.files);
+                const files = Array.from(e.originalEvent?.dataTransfer?.files || []);
                 files.forEach((file, index) => {
                     this.onDrop(file, index, files.length);
                 });
             } else {
+                if(!e.originalEvent?.dataTransfer?.files[0]) return;
                 this.onDrop(e.originalEvent.dataTransfer.files[0]);
             }
             $(document).trigger('drop');
@@ -93,7 +94,7 @@ class FileDrag<T extends HTMLElement = HTMLElement> {
         });
         $(document).on('dragleave', (e) => {
             if (!this.dragging) return;
-            if (e.originalEvent.pageX != 0 || e.originalEvent.pageY != 0) {
+            if (e.originalEvent && (e.originalEvent.pageX !== 0 || e.originalEvent.pageY !== 0)) {
                 return false;
             }
             this.dragging = false;

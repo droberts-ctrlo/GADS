@@ -131,6 +131,7 @@ export default class SubmitFieldButton {
      * @returns {string} The URL for the tree API
      */
     private getURL(data: JQuery.PlainObject): string {
+        // @ts-expect-error - This is a global variable used for testing
         if (window.test) return '';
 
         const devEndpoint = window.siteConfig && window.siteConfig.urls.treeApi;

@@ -4,7 +4,7 @@
 export class ErrorHandler {
     private el: JQuery<HTMLElement>;
     private errors: string[] = [];
-    errorContainer: JQuery<HTMLElement>;
+    errorContainer!: JQuery<HTMLElement>;
 
     /**
      * Create a new ErrorHandler instance
@@ -12,7 +12,7 @@ export class ErrorHandler {
      */
     constructor(private element: HTMLElement) {
         this.el = $(element);
-        this.el.data['errorHandler'] = this;
+        this.el.data('errorHandler', this);
         this.initErrorDisplay();
     }
 

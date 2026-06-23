@@ -1,8 +1,8 @@
 import './JQuerySearchableSelect';
 
 export const refreshSelects = (el: JQuery<HTMLElement>) => {
-    const ruleFilterSelects = [];
-    const operatorSelects = [];
+    const ruleFilterSelects: HTMLElement[] = [];
+    const operatorSelects: HTMLElement[] = [];
 
     el.on('afterCreateRuleFilters.queryBuilder', (e: JQuery.TriggeredEvent, rule: any) => {
         const ruleFilterSelect = $(rule.$el.find(`select[name=${rule.id}_filter]`));
@@ -31,13 +31,11 @@ export const refreshSelects = (el: JQuery<HTMLElement>) => {
             if (!ruleFilterSelect) {
                 continue;
             }
-            $(ruleFilterSelect).getSearchableSelect()
-                .refresh();
+            $(ruleFilterSelect).getSearchableSelect()?.refresh();
         }
         for (const operatorSelect of operatorSelects) {
             if (!operatorSelect) continue;
-            $(operatorSelect).getSearchableSelect()
-                .refresh();
+            $(operatorSelect).getSearchableSelect()?.refresh();
         }
     });
 
@@ -46,8 +44,7 @@ export const refreshSelects = (el: JQuery<HTMLElement>) => {
             if (!operatorSelect) {
                 continue;
             }
-            $(operatorSelect).getSearchableSelect()
-                .refresh();
+            $(operatorSelect).getSearchableSelect()?.refresh();
         }
     });
 };

@@ -25,6 +25,28 @@ sub BUILDARGS { $_[2] || {} }
 
 __PACKAGE__->load_components(qw(Helper::ResultSet::CorrelateRelationship));
 
+sub clear_pw_reset {
+    my ($self) = @_;
+
+    my $diff = DateTime->now->subtract(hours => 24);
+    my $search = {
+        resetpw => { '!=', undef },
+        reset_requested => { '<', $diff },
+    };
+
+    my $txn = $self->result_source->schema->txn_scope_guard;
+
+    my $users = $self->search($search);
+    while (my $user = $users->next) {
+        $user->update({
+            resetpw => undef,
+            reset_requested => undef,
+        });
+    };
+
+    $txn->commit;
+}
+
 sub active
 {   my ($self, %search) = @_;
 

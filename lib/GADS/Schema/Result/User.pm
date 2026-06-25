@@ -107,6 +107,8 @@ __PACKAGE__->add_columns(
   },
   "debug_login",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
+  "reset_requested",
+  { data_type => "datetime", datetime_undef_if_invalid => 1, is_nullable => 1 },
 );
 
 __PACKAGE__->set_primary_key("id");

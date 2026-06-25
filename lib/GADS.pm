@@ -604,6 +604,8 @@ any ['get', 'post'] => '/login' => sub {
             {
                 $audit->login_change("Password reset request for $username");
                 my $result = password_reset_send(username => $username);
+                my $user = schema->resultset('User')->active->search({ username => $username })->next or undef;
+                $user->update({reset_requested => DateTime->now}) if $user;
                 defined $result
                     ? success(__('An email has been sent to your email address with a link to reset your password'))
                     : report({is_fatal => 0}, ERROR => 'Failed to send a password reset link. Did you enter a valid email address?');

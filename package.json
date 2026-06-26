@@ -69,7 +69,6 @@
     "@typescript-eslint/type-utils": "^8.61.1",
     "@webpack-cli/serve": "^2.0.1",
     "autoprefixer": "^10.5.0",
-    "babel-jest": "^30.4.1",
     "babel-loader": "^10.1.1",
     "buffer": "^6.0.3",
     "clean-webpack-plugin": "^4.0.0",

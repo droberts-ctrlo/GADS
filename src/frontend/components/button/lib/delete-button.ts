@@ -1,4 +1,4 @@
-import { logging } from '../../../js/lib/logging';
+import { logging } from 'logging';
 
 /**
  * Create delete button

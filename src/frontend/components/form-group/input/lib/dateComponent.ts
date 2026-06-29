@@ -1,4 +1,4 @@
-import initDateField from '../../../datepicker/lib/helper';
+import initDateField from 'components/datepicker/lib/helper';
 
 /**
  * DateComponent class to handle date input fields.

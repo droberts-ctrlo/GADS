@@ -1,6 +1,6 @@
 import '@popperjs/core';
 import { Popover } from 'bootstrap';
-import { Component } from '../../../js/lib/component';
+import { Component } from 'component';
 
 /**
  * Basic wrapper around the Bootstrap popover component.

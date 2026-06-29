@@ -1,7 +1,7 @@
 import 'jstree';
 import 'datatables.net-bs5';
 import 'jQuery-QueryBuilder/dist/js/query-builder.standalone';
-import { validateQueryBuilder } from '../../../js/lib/validation';
+import { validateQueryBuilder } from 'validation';
 
 declare global {
     interface Window {

@@ -3,7 +3,7 @@ import { describe, it, expect, beforeAll } from '@jest/globals';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* @ts-ignore */
 import { initGlobals } from 'testing/globals.definitions';
-// import SubmitFieldButtonComponent from './submit-field-button';
+//import {SubmitFieldButton} from './submit-field-button';
 
 describe.skip('Submit field button tests - error in Jest means QB doesn\'t load', () => {
     beforeAll(() => {
@@ -11,8 +11,8 @@ describe.skip('Submit field button tests - error in Jest means QB doesn\'t load'
     });
 
     async function loadSubmitFieldButtonComponent(element: HTMLElement) {
-        const { default: SubmitFieldButtonComponent } = await import('./submit-field-button');
-        return new SubmitFieldButtonComponent($(element));
+        const { SubmitFieldButton } = await import('./submit-field-button');
+        return new SubmitFieldButton($(element));
     }
 
     it('should create a button', async () => {
@@ -21,7 +21,7 @@ describe.skip('Submit field button tests - error in Jest means QB doesn\'t load'
         element.classList.add('btn-js-submit-field');
         const button = await loadSubmitFieldButtonComponent(element);
         expect(button).toBeTruthy();
-        expect(button).toBeInstanceOf(SubmitFieldButtonComponent);
+        // expect(button).toBeInstanceOf(SubmitFieldButton);
     });
 
     it('should perform changes to tree component when one is present', async () => {

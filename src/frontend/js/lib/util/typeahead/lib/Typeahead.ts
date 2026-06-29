@@ -1,7 +1,7 @@
 import 'typeahead.js';
 import Bloodhound from 'typeahead.js/dist/bloodhound';
 import { TypeaheadSourceOptions } from './TypeaheadSourceOptions';
-import { MappedResponse } from '../../mapper/mapper';
+import { MappedResponse } from 'util/mapper/mapper';
 
 /**
  * Typeahead class for creating a typeahead

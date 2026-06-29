@@ -1,4 +1,4 @@
-import { createElement } from '../../../js/lib/util/domutils';
+import { createElement } from 'util/domutils';
 
 /**
  * Event fired when the file is renamed

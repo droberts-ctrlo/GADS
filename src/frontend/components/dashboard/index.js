@@ -2,9 +2,7 @@ import { initializeComponent, getComponentElements } from 'component';
 
 export default (scope) => {
 
-    if (!getComponentElements(scope, '.dashboard').length) {
-        return;
-    }
+    if (!getComponentElements(scope, '.dashboard').length) return;
 
     import(
     /* webpackChunkName: "dashboard" */

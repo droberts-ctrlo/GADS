@@ -1,9 +1,9 @@
 const path = require('path')
-const { ProvidePlugin, WatchIgnorePlugin } = require('webpack')
+const {ProvidePlugin, WatchIgnorePlugin} = require('webpack')
 const autoprefixer = require('autoprefixer')
 const sass = require('sass')
 const TerserPlugin = require('terser-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
@@ -98,6 +98,7 @@ module.exports = (env) => {
                                 sassOptions: {
                                     implementation: sass,
                                     loadPaths: ['src/frontend/components'],
+                                    quietDeps: true
                                 }
                             },
                         },
@@ -136,6 +137,12 @@ module.exports = (env) => {
         resolve: {
             alias: {
                 components: path.resolve(__dirname, 'src/frontend/components'),
+                util: path.resolve(__dirname, "src/frontend/js/lib/util"),
+                component: path.resolve(__dirname, "src/frontend/js/lib/component.js"),
+                validation: path.resolve(__dirname, "src/frontend/js/lib/validation.js"),
+                logging: path.resolve(__dirname, 'src/frontend/js/lib/logging.js'),
+                "get-field-values": path.resolve(__dirname, "src/frontend/js/lib/get-field-values.js"),
+                "set-field-values": path.resolve(__dirname, "src/frontend/ls/lib/set-field-values.js"),
                 jQuery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js'),
                 'jquery-ui/ui/widget': 'blueimp-file-upload/js/vendor/jquery.ui.widget.js',
             },

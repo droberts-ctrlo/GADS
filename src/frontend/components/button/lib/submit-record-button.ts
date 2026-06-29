@@ -1,4 +1,4 @@
-import { validateRequiredFields } from '../../../js/lib/validation';
+import { validateRequiredFields } from 'validation';
 
 /**
  * Button to submit records

@@ -1,4 +1,4 @@
-import { Hidable, Renderable } from '../../../js/lib/util/renderable';
+import { Hidable, Renderable } from 'util/renderable';
 import type { AlertType } from './types';
 
 /**

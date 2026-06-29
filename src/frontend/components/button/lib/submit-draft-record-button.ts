@@ -11,6 +11,6 @@ export function createSubmitDraftRecordButton(element: JQuery<HTMLElement>) {
 
         // Remove the required attribute from hidden required dependent fields
         $form.find('.form-group *[aria-required]').removeAttr('required');
-        clearSavedFormValues();
+        await clearSavedFormValues();
     });
 }

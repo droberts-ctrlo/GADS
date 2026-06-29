@@ -1,6 +1,6 @@
-import { EncryptedStorage } from '../../encryptedStorage';
+import { EncryptedStorage } from 'util/encryptedStorage';
 import { AppStorage } from './AppStorage';
-import { logging } from '../../../logging';
+import { logging } from 'logging';
 
 /**
  * A storage provider that encrypts data before storing it in the browser.

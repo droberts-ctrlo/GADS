@@ -1,4 +1,4 @@
-import { Uploader } from '../../upload/UploadControl';
+import { Uploader } from 'util/upload/UploadControl';
 
 /**
  * Upload a message to the server. It creates an instance of MessageUploader with a new Uploader and calls the uploadMessage method.

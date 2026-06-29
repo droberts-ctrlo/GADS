@@ -1,5 +1,5 @@
-import { modal } from '../../../lib/modal';
-import ModalComponent from '../../../lib/component';
+import { modal } from 'components/modal/lib/modal';
+import ModalComponent from 'components/modal/lib/component';
 
 /**
  * Modal component for user management

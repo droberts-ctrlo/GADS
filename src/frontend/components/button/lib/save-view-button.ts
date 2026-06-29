@@ -1,4 +1,4 @@
-import { validateRequiredFields } from '../../../js/lib/validation';
+import { validateRequiredFields } from 'validation';
 import 'jQuery-QueryBuilder/dist/js/query-builder.standalone';
 
 /**

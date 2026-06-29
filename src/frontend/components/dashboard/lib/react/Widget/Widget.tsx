@@ -1,6 +1,6 @@
 import React, { createRef, useEffect } from 'react';
-import { initializeRegisteredComponents } from '../../../../../js/lib/component';
-import { WidgetViewProps } from '../types';
+import { initializeRegisteredComponents } from 'component';
+import type { WidgetViewProps } from '../types';
 
 /**
  * Create a widget component

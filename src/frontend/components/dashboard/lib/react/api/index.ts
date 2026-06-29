@@ -1,10 +1,5 @@
 import { Layout } from 'react-grid-layout';
-import { ApiResponse } from '../types';
-
-/**
- * Request method types for the API client.
- */
-type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+import type { ApiResponse, RequestMethod } from '../types';
 
 /**
  * ApiClient class for making API requests.

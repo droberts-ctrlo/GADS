@@ -312,3 +312,8 @@ export type ApiResponse = {
      */
     content?: string;
 };
+
+/**
+ * Request method types for the API client.
+ */
+export type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';

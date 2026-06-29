@@ -2,13 +2,13 @@ import React, { useEffect, useRef, RefObject } from 'react';
 
 import Header from './Header';
 import Footer from './Footer';
-import { sidebarObservable } from '../../../sidebar/lib/sidebarObservable';
+import { sidebarObservable } from 'components/sidebar/lib/sidebarObservable';
 import DashboardView from './Dashboard/DashboardView';
 import EditModal from './EditModal/EditModal';
 
-import { AppProps } from './types';
+import type { AppProps } from './types';
 import serialize from 'form-serialize';
-import { initializeRegisteredComponents } from '../../../../js/lib/component';
+import { initializeRegisteredComponents } from 'component';
 import { Layout } from 'react-grid-layout';
 
 /**

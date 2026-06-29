@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
-import ModalComponent from '../../../lib/component';
+import ModalComponent from 'components/modal/lib/component';
 import { setFieldValues } from 'set-field-values';
 import { initializeRegisteredComponents } from 'component';
 import { validateRadioGroup, validateCheckboxGroup } from 'validation';

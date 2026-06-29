@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* @ts-ignore */
 import { validateRequiredFields } from 'validation';
-import CreateReportButtonComponent from './create-report-button';
+import {CreateReportButtonComponent} from './create-report-button';
 import { describe, it, expect, jest } from '@jest/globals';
 
 describe('create-report-button', () => {

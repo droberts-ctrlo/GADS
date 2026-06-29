@@ -1,5 +1,5 @@
-import { Component } from 'component';
-import { MarkDown } from 'util/formatters/markdown';
+import { Component } from '../../../js/lib/component';
+import { MarkDown } from '../../../js/lib/util/formatters/markdown';
 
 /**
  * @class HelpView

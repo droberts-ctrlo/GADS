@@ -6,7 +6,7 @@ import { logging } from 'logging';
 /**
  * Class representing a SummerNote component.
  */
-class SummerNoteComponent extends Component {
+export class SummerNoteComponent extends Component {
     /**
      * Creates an instance of SummerNoteComponent.
      * @param {HTMLElement} element The HTML element where the Summernote editor will be initialized

@@ -1,11 +1,11 @@
-import { Component } from 'component';
+import { Component } from '../../../../js/lib/component';
 import passwordComponent from './passwordComponent';
 import logoComponent from './logoComponent';
 import documentComponent from './documentComponent';
 import fileComponent from './fileComponent';
 import dateComponent from './dateComponent';
 import autocompleteComponent from './autocompleteComponent';
-import { initValidationOnField } from 'validation';
+import { initValidationOnField } from '../../../../js/lib/validation';
 
 /**
  * ComponentInitializer type for functions that initialize specific input components.

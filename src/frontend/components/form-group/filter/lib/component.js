@@ -3,7 +3,7 @@ import { Component } from 'component';
 import 'jQuery-QueryBuilder/dist/js/query-builder.standalone';
 import { refreshSelects } from 'components/form-group/searchable-select/FilterSelectHelper';
 import { logging } from 'logging';
-import TypeaheadBuilder from 'util/typeahead';
+import { TypeaheadBuilder } from 'util/typeahead';
 
 /**
  * FilterComponent class for managing filter functionality in a query builder.

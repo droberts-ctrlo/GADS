@@ -1,6 +1,6 @@
-import gadsStorage from 'util/gadsStorage';
-import { AppStorage } from 'util/gadsStorage/lib/AppStorage';
-import { fromJson } from 'util/common';
+import gadsStorage from '../../gadsStorage';
+import { AppStorage } from '../../gadsStorage/lib/AppStorage';
+import { fromJson } from '../../common';
 
 /**
  * Type to represent a map of strings

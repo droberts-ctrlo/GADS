@@ -1,4 +1,4 @@
-import { hideElement, showElement } from 'util/common';
+import { hideElement, showElement } from '../../common';
 
 /**
  * FileDragOptions interface to define options for the FileDrag class.

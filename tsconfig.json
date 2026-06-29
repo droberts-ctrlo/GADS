@@ -1,50 +1,18 @@
 {
     "compilerOptions": {
+        "outDir": "./public/js",
         "rootDir": "./src/frontend",
         "noImplicitAny": false,
-        "module": "node16",
+        "module": "ES2020",
         "target": "ES2020",
         "jsx": "react",
         "allowJs": true,
-        "moduleResolution": "node16",
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "lib": [
             "ES2020",
             "DOM"
-        ],
-        "paths": {
-            "js/*": [
-                "./js/*"
-            ],
-            "components/*": [
-                "./components/*"
-            ],
-            "util/*": [
-                "./js/lib/util/*"
-            ],
-            "component": [
-                "./js/lib/component"
-            ],
-            "validation": [
-                "./js/lib/validation"
-            ],
-            "logging": [
-                "./js/lib/logging"
-            ],
-            "get-field-values": [
-                "./js/lib/get-field-values"
-            ],
-            "set-field-values": [
-                "./js/lib/set-field-values"
-            ],
-            "plotly/*": [
-                "./js/lib/plotly/*"
-            ],
-            "guid": [
-                "./js/lib/guid"
-            ]
-        }
+        ]
     },
     "include": [
         "src/frontend/**/*"

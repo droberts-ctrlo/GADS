@@ -1,3 +1,1 @@
-import { TypeaheadBuilder } from './lib/TypeaheadBuilder';
-
-export default TypeaheadBuilder;
+export { TypeaheadBuilder } from './lib/TypeaheadBuilder';

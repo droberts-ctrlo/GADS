@@ -5,7 +5,7 @@ import { clearSavedFormValues } from './common';
  * This component will navigate away to the parameter defined in the data-href attribute, or will navigate back
  * @param { HTMLElement | JQuery<HTMLElement> } el The button element
  */
-export default function createCancelButton(el: HTMLElement | JQuery<HTMLElement>) {
+export function createCancelButton(el: HTMLElement | JQuery<HTMLElement>) {
     const $el = $(el);
     if ($el[0].tagName !== 'BUTTON') return;
     $el.data('cancel-button', 'true');

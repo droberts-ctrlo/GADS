@@ -1,5 +1,5 @@
 import { jest, describe, it, expect, beforeAll, afterEach } from '@jest/globals';
-import createRemoveCurvalButton from './remove-curval-button';
+import {createRemoveCurvalButton} from './remove-curval-button';
 
 describe('RemoveCurvalButton', () => {
     // @ts-expect-error - jest types are not complete

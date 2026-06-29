@@ -1,5 +1,5 @@
 import React, { createRef, useEffect } from 'react';
-import { initializeRegisteredComponents } from 'component';
+import { initializeRegisteredComponents } from '../../../../../js/lib/component';
 import { WidgetViewProps } from '../types';
 
 /**

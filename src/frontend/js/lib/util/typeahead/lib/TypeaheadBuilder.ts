@@ -1,4 +1,4 @@
-import { MapperFunction, map } from 'util/mapper/mapper';
+import { MapperFunction, map } from '../../mapper/mapper';
 import { TypeaheadSourceOptions } from './TypeaheadSourceOptions';
 import { Typeahead } from './Typeahead';
 

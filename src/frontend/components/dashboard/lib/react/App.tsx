@@ -2,13 +2,13 @@ import React, { useEffect, useRef, RefObject } from 'react';
 
 import Header from './Header';
 import Footer from './Footer';
-import { sidebarObservable } from 'components/sidebar/lib/sidebarObservable';
+import { sidebarObservable } from '../../../sidebar/lib/sidebarObservable';
 import DashboardView from './Dashboard/DashboardView';
 import EditModal from './EditModal/EditModal';
 
 import { AppProps } from './types';
 import serialize from 'form-serialize';
-import { initializeRegisteredComponents } from 'component';
+import { initializeRegisteredComponents } from '../../../../js/lib/component';
 import { Layout } from 'react-grid-layout';
 
 /**
@@ -290,8 +290,8 @@ export default function App(props: AppProps): React.JSX.Element {
     const initializeSummernoteComponent = () => {
         const summernoteEl = formRef.current.querySelector('.summernote');
         if (summernoteEl) {
-            import(/* WebpackChunkName: "summernote" */ '../../../summernote/lib/component')
-                .then(({ default: SummerNoteComponent }) => {
+            import(/* WebpackChunkName: "summernote" */ '../../../summernote/lib/component.js')
+                .then(({ SummerNoteComponent }) => {
                     new SummerNoteComponent(summernoteEl as HTMLElement);
                 });
         }
@@ -302,7 +302,7 @@ export default function App(props: AppProps): React.JSX.Element {
      */
     const initializeGlobeComponents = () => {
         const arrGlobe = document.querySelectorAll('.globe');
-        import(/* WebpackChunkName: "globe" */ '../../../globe/lib/component').then(({ default: GlobeComponent }) => {
+        import(/* WebpackChunkName: "globe" */ '../../../globe/lib/component.js').then(({ GlobeComponent }) => {
             arrGlobe.forEach((globe) => {
                 new GlobeComponent(globe as HTMLElement);
             });

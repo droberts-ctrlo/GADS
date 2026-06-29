@@ -1,9 +1,9 @@
-import {validateRequiredFields} from 'validation';
+import {validateRequiredFields} from '../../../js/lib/validation';
 
 /**
  * CreateReportButtonComponent class to create a report submission button component
  */
-export default class CreateReportButtonComponent {
+export class CreateReportButtonComponent {
     private canSubmitRecordForm: boolean = false;
 
     /**

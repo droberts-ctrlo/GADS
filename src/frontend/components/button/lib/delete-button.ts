@@ -1,10 +1,10 @@
-import { logging } from 'logging';
+import { logging } from '../../../js/lib/logging';
 
 /**
  * Create delete button
  * @param {JQuery<HTMLElement>} element Element to act as a delete button
  */
-export default function createDeleteButton(element: JQuery<HTMLElement>) {
+export function createDeleteButton(element: JQuery<HTMLElement>) {
     element.on('click', (ev) => {
         const $button = $(ev.target).closest('button');
         const title = $button.attr('data-title');

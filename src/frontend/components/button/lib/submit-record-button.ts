@@ -1,9 +1,9 @@
-import { validateRequiredFields } from 'validation';
+import { validateRequiredFields } from '../../../js/lib/validation';
 
 /**
  * Button to submit records
  */
-export default class SubmitRecordButton {
+export class SubmitRecordButton {
     private requiredHiddenRecordDependentFieldsCleared: boolean = false;
     private canSubmitRecordForm: boolean = false;
     private disableButton: boolean = false;

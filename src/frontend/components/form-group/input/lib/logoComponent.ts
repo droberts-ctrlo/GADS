@@ -1,5 +1,5 @@
-import { formdataMapper } from 'util/mapper/formdataMapper';
-import { upload } from 'util/upload/UploadControl';
+import { formdataMapper } from '../../../../js/lib/util/mapper/formdataMapper';
+import { upload } from '../../../../js/lib/util/upload/UploadControl';
 
 /**
  * LogoComponent class for handling logo upload functionality.

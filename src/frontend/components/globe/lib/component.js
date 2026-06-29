@@ -6,7 +6,7 @@ import * as Plotly from 'plotly/plotly-geo-2.26.0';
 /**
  * Component for displaying a globe with Plotly.
  */
-class GlobeComponent extends Component {
+export class GlobeComponent extends Component {
     /**
      * Create a new GlobeComponent.
      * @param {HTMLElement} element The HTML element that this component will be attached to.

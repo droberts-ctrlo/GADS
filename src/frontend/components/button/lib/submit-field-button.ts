@@ -1,7 +1,7 @@
 import 'jstree';
 import 'datatables.net-bs5';
 import 'jQuery-QueryBuilder/dist/js/query-builder.standalone';
-import { validateQueryBuilder } from 'validation';
+import { validateQueryBuilder } from '../../../js/lib/validation';
 
 declare global {
     interface Window {
@@ -19,7 +19,7 @@ declare global {
 /**
  * This class is responsible for handling the submit button on the field
  */
-export default class SubmitFieldButton {
+export class SubmitFieldButton {
     private errored: boolean = false;
 
     /**

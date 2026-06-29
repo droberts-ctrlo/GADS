@@ -1,7 +1,7 @@
-import { logging } from 'logging';
-import { FileDropEvent } from 'util/filedrag';
-import { formdataMapper } from 'util/mapper/formdataMapper';
-import { upload } from 'util/upload/UploadControl';
+import { logging } from '../../../../js/lib/logging';
+import { FileDropEvent } from '../../../../js/lib/util/filedrag';
+import { formdataMapper } from '../../../../js/lib/util/mapper/formdataMapper';
+import { upload } from '../../../../js/lib/util/upload/UploadControl';
 
 /**
  * FileComponent class for handling file upload functionality.

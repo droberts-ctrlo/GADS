@@ -1,5 +1,5 @@
-import { Component } from 'component';
-import StorageProvider from 'util/storageProvider';
+import { Component } from '../../../../js/lib/component';
+import StorageProvider from '../../../../js/lib/util/storageProvider';
 
 /**
  * Base class for autosave/recovery functionality.

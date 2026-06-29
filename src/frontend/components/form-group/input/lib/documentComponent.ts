@@ -1,11 +1,11 @@
-import 'components/button/lib/rename-button';
-import 'util/filedrag';
-import { upload } from 'util/upload/UploadControl';
-import { validateCheckboxGroup } from 'validation';
-import { formdataMapper } from 'util/mapper/formdataMapper';
-import { RenameEvent } from 'components/button/lib/rename-button';
-import { FileDropEvent } from 'util/filedrag';
-import ErrorHandler from 'util/errorHandler';
+import '../../../button/lib/rename-button';
+import '../../../../js/lib/util/filedrag';
+import { upload } from '../../../../js/lib/util/upload/UploadControl';
+import { validateCheckboxGroup } from '../../../../js/lib/validation';
+import { formdataMapper } from '../../../../js/lib/util/mapper/formdataMapper';
+import { RenameEvent } from '../../../button/lib/rename-button';
+import { FileDropEvent } from '../../../../js/lib/util/filedrag';
+import ErrorHandler from '../../../../js/lib/util/errorHandler';
 
 /**
  * Interface for the file data returned from the server.

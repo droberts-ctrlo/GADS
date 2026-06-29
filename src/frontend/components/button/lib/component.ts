@@ -1,4 +1,4 @@
-import {Component} from 'component';
+import {Component} from '../../../js/lib/component';
 
 /**
  * Button component
@@ -41,73 +41,73 @@ class ButtonComponent extends Component {
         const map = new Map<string, (element: JQuery<HTMLElement>) => void>();
         map.set('btn-js-report', (el) => {
             import(/* webpackChunkName: "create-report-button" */ './create-report-button')
-                .then(({default: CreateReportButtonComponent}) => {
+                .then(({CreateReportButtonComponent}) => {
                     new CreateReportButtonComponent(el);
                 });
         });
         map.set('btn-js-more-info', (el) => {
             import(/* webpackChunkName: "more-info-button" */ './more-info-button')
-                .then(({default: createMoreInfoButton}) => {
+                .then(({ createMoreInfoButton}) => {
                     createMoreInfoButton(el);
                 });
         });
         map.set('btn-js-delete', (el) => {
             import(/* webpackChunkName: "delete-button" */ './delete-button')
-                .then(({default: createDeleteButton}) => {
+                .then(({ createDeleteButton}) => {
                     createDeleteButton(el);
                 });
         });
         map.set('btn-js-submit-field', (el) => {
             import(/* webpackChunkName: "submit-field-button" */ './submit-field-button')
-                .then(({default: SubmitFieldButtonComponent}) => {
-                    new SubmitFieldButtonComponent(el);
+                .then(({ SubmitFieldButton}) => {
+                    new SubmitFieldButton(el);
                 });
         });
         map.set('btn-js-toggle-all-fields', (el) => {
             import(/* webpackChunkName: "toggle-all-fields-button" */ './toggle-all-fields-button')
-                .then(({default: createToggleAllFieldsButton}) => {
+                .then(({ createToggleAllFieldsButton}) => {
                     createToggleAllFieldsButton(el);
                 });
         });
         map.set('btn-js-submit-draft-record', (el) => {
             import(/* webpackChunkName: "submit-draft-record-button" */ './submit-draft-record-button')
-                .then(({default: createSubmitDraftRecordButton}) => {
+                .then(({ createSubmitDraftRecordButton}) => {
                     createSubmitDraftRecordButton(el);
                 });
         });
         map.set('btn-js-submit-record', (el) => {
             import(/* webpackChunkName: "submit-record-button" */ './submit-record-button')
-                .then(({default: SubmitRecordButtonComponent}) => {
-                    new SubmitRecordButtonComponent(el);
+                .then(({ SubmitRecordButton}) => {
+                    new SubmitRecordButton(el);
                 });
         });
         map.set('btn-js-save-view', (el) => {
             import(/* webpackChunkName: "save-view-button" */ './save-view-button')
-                .then(({default: createSaveViewButton}) => {
+                .then(({ createSaveViewButton}) => {
                     createSaveViewButton(el);
                 });
         });
         map.set('btn-js-show-blank', (el) => {
             import(/* webpackChunkName: "show-blank-button" */ './show-blank-button')
-                .then(({default: createShowBlankButton}) => {
+                .then(({ createShowBlankButton}) => {
                     createShowBlankButton(el);
                 });
         });
         map.set('btn-js-curval-remove', (el) => {
             import(/* webpackChunkName: "curval-remove-button" */ './remove-curval-button')
-                .then(({default: createRemoveCurvalButton}) => {
+                .then(({ createRemoveCurvalButton}) => {
                     createRemoveCurvalButton(el);
                 });
         });
         map.set('btn-js-remove-unload', (el) => {
             import(/* webpackChunkName: "remove-unload-button" */ './remove-unload-button')
-                .then(({default: createRemoveUnloadButton}) => {
+                .then(({ createRemoveUnloadButton}) => {
                     createRemoveUnloadButton(el);
                 });
         });
         map.set('btn-js-cancel', (el) => {
             import(/* webpackChunkName: "cancel-button" */ './cancel-button')
-                .then(({default: createCancelButton}) => {
+                .then(({ createCancelButton}) => {
                     createCancelButton(el);
                 });
         });

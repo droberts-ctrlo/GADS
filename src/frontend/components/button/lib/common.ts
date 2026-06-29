@@ -1,4 +1,4 @@
-import StorageProvider from 'util/storageProvider';
+import StorageProvider from '../../../js/lib/util/storageProvider';
 
 /**
  * Clear all saved form values for the current record

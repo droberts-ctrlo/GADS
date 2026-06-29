@@ -1,4 +1,4 @@
-import { fromJson } from 'util/common';
+import { fromJson } from '../../util/common';
 
 /**
  * Type to represent a function that is called when the upload progress changes

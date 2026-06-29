@@ -1,5 +1,5 @@
 import { describe, it, expect } from '@jest/globals';
-import createDeleteButton from './delete-button';
+import {createDeleteButton} from './delete-button';
 
 describe('button tests', () => {
     it('should throw on absence of id', () => {

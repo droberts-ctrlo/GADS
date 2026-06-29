@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach, jest } from '@jest/globals';
-import showBlankButton from './show-blank-button';
+import {createShowBlankButton} from './show-blank-button';
 
 describe('ShowBlankButton', () => {
     afterEach(() => {
@@ -13,7 +13,7 @@ describe('ShowBlankButton', () => {
         const item = $('<div class=\'list__item--blank\'></div>');
         element.append(item);
         $('body').append(element);
-        showBlankButton(element);
+        createShowBlankButton(element);
         button.trigger('click');
         expect(item.css('display')).not.toBe('none');
     });
@@ -25,7 +25,7 @@ describe('ShowBlankButton', () => {
         element.append(button);
         const item = $('<div class=\'list__item--blank\'></div>');
         element.append(item);
-        showBlankButton(element);
+        createShowBlankButton(element);
         button.trigger('click');
         expect(item.css('display')).toBe('none');
     });

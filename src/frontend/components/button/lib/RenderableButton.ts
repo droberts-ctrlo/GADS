@@ -1,4 +1,4 @@
-import { Renderable } from 'util/renderable';
+import { Renderable } from '../../../js/lib/util/renderable';
 
 /**
  * A simple button component that can be rendered to the DOM. It takes a text, an onClick handler, and an optional list of CSS classes.

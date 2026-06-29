@@ -1,4 +1,4 @@
-import { Component } from 'component';
+import { Component } from '../../../js/lib/component';
 
 /**
  * SelectAllComponent class to manage the behavior of a "select all" checkbox.

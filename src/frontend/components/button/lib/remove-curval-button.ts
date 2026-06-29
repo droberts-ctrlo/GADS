@@ -2,7 +2,7 @@
  * Create remove curval button
  * @param {JQuery<HTMLElement>} element The element to function as a remove curval button
  */
-export default function createRemoveCurvalButton(element: JQuery<HTMLElement>) {
+export function createRemoveCurvalButton(element: JQuery<HTMLElement>) {
     element.on('click', (ev: JQuery.ClickEvent) => {
         const $btn = $(ev.target);
 

@@ -1,4 +1,4 @@
-import { Component } from 'component';
+import { Component } from '../../../../js/lib/component';
 import 'jQuery-QueryBuilder/dist/js/query-builder.standalone';
 
 declare global {

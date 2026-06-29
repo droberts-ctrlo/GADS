@@ -1,4 +1,4 @@
-import StorageProvider from 'util/storageProvider';
+import StorageProvider from '../../storageProvider';
 import { addAction } from './handler';
 import loadActions from './actionsLoader';
 

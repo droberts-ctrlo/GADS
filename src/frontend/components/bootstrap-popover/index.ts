@@ -1,4 +1,4 @@
-import { initializeComponent } from 'component';
+import { initializeComponent } from '../../js/lib/component';
 import BootstrapPopoverComponent from './lib/component';
 
 export default (scope:any) =>{

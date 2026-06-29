@@ -1,4 +1,4 @@
-import { Component } from 'component';
+import { Component } from '../../../js/lib/component';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';

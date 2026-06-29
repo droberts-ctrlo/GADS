@@ -14,6 +14,7 @@ describe('EditModal', () => {
             editError:'',
             editHtml:'',
             editModalOpen:true,
+            // @ts-expect-error This is a test
             formRef:React.createRef(),
             loadingEditHtml:true,
             saveActiveWidget:()=>{}
@@ -37,6 +38,7 @@ describe('EditModal', () => {
             editError:'',
             editHtml:'<div>Test</div>',
             editModalOpen:true,
+            // @ts-expect-error This is a test
             formRef:React.createRef(),
             loadingEditHtml:false,
             saveActiveWidget:()=>{}
@@ -60,6 +62,7 @@ describe('EditModal', () => {
             editError:'Error',
             editHtml:'',
             editModalOpen:true,
+            // @ts-expect-error This is a test
             formRef:React.createRef(),
             loadingEditHtml:false,
             saveActiveWidget:()=>{}
@@ -83,6 +86,7 @@ describe('EditModal', () => {
             editError:'',
             editHtml:'',
             editModalOpen:true,
+            // @ts-expect-error This is a test
             formRef:React.createRef(),
             loadingEditHtml:true,
             saveActiveWidget:jest.fn()
@@ -106,6 +110,7 @@ describe('EditModal', () => {
             editError:'',
             editHtml:'',
             editModalOpen:true,
+            // @ts-expect-error This is a test
             formRef:React.createRef(),
             loadingEditHtml:true,
             saveActiveWidget:jest.fn()

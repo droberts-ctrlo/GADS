@@ -142,7 +142,7 @@ module.exports = (env) => {
                 validation: path.resolve(__dirname, "src/frontend/js/lib/validation.js"),
                 logging: path.resolve(__dirname, 'src/frontend/js/lib/logging.js'),
                 "get-field-values": path.resolve(__dirname, "src/frontend/js/lib/get-field-values.js"),
-                "set-field-values": path.resolve(__dirname, "src/frontend/ls/lib/set-field-values.js"),
+                "set-field-values": path.resolve(__dirname, "src/frontend/js/lib/set-field-values.js"),
                 jQuery: path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js'),
                 'jquery-ui/ui/widget': 'blueimp-file-upload/js/vendor/jquery.ui.widget.js',
             },

@@ -33,7 +33,7 @@ if (!process.versions.node.startsWith("18")) {
             const storage = new GadsStorage();
             const key = "key";
             const value = "value";
-            await storage.setItem(key, value);
+            await expect(storage.setItem(key, value)).resolves.not.toThrow();
             const result = localStorage.getItem(key);
             expect(result).not.toBeFalsy();
             expect(crypto.subtle.encrypt).toHaveBeenCalled();
@@ -44,7 +44,7 @@ if (!process.versions.node.startsWith("18")) {
             const storage = new GadsStorage();
             const key = "key";
             const value = "value";
-            await storage.setItem(key, value);
+            await expect(storage.setItem(key, value)).resolves.not.toThrow();
             const result = await storage.getItem(key);
             expect(crypto.subtle.decrypt).toHaveBeenCalled();
             expect(result).toBe("value");
@@ -54,7 +54,7 @@ if (!process.versions.node.startsWith("18")) {
             const storage = new GadsStorage();
             const key = "key";
             const value = "value";
-            await storage.setItem(key, value);
+            await expect(storage.setItem(key, value)).resolves.not.toThrow();
             storage.removeItem(key);
             const result = localStorage.getItem(key);
             expect(result).toBeFalsy();
@@ -64,7 +64,7 @@ if (!process.versions.node.startsWith("18")) {
             const storage = new GadsStorage();
             const key = "key";
             const value = "value";
-            await storage.setItem(key, value);
+            await expect(storage.setItem(key, value)).resolves.not.toThrow();
             storage.clear();
             const result = localStorage.getItem(key);
             expect(result).toBeFalsy();
@@ -74,7 +74,7 @@ if (!process.versions.node.startsWith("18")) {
             const storage = new GadsStorage();
             const key = "key";
             const value = "value";
-            await storage.setItem(key, value);
+            await expect(storage.setItem(key, value)).resolves.not.toThrow();
             expect(storage.length).toBe(1);
             storage.clear();
             expect(storage.length).toBe(0);
@@ -82,14 +82,13 @@ if (!process.versions.node.startsWith("18")) {
 
         it('Should do multiple read/writes to the same value without erroring', async() => {
             await setupNoMockCrypto();
-            expect.assertions(10);
+            expect.assertions(20);
             const myValues = [{id: 1, value: "value1", array: [1]}];
             for(let i = 0; i < 10; i++) {
                 const storage = new GadsStorage();
                 const values = JSON.stringify(myValues);
-                await storage.setItem("myValues", values);
-                const result = await storage.getItem("myValues");
-                expect(JSON.parse(result)).toEqual(myValues);
+                await expect(storage.setItem("myValues", values)).resolves.not.toThrow();
+                await expect(storage.getItem("myValues")).resolves.toBe(values);
             }
             killNoMockCrypto()
         });

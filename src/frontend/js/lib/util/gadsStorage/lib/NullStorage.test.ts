@@ -9,7 +9,7 @@ describe("NullStorage", () => {
         const storage = new NullStorage() as AppStorage;
         const key = "key";
         const value = "value";
-        await storage.setItem(key, value);
-        expect (localStorage.getItem(key)).toBeNull();
+        await expect(storage.setItem(key, value)).resolves.not.toThrow();
+        await expect(storage.getItem(key)).resolves.toBeNull();
     });
 });

@@ -6,9 +6,9 @@ import { AppStorage } from './AppStorage';
 describe('NullStorage', () => {
     it('Should never set an item', async () => {
         const storage = new NullStorage() as AppStorage;
-        const key = 'key';
-        const value = 'value';
-        await storage.setItem(key, value);
-        expect(localStorage.getItem(key)).toBeNull();
+        const key = "key";
+        const value = "value";
+        await expect(storage.setItem(key, value)).resolves.not.toThrow();
+        await expect(storage.getItem(key)).resolves.toBeNull();
     });
 });

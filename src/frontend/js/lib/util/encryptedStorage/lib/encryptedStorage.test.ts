@@ -5,7 +5,7 @@ class TestStorage implements Storage {
     private map = new Map<string, string>();
 
     [name: string]: any;
-    length: number;
+    length = 0;
 
     clear(): void {
         this.map.clear();

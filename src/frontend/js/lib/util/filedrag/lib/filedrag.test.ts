@@ -1,9 +1,9 @@
 import "../../../../../testing/globals.definitions";
 import FileDrag from './filedrag';
 
-class FileDragTest extends FileDrag {
-    constructor(element, onDrop?: (files: FileList | File) => void) {
-        super(element, { debug: true }, onDrop);
+class FileDragTest extends FileDrag<HTMLElement> {
+    constructor(element: HTMLElement, onDrop?: (files: FileList | File) => void) {
+        super(element, { debug: true }, onDrop ?? (() => { }));
     }
 
     setDragging(dragging: boolean) {

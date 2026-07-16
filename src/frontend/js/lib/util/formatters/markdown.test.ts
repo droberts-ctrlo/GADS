@@ -27,7 +27,7 @@ describe("Markdown formatter tests", ()=>{
 
     it("Should return properly formatted text with newlines", ()=>{
         const expected = "<h1>test</h1>\n<p>test</p>\n<p>test</p>";
-        const result = MarkDown`# test\\ntest\\ntest`;
+        const result = MarkDown`# test\n\ntest\n\ntest`;
         expect(result).toBe(expected);
     });
 });

@@ -1,23 +1,20 @@
 #!/bin/bash
 
-echo "Wait for database to start..."
-chmod +x /app/bin/wait-for-it.sh
-/app/bin/wait-for-it.sh "db:5432"  -t 3
+: ${GADS_HOSTNAME:=localhost}
+: ${PSQL_USER:=linkspace}
+: ${PSQL_PASSWORD:=linkspace}
+: ${PSQL_DATABASE:=linkspace}
+: ${PSQL_HOSTNAME:=localhost}
+: ${GADS_USERNAME:=test@example.com}
+: ${GADS_PASSWORD:=xyz123}
 
-echo "Create citext extension..."
-psql gads -U gads -h db -c "CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;"
+if [ ! -f ./config.yml ]; then
+    cat ./config.yml-example | sed -e "s/dbi:Pg:database=gads;host=127.0.0.1/dbi:Pg:database=${PSQL_DATABASE};host=${PSQL_HOSTNAME}/i" -e "s/user: dbuser/user: ${PSQL_USER}/i" -e "s/password: dbpass/password: ${PSQL_PASSWORD}/i" > config.yml
+    echo "*:*:*:${PSQL_USER}:${PSQL_PASSWORD}" > ~/.pgpass
+    chmod 600 ~/.pgpass
+    echo "CREATE EXTENSION IF NOT EXISTS \"CITEXT\";" | psql -h ${PSQL_HOSTNAME} -U ${PSQL_USER} -d ${PSQL_DATABASE}
+    ./bin/seed-database.pl --initial_username=${GADS_USERNAME} --instance_name="default" --site=${GADS_HOSTNAME}
+    perl -Ilib -MDancer2 -MDancer2::Plugin::Auth::Extensible -wE  "user_password username => '${GADS_USERNAME}', new_password => '${GADS_PASSWORD}'"
+fi
 
-echo "Seed database..."
-perl /app/bin/seed-database.pl --initial_username=$1 --instance_name=datasheet --site=$3
-
-echo "Add user '$1'..."
-perl -Ilib -MDancer2 -MDancer2::Plugin::Auth::Extensible -wE "user_password username => '$1', new_password => '$2'"
-
-echo "Set new user password changed to 'now'..."
-psql gads -U gads -h db -c "UPDATE public.user SET account_request = 0, pwchanged = NOW();"
-
-echo "Set site host to '$3'..."
-psql gads -U gads -h db -c "UPDATE public.site SET host = '$3'"
-
-echo "Start the perl application.."
-/app/bin/app.pl
+./bin/app.pl

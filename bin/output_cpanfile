@@ -5,11 +5,19 @@ use strict;
 use warnings;
 
 our %prereq_pm;
+our %test_pm;
 require "./Makefile.PL";
 foreach my $module (sort keys %prereq_pm) {
     my $version = "";
     if ( $prereq_pm{$module} ) {
         $version = ", '$prereq_pm{$module}'";
+    }
+    say qq(requires "${module}"${version};)
+}
+foreach my $module (sort keys %test_pm) {
+    my $version = "";
+    if ( $test_pm{$module} ) {
+        $version = ", '$test_pm{$module}'";
     }
     say qq(requires "${module}"${version};)
 }

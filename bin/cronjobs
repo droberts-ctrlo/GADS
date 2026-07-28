@@ -1,0 +1,56 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Log::Report 'linkspace';
+use Path::Tiny;
+
+use FindBin qw/$Bin/;
+
+use lib "$Bin/../lib";
+
+use GADS::Jobs::DaemonRunner;
+
+# we need to create the singleton instance of the DaemonRunner so that it can be used by the jobs
+my $daemon = GADS::Jobs::DaemonRunner->new( workdir => "$Bin/../" );
+
+if ($ENV{SCRIPT_DEBUG}) {
+    dispatcher 'FILE', 'log', mode => 'DEBUG', to => "$Bin/../cron.log", accept => 'ALL';
+} else {
+    # log to syslog
+    dispatcher 'SYSLOG', 'log', mode => 'DEBUG', accept => 'ALL';
+}
+
+my $local_job_dir     = path("$Bin/../jobs");
+my $extension_job_dir = path("$Bin/../../GADS-extensions/jobs");
+
+# Check the local job directory exists
+error __x "{dir} does not exist", dir => $local_job_dir
+  unless -d $local_job_dir;
+
+for my $dir ( $local_job_dir, $extension_job_dir ) {
+
+    # Check if the directory exists
+    my $d = path($dir);    # path object just makes things easier
+    unless ( $d->exists && $d->is_dir ) {
+        # We already know the local job directory exists, so we can just warn for the extension job directory
+        warn __x "{dir} does not exist", dir => $d->stringify;
+        # And move on
+        next;
+    }
+
+    # Run the scripts in the directory
+    for my $file ( $d->children ) {
+        info __x "Running job {file}", file => $file->basename;
+        require $file->stringify;
+        $file->stringify->import(qw/run/);
+        if ( defined &run ) {
+            run($daemon);
+        } else {
+            warn __x "No run() function exported in {file}", file => $file->stringify;
+        }
+    }
+}
+
+exit 0;

@@ -451,12 +451,30 @@ button.btn-add {
             input[type="search"] {
                 width: 100%;
                 @extend .m-0;
+                width: 100%;
             }
         }
     }
 
     &:has(.dt-start:empty + .dt-end:empty) {
         display: none;
+    }
+}
+
+
+.dt-layout-start {
+    flex-grow: 1;
+
+    .dt-custom-search {
+        .input-group {
+            flex-wrap: nowrap;
+            align-items: stretch;
+
+            input,
+            select {
+                flex-grow: 1;
+            }
+        }
     }
 }
 

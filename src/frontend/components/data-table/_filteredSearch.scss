@@ -1,0 +1,19 @@
+.input-group {
+    width: 100%;
+    input#searchInput {
+        @extend .form-control-sm;
+        padding-left: $btn-padding-sm-x;
+        border: solid 1px $input-border-color;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .form-select-sm {
+        background-color: $white;
+        border: solid 1px $input-border-color;
+    }
+    button {
+        border: none;
+        padding-right: $btn-padding-sm-x;
+        padding-left: $btn-padding-sm-x;
+    }
+}

@@ -1434,7 +1434,7 @@
                       table_id           = 'default_field_permissions_table';
                       table_class        = 'table-lines table-no-margin';
                       table_layout       = {
-                        topStart => "search",
+                        topStart => {filteredSearch => { showAll => 1, hideLabels => 1 }},
                         topEnd   => "pageLength",
                         bottomStart => "paging",
                         bottomEnd   => "info"

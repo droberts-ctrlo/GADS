@@ -2,7 +2,7 @@
   # prepare table config
   table_class = 'table-striped table-hover table-account-requests';
   table_layout = {
-    topStart    = "search",
+    topStart    = {filteredSearch => { showAll => 1, hideLabels => 1 }},
     topEnd      = "pageLength",
     bottomStart = "paging",
     bottomEnd   = "info",

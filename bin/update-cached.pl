@@ -123,10 +123,7 @@ foreach my $site (schema->resultset('Site')->all)
             $layout->clear_cached_records;
 
             # send any alerts for changed records, but only once per record
-            my %seen;
             foreach my $col_id (keys %changed) {
-                next if $seen{$col_id};
-                $seen{$col_id} = 1;
                 my $alert_send = GADS::AlertSend->new(
                     layout      => $layout,
                     schema      => schema,

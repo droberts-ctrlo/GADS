@@ -18,8 +18,8 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 =cut
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
 
 use GADS::DB;
 use GADS::Filter;
@@ -121,19 +121,22 @@ foreach my $site (schema->resultset('Site')->all)
                     if $datum->changed;
             }
             $layout->clear_cached_records;
-        }
 
-        # Send any alerts
-        foreach my $col_id (keys %changed)
-        {
-            my $alert_send = GADS::AlertSend->new(
-                layout      => $layout,
-                schema      => schema,
-                user        => undef,
-                current_ids => $changed{$col_id},
-                columns     => $col_id,
-            );
-            $alert_send->process;
+            # send any alerts for changed records, but only once per record
+            my %seen;
+            foreach my $col_id (keys %changed) {
+                next if $seen{$col_id};
+                $seen{$col_id} = 1;
+                my $alert_send = GADS::AlertSend->new(
+                    layout      => $layout,
+                    schema      => schema,
+                    user        => undef,
+                    current_ids => $changed{$col_id},
+                    columns     => $col_id,
+                );
+                $alert_send->process;
+            }
+            %changed = ();
         }
     }
 }

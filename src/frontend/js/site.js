@@ -39,13 +39,14 @@ import TippyComponent from "components/timeline/tippy";
 import TreeComponent from "components/form-group/tree";
 import UserModalComponent from "components/modal/modals/user";
 import ValueLookupComponent from "components/form-group/value-lookup";
+import RadioRevealComponent from 'components/form-group/radio-group/radio-reveal';
 import MarkdownComponent from "components/markdown";
 import ButtonComponent from "components/button";
 import SelectAllComponent from "components/select-all";
 import HelpView from "components/help-view";
 import PeopleFilterComponent from "components/form-group/people-filter";
-import handleActions from "util/actionsHandler";
 import FieldLengthComponent from "components/form-group/field-length";
+import handleActions from "util/actionsHandler";
 
 // Register them
 registerComponent(AddTableModalComponent);
@@ -69,6 +70,7 @@ registerComponent(MoreLessComponent);
 registerComponent(MultipleSelectComponent);
 registerComponent(OrderableSortableComponent);
 registerComponent(RadioGroupComponent);
+registerComponent(RadioRevealComponent);
 registerComponent(RecordPopupComponent);
 registerComponent(SelectComponent);
 registerComponent(SelectWidgetComponent);

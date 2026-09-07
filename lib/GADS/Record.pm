@@ -1114,10 +1114,7 @@ sub _find
                     foreach my $id (keys %new_ids)
                     {
                         my $new_value = $new_ids{$id};
-                        my $record = $new_value->{record};
-                        my $status = __x"Updated on {created} by {created_by}. Current Value",
-                            created => $record->edited_time, created_by => $record->edited_user;
-                        $new_value->{status} = $status->toString;
+                        $new_value->{status} = "current";
                         $new_value->{version_id} = $new_value->{record}->record_id;
                         push @values, $new_value;
                     }
@@ -1228,10 +1225,6 @@ sub _find
                     {
                         my $new_value = $new_ids{$id};
                         $new_value->{status} = "created";
-                        my $record = $new_value->{record};
-                        my $status = __x"Updated on {created} by {created_by}.",
-                            created => $record->edited_time, created_by => $record->edited_user;
-                        $new_value->{status} = $status->toString;
                         $new_value->{version_id} = $new_value->{record}->record_id;
                         push @values, $new_value;
                     }

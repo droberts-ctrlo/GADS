@@ -45,25 +45,18 @@
                             data-help-text="***Personal*** - available to all users and only visible to the user that creates them. **Note**: Administrators can manage other user's personal views.\n***Shared*** - users with permission to create shared views can check the shared view box and then select which groups to share the view with.\n***Administration*** - these views are only visible to Administrative users, and primarily for controlling user access to records."
                             data-help-title="View Type"
                             data-help-target="help__card">
-                            <label>View type</label>
+                            <div class="input__label">
+                              <label class="form-label">View type</label>
+                            </div>
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-12 my-3">
-                              <div class="d-lg-flex flex-row justify-content-between d-md-block radio-group radio-group-toggle">
-                                <div class="ml-md-2 ml-sm-3 radio-group__option">
-                                    <input class="radio-group__input" type="radio" id="viewType1" name="viewType" value="1" [% UNLESS view_edit.global || view_edit.is_admin %]checked[% END %] />
-                                    <label for="viewType1" class="radio-group__label">Personal View</label>
-                                </div>
-                                <div class="ml-md-2 ml-sm-3 radio-group__option">
-                                    <input class="radio-group__input" type="radio" id="viewType2" name="viewType" value="2" [% IF view_edit.global && !view_edit.is_admin %]checked[% END %] />
-                                    <label for="viewType2" class="radio-group__label">Shared View</label>
-                                </div>
-                                <div class="ml-md-2 ml-sm-3 radio-group__option">
-                                    <input class="radio-group__input" type="radio" id="viewType3" name="viewType" value="3" [% IF view_edit.is_admin %]checked[% END %] />
-                                    <label for="viewType3" class="radio-group__label">Admin View (only visible to table administrators)</label>
-                                </div>
-                            </div>
+                          <div class="col">
+                            <select class="form-select bg-white" name="viewType" id="viewType">
+                              <option value="1">Personal</option>
+                              <option value="2">Shared</option>
+                              <option value="3">Admin (only visible to table administrators)</option>
+                            </select>
                           </div>
                         </div>
                       </div>
@@ -72,7 +65,7 @@
                   <div class="row">
                     <div class="col">
 
-                      <div class="radio-reveal" id="radio-reveal" data-radio-target="viewType" data-radio-value="2">
+                      <div class="select-reveal" data-select-target="viewType" data-select-value="2">
                         [%
                           group_id_items = layout.user_can("layout") ? [{id="", name="<All users>"}] : [];
 

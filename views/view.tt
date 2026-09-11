@@ -53,9 +53,9 @@
                         <div class="row">
                           <div class="col">
                             <select class="form-select bg-white" name="viewType" id="viewType">
-                              <option value="1">Personal</option>
-                              <option value="2">Shared</option>
-                              <option value="3">Admin (only visible to table administrators)</option>
+                              <option value="personal">Personal</option>
+                              <option value="shared">Shared</option>
+                              <option value="admin">Admin (only visible to table administrators)</option>
                             </select>
                           </div>
                         </div>
@@ -65,7 +65,7 @@
                   <div class="row">
                     <div class="col">
 
-                      <div class="select-reveal" data-select-target="viewType" data-select-value="2">
+                      <div class="select-reveal" data-select-target="viewType" data-select-value="shared">
                         [%
                           group_id_items = layout.user_can("layout") ? [{id="", name="<All users>"}] : [];
 

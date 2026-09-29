@@ -18,9 +18,9 @@
                         Which type of multi-factor authentication would you like to use?
                     </p>
                 </div>
-                [% buttons.push({ type = "button", name = "choose_mfa", value = "otp", class = "btn btn-default", label = "One-time passwords (OTP)" }); %]
-                [% buttons.push({ type = "button", name = "choose_mfa", value = "sms", class = "btn btn-default", label = "SMS" }); %]
-                [% buttons.push({ type = "button", name = "choose_mfa", value = "yub", class = "btn btn-default", label = "Yubikey hardware token" }); %]
+                [% buttons.push({ type = "button", name = "choose_mfa", value = "otp", class = "btn btn-primary", label = "One-time passwords (OTP)" }); %]
+                [% buttons.push({ type = "button", name = "choose_mfa", value = "sms", class = "btn btn-primary", label = "SMS" }); %]
+                [% buttons.push({ type = "button", name = "choose_mfa", value = "yub", class = "btn btn-primary", label = "Yubikey hardware token" }); %]
             [% ELSIF setup_mfa == "sms" AND user.need_mobile_verification %]
                 <div class="form-group">
                     <p>
@@ -111,7 +111,7 @@
     </div>
 
     [% UNLESS choose_mfa %]
-        [% buttons.push({ type = "button", name = "submit-login", value = "submit", class = "btn btn-default", label = "Submit" }); %]
+        [% buttons.push({ type = "button", name = "submit-login", value = "submit", class = "btn btn-primary", label = "Submit" }); %]
     [% END %]
     [%
       INCLUDE navigation/button_bar.tt

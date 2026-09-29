@@ -25,7 +25,7 @@ export class RenderableButton implements Renderable<HTMLButtonElement> {
         button.textContent = this.text;
         button.addEventListener("click", this.onClick);
         button.classList.add(...this.classList, "btn");
-        const btnType = this.classList.find(b=>b.startsWith("btn-")) ? "" : "btn-default";
+        const btnType = this.classList.find(b=>b.startsWith("btn-")) ? "" : "btn-primary";
         if(btnType) {
             button.classList.add(btnType);
         }

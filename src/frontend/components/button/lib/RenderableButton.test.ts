@@ -12,7 +12,7 @@ describe('Renderable Button Tests', () => {
 
         expect(rendered.textContent).toBe('Test Button');
         expect(rendered.classList.contains('btn')).toBeTruthy();
-        expect(rendered.classList.contains('btn-default')).toBeTruthy();
+        expect(rendered.classList.contains('btn-primary')).toBeTruthy();
 
         document.body.removeChild(rendered);
     });
@@ -38,7 +38,7 @@ describe('Renderable Button Tests', () => {
         document.body.appendChild(rendered);
 
         expect(rendered.classList.contains('btn-custom')).toBeTruthy();
-        expect(rendered.classList.contains('btn-default')).toBeFalsy();
+        expect(rendered.classList.contains('btn-primary')).toBeFalsy();
 
         document.body.removeChild(rendered);
     });

@@ -18,31 +18,31 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 =cut
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use strict;
+use warnings;
 
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
+
+use Log::Report;
+
+use GADS::Alert;
 use GADS::DB;
+use GADS::Email;
 use GADS::Instances;
 use GADS::Layout;
 use GADS::Views;
+
 use Dancer2;
 use Dancer2::Plugin::DBIC;
-use Dancer2::Plugin::LogReport mode => 'NORMAL';
-
-# Close dancer2 special dispatcher, which tries to write to the session
-dispatcher close => 'error_handler';
 
 GADS::DB->setup(schema);
 
 # Setup these singleton classes with required parameters for if/when
 # they are called in classes later.
-GADS::Config->instance(
-    config => config,
-);
+GADS::Config->instance(config => config);
 
-GADS::Email->instance(
-    config => config,
-);
+GADS::Email->instance(config => config);
 
 foreach my $site (schema->resultset('Site')->all)
 {

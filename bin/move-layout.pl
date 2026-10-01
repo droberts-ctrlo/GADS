@@ -18,19 +18,24 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 =cut
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use strict;
+use warnings;
+
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
 
 use Algorithm::Dependency::Ordered;
 use Algorithm::Dependency::Source::HoA;
-use Dancer2;
-use Dancer2::Plugin::DBIC;
 use GADS::Config;
 use GADS::Layout;
 use GADS::Views;
 use Getopt::Long;
+use Log::Report;
 use String::CamelCase qw(camelize);
 use YAML::XS qw/LoadFile DumpFile/;
+
+use Dancer2;
+use Dancer2::Plugin::DBIC;
 
 GADS::Config->instance(
     config => config,
@@ -38,16 +43,16 @@ GADS::Config->instance(
 
 my ($instance_id, $site_id, $load_file, $dump_file, $global_views);
 GetOptions (
-    'instance-id=s' => \$instance_id,
-    'site-id=s'     => \$site_id,
+    'instance-id=i' => \$instance_id,
+    'site-id=i'     => \$site_id,
     'load-file=s'   => \$load_file,
     'dump-file=s'   => \$dump_file,
     'global-views'  => \$global_views,
-) or exit;
+) or error __"Unable to read options!";
 
-$instance_id or die "Need --instance-id";
-$site_id or die "Need --site-id";
-$load_file || $dump_file or die "Need either --load-file or --dump-file";
+$instance_id or error __"Need --instance-id";
+$site_id or error __"Need --site-id";
+$load_file || $dump_file or error __"Need either --load-file or --dump-file";
 
 schema->site_id($site_id);
 
@@ -116,7 +121,9 @@ if ($load_file)
             schema->resultset('View')->search({
                 id          => $import->{id},
                 instance_id => { '!=' => $instance_id },
-            })->count and die "View ID $import->{id} already exists but for wrong instance";
+            })->count
+                and error __x"View ID {id} already exists but for wrong instance",
+                    id => $import->{id};
             schema->resultset('View')->find_or_create({
                 id          => $import->{id},
                 instance_id => $instance_id,
@@ -160,13 +167,13 @@ if ($load_file)
 
             my $source = Algorithm::Dependency::Source::HoA->new(\%deps);
             my $dep = Algorithm::Dependency::Ordered->new(source => $source)
-                or die 'Failed to set up dependency algorithm';
+                or error __'Failed to set up dependency algorithm';
             my @order = @{$dep->schedule_all};
             my @missing = map { $missing{$_} } @order;
 
             foreach my $new (@missing)
             {
-                say STDERR "Creating missing field $new->{id} ($new->{name})";
+                info __x"Creating missing field {id} ({name})", id => $new->{id}, name=>$new->{name};
                 my $class = "GADS::Column::".camelize $new->{type};
                 my $field = $class->new(
                     id     => $new->{id},
@@ -185,7 +192,9 @@ if ($load_file)
                 write_props($field, $new);
             }
             else {
-                say STDERR "Field ".$field->name." (ID ".$field->id.") not in updated layout - needs manual deletion";
+                error __x"Field {name} (ID {id}) not in updated layout - needs manual deletion",
+                    name => $field->name,
+                    id   => $field->id;
             }
         }
 
@@ -258,4 +267,3 @@ else {
 
     DumpFile $dump_file, [@out];
 }
-

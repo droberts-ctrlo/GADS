@@ -18,30 +18,41 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 =cut
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use strict;
+use warnings;
+
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
+
+use Text::CSV;
+use Log::Report;
+use Getopt::Long;
 
 use Dancer2;
 use Dancer2::Plugin::DBIC;
-use GADS::Schema;
-use Text::CSV;
 
-my ($layout_id, $parent_top) = @ARGV;
+my ($layout_id, $parent_top);
 
-$layout_id or die "Usage: $0 layout-id [parent-id] (use STDIN for the CSV data)";
+GetOptions(
+    'layout-id=i' => \$layout_id,
+    'parent-id=i' => \$parent_top,
+) or error __"Usage: $0 --layout-id <layout_id> [--parent-id <parent_id>] (use STDIN for the CSV data)";
+
+$layout_id or error __"Usage: $0 --layout-id <layout_id> [--parent-id <parent_id>] (use STDIN for the CSV data)";
 
 my $l = rset('Layout')->find($layout_id)
     or die "Layout ID $layout_id not found in database";
 
-say STDERR "Using field ".$l->name;
+info __x("Using field {name}", name => $l->name);
 
-my $csv = Text::CSV->new({ binary => 1 }) # should set binary attribute?
-    or die "Cannot use CSV: ".Text::CSV->error_diag ();
+my $csv = Text::CSV->new
+    or error __x("Cannot use CSV: {error}", error => Text::CSV->error_diag());
 
 my @parents;
 while (<STDIN>)
 {
-    $csv->parse($_) or die "Failed to parse link $_";
+    $csv->parse($_)
+        or error __x("Failed to parse link {link}", link => $_);
     my @row = $csv->fields;
 
     my $count;
@@ -58,4 +69,5 @@ while (<STDIN>)
         $parents[$count] = $parent;
     }
 }
- 
+
+info __x("Finished importing tree for layout {layout_id}", layout_id => $layout_id);

@@ -20,26 +20,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 use strict;
 use warnings;
-use 5.10.0;
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use feature qw/say/;
+
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
 
 use Getopt::Long;
+use Log::Report;
+
 use Dancer2;
 use Dancer2::Plugin::DBIC;
 use DBIx::Class::Migration;
 
 my ($initial_username, $instance_name, $host);
 my $namespace = $ENV{CDB_NAMESPACE};
+
 GetOptions (
     'initial_username=s' => \$initial_username,
     'instance_name=s'    => \$instance_name,
     'site=s'             => \$host,
-) or exit;
+) or error __"Usage: $0 [--initial_username=email] [--instance_name=name] [--site=hostname]";
 
 my ($dbic) = values %{config->{plugins}->{DBIC}}
-    or die "Please create config.yml before running this script";
+    or error __"Please create config.yml before running this script";
 
 unless ($instance_name)
 {
@@ -77,7 +81,7 @@ $migration->install_if_needed(default_fixture_sets => ['permissions']);
 # of the schema is created, the fixtures need to be copied across, which needs
 # to be done manually. So, at least do a check now:
 rset('Permission')->count
-    or die "No permissions populated. Do the fixtures exist?";
+    or error __"No permissions populated. Do the fixtures exist?";
 
 say qq(Creating site "$host"...);
 my $site = rset('Site')->create({
@@ -105,6 +109,7 @@ foreach my $perm (rset('Permission')->all)
     });
 }
 
+# If we're seeding a test environment
 if($ENV{TEST}) {
 
     say 'Creating basic user "basic@example.com" with no permissions...';
@@ -131,4 +136,3 @@ rset('Instance')->create({
     name    => $instance_name,
     site_id => $site->id,
 });
-

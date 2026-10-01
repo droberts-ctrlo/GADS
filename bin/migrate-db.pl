@@ -8,15 +8,15 @@
 use warnings;
 use strict;
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
+
+use DBIx::Class::Migration;
+use Log::Report 'linkspace', mode => 'NORMAL';
+use Getopt::Long;
 
 use Dancer2;
 my $config = config;
-
-use DBIx::Class::Migration;
-use Dancer2::Plugin::LogReport 'linkspace', mode => 'NORMAL';
-use Getopt::Long;
 
 my ($prepare, $install, $upgrade, $downgrade, $status, $fixtures, $to_version);
 
@@ -65,16 +65,11 @@ $args{dbic_dh_args}->{to_version} = $to_version
     if $to_version;
 my $migration = DBIx::Class::Migration->new(%args);
 
-if ($prepare)
-{ $migration->prepare }
-elsif ($install)
-{ $migration->install }
-elsif ($upgrade)
-{ $migration->upgrade }
-elsif ($downgrade)
-{ $migration->downgrade }
-elsif ($status)
-{ $migration->status }
+if ($prepare) { $migration->prepare }
+elsif ($install) { $migration->install }
+elsif ($upgrade) { $migration->upgrade }
+elsif ($downgrade) { $migration->downgrade }
+elsif ($status) { $migration->status }
 elsif ($fixtures)
 {
     my $rootdir       = "$FindBin::Bin/..";

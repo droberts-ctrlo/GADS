@@ -3,37 +3,37 @@
 use strict;
 use warnings;
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
 
-use Dancer2;
-use Dancer2::Plugin::DBIC;
 use DateTime::Event::Random;
 use GADS::DB;
 use GADS::Layout;
 use Getopt::Long;
 use Text::CSV;
+use Log::Report;
+
+use Dancer2;
+use Dancer2::Plugin::DBIC;
 
 my ($instance_id, $site_id);
 
 GetOptions (
-    'instance-id=s' => \$instance_id,
-    'site-id=s'     => \$site_id,
-) or exit;
+    'instance-id=d' => \$instance_id,
+    'site-id=d'     => \$site_id,
+) or error __x"Usage $0 --instance-id <instance_id> --site-id <site_id>";
 
-$instance_id or die "Need instance ID with --instance-id";
-$site_id or die "Need site ID with --site-id";
+$instance_id or error __"Need instance ID with --instance-id";
+$site_id or error __"Need site ID with --site-id";
 
 GADS::DB->setup(schema);
 
-GADS::Config->instance(
-    config => config,
-);
+GADS::Config->instance(config => config);
 
 schema->site_id($site_id);
 
 my $csv = Text::CSV->new ( { binary => 1 } )  # should set binary attribute.
-    or die "Cannot use CSV: ".Text::CSV->error_diag ();
+    or error __x"Cannot use CSV: {diag}", diag => Text::CSV->error_diag ();
 
 my $layout = GADS::Layout->new(
     user        => undef,
@@ -104,7 +104,6 @@ for (1..1000)
 }
 
 $csv->eol ("\n");
-open my $fh, ">:encoding(utf8)", "new.csv" or die "new.csv: $!";
+open my $fh, ">:encoding(utf8)", "new.csv" or fault __"new.csv";
 $csv->print ($fh, $_) for @rows;
-close $fh or die "new.csv: $!";
-
+close $fh or fault __"new.csv";

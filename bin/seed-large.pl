@@ -20,15 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 use strict;
 use warnings;
-use 5.10.0;
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use feature qw/say/;
+
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
 
 use Getopt::Long;
-use Dancer2;
-use Dancer2::Plugin::DBIC;
-use DBIx::Class::Migration;
+use Log::Report;
 
 use GADS::Config;
 use GADS::Layout;
@@ -38,19 +37,22 @@ use GADS::Column::Intgr;
 use GADS::Column::Enum;
 use GADS::Column::Tree;
 
+use Dancer2;
+use Dancer2::Plugin::DBIC;
+use DBIx::Class::Migration;
+
 # Seed singleton
-GADS::Config->instance(
-    config => config,
-);
+GADS::Config->instance(config => config);
 
 my ($initial_username, $host);
+
 GetOptions (
     'initial_username=s' => \$initial_username,
     'site'               => \$host,
-) or exit;
+) or error __"Usage: $0 [--initial_username=email] [--site=hostname]";
 
 my ($dbic) = values %{config->{plugins}->{DBIC}}
-    or die "Please create config.yml before running this script";
+    or error __"Please create config.yml before running this script";
 
 unless ($initial_username)
 {
@@ -84,7 +86,7 @@ $migration->populate('permissions');
 # of the schema is created, the fixtures need to be copied across, which needs
 # to be done manually. So, at least do a check now:
 rset('Permission')->count
-    or die "No permissions populated. Do the fixtures exist?";
+    or error __"No permissions populated. Do the fixtures exist?";
 
 say qq(Creating site "$host"...);
 my $site = rset('Site')->create({
@@ -248,4 +250,3 @@ sub _create_table
 
     return $layout;
 }
-

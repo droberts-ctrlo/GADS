@@ -18,6 +18,9 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 =cut
 
+use strict;
+use warnings;
+
 use FindBin;
 use lib "$FindBin::Bin/../lib";
 
@@ -26,6 +29,7 @@ use GADS::Filter;
 use GADS::Instances;
 use GADS::Layout;
 use GADS::View;
+
 use Dancer2;
 use Dancer2::Plugin::DBIC;
 use Dancer2::Plugin::LogReport mode => 'VERBOSE';
@@ -34,8 +38,9 @@ use Tie::Cache;
 
 my ($from_record_id);
 
+# This is a script - try not to output too much
 GetOptions (
-    'from-record-id=s' => \$from_record_id,
+    'from-record-id=s' => \$from_record_id
 ) or exit;
 
 # Close dancer2 special dispatcher, which tries to write to the session

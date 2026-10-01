@@ -18,23 +18,25 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 =cut
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use strict;
+use warnings;
+
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
+
+use Log::Report;
 
 use GADS::DB;
-use GADS::Schema;
 use GADS::Alert;
 use GADS::Email;
 use GADS::AlertDescription;
+
 use Dancer2;
 use Dancer2::Plugin::DBIC;
-use Dancer2::Plugin::LogReport 'linkspace', mode => 'NORMAL';
 
 GADS::DB->setup(schema);
 
-GADS::Config->instance(
-    config => config,
-);
+GADS::Config->instance(config => config);
 
 my $alert_description = GADS::AlertDescription->new(
     schema => schema,
@@ -59,6 +61,7 @@ sub _send
     });
 }
 
+# What's this for?
 sub record_description
 {   my (%params) = @_;
 }
@@ -92,6 +95,7 @@ my @rows = rset('AlertSend')->search({}, {
 
 my ($last_current, $last_alert_id, $last_user);
 my @notifications; my @columns;
+
 foreach my $row (@rows)
 {
     my $current_id = $row->current_id;

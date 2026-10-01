@@ -18,19 +18,30 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 =cut
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use strict;
+use warnings;
 
-use Dancer2;
-use Dancer2::Plugin::DBIC;
-use GADS::Schema;
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
+
 use File::Slurp;
 use File::MimeInfo;
 use File::Basename;
+use Getopt::Long;
+use Log::Report;
 
-my ($file) = @ARGV;
+use Dancer2;
+use Dancer2::Plugin::DBIC;
 
-$file or die "Usage: $0 filename";
+my ($site_id, $file);
+
+GetOptions (
+    'site-id=i' => \$site_id,
+    'file=s'   => \$file,
+) or error __"Usage: $0 --site-id <site_id> --file <filename>";
+
+$file or error __"Usage: $0 --site-id <site_id> --file <filename>";
+-f $file or error __"File does not exist";
 
 my $filename  = fileparse($file);
 my $mime_type = mimetype($file);

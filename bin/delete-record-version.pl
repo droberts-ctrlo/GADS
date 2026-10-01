@@ -14,24 +14,22 @@ dispatcher close => 'error_handler';
 
 GADS::DB->setup(schema);
 
-GADS::Config->instance(
-    config => config,
-);
+GADS::Config->instance( config => config, );
 
 my ($record_id);
 
-GetOptions (
-    'record-id=s' => \$record_id,
-) or exit;
+GetOptions( 'record-id=s' => \$record_id, ) or exit;
 
-$record_id
-    or error __"Please provide the record version ID with --record-id";
+$record_id or error __ "Please provide the record version ID with --record-id";
 
 my $record = schema->resultset('Record')->find($record_id)
-    or error __"Record ID not found";
+    or error __ "Record ID not found";
 
 say __x"This will purge the version {rid} from record {cid} created by {user} at {date}. Press any key to continue.",
-    rid => $record_id, cid => $record->current_id, user => $record->createdby->value, date => $record->created;
+    rid  => $record_id,
+    cid  => $record->current_id,
+    user => $record->createdby->value,
+    date => $record->created;
 
 <STDIN>;
 
@@ -48,6 +46,24 @@ $record->people->delete;
 $record->ragvals->delete;
 $record->strings->delete;
 $record->user_lastrecords->delete;
+
+my $current = schema->resultset('Current')->find( { current_version_id => $record->id } )
+  or die "Current not found for record id $record_id";
+$current->update( { current_version_id => undef } );
+
 $record->delete;
 
+my $replacement = schema->resultset('Record')->search(
+    {
+        current_id => $current->id
+    },
+    {
+        rows     => 1,
+        order_by => { -desc => 'created' },
+    }
+)->next;
+
+$current->update( { current_version_id => $replacement->id } );
+
 $guard->commit;
+say "Record version $record_id has been successfully deleted.";

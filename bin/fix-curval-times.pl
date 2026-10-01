@@ -1,18 +1,21 @@
 #!/usr/bin/perl
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use warnings;
+use strict;
+
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
 
 use GADS::DB;
+
+use Log::Report mode => 'NORMAL';
+
 use Dancer2;
 use Dancer2::Plugin::DBIC;
-use Dancer2::Plugin::LogReport mode => 'NORMAL';
 
 GADS::DB->setup(schema);
 
-GADS::Config->instance(
-    config => config,
-);
+GADS::Config->instance( config => config );
 
 my $dtf = schema->storage->datetime_parser;
 
@@ -55,7 +58,10 @@ while (my $curval = $rs->next)
                 },
             ],
         })->next
-            or say STDERR "Cannot find edit of ".$parent_record->current_id." edited at ".$parent_record->created." by ".$parent_record->createdby->value;
+            or info __x"Cannot find edit of {current_id} edited at {created} by {createdby}",
+                current_id => $parent_record->current_id,
+                created    => $parent_record->created,
+                createdby  => $parent_record->createdby->value;
         # Check no direct edit of curval
         $audit = schema->resultset('Audit')->search({
             id      => { '!=' => $audit->id },
@@ -73,8 +79,13 @@ while (my $curval = $rs->next)
                 },
             ],
         })->next
-            and say STDERR "DIRECT EDIT!";
-        say STDERR "Parent ".$parent_record->current_id." edited ".$parent_record->created." by ".$parent_record->createdby->value." has nearby curval record edited at ".$curval_record->created." by ".$curval_record->createdby->value." with ID ".$curval_record->current_id;
+            and info __"DIRECT EDIT!";
+        info __x"Parent {parent_current_id} edited {parent_created} by {parent_createdby} has nearby curval record edited at {curval_created} by {curval_createdby} with ID {curval_current_id}",
+            parent_current_id => $parent_record->current_id,
+            parent_created    => $parent_record->created,
+            parent_createdby  => $parent_record->createdby->value,
+            curval_created    => $curval_record->created,
+            curval_createdby  => $curval_record->createdby->value,
+            curval_current_id => $curval_record->current_id;
     }
 }
-

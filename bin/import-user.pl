@@ -18,22 +18,35 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 =cut
 
-use FindBin;
+use strict;
+use warnings;
+
+use FindBin qw/$Bin/;
 use lib "$FindBin::Bin/../lib";
+
+use Text::CSV;
+use Getopt::Long;
+use Log::Report;
 
 use Dancer2;
 use Dancer2::Plugin::DBIC;
-use GADS::Schema;
-use Text::CSV;
 
-my ($file) = @ARGV;
+my ($site_id, $file);
 
-$file or die "Usage: $0 filename";
+GetOptions(
+    'site-id=i' => \$site_id,
+    'file=s'    => \$file,
+) or error __"Usage: $0 --site-id <site_id> --file <filename>";
 
-my $csv = Text::CSV->new({ binary => 1 })
-    or die "Cannot use CSV: ".Text::CSV->error_diag ();
+schema->site_id($site_id);
 
-open my $fh, "<:encoding(utf8)", $file or die "$file: $!";
+$file or error __"Usage: $0 --site-id <site_id> --file <filename>";
+
+my $csv = Text::CSV->new
+    or error __x"Cannot use CSV: {error}", error => Text::CSV->error_diag();
+
+open my $fh, "<:encoding(utf8)", $file
+    or fault __x"Cannot open file {file}", file => $file;
 
 # Index all names
 my %titles        = map { $_->name => $_->id } rset('Title')->all;
@@ -46,9 +59,12 @@ while (my $row = $csv->getline($fh))
 {
     my ($firstname, $surname, $email, $freetext1, $freetext2, $title, $organisation, $group) = @$row;
 
-    my $title_id        = $titles{$title} or die qq(Title "$title" not found);
-    my $organisation_id = $organisations{$organisation} or die qq(Organisation "$organisation" not found);
-    my $group_id        = $groups{$group} or die qq(Group "$group" not found);
+    my $title_id        = $titles{$title}
+        or error __x"Title \"{title}\" not found", title => $title;
+    my $organisation_id = $organisations{$organisation}
+        or error __x"Organisation \"{organisation}\" not found", organisation => $organisation;
+    my $group_id        = $groups{$group}
+        or error __x"Group \"{group}\" not found", group => $group;
     my $user = rset('User')->create({
         firstname    => $firstname,
         surname      => $surname,
@@ -67,4 +83,4 @@ while (my $row = $csv->getline($fh))
 
 $guard->commit;
 
-say STDERR "Finished";
+info __"Finished";

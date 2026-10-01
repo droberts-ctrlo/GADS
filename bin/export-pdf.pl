@@ -31,28 +31,24 @@ use GADS::MetricGroups;
 use GADS::Schema;
 use Getopt::Long;
 use JSON qw();
-use Log::Report syntax => 'LONG';
+use Log::Report;
 
 my ($site_id, @instance_ids, $output);
 
 GetOptions (
-    'site-id=s'     => \$site_id,
+    'site-id=i'     => \$site_id,
     'instance-id=s' => \@instance_ids,
     'output=s'      => \$output,
 ) or exit;
 
-$site_id or report ERROR =>  "Please provide site ID with --site-id";
-$output or report ERROR =>  "Please provide output file name with --output";
+$site_id or error __"Please provide site ID with --site-id";
+$output or error __"Please provide output file name with --output";
 
-GADS::Config->instance(
-    config => config,
-);
+GADS::Config->instance( config => config, );
 
 schema->site_id($site_id);
 
-my $pdf = CtrlO::PDF->new(
-    footer => "Linkspace configuration",
-);
+my $pdf = CtrlO::PDF->new(footer => "Linkspace configuration");
 
 my $instances_object = GADS::Instances->new(schema => schema, user => undef, user_permission_override => 1);
 
@@ -106,7 +102,8 @@ foreach my $layout (@instances)
         {
             push @$data, $df;
         }
-        else {
+        else
+        {
             push @$data, ['Display conditions', 'This field is always displayed'];
         }
 
@@ -118,9 +115,7 @@ foreach my $layout (@instances)
             font_size  => 8,
         };
 
-        $pdf->table(
-            data => $data,
-        );
+        $pdf->table(data => $data,);
 
         $pdf->_down(15);
     }

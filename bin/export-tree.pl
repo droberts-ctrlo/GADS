@@ -18,26 +18,39 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 =cut
 
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use strict;
+use warnings;
 
-use Dancer2;
-use Dancer2::Plugin::DBIC;
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
+
 use GADS::Schema;
 use Text::CSV;
 use Tree::DAG_Node;
 use Encode;
+use Log::Report;
+
+use Getopt::Long;
+
+use Dancer2;
+use Dancer2::Plugin::DBIC;
 
 use open qw(:std :utf8);
 
-my ($layout_id) = @ARGV;
+my ($site_id,$layout_id);
 
-$layout_id or die "Usage: $0 layout-id";
+GetOptions(
+    'site-id=i'   => \$site_id,
+    'layout-id=i' => \$layout_id,
+) or die "Usage: $0 --site-id SITE_ID --layout-id LAYOUT_ID";
 
-my $l = rset('Layout')->find($layout_id)
+($site_id && $layout_id)
+    or die "Usage: $0 --site-id SITE_ID --layout-id LAYOUT_ID";
+
+my $l = rset('Layout')->find({id => $layout_id, $site_id => $site_id})
     or die "Layout ID $layout_id not found in database";
 
-say STDERR "Using field ".$l->name;
+info __x"Using field {name}", name => $l->name;
 
 my $original;
 

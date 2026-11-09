@@ -12,6 +12,7 @@ class CalcFieldsComponent extends Component {
     constructor(element) {
         super(element);
         this.initCalcFields();
+        this.element.querySelector("input, textarea").disabled = true;
     }
 
     /**

@@ -1,0 +1,11 @@
+[data-column-type="calc"] {
+    input, textarea {
+        background: var(--bs-gray-100, $gray);
+        cursor: not-allowed;
+
+        &:disabled {
+            // This is a quick fix for disabled color - we will work this out later
+            color: var(--bs-black, $black) !important;
+        }
+    }
+}
